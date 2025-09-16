@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Dashboard</title>
+    <style>
+    @keyframes fadeInOut {
+      0% { opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { opacity: 0; }
+    }
+
+    .animate-fade {
+      animation: fadeInOut 2s ease-in-out forwards;
+    }
+  </style>
+</head>
+
+<body class="flex">
+
+  <!-- Splash Screen -->
+  <div id="splash" class="fixed inset-0 flex flex-col justify-center items-center animate-fade z-50 bg-gradient-to-t from-indigo-600 to-indigo-800">
+    <img src="Logo.png" alt="Logo" class="w-25 h-20 mb-6" />
+    <h1 class="text-white text-2xl font-bold">SUKAROBOT ACADEMY</h1>
+    <div class="w-12 h-12 my-8 border-4 border-white border-t-transparent rounded-full animate-spin"></div>
+  </div>
+
+  <!-- Overlay (hp) -->
+  <div id="overlay" class="fixed inset-0 bg-tranparent bg-opacity-50 hidden lg:hidden"></div>
+
+  <!-- Sidebar -->
+  <div id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-gray-800 text-white transform -translate-x-full lg:translate-x-0 transition-transform duration-300 rounded-r-3xl">
+       <!--header Sidebar-->
+    <div class="p-4 text-xl font-bold border-b border-gray-700 mr-8">
+      Subot
+      <!-- Tombol Close (hp saja) -->
+      <button id="close-btn" class="lg:hidden absolute top-4 right-4 text-gray-300 hover:text-white focus:outline-none">
+        ✕
+      </button>
+    </div>
+    
+    <nav class="p-6 space-y-4">
+      <a href="#" class="block bg-blue-900 shadow-lg p-2 rounded"><i class="fa fa-home pr-2" aria-hidden="true"></i>Dashboard</a>
+      <a href="buat_invoice.html" class="block bg-blue-700 shadow-lg p-2 rounded hover:bg-blue-900 transition"></i>Buat Invoice</a>
+      <a href="pembayaran.html" class="block bg-blue-700 shadow-lg p-2 rounded hover:bg-blue-900 transition">Pembayaran</a>
+      <a href="tambah_data.html" class="block bg-blue-700 shadow-lg p-2 rounded hover:bg-blue-900 transition">Tambah Data</a>
+    </nav>
+  </div>
+
+  <!-- Konten Utama -->
+  <div class="flex-1 ml-0 lg:ml-64">
+    <!-- Navbar (hp saja) -->
+    <header class="flex items-center bg-gray-100 p-4 shadow lg:hidden">
+      <button id="menu-btn" class="text-gray-800 focus:outline-none">
+        <!-- Icon Hamburger -->
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" 
+             viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+      <h1 class="ml-4 text-lg font-bold">Dashboard</h1>
+    </header>
+
+    <!-- Isi Konten -->
+    <main class="p-6">
+      <h2 class="text-2xl font-bold mb-4">Ini Adalah Halaman dashboard</h2>
+    </main>
+  </div>
+
+  <!-- Script -->
+  <script>
+
+    // Splash delay
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.getElementById('splash').classList.add('hidden');
+        document.getElementById('authContainer').classList.remove('hidden');
+      }, 2000);
+    });
+
+    const sidebar = document.getElementById("sidebar");
+    const overlay = document.getElementById("overlay");
+    const menuBtn = document.getElementById("menu-btn");
+    const closeBtn = document.getElementById("close-btn");
+
+    // Fungsi buka sidebar
+    function openSidebar() {
+      sidebar.classList.remove("-translate-x-full");
+      overlay.classList.remove("hidden");
+    }
+
+    // Fungsi tutup sidebar
+    function closeSidebar() {
+      sidebar.classList.add("-translate-x-full");
+      overlay.classList.add("hidden");
+    }
+
+    // Event tombol
+    menuBtn.addEventListener("click", openSidebar);
+    closeBtn.addEventListener("click", closeSidebar);
+    overlay.addEventListener("click", closeSidebar); // klik luar sidebar juga menutup
+  </script>
+</body>
+</html>
