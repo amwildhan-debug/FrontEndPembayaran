@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Pembayaran</title>
     <style>
 
@@ -78,14 +78,70 @@
       </header>
 
       <!-- Isi Konten -->
-      <div class="p-6">
+      <main class="p-6">
         <h2 class="text-2xl font-bold mb-4 mt-6">Halaman Pembuatan Invoice</h2>
 
+        <!--filter-->
+        <div class="flex items-center justify-between">
+          <!--filter Kelas-->
+          <div class="relative w-48">
+          <label class="block mb-2 font-semibold">Kelas</label>
+          <button type="button" id="dropdownBtn1"
+            class="w-full px-4 py-2 border bg-white rounded-lg flex justify-between items-center">
+            <span id="selected1">-- Pilih --</span>
+            <span id="arrow1">▼</span>
+          </button>
+          <ul id="dropdownMenu1"
+            class="absolute w-full mt-1 bg-white border rounded-lg shadow-lg overflow-hidden 
+                   max-h-0 opacity-0 transform -translate-y-2 transition-all duration-300 ease-in-out">
+            <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer" data-value="10">Kelas 10</li>
+            <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer" data-value="11">Kelas 11</li>
+            <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer" data-value="12">Kelas 12</li>
+          </ul>
+        </div>
+      
+        <!-- Dropdown 2: Jurusan -->
+        <div class="relative w-48">
+          <label class="block mb-2 font-semibold">Jurusan</label>
+          <button type="button" id="dropdownBtn2"
+            class="w-full px-4 py-2 border bg-white rounded-lg flex justify-between items-center">
+            <span id="selected2">-- Pilih --</span>
+            <span id="arrow2">▼</span>
+          </button>
+          <ul id="dropdownMenu2"
+            class="absolute w-full mt-1 bg-white border rounded-lg shadow-lg overflow-hidden 
+                   max-h-0 opacity-0 transform -translate-y-2 transition-all duration-300 ease-in-out">
+            <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer" data-value="ipa">IPA</li>
+            <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer" data-value="ips">IPS</li>
+            <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer" data-value="bahasa">Bahasa</li>
+          </ul>
+          <input type="hidden" name="jurusan" id="jurusanInput">
+        </div>
+      
+        <!-- Dropdown 3: Tahun -->
+        <div class="relative w-48">
+          <label class="block mb-2 font-semibold">Tahun</label>
+          <button type="button" id="dropdownBtn3"
+            class="w-full px-4 py-2 border bg-white rounded-lg flex justify-between items-center">
+            <span id="selected3">-- Pilih --</span>
+            <span id="arrow3">▼</span>
+          </button>
+          <ul id="dropdownMenu3"
+            class="absolute w-full mt-1 bg-white border rounded-lg shadow-lg overflow-hidden 
+                   max-h-0 opacity-0 transform -translate-y-2 transition-all duration-300 ease-in-out">
+            <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer" data-value="2023">2023</li>
+            <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer" data-value="2024">2024</li>
+            <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer" data-value="2025">2025</li>
+          </ul>
+          <input type="hidden" name="tahun" id="tahunInput">
+        </div>
+
+        </div>
         <!--table resposif (Breakpoint)-->
-        <div class=" relative mt-10 flex flex-col">
+        <div class=" relative mt-10 flex flex-col z-30">
           <div class="-my-2 -mx-4 sm:-mx-6 lg:-mx-8">
             <div class="inline-block min-w-full py-2 align-left px-6">
-              <div class="oferflow-hidden shadow">
+              <div class="oferflow-hidden shadow-lg">
                 <table class="min-w-full divide-y divide-gray-300">
                   <tr class="border-b-1 border-blue-900">
                     <th class="text-white hidden lg:table-cell bg-black p-3 text-left">NISN</th>
@@ -101,7 +157,7 @@
                     <td class="font-bold p-2">Wildhan Anugrah Maulana
                       <!--Data Kolom yang Collapse Dipindah Ke Kolom Yang Diatas-->
                       <dl class="3xl:hidden">
-                        <dt class="xl:hidden font-semibold text-gray-400 text-xs">Sekolah SMK PASIM</dt>
+                        <dt class="xl:hidden font-semibold text-gray-400 text-xs">SMK PASIM</dt>
                         <dt class="lg:hidden font-semibold text-gray-400 text-xs">NISN 0123456789</dt>
                       </dl>
                     </td>
@@ -111,8 +167,8 @@
                     <td class="font-bold p-2">Rp. 200.000
                       <!--Data Kolom yang Collapse Dipindah Ke Kolom Yang Diatas-->
                       <dl class="3xl:hidden">
-                        <dt class="lg:hidden font-semibold text-gray-400 text-xs">Kelas Pembelajaran Club</dt>
-                        <dt class="md:hidden font-semibold text-gray-400 text-xs">Level Pembelajaran Basic 3</dt>
+                        <dt class="lg:hidden font-semibold text-gray-400 text-xs">Kelas Club</dt>
+                        <dt class="md:hidden font-semibold text-gray-400 text-xs">Tingkat Basic 3</dt>
                       </dl>
                     </td>
                     <td class="font-bold p-2"><input type="checkbox" class="w-5 h-5"></td>
@@ -122,7 +178,7 @@
                     <td class="font-bold p-2">Shafira Triasa Fauzia
                       <!--Data Kolom yang Collapse Dipindah Ke Kolom Yang Diatas-->
                       <dl class="3xl:hidden">
-                        <dt class="xl:hidden font-semibold text-gray-400 text-xs">Sekolah SMK PASIM</dt>
+                        <dt class="xl:hidden font-semibold text-gray-400 text-xs">SMK PASIM</dt>
                         <dt class="lg:hidden font-semibold text-gray-400 text-xs">NISN 0123456789</dt>
                       </dl>
                     </td>
@@ -132,8 +188,8 @@
                     <td class="font-bold p-2">Lunas
                       <!--Data Kolom yang Collapse Dipindah Ke Kolom Yang Diatas-->
                       <dl class="3xl:hidden">
-                        <dt class="lg:hidden font-semibold text-gray-400 text-xs">Kelas Pembelajaran Club</dt>
-                        <dt class="md:hidden font-semibold text-gray-400 text-xs">Level Pembelajaran Basic 3</dt>
+                        <dt class="lg:hidden font-semibold text-gray-400 text-xs">Kelas Club</dt>
+                        <dt class="md:hidden font-semibold text-gray-400 text-xs">Tingkat Basic 3</dt>
                       </dl>
                     </td>
                     <td class="font-bold p-2"><input type="checkbox" class="w-5 h-5"></td>
@@ -143,7 +199,7 @@
                     <td class="font-bold p-2">Randi Apriliyadi
                       <!--Data Kolom yang Collapse Dipindah Ke Kolom Yang Diatas-->
                       <dl class="3xl:hidden">
-                        <dt class="xl:hidden font-semibold text-gray-400 text-xs">Sekolah SMK PASIM</dt>
+                        <dt class="xl:hidden font-semibold text-gray-400 text-xs">SMK PASIM</dt>
                         <dt class="lg:hidden font-semibold text-gray-400 text-xs">NISN 0123456789</dt>
                       </dl>
                     </td>
@@ -153,8 +209,8 @@
                     <td class="font-bold p-2">Lunas
                       <!--Data Kolom yang Collapse Dipindah Ke Kolom Yang Diatas-->
                       <dl class="3xl:hidden">
-                        <dt class="lg:hidden font-semibold text-gray-400 text-xs">Kelas Pembelajaran Club</dt>
-                        <dt class="md:hidden font-semibold text-gray-400 text-xs">Level Pembelajaran Basic 3</dt>
+                        <dt class="lg:hidden font-semibold text-gray-400 text-xs">Kelas Club</dt>
+                        <dt class="md:hidden font-semibold text-gray-400 text-xs">Tingkat Basic 3</dt>
                       </dl>
                     </td>
                     <td class="font-bold p-2"><input type="checkbox" class="w-5 h-5"></td>
@@ -164,7 +220,7 @@
                     <td class="font-bold p-2">Zan Farid
                       <!--Data Kolom yang Collapse Dipindah Ke Kolom Yang Diatas-->
                       <dl class="3xl:hidden">
-                        <dt class="xl:hidden font-semibold text-gray-400 text-xs">Sekolah SMK PASIM</dt>
+                        <dt class="xl:hidden font-semibold text-gray-400 text-xs">SMK PASIM</dt>
                         <dt class="lg:hidden font-semibold text-gray-400 text-xs">NISN 0123456789</dt>
                       </dl>
                     </td>
@@ -174,8 +230,8 @@
                     <td class="font-bold p-2">Lunas
                       <!--Data Kolom yang Collapse Dipindah Ke Kolom Yang Diatas-->
                       <dl class="3xl:hidden">
-                        <dt class="lg:hidden font-semibold text-gray-400 text-xs">Kelas Pembelajaran Club</dt>
-                        <dt class="md:hidden font-semibold text-gray-400 text-xs">Level Pembelajaran Basic 3</dt>
+                        <dt class="lg:hidden font-semibold text-gray-400 text-xs">Kelas Club</dt>
+                        <dt class="md:hidden font-semibold text-gray-400 text-xs">Level Basic 3</dt>
                       </dl>
                     </td>
                     <td class="font-bold p-2"><input type="checkbox" class="w-5 h-5"></td>
@@ -191,40 +247,93 @@
       
 
         </div>
-    </div>
+      </main>
 
     <!-- Script -->
     <script>
 
-    // splash delay
-    window.addEventListener('load', () => {
-      setTimeout(() => {
-        document.getElementById('splash').classList.add('hidden');
-        document.getElementById('authContainer').classList.remove('hidden');
-      }, 2000);
-    });
+      // splash delay
+      window.addEventListener('load', () => {
+        setTimeout(() => {
+          document.getElementById('splash').classList.add('hidden');
+          document.getElementById('authContainer').classList.remove('hidden');
+        }, 2000);
+      });
 
-    const sidebar = document.getElementById("sidebar");
-    const overlay = document.getElementById("overlay");
-    const menuBtn = document.getElementById("menu-btn");
-    const closeBtn = document.getElementById("close-btn");
+      const sidebar = document.getElementById("sidebar");
+      const overlay = document.getElementById("overlay");
+      const menuBtn = document.getElementById("menu-btn");
+      const closeBtn = document.getElementById("close-btn");
 
-    // buka sidebar
-    function openSidebar() {
-      sidebar.classList.remove("-translate-x-full");
-      overlay.classList.remove("hidden");
-    }
+      // buka sidebar
+      function openSidebar() {
+        sidebar.classList.remove("-translate-x-full");
+        overlay.classList.remove("hidden");
+      }
 
-    // tutup sidebar
-    function closeSidebar() {
-      sidebar.classList.add("-translate-x-full");
-      overlay.classList.add("hidden");
-    }
+      // tutup sidebar
+      function closeSidebar() {
+        sidebar.classList.add("-translate-x-full");
+        overlay.classList.add("hidden");
+      }
 
-    // tombol fleksibel
-    menuBtn.addEventListener("click", openSidebar);
-    closeBtn.addEventListener("click", closeSidebar);
-    overlay.addEventListener("click", closeSidebar); // klik luar sidebar juga menutup
+      // tombol fleksibel
+      menuBtn.addEventListener("click", openSidebar);
+      closeBtn.addEventListener("click", closeSidebar);
+      overlay.addEventListener("click", closeSidebar); // klik luar sidebar juga menutup
+
+      
+
+      // animasi untuk dropdown
+      function closeAllDropdowns() {
+        document.querySelectorAll("ul[id^='dropdownMenu']").forEach(menu => {
+        menu.classList.add("max-h-0", "opacity-0", "-translate-y-2");
+        menu.classList.remove("max-h-60", "opacity-100", "translate-y-0");
+
+        // ganti arrow jadi ▼
+        const arrow = menu.parentElement.querySelector("span[id^='arrow']");
+        if (arrow) arrow.textContent = "▼";
+        });
+      }
+
+      // Fungsi untuk membuat dropdown
+      function setupDropdown(btnId, menuId, selectedId, arrowId) {
+        const btn = document.getElementById(btnId);
+        const menu = document.getElementById(menuId);
+        const selected = document.getElementById(selectedId);
+        const arrow = document.getElementById(arrowId);
+
+        btn.addEventListener("click", (e) => {
+          e.stopPropagation(); // cegah event bubbling
+          const isClosed = menu.classList.contains("max-h-0");
+
+          closeAllDropdowns(); // tutup semua dulu
+
+          if (isClosed) {
+            menu.classList.remove("max-h-0", "opacity-0", "-translate-y-2");
+            menu.classList.add("max-h-60", "opacity-100", "translate-y-0");
+            arrow.textContent = "▲";
+          }
+        });
+
+        menu.querySelectorAll("li").forEach(item => {
+          item.addEventListener("click", () => {
+            selected.textContent = item.textContent;
+            input.value = item.dataset.value;
+            closeAllDropdowns(); // otomatis tutup setelah pilih
+          });
+        });
+      }
+
+      // Inisialisasi 3 dropdown
+      setupDropdown("dropdownBtn1", "dropdownMenu1", "selected1", "arrow1");
+      setupDropdown("dropdownBtn2", "dropdownMenu2", "selected2", "arrow2");
+      setupDropdown("dropdownBtn3", "dropdownMenu3", "selected3", "arrow3");
+
+      // Tutup dropdown jika klik di luar semua dropdown
+      document.addEventListener("click", () => {
+        closeAllDropdowns();
+      });
 
   </script>
 </body>
