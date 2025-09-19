@@ -6,8 +6,21 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"/>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <title>Tambah_Data</title>
+    <title>Tambah Data</title>
     <style>
+
+      /* Scrollbar untuk HP & Desktop */
+    .scrollbar::-webkit-scrollbar {
+    height: 8px; /* tinggi scrollbar horizontal */
+    }
+    .scrollbar::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+    .scrollbar::-webkit-scrollbar-thumb {
+        background: #a3a3a3;
+    border-radius: 4px;
+    }
+
     @keyframes fadeInOut {
       0% { opacity: 0; }
       10% { opacity: 1; }
@@ -18,6 +31,7 @@
     .animate-fade {
       animation: fadeInOut 2s ease-in-out forwards;
     }
+
   </style>
 </head>
 
@@ -34,12 +48,12 @@
     <div id="overlay" class="fixed inset-0 bg-tranparent bg-opacity-50 hidden :hidden"></div>
 
     <!-- Sidebar -->
-    <div id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-gray-800 text-white transform -translate-x-full lg:translate-x-0 transition-transform duration-300 rounded-r-3xl">
+    <div id="sidebar" class="select fixed top-0 left-0 h-full w-64 bg-gray-800 text-white transform -translate-x-full lg:translate-x-0 transition-transform duration-300 rounded-r-3xl z-40">
         <!--header Sidebar-->
         <div class="p-4 text-xl font-bold border-b border-gray-700">
             Subot
             <!-- Tombol Close (hp saja) -->
-            <button id="close-btn" class="lg:hidden absolute top-4 right-4 text-gray-300 hover:text-white focus:outline-none right-0">
+            <button id="close-btn" class="lg:hidden absolute top-4 right-4 text-gray-300 hover:text-white focus:outline-none">
                 ✕
             </button>
         </div>
@@ -68,175 +82,258 @@
 
         <!-- Isi Konten -->
         <main class="p-6">
-            <h2 class="text-2xl font-bold mb-4">Ini Adalah Halaman Pembayaran</h2>
+            <h2 class="text-2xl font-bold mb-4 mt-6">Ini Adalah Halaman Pembayaran</h2>
 
-    <section class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-      <div>
-        <label class="block text-gray-700 mb-2 font-bold">Nama Sekolah</label>
-        <select class="w-full border rounded-lg px-3 py-2">
-          <option>SMK Pasim Plus Kota Sukabumi</option>
-          <option>SMAN 3 Kota Sukabumi</option>
-          <option>SMK Ibadurahhman</option>
-        </select>
-      </div>
-      <div>
-        <label class="block text-gray-700 mb-2 font-bold">Status</label>
-        <select class="w-full border rounded-lg px-3 py-2">
-          <option>Lunas</option>
-          <option>Mencicil</option>
-        </select>
-      </div>
-      <div>
-        <label class="block text-gray-700 mb-2 font-bold">Kelas</label>
-        <select class="w-full border rounded-lg px-3 py-2">
-          <option>Private</option>
-          <option>Regular</option>
-          <option>Ekstrakulikuler</option>
-        </select>
-      </div>
-    </section>
+        <!--filter-->
+        <div class="relative flex gap-4 md:flex-wrap">
+          <!-- Filter Level -->
+          <div class="relative w-48 z-40">
+            <label class="block mb-2 font-semibold text-center">Level</label>
+            <button type="button" id="dropdownBtn1" class=" w-full px-4 py-2 border bg-white rounded-lg flex justify-between items-center">
+              <span id="selected1">Basic 3</span>
+              <span id="arrow1">▼</span>
+            </button>
+            <ul id="dropdownMenu1" class="absolute w-full mt-1 bg-white border rounded-lg shadow-lg overflow-y-auto max-h-0 opacity-0 transform -translate-y-2 transition-all duration-300 ease-in-out">
+              <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer" data-value="10">Basic 1</li>
+              <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer" data-value="11">Basic 2</li>
+              <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer" data-value="12">Basic 3</li>
+            </ul>
+          </div>
+          
+          <!-- Kelas Kelas -->
+          <div class="relative w-48 z-40">
+            <label class="block mb-2 font-semibold text-center">Jurusan</label>
+            <button type="button" id="dropdownBtn2" class="w-full px-4 py-2 border bg-white rounded-lg flex justify-between items-center">
+              <span id="selected2">Club</span>
+              <span id="arrow2">▼</span>
+            </button>
+            <ul id="dropdownMenu2" class="absolute z-40 w-full mt-1 bg-white border rounded-lg shadow-lg overflow-y-auto max-h-0 opacity-0 transform -translate-y-2 transition-all duration-300 ease-in-out">
+              <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer" data-value="ipa">Regular</li>
+              <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer" data-value="ips">Club</li>
+              <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer" data-value="bahasa">Privat</li>
+              <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer" data-value="bahasa">Semi Privat</li>
+            </ul>
+          </div>
+      
+          <!-- Filter Sekolah -->
+          <div class="relative w-80">
+            <label class="block mb-2 font-semibold text-center">Sekolah</label>
+            <button type="button" id="dropdownBtn3" class="w-full px-4 py-2 border bg-white rounded-lg flex justify-between items-center">
+              <span id="selected3">SMK Pasim</span>
+              <span id="arrow3">▼</span>
+            </button>
+            <ul id="dropdownMenu3" class="absolute z-40 w-full mt-1 bg-white border rounded-lg shadow-lg overflow-y-auto max-h-0 opacity-0 transform -translate-y-2 transition-all duration-300 ease-in-out">
+              <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer" data-value="2023">SMK Pasim</li>
+              <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer" data-value="2024">SMP Pasim</li>
+              <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer" data-value="2025">SD Pasim</li>
+            </ul>
+          </div>
+        </div>
 
-    <div class="flex justify-end mb-4">
-      <div class="flex items-center w-full md:w-1/3">
-        <input type="text" placeholder="Pencarian Siswa" class="flex-1 border rounded-l-lg px-4 py-2 focus:outline-none" />
-        <i class="bg-gray-400 px-1 py-3 rounded-r-lg fa-solid fa-magnifying-glass" style="font-size:20px;color:rgb(8, 8, 8);"></i>
-      </div>
-    </div>
+        <div class="relative flex items-center gap-4 md:flex-wrap">
+          <div>
+            <input type="text" placeholder="Cari" class="border h-10 mt-2 px-4 rounded-lg">
+            <i class="bg-gray-white px-1 py-2 right-10 rounded-lg fa fa-search text-base text-black"></i>
+          </div>
+          <h2 class="text-2xl font-bold mb-4 mt-6 ">Data Siswa Sukarobot Academy</h2>
+        </div>
 
-    <h2 class="text-xl font-semibold mb-4">Data Siswa Sukarobot Academy</h2>
-    <div class="overflow-x-auto">
-      <table class="w-full border rounded-lg overflow-hidden text-sm">
-        <thead>
-          <tr class="bg-gray-800 text-white">
-            <th class="py-3 px-3">NISN</th>
-            <th class="py-3 px-3">Nama Siswa</th>
-            <th class="py-3 px-3">Nama Sekolah</th>
-            <th class="py-3 px-3">Status</th>
-            <th class="py-3 px-3">Bayar</th>
-            <th class="py-3 px-3">Edit</th>
-            <th class="py-3 px-3">Hapus</th>
-            <th class="py-3 px-3">Keterangan</th>
-          </tr>
-        </thead>
-        <tbody class="bg-white divide-y">
-          <tr>
-            <td class="px-3 py-3">04121227</td>
-            <td class="px-3 py-3">Aji Ramdhani</td>
-            <td class="px-3 py-3">SMK Ibadurahhman</td>
-            <td class="px-3 py-3">Lunas</td>
-            <td class="px-3 py-5">
-              <a href="detail_pembayaran.html" 
-              class="px-3 py-2 rounded-full bg-gray-200 hover:bg-black hover:text-white transition">
-              <i class="fa-solid fa-wallet text-xl"></i></a></td>
-            <td class="px-3 py-5">
-              <button class="text-black-500">
-              <i class="fa-solid fa-pencil text-xl"></i></button></td>
-            <td class="px-3 py-5">
-              <button onclick="konfirmasiHapus()" class="text-black">
-              <i class="fa-solid fa-trash text-xl"></i></button></td>
-          </tr>
-          </tr>
-          <tr>
-            <td class="px-3 py-3">09628592</td>
-            <td class="px-3 py-3">Wildhan Anugrah Maulana</td>
-            <td class="px-3 py-3">SMK Pasim Plus Kota Sukarobot</td>
-            <td class="px-3 py-3">mencicil</td>
-            <td class="px-3 py-5">
-              <a href="detail_pembayaran.html" 
-              class="px-3 py-2 rounded-full bg-gray-200 hover:bg-black hover:text-white transition">
-              <i class="fa-solid fa-wallet text-xl"></i></a></td>
-            <td class="px-3 py-5">
-              <button class="text-black-500">
-              <i class="fa-solid fa-pencil text-xl"></i></button></td>
-            <td class="px-3 py-5">
-              <button onclick="konfirmasiHapus()" class="text-black">
-              <i class="fa-solid fa-trash text-xl"></i></button></td>
-            <td class="px-3 py-3">Tersisa 2x Cicilan</td>
-          </tr>
-          </tr>
-          <tr>
-            <td class="px-3 py-3">08627281</td>
-            <td class="px-3 py-3">Shafira Triasa Fauzia</td>
-            <td class="px-3 py-3">SMAN 3 Kota Sukabumi</td>
-            <td class="px-3 py-3">Lunas</td>
-            <td class="px-3 py-5">
-              <a href="detail_pembayaran.html" 
-              class="px-3 py-2 rounded-full bg-gray-200 hover:bg-black hover:text-white transition">
-              <i class="fa-solid fa-wallet text-xl"></i></a></td>
-            <td class="px-3 py-5">
-              <button class="text-black-500">
-              <i class="fa-solid fa-pencil text-xl"></i></button></td>
-            <td class="px-3 py-5">
-              <button onclick="konfirmasiHapus()" class="text-black">
-              <i class="fa-solid fa-trash text-xl"></i></button></td>
-          </tr>
+    <!--table resposif (Breakpoint)-->
+        <div class=" relative mt-6 flex flex-col z-30">
+          <div class="-my-2 -mx-4 sm:-mx-6 lg:-mx-8">
+            <div class="inline-block min-w-full py-2 align-left px-6">
+              <div class="oferflow-hidden shadow-lg">
+                <table class="min-w-full divide-y divide-gray-300">
+                  <tr class="border-b-1 border-blue-900">
+                    <th class="text-white hidden lg:table-cell bg-black p-3 text-left">NISN</th>
+                    <th class="text-white bg-black p-3 text-left">Nama Siswa</th>
+                    <th class="text-white hidden xl:table-cell bg-black p-3 text-left">Nama Sekolah</th>
+                    <th class="text-white hidden lg:table-cell bg-black p-3 text-left">Status</th>
+                    <th class="text-white hidden md:table-cell bg-black p-3 text-left">Bayar</th>
+                    <th class="text-white bg-black p-3 text-left">Edit</th>
+                    <th class="text-white bg-black p-3 text-left">Hapus</th>
+                    <th class="text-white bg-black p-3 text-left">Keterangan</th>
+                  </tr>
+                  <tr class="border-b-1 border-blue-900">
+                    <td class="font-bold hidden lg:table-cell p-2">0123456789</td>
+                    <td class="font-bold p-2">Wildhan Anugrah Maulana
+                      <!--Data Kolom yang Collapse Dipindah Ke Kolom Yang Diatas-->
+                      <dl class="3xl:hidden">
+                        <dt class="xl:hidden font-semibold text-gray-400 text-xs">SMK PASIM</dt>
+                        <dt class="lg:hidden font-semibold text-gray-400 text-xs">Lunas</dt>
+                      </dl>
+                    </td>
+                    <td class="font-bold hidden xl:table-cell p-2">SMK PASIM</td>
+                    <td class="font-bold hidden lg:table-cell p-2">Club</td>
+                    <td class="font-bold hidden md:table-cell p-2">Basic 3</td>
+                    <td class="font-bold p-2">Rp. 200.000
+                      <!--Data Kolom yang Collapse Dipindah Ke Kolom Yang Diatas-->
+                      <dl class="3xl:hidden">
+                        <dt class="lg:hidden font-semibold text-gray-400 text-xs">Kelas Club</dt>
+                        <dt class="md:hidden font-semibold text-gray-400 text-xs">Tingkat Basic 3</dt>
+                      </dl>
+                    </td>
+                    <td class="font-bold p-2"><input type="checkbox" class="w-5 h-5"></td>
+                  </tr>
+                  <tr class="border-b-1 border-blue-900">
+                    <td class="font-bold hidden lg:table-cell p-2">0123456789</td>
+                    <td class="font-bold p-2">Shafira Triasa Fauzia
+                      <!--Data Kolom yang Collapse Dipindah Ke Kolom Yang Diatas-->
+                      <dl class="3xl:hidden">
+                        <dt class="xl:hidden font-semibold text-gray-400 text-xs">SMK PASIM</dt>
+                        <dt class="lg:hidden font-semibold text-gray-400 text-xs">NISN 0123456789</dt>
+                      </dl>
+                    </td>
+                    <td class="font-bold hidden xl:table-cell p-2">SMK PASIM</td>
+                    <td class="font-bold hidden lg:table-cell p-2">Club</td>
+                    <td class="font-bold hidden md:table-cell p-2">Basic 3</td>
+                    <td class="font-bold p-2">Lunas
+                      <!--Data Kolom yang Collapse Dipindah Ke Kolom Yang Diatas-->
+                      <dl class="3xl:hidden">
+                        <dt class="lg:hidden font-semibold text-gray-400 text-xs">Kelas Club</dt>
+                        <dt class="md:hidden font-semibold text-gray-400 text-xs">Tingkat Basic 3</dt>
+                      </dl>
+                    </td>
+                    <td class="font-bold p-2"><input type="checkbox" class="w-5 h-5"></td>
+                  </tr>
+                  <tr class="border-b-1 border-blue-900">
+                    <td class="font-bold hidden lg:table-cell p-2">0123456789</td>
+                    <td class="font-bold p-2">Randi Apriliyadi
+                      <!--Data Kolom yang Collapse Dipindah Ke Kolom Yang Diatas-->
+                      <dl class="3xl:hidden">
+                        <dt class="xl:hidden font-semibold text-gray-400 text-xs">SMK PASIM</dt>
+                        <dt class="lg:hidden font-semibold text-gray-400 text-xs">NISN 0123456789</dt>
+                      </dl>
+                    </td>
+                    <td class="font-bold hidden xl:table-cell p-2">SMK PASIM</td>
+                    <td class="font-bold hidden lg:table-cell p-2">Club</td>
+                    <td class="font-bold hidden md:table-cell p-2">Basic 3</td>
+                    <td class="font-bold p-2">Lunas
+                      <!--Data Kolom yang Collapse Dipindah Ke Kolom Yang Diatas-->
+                      <dl class="3xl:hidden">
+                        <dt class="lg:hidden font-semibold text-gray-400 text-xs">Kelas Club</dt>
+                        <dt class="md:hidden font-semibold text-gray-400 text-xs">Tingkat Basic 3</dt>
+                      </dl>
+                    </td>
+                    <td class="font-bold p-2"><input type="checkbox" class="w-5 h-5"></td>
+                  </tr>
+                  <tr class="border-b-1 border-blue-900">
+                    <td class="font-bold hidden lg:table-cell p-2">0123456789</td>
+                    <td class="font-bold p-2">Zan Farid
+                      <!--Data Kolom yang Collapse Dipindah Ke Kolom Yang Diatas-->
+                      <dl class="3xl:hidden">
+                        <dt class="xl:hidden font-semibold text-gray-400 text-xs">SMK PASIM</dt>
+                        <dt class="lg:hidden font-semibold text-gray-400 text-xs">NISN 0123456789</dt>
+                      </dl>
+                    </td>
+                    <td class="font-bold hidden xl:table-cell p-2">SMK PASIM</td>
+                    <td class="font-bold hidden lg:table-cell p-2">Club</td>
+                    <td class="font-bold hidden md:table-cell p-2">Basic 3</td>
+                    <td class="font-bold p-2">Lunas
+                      <!--Data Kolom yang Collapse Dipindah Ke Kolom Yang Diatas-->
+                      <dl class="3xl:hidden">
+                        <dt class="lg:hidden font-semibold text-gray-400 text-xs">Kelas Club</dt>
+                        <dt class="md:hidden font-semibold text-gray-400 text-xs">Level Basic 3</dt>
+                      </dl>
+                    </td>
+                    <td class="font-bold p-2"><input type="checkbox" class="w-5 h-5"></td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      
 
-        </tbody>
-        </main>
-    </div>
-    <div class="mt-8">
-      <a href="buat_invoice.html" class="block rounded-lg shadow-xl text-center p-4 bg-blue-900 font-semibold text-xl text-white hover:bg-gray-800 transition">Invoice</a>
-    </div>
+        </div>
+      </main>
 
     <!-- Script -->
     <script>
 
-    // Splash delay
-    window.addEventListener('load', () => {
-      setTimeout(() => {
-        document.getElementById('splash').classList.add('hidden');
-        document.getElementById('authContainer').classList.remove('hidden');
-      }, 2000);
-    });
+      // splash delay
+      window.addEventListener('load', () => {
+        setTimeout(() => {
+          document.getElementById('splash').classList.add('hidden');
+          document.getElementById('authContainer').classList.remove('hidden');
+        }, 2000);
+      });
 
-    const sidebar = document.getElementById("sidebar");
-    const overlay = document.getElementById("overlay");
-    const menuBtn = document.getElementById("menu-btn");
-    const closeBtn = document.getElementById("close-btn");
+      const sidebar = document.getElementById("sidebar");
+      const overlay = document.getElementById("overlay");
+      const menuBtn = document.getElementById("menu-btn");
+      const closeBtn = document.getElementById("close-btn");
 
-    // buka sidebar
-    function openSidebar() {
-      sidebar.classList.remove("-translate-x-full");
-      overlay.classList.remove("hidden");
-    }
-
-    // tutup sidebar
-    function closeSidebar() {
-      sidebar.classList.add("-translate-x-full");
-      overlay.classList.add("hidden");
-    }
-
-    // tombol
-    menuBtn.addEventListener("click", openSidebar);
-    closeBtn.addEventListener("click", closeSidebar);
-    overlay.addEventListener("click", closeSidebar); // klik luar sidebar juga menutup
-
-  function konfirmasiHapus() {
-    Swal.fire({
-      title: 'Apakah kamu yakin?',
-      text: "Data ini akan dihapus!",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#d33',
-      cancelButtonColor: '#3085d6',
-      confirmButtonText: 'Iya',
-      cancelButtonText: 'Tidak'
-    }).then((result) => {
-      if (result.isConfirmed) {
-        Swal.fire(
-          'Dihapus!',
-          'Data berhasil dihapus (simulasi).',
-          'success'
-        )
-      } else {
-        Swal.fire(
-          'Dibatalkan',
-          'Data tidak jadi dihapus.',
-          'info'
-        )
+      // buka sidebar
+      function openSidebar() {
+        sidebar.classList.remove("-translate-x-full");
+        overlay.classList.remove("hidden");
       }
-    })
-  }
+
+      // tutup sidebar
+      function closeSidebar() {
+        sidebar.classList.add("-translate-x-full");
+        overlay.classList.add("hidden");
+      }
+
+      // tombol fleksibel
+      menuBtn.addEventListener("click", openSidebar);
+      closeBtn.addEventListener("click", closeSidebar);
+      overlay.addEventListener("click", closeSidebar); // klik luar sidebar juga menutup
+
+      
+
+      // animasi untuk dropdown
+      function closeAllDropdowns() {
+        document.querySelectorAll("ul[id^='dropdownMenu']").forEach(menu => {
+        menu.classList.add("max-h-0", "opacity-0", "-translate-y-2");
+        menu.classList.remove("max-h-60", "opacity-100", "translate-y-0");
+
+        // ganti arrow jadi ▼
+        const arrow = menu.parentElement.querySelector("span[id^='arrow']");
+        if (arrow) arrow.textContent = "▼";
+        });
+      }
+
+      // Fungsi untuk membuat dropdown
+      function setupDropdown(btnId, menuId, selectedId, arrowId) {
+        const btn = document.getElementById(btnId);
+        const menu = document.getElementById(menuId);
+        const selected = document.getElementById(selectedId);
+        const arrow = document.getElementById(arrowId);
+
+        btn.addEventListener("click", (e) => {
+          e.stopPropagation(); // cegah event bubbling
+          const isClosed = menu.classList.contains("max-h-0");
+
+          closeAllDropdowns(); // tutup semua dulu
+
+          if (isClosed) {
+            menu.classList.remove("max-h-0", "opacity-0", "-translate-y-2");
+            menu.classList.add("max-h-60", "opacity-100", "translate-y-0");
+            arrow.textContent = "▲";
+          }
+        });
+
+        menu.querySelectorAll("li").forEach(item => {
+          item.addEventListener("click", () => {
+            selected.textContent = item.textContent;
+            input.value = item.dataset.value;
+            closeAllDropdowns(); // otomatis tutup setelah pilih
+          });
+        });
+      }
+
+      // Inisialisasi 3 dropdown
+      setupDropdown("dropdownBtn1", "dropdownMenu1", "selected1", "arrow1");
+      setupDropdown("dropdownBtn2", "dropdownMenu2", "selected2", "arrow2");
+      setupDropdown("dropdownBtn3", "dropdownMenu3", "selected3", "arrow3");
+
+      // Tutup dropdown jika klik di luar semua dropdown
+      document.addEventListener("click", () => {
+        closeAllDropdowns();
+      });
+
   </script>
 </body>
 </html>
