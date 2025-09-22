@@ -1,0 +1,94 @@
+{
+  "sampleDataInvoice": [
+    {
+      "nama": "Ahmad Rizki",
+      "kelas": "pemula",
+      "kategori": "programming",
+      "sekolah": "sma-negeri-1",
+      "biaya": 750000,
+      "status": "lunas",
+      "tanggal": "2024-01-15"
+    },
+    {
+      "nama": "Siti Nurhaliza",
+      "kelas": "menengah",
+      "kategori": "design",
+      "sekolah": "sma-negeri-2",
+      "biaya": 1200000,
+      "status": "lunas",
+      "tanggal": "2024-01-14"
+    },
+    {
+      "nama": "Budi Santoso",
+      "kelas": "lanjutan",
+      "kategori": "marketing",
+      "sekolah": "sma-swasta-1",
+      "biaya": 1800000,
+      "status": "belum_lunas",
+      "tanggal": "-"
+    },
+    {
+      "nama": "Maya Sari",
+      "kelas": "expert",
+      "kategori": "business",
+      "sekolah": "smk-negeri-1",
+      "biaya": 2500000,
+      "status": "lunas",
+      "tanggal": "2024-01-13"
+    },
+    {
+      "nama": "Doni Pratama",
+      "kelas": "pemula",
+      "kategori": "programming",
+      "sekolah": "smk-swasta-1",
+      "biaya": 750000,
+      "status": "lunas",
+      "tanggal": "2024-01-12"
+    },
+    {
+      "nama": "Rina Wati",
+      "kelas": "menengah",
+      "kategori": "language",
+      "sekolah": "sma-negeri-1",
+      "biaya": 1200000,
+      "status": "belum_lunas",
+      "tanggal": "-"
+    },
+    {
+      "nama": "Eko Susilo",
+      "kelas": "lanjutan",
+      "kategori": "design",
+      "sekolah": "sma-negeri-2",
+      "biaya": 1800000,
+      "status": "lunas",
+      "tanggal": "2024-01-11"
+    },
+    {
+      "nama": "Fitri Handayani",
+      "kelas": "",
+      "kategori": "kosong",
+      "sekolah": "sma-swasta-1",
+      "biaya": 0,
+      "status": "lunas",
+      "tanggal": "2024-01-10"
+    },
+    {
+      "nama": "Agus Setiawan",
+      "kelas": "pemula",
+      "kategori": "business",
+      "sekolah": "smk-negeri-1",
+      "biaya": 750000,
+      "status": "lunas",
+      "tanggal": "2024-01-09"
+    },
+    {
+      "nama": "Dewi Lestari",
+      "kelas": "menengah",
+      "kategori": "language",
+      "sekolah": "smk-swasta-1",
+      "biaya": 1200000,
+      "status": "lunas",
+      "tanggal": "2024-01-08"
+    }
+  ]
+}

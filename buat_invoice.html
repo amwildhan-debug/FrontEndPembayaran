@@ -1,339 +1,275 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>Buat Invoice</title>
+    <title>Invoice - Pembayaran Kursus</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"/>
     <style>
-
-    /* Scrollbar untuk HP & Desktop */
-    .scrollbar::-webkit-scrollbar {
-    height: 8px; /* tinggi scrollbar horizontal */
-    }
-    .scrollbar::-webkit-scrollbar-track {
-        background: #f1f1f1;
-    }
-    .scrollbar::-webkit-scrollbar-thumb {
-        background: #a3a3a3;
-    border-radius: 4px;
-    }
-
-    @keyframes fadeInOut {
-      0% { opacity: 0; }
-      10% { opacity: 1; }
-      90% { opacity: 1; }
-      100% { opacity: 0; }
-    }
-
-    .animate-fade {
-      animation: fadeInOut 2s ease-in-out forwards;
-    }
-  </style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        @media print {
+            .no-print { display: none !important; }
+            body { background: white !important; }
+            .print-shadow { box-shadow: none !important; }
+        }
+    </style>
 </head>
-
-<body class="flex">
-
-    <!-- Splash Screen -->
-    <div id="splash" class="fixed inset-0 flex flex-col justify-center items-center animate-fade z-50 bg-gradient-to-t from-indigo-600 to-indigo-800">
-        <img src="Logo.png" alt="Logo" class="w-25 h-20 mb-6" />
-        <h1 class="text-white text-2xl font-bold">SUKAROBOT ACADEMY</h1>
-        <div class="w-12 h-12 my-8 border-4 border-white border-t-transparent rounded-full animate-spin"></div>
-    </div>
-
-    <!-- Overlay (hp) -->
-    <div id="overlay" class="fixed inset-0 bg-tranparent bg-opacity-50 hidden lg:hidden"></div>
-
-    <!-- Sidebar -->
-    <div id="sidebar" class="select fixed top-0 left-0 h-full w-64 bg-gray-800 text-white transform -translate-x-full lg:translate-x-0 transition-transform duration-300 rounded-r-3xl z-40">
-      <!--header Sidebar-->
-      <div class="p-4 text-xl font-bold border-b border-gray-700">
-        Subot
-        <!-- Tombol Close (hp saja) -->
-        <button id="close-btn" class="lg:hidden absolute top-4 right-4 text-gray-300 hover:text-white focus:outline-none">
-          ✕
-        </button>
-      </div>
-  
-      <nav class="p-6 space-y-4">
-        <a href="dashboard.html" class="block bg-blue-700 shadow-lg p-2 rounded hover:bg-blue-900 transition">Dashboard</a>
-        <a href="#" class="block bg-blue-900 shadow-lg p-2 rounded">Buat Invoice</a>
-      </nav>
-    </div>
-
-    <!-- Konten Utama -->
-    <div class="flex-1 lg:ml-64">
-      <!-- Navbar (hp saja) -->
-      <header class="flex items-center bg-gray-100 p-4 shadow lg:hidden">
-        <button id="menu-btn" class="text-gray-800 focus:outline-none">
-          <!-- Icon Hamburger -->
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" 
-            viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
-            d="M4 6h16M4 12h16M4 18h16"/>
-          </svg>
-        </button>
-        <h1 class="ml-4 text-lg font-bold">Pembayaran</h1>
-      </header>
-
-      <!-- Isi Konten -->
-      <main class="p-6">
-        <h2 class="text-2xl font-bold mb-10 mt-6">Halaman Pembuatan Invoice</h2>
-
-        <!--filter-->
-        <div class="relative flex-row gap-2 mb-6 md:flex-row">
-          <!-- Filter Level -->
-          <div class="relative w-48 z-40">
-            <label class="block mb-2 font-semibold text-center">Level</label>
-            <button type="button" id="dropdownBtn1" class=" w-full px-4 py-2 border bg-white rounded-lg flex justify-between items-center">
-              <span id="selected1">Basic 3</span>
-              <span id="arrow1">▼</span>
-            </button>
-            <ul id="dropdownMenu1" class="absolute w-full mt-1 bg-white border rounded-lg shadow-lg overflow-y-auto max-h-0 opacity-0 transform -translate-y-2 transition-all duration-300 ease-in-out">
-              <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer" data-value="10">Basic 1</li>
-              <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer" data-value="11">Basic 2</li>
-              <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer" data-value="12">Basic 3</li>
-            </ul>
-          </div>
-          
-          <!-- Kelas Kelas -->
-          <div class="relative w-48 z-40">
-            <label class="block mb-2 font-semibold text-center">Jurusan</label>
-            <button type="button" id="dropdownBtn2" class="w-full px-4 py-2 border bg-white rounded-lg flex justify-between items-center">
-              <span id="selected2">Club</span>
-              <span id="arrow2">▼</span>
-            </button>
-            <ul id="dropdownMenu2" class="absolute z-40 w-full mt-1 bg-white border rounded-lg shadow-lg overflow-y-auto max-h-0 opacity-0 transform -translate-y-2 transition-all duration-300 ease-in-out">
-              <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer" data-value="ipa">Regular</li>
-              <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer" data-value="ips">Club</li>
-              <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer" data-value="bahasa">Privat</li>
-              <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer" data-value="bahasa">Semi Privat</li>
-            </ul>
-          </div>
-      
-          <!-- Filter Sekolah -->
-          <div class="relative w-48 md:w-80">
-            <label class="block mb-2 font-semibold text-center">Sekolah</label>
-            <button type="button" id="dropdownBtn3" class="w-full px-4 py-2 border bg-white rounded-lg flex justify-between items-center">
-              <span id="selected3">SMK Pasim</span>
-              <span id="arrow3">▼</span>
-            </button>
-            <ul id="dropdownMenu3" class="absolute z-40 w-full mt-1 bg-white border rounded-lg shadow-lg overflow-y-auto max-h-0 opacity-0 transform -translate-y-2 transition-all duration-300 ease-in-out">
-              <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer" data-value="2023">SMK Pasim</li>
-              <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer" data-value="2024">SMP Pasim</li>
-              <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer" data-value="2025">SD Pasim</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="relative flex items-center gap-4 xl:flex-wrap mb-6">
-          <div>
-            <input type="text" placeholder="Cari" class="border h-10 mt-2 px-4 rounded-lg">
-            <i class="bg-gray-white px-1 py-2 absolute inset-y-6 left-40 rounded-lg fa fa-search text-base text-black"></i>
-          </div>
-          <h2 class="text-2xl font-bold mb-4 mt-6 ">Data Siswa Sukarobot Academy</h2>
-        </div>
-          
-        
-        <!--table resposif (Breakpoint)-->
-        <div class=" relative mt-6 flex flex-col z-30">
-          <div class="-my-2 -mx-4 sm:-mx-6 lg:-mx-8">
-            <div class="inline-block min-w-full py-2 align-left px-6">
-              <div class="oferflow-hidden shadow-lg">
-                <table class="min-w-full divide-y divide-gray-300">
-                  <tr class="border-b-1 border-blue-900">
-                    <th class="text-white hidden lg:table-cell bg-black p-3 text-left">NISN</th>
-                    <th class="text-white bg-black p-3 text-left">Nama Siswa</th>
-                    <th class="text-white hidden xl:table-cell bg-black p-3 text-left">Nama Sekolah</th>
-                    <th class="text-white hidden lg:table-cell bg-black p-3 text-left">Kelas Pembelajaran</th>
-                    <th class="text-white hidden md:table-cell bg-black p-3 text-left">Level Pembelajaran</th>
-                    <th class="text-white bg-black p-3 text-left">Biaya Pendaftaran</th>
-                    <th class="text-white bg-black p-3 text-left">Pilih Siswa</th>
-                  </tr>
-                  <tr class="border-b-1 border-blue-900">
-                    <td class="font-bold hidden lg:table-cell p-2">0123456789</td>
-                    <td class="font-bold p-2">Wildhan Anugrah Maulana
-                      <!--Data Kolom yang Collapse Dipindah Ke Kolom Yang Diatas-->
-                      <dl class="3xl:hidden">
-                        <dt class="xl:hidden font-semibold text-gray-400 text-xs">SMK PASIM</dt>
-                        <dt class="lg:hidden font-semibold text-gray-400 text-xs">NISN 0123456789</dt>
-                      </dl>
-                    </td>
-                    <td class="font-bold hidden xl:table-cell p-2">SMK PASIM</td>
-                    <td class="font-bold hidden lg:table-cell p-2">Club</td>
-                    <td class="font-bold hidden md:table-cell p-2">Basic 3</td>
-                    <td class="font-bold p-2">Rp. 200.000
-                      <!--Data Kolom yang Collapse Dipindah Ke Kolom Yang Diatas-->
-                      <dl class="3xl:hidden">
-                        <dt class="lg:hidden font-semibold text-gray-400 text-xs">Kelas Club</dt>
-                        <dt class="md:hidden font-semibold text-gray-400 text-xs">Tingkat Basic 3</dt>
-                      </dl>
-                    </td>
-                    <td class="font-bold p-2"><input type="checkbox" class="w-5 h-5"></td>
-                  </tr>
-                  <tr class="border-b-1 border-blue-900">
-                    <td class="font-bold hidden lg:table-cell p-2">0123456789</td>
-                    <td class="font-bold p-2">Shafira Triasa Fauzia
-                      <!--Data Kolom yang Collapse Dipindah Ke Kolom Yang Diatas-->
-                      <dl class="3xl:hidden">
-                        <dt class="xl:hidden font-semibold text-gray-400 text-xs">SMK PASIM</dt>
-                        <dt class="lg:hidden font-semibold text-gray-400 text-xs">NISN 0123456789</dt>
-                      </dl>
-                    </td>
-                    <td class="font-bold hidden xl:table-cell p-2">SMK PASIM</td>
-                    <td class="font-bold hidden lg:table-cell p-2">Club</td>
-                    <td class="font-bold hidden md:table-cell p-2">Basic 3</td>
-                    <td class="font-bold p-2">Lunas
-                      <!--Data Kolom yang Collapse Dipindah Ke Kolom Yang Diatas-->
-                      <dl class="3xl:hidden">
-                        <dt class="lg:hidden font-semibold text-gray-400 text-xs">Kelas Club</dt>
-                        <dt class="md:hidden font-semibold text-gray-400 text-xs">Tingkat Basic 3</dt>
-                      </dl>
-                    </td>
-                    <td class="font-bold p-2"><input type="checkbox" class="w-5 h-5"></td>
-                  </tr>
-                  <tr class="border-b-1 border-blue-900">
-                    <td class="font-bold hidden lg:table-cell p-2">0123456789</td>
-                    <td class="font-bold p-2">Randi Apriliyadi
-                      <!--Data Kolom yang Collapse Dipindah Ke Kolom Yang Diatas-->
-                      <dl class="3xl:hidden">
-                        <dt class="xl:hidden font-semibold text-gray-400 text-xs">SMK PASIM</dt>
-                        <dt class="lg:hidden font-semibold text-gray-400 text-xs">NISN 0123456789</dt>
-                      </dl>
-                    </td>
-                    <td class="font-bold hidden xl:table-cell p-2">SMK PASIM</td>
-                    <td class="font-bold hidden lg:table-cell p-2">Club</td>
-                    <td class="font-bold hidden md:table-cell p-2">Basic 3</td>
-                    <td class="font-bold p-2">Lunas
-                      <!--Data Kolom yang Collapse Dipindah Ke Kolom Yang Diatas-->
-                      <dl class="3xl:hidden">
-                        <dt class="lg:hidden font-semibold text-gray-400 text-xs">Kelas Club</dt>
-                        <dt class="md:hidden font-semibold text-gray-400 text-xs">Tingkat Basic 3</dt>
-                      </dl>
-                    </td>
-                    <td class="font-bold p-2"><input type="checkbox" class="w-5 h-5"></td>
-                  </tr>
-                  <tr class="border-b-1 border-blue-900">
-                    <td class="font-bold hidden lg:table-cell p-2">0123456789</td>
-                    <td class="font-bold p-2">Zan Farid
-                      <!--Data Kolom yang Collapse Dipindah Ke Kolom Yang Diatas-->
-                      <dl class="3xl:hidden">
-                        <dt class="xl:hidden font-semibold text-gray-400 text-xs">SMK PASIM</dt>
-                        <dt class="lg:hidden font-semibold text-gray-400 text-xs">NISN 0123456789</dt>
-                      </dl>
-                    </td>
-                    <td class="font-bold hidden xl:table-cell p-2">SMK PASIM</td>
-                    <td class="font-bold hidden lg:table-cell p-2">Club</td>
-                    <td class="font-bold hidden md:table-cell p-2">Basic 3</td>
-                    <td class="font-bold p-2">Lunas
-                      <!--Data Kolom yang Collapse Dipindah Ke Kolom Yang Diatas-->
-                      <dl class="3xl:hidden">
-                        <dt class="lg:hidden font-semibold text-gray-400 text-xs">Kelas Club</dt>
-                        <dt class="md:hidden font-semibold text-gray-400 text-xs">Level Basic 3</dt>
-                      </dl>
-                    </td>
-                    <td class="font-bold p-2"><input type="checkbox" class="w-5 h-5"></td>
-                  </tr>
-                </table>
-              </div>
+<body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen py-8">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <!-- Header Actions -->
+        <div class="flex flex-col sm:flex-row justify-between items-center mb-6 no-print">
+            <h1 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-4 sm:mb-0">Invoice Pembayaran</h1>
+            <div class="flex space-x-3">
+                <button onclick="window.print()" class="bg-blue-600 text-white px-4 py-2 sm:px-6 sm:py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium flex items-center">
+                    <svg class="w-4 h-4 sm:w-5 sm:h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path>
+                    </svg>
+                    <span class="hidden sm:inline">Cetak Invoice</span>
+                    <span class="sm:hidden">Cetak</span>
+                </button>
+                <button onclick="downloadPDF()" class="bg-green-600 text-white px-4 py-2 sm:px-6 sm:py-3 rounded-lg hover:bg-green-700 transition-colors font-medium flex items-center">
+                    <svg class="w-4 h-4 sm:w-5 sm:h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                    </svg>
+                    <span class="hidden sm:inline">Download PDF</span>
+                    <span class="sm:hidden">PDF</span>
+                </button>
+                <a href="Laporan_invoice.html" class="bg-gray-600 text-white px-4 py-2 sm:px-6 sm:py-3 rounded-lg hover:bg-gray-700 transition-colors font-medium flex items-center">
+                    <svg class="w-4 h-4 sm:w-5 sm:h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                    <span class="hidden sm:inline">Tutup</span>
+                    <span class="sm:hidden">×</span>
+                  </a>
             </div>
-          </div>
         </div>
-        <div class="mt-8">
-          <a href="detail_pembayaran.html" class="block rounded-lg shadow-xl text-center p-4 bg-blue-900 font-semibold text-xl text-white hover:bg-gray-800 transition">Buat Invoice</a>
-        </div>
-      
 
-        </div>
-      </main>
+        <!-- Invoice Content -->
+        <div class="bg-white rounded-xl shadow-lg print-shadow overflow-hidden">
+            <!-- Invoice Header -->
+            <div class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white p-6 sm:p-8">
+                <div class="flex flex-col sm:flex-row justify-center sm:justify-between items-start">
+                    <div class="mb-4 sm:mb-0">
+                        <div class="flex items-center space-x-3 mb-4">
+                            <div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center">
+                                <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h2 class="text-2xl text-center sm:text-3xl font-bold sm:text-left">EduCourse</h2>
+                                <p class="text-blue-100 text-center sm:text-left">Platform Pembelajaran Online</p>
+                            </div>
+                        </div>
+                        <div class="text-sm text-blue-100 text-center sm:text-left">
+                            <p>Jl. Pendidikan No. 123, Jakarta Selatan</p>
+                            <p>Telp: (021) 1234-5678 | Email: info@educourse.com</p>
+                        </div>
+                    </div>
+                    <div class="text-center sm:text-right">
+                        <h1 class="text-3xl sm:text-4xl font-bold mb-2">INVOICE</h1>
+                        <div class="text-blue-100">
+                            <p class="text-lg font-semibold" id="invoiceNumber">INV-2024-001</p>
+                            <p id="invoiceDate">Tanggal: 15 Januari 2024</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-    <!-- Script -->
+            <!-- Invoice Details -->
+            <div class="p-6 sm:p-8">
+                <!-- Bill To Section -->
+                <div class="mb-8">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4">Tagihan Untuk:</h3>
+                    <div class="bg-gray-50 rounded-lg p-4">
+                        <p id ="namaSekolah" class="font-medium text-gray-900">Sekolah/Institusi</p>
+                        <p class="text-gray-600">Alamat Sekolah</p>
+                        <p class="text-gray-600">Kota, Kode Pos</p>
+                        <p class="text-gray-600">Telp: (021) 9876-5432</p>
+                    </div>
+                </div>
+
+                <!-- Items Table -->
+                <div class="mb-8">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4">Detail Pembayaran:</h3>
+                    <div class="overflow-x-auto">
+                        <table class="w-full border border-gray-200 rounded-lg w-full min-w-[800px] overflow-x-auto">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th class="px-4 py-3 text-left text-sm font-medium text-gray-700 border-b">No</th>
+                                    <th class="px-4 py-3 text-left text-sm font-medium text-gray-700 border-b">Nama Siswa</th>
+                                    <th class="px-4 py-3 text-left text-sm font-medium text-gray-700 border-b">Kursus</th>
+                                    <th class="px-4 py-3 text-right text-sm font-medium text-gray-700 border-b">Biaya</th>
+                                </tr>
+                            </thead>
+                            <tbody id="invoiceItems" class="divide-y divide-gray-200">
+                                <!-- Items akan diisi oleh JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Summary -->
+                <div class="flex justify-end mb-8">
+                    <div class="w-full sm:w-80">
+                        <div class="bg-gray-50 rounded-lg p-6">
+                            <div class="space-y-3">
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-gray-600">Subtotal:</span>
+                                    <span class="font-medium" id="subtotal">Rp 0</span>
+                                </div>
+                                <div class="border-t border-gray-300 pt-3">
+                                    <div class="flex justify-between text-lg font-bold">
+                                        <span class="text-gray-900">Total:</span>
+                                        <span class="text-blue-600" id="total">Rp 0</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Payment Info -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                    <div>
+                        <h4 class="font-semibold text-gray-900 mb-3">Informasi Pembayaran:</h4>
+                        <div class="bg-blue-50 rounded-lg p-4 text-sm">
+                            <p class="font-medium text-blue-900">Bank Transfer:</p>
+                            <p class="text-blue-800">Bank BCA - 1234567890</p>
+                            <p class="text-blue-800">a.n. PT EduCourse Indonesia</p>
+                            <br>
+                            <p class="font-medium text-blue-900">E-Wallet:</p>
+                            <p class="text-blue-800">GoPay/OVO: 081234567890</p>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-900 mb-3">Catatan:</h4>
+                        <div class="bg-yellow-50 rounded-lg p-4 text-sm">
+                            <ul class="text-yellow-800 space-y-1">
+                                <li>• Pembayaran paling lambat 7 hari setelah invoice diterbitkan</li>
+                                <li>• Konfirmasi pembayaran ke WhatsApp: 081234567890</li>
+                                <li>• Akses kursus akan diberikan setelah pembayaran dikonfirmasi</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer -->
+                <div class="border-t border-gray-200 pt-6 text-center text-sm text-gray-600">
+                    <p>Terima kasih telah mempercayai EduCourse sebagai platform pembelajaran Anda!</p>
+                    <p class="mt-2">Invoice ini dibuat secara otomatis pada <span id="generatedDate"></span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
 
-      // splash delay
-      window.addEventListener('load', () => {
-        setTimeout(() => {
-          document.getElementById('splash').classList.add('hidden');
-          document.getElementById('authContainer').classList.remove('hidden');
-        }, 2000);
-      });
+      const tingkatan = [
+          {tingkat1: 'basic 1',biaya: 10000},
+          {tingkat2: 'basic 2',biaya: 20000},
+          {tingkat3: 'basic 3',biaya: 30000}
+      ];
 
-      const sidebar = document.getElementById("sidebar");
-      const overlay = document.getElementById("overlay");
-      const menuBtn = document.getElementById("menu-btn");
-      const closeBtn = document.getElementById("close-btn");
+      const jenisKelas = [
+        {reg: 'regular',biaya: 5000},
+        {priv: 'private',biaya: 7000},
+        {semi: 'semi-private',biaya: 5500},
+        {club: 'Eskul',biaya: 4000}
+      ];
 
-      // buka sidebar
-      function openSidebar() {
-        sidebar.classList.remove("-translate-x-full");
-        overlay.classList.remove("hidden");
+      function hitung(){
+        total = jenisKelas[biaya] + tingkatan[biaya];
       }
 
-      // tutup sidebar
-      function closeSidebar() {
-        sidebar.classList.add("-translate-x-full");
-        overlay.classList.add("hidden");
+      function formatCurrency(amount) {
+          return new Intl.NumberFormat('id-ID', {
+              style: 'currency',
+              currency: 'IDR',
+              minimumFractionDigits: 0
+          }).format(amount);
       }
-
-      // tombol fleksibel
-      menuBtn.addEventListener("click", openSidebar);
-      closeBtn.addEventListener("click", closeSidebar);
-      overlay.addEventListener("click", closeSidebar); // klik luar sidebar juga menutup
-
-      
-
-      // animasi untuk dropdown
-      function closeAllDropdowns() {
-        document.querySelectorAll("ul[id^='dropdownMenu']").forEach(menu => {
-        menu.classList.add("max-h-0", "opacity-0", "-translate-y-2");
-        menu.classList.remove("max-h-60", "opacity-100", "translate-y-0");
-
-        // ganti arrow jadi ▼
-        const arrow = menu.parentElement.querySelector("span[id^='arrow']");
-        if (arrow) arrow.textContent = "▼";
-        });
+      function generateInvoiceNumber() {
+          const now = new Date();
+          const year = now.getFullYear();
+          const month = String(now.getMonth() + 1).padStart(2, '0');
+          const day = String(now.getDate()).padStart(2, '0');
+          const random = Math.floor(Math.random() * 1000).toString().padStart(3, '0');
+          return `INV-${year}${month}${day}-${random}`;
       }
-
-      // Fungsi untuk membuat dropdown
-      function setupDropdown(btnId, menuId, selectedId, arrowId) {
-        const btn = document.getElementById(btnId);
-        const menu = document.getElementById(menuId);
-        const selected = document.getElementById(selectedId);
-        const arrow = document.getElementById(arrowId);
-
-        btn.addEventListener("click", (e) => {
-          e.stopPropagation(); // cegah event bubbling
-          const isClosed = menu.classList.contains("max-h-0");
-
-          closeAllDropdowns(); // tutup semua dulu
-
-          if (isClosed) {
-            menu.classList.remove("max-h-0", "opacity-0", "-translate-y-2");
-            menu.classList.add("max-h-60", "opacity-100", "translate-y-0");
-            arrow.textContent = "▲";
+      function loadInvoiceData() {
+          const invoiceData = localStorage.getItem('invoiceData');
+          
+          if (!invoiceData) {
+              alert('Tidak ada data invoice yang ditemukan!');
+              window.open('/Laporan_invoice.html');
+              return;
           }
-        });
+          const data = JSON.parse(invoiceData);
+          const invoiceItems = document.getElementById('invoiceItems');
+          let subtotal = 0;
+          // Clear existing items
+          invoiceItems.innerHTML = '';
+          // Add each item
 
-        menu.querySelectorAll("li").forEach(item => {
-          item.addEventListener("click", () => {
-            selected.textContent = item.textContent;
-            input.value = item.dataset.value;
-            closeAllDropdowns(); // otomatis tutup setelah pilih
+          data.forEach((item,index) => {
+            const element = document.getElementById('namaSekolah');
+            
+            element.innerHTML = ''
+          })
+
+          data.forEach((item, index) => {
+              const row = document.createElement('tr');
+              row.className = 'hover:bg-gray-50';
+              
+              row.innerHTML = `
+                  <td class="px-4 py-3 text-sm text-gray-900">${index + 1}</td>
+                  <td class="px-4 py-3 text-sm font-medium text-gray-900">${item.nama}</td>
+                  <td class="px-4 py-3 text-sm text-gray-600"><div>
+                    <label class="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">Kategori Kelas</label>
+                    <select id="kategoriFilter" class="w-48 px-3 py-2 sm:px-4 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors text-sm">
+                        <option value="">Semua Kategori</option>
+                        <option value="programming">Programming</option>
+                        <option value="design">Design</option>
+                        <option value="marketing">Marketing</option>
+                        <option value="business">Business</option>
+                        <option value="language">Language</option>
+                    </select>
+                </div></td>
+                  <td class="px-4 py-3 text-sm text-right font-medium text-gray-900">${formatCurrency(item.biaya)}</td>
+              `;
+              
+              invoiceItems.appendChild(row);
+              subtotal += item.biaya;
           });
-        });
+          // Calculate totals
+          const total = jenisKelas[biaya] + tingkatan[biaya];
+          // Update summary
+          document.getElementById('subtotal').textContent = formatCurrency(subtotal);
+          document.getElementById('ppn').textContent = formatCurrency(ppnAmount);
+          document.getElementById('total').textContent = formatCurrency(total);
+          // Update invoice details
+          document.getElementById('invoiceNumber').textContent = generateInvoiceNumber();
+          document.getElementById('invoiceDate').textContent = `Tanggal: ${new Date().toLocaleDateString('id-ID', { 
+              year: 'numeric', 
+              month: 'long', 
+              day: 'numeric' 
+          })}`;
+          document.getElementById('generatedDate').textContent = new Date().toLocaleString('id-ID');
       }
-
-      // Inisialisasi 3 dropdown
-      setupDropdown("dropdownBtn1", "dropdownMenu1", "selected1", "arrow1");
-      setupDropdown("dropdownBtn2", "dropdownMenu2", "selected2", "arrow2");
-      setupDropdown("dropdownBtn3", "dropdownMenu3", "selected3", "arrow3");
-
-      // Tutup dropdown jika klik di luar semua dropdown
-      document.addEventListener("click", () => {
-        closeAllDropdowns();
+      function downloadPDF() {
+          // Simple PDF download simulation
+          alert('Fitur download PDF akan segera tersedia!\n\nUntuk saat ini, Anda dapat menggunakan fitur "Cetak" dan memilih "Save as PDF" di browser.');
+      }
+      // Load data when page loads
+      document.addEventListener('DOMContentLoaded', loadInvoiceData);
+      // Handle browser back/forward buttons
+      window.addEventListener('beforeunload', function() {
+          // Clear the invoice data when leaving the page
+          localStorage.removeItem('invoiceData');
       });
-
-  </script>
-</body>
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'981e2df2d7bece76',t:'MTc1ODMzODM0OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
