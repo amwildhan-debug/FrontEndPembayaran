@@ -21,7 +21,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
                     </img>
                 </div>
-                <span class="text-white font-bold text-lg">Laporan Invoice</span>
+                <span class="text-white font-bold text-lg">Pembayaran</span>
             </div>
             <!-- Close button for mobile -->
             <button onclick="toggleSidebar()" class="lg:hidden p-2 text-white hover:bg-white hover:bg-opacity-20 rounded-lg transition-colors">
@@ -31,82 +31,59 @@
             </button>
         </div>
         
-        <nav class="mt-8 px-4">
-            <div class="space-y-2">
-                <!-- Dashboard -->
-                <a href="dashboard.html" class="flex items-center px-4 py-3 text-gray-700  rounded-lg font-medium hover:bg-blue-50 hover:text-blue-600 transition-colors">
-                    <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                    </svg>
-                    Dashboard
-                </a>
-                
-                <!-- Laporan Pembayaran - Active -->
-                <a href="Laporan_invoice.html" class="flex items-center px-4 py-3 text-gray-700  rounded-lg font-medium hover:bg-blue-50 hover:text-blue-600 transition-colors">
-                    <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                    </svg>
-                    Laporan Invoice
-                </a>    
-
-                <!-- Laporan Pembayaran - Active -->
-                <a href="#" class="flex items-center px-4 py-3 text-blue-600 bg-blue-50 rounded-lg font-medium">
-                    <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                    </svg>
-                     Pembayaran
-                </a>
-                
-                <!-- Manajemen Siswa -->
-                <a href="tambah_data.html" class="flex items-center px-4 py-3 text-gray-700 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors">
-                    <i class="fa fa-user w-5 h-5 mr-3" aria-hidden="true"></i>
-                    Tambah Data
-                </a>
-                
-                <!-- Manajemen Kelas -->
-                <a href="laporan.html" class="flex items-center px-4 py-3 text-gray-700 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors">
-                    <i class="fa fa-user w-5 h-5 mr-3" aria-hidden="true"></i>
-                    Laporan
-                </a>
-                
-                <!-- Keuangan -->
-                <a href="detail_pembayaran.html" class="flex items-center px-4 py-3 text-gray-700 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors">
-                    <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
-                    </svg>
-                    Detail Pembayaran
-                </a>
-                
-                <!-- Pengaturan -->
-                <a href="#" class="flex items-center px-4 py-3 text-gray-700 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors">
-                    <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                    </svg>
-                    Pengaturan
-                </a>
-            </div>
-            
-            <!-- User Profile Section -->
-            <div class="mt-8 pt-8 border-t border-gray-200">
-                <div class="flex items-center px-4 py-3">
-                    <div class="w-10 h-10 bg-gradient-to-r from-green-400 to-blue-500 rounded-full flex items-center justify-center text-white font-medium">
-                        A
-                    </div>
-                    <div class="ml-3">
-                        <p class="text-sm font-medium text-gray-900">Admin</p>
-                        <p class="text-xs text-gray-500">admin@sekolah.com</p>
-                    </div>
+        <aside class="w-64 bg-white border-r h-screen overflow-y-auto">
+            <nav class="mt-8 px-4">
+                <div class="space-y-2">
+                    <!-- Dashboard -->
+                    <a href="dashboard.html" class="flex items-center px-4 py-3 text-gray-700 rounded-lg font-medium hover:bg-blue-50 hover:text-blue-600 transition-colors">
+                        <i class="fa-solid fa-house w-5 h-5 mr-3"></i>
+                        Dashboard
+                    </a>
+                    
+                    <!-- Laporan Invoice -->
+                    <a href="laporan_invoice.html" class="flex items-center px-4 py-3 text-gray-700 rounded-lg font-medium hover:bg-blue-50 hover:text-blue-600 transition-colors">
+                        <i class="fa-solid fa-file-invoice w-5 h-5 mr-3"></i>
+                        Laporan Invoice
+                    </a>
+                    
+                    <!-- Pembayaran (Active) -->
+                    <a href="#" class="flex items-center px-4 py-3 text-blue-600 bg-blue-50 rounded-lg font-medium">
+                        <i class="fa-solid fa-credit-card w-5 h-5 mr-3"></i>
+                        Pembayaran
+                    </a>
+                    
+                    <!-- Tambah Data -->
+                    <a href="tambah_data.html" class="flex items-center px-4 py-3 text-gray-700 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors">
+                        <i class="fa-solid fa-user-plus w-5 h-5 mr-3"></i>
+                        Tambah Data
+                    </a>
+                    
+                    <!-- Laporan -->
+                    <a href="laporan.html" class="flex items-center px-4 py-3 text-gray-700 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors">
+                        <i class="fa-solid fa-chart-bar w-5 h-5 mr-3"></i>
+                        Laporan
+                    </a>
                 </div>
                 
-                <a href="#" class="flex items-center px-4 py-3 mt-2 text-gray-700 rounded-lg hover:bg-red-50 hover:text-red-600 transition-colors">
-                    <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
-                    </svg>
-                    Logout
-                </a>
-            </div>
-        </nav>
+                <!-- User Profile Section -->
+                 <div class="mt-16 pt-8 border-t border-gray-200">
+                    <div class="flex items-center px-4 py-3">
+                        <div class="w-10 h-10 bg-gradient-to-r from-green-400 to-blue-500 rounded-full flex items-center justify-center text-white font-medium">
+                            A
+                        </div>
+                        <div class="ml-3">
+                            <p class="text-sm font-medium text-gray-900">Admin</p>
+                            <p class="text-xs text-gray-500">admin@sekolah.com</p>
+                        </div>
+                    </div>
+                    
+                    <a href="#" class="flex items-center px-4 py-3 mt-2 text-gray-700 rounded-lg hover:bg-red-50 hover:text-red-600 transition-colors">
+                        <i class="fa-solid fa-right-from-bracket w-5 h-5 mr-3"></i>
+                        Logout
+                    </a>
+                </div>
+            </nav>
+        </aside>
     </div>
 
     <!-- Sidebar Overlay for Mobile -->
@@ -146,6 +123,152 @@
     </header>
 
     <div class="lg:ml-64 px-4 sm:px-6 py-6 sm:py-8">
+        <!-- Search Bar -->
+        <div class="bg-white rounded-xl shadow-lg p-4 sm:p-6 mb-4 sm:mb-6">
+            <div class="relative">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <svg class="h-4 w-4 sm:h-5 sm:w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                    </svg>
+                </div>
+                <input type="text" id="searchInput" placeholder="Cari nama siswa..." class="block w-full pl-9 sm:pl-10 pr-3 py-2 sm:py-3 border border-gray-300 rounded-lg leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm">
+            </div>
+        </div>
+
+        <!-- Filter Section -->
+        <div class="bg-white rounded-xl shadow-lg p-4 sm:p-6 mb-6 sm:mb-8">
+            <h2 class="text-base sm:text-lg md:text-xl font-semibold text-gray-900 mb-4 sm:mb-6 flex items-center">
+                <svg class="w-5 h-5 sm:w-6 sm:h-6 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"></path>
+                </svg>
+                Filter Pembayaran
+            </h2>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-3 sm:gap-4 xl:gap-6">
+                <!-- Filter Sekolah -->
+                <div>
+                    <label class="block text-sm md:text-base font-medium text-gray-700 mb-1 sm:mb-2">Sekolah</label>
+                    <select id="kelasFilter" 
+                        class="w-full px-3 py-3 sm:px-4 sm:py-2 md:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors text-base sm:text-sm md:text-base">
+                        <option value="">Semua Sekolah</option>
+                        <option value="smk-pasim">SMK Pasim</option>
+                        <option value="smk-ibadurrahman">SMK Ibadurrahman</option>
+                        <option value="sman-3-sukabumi">SMAN 3 Sukabumi</option>
+                        <option value="sman-1-sukabumi">SMAN 1 Sukabumi</option>
+                    </select>
+                </div>
+
+                <!-- Filter Status -->
+                <div>
+                    <label class="block text-sm md:text-base font-medium text-gray-700 mb-1 sm:mb-2">Status</label>
+                    <select id="kategoriFilter" 
+                        class="w-full px-3 py-3 sm:px-4 sm:py-2 md:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors text-base sm:text-sm md:text-base">
+                        <option value="">Semua Kategori</option>
+                        <option value="lunas">Lunas</option>
+                        <option value="mencicil">Mencicil</option>
+                    </select>
+                </div>
+
+                <!-- Tombol Filter -->
+                <div class="flex items-end sm:col-span-2 xl:col-span-1">
+                    <button onclick="applyFilters()" 
+                        class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-4 py-3 sm:px-6 sm:py-2 md:py-3 rounded-lg hover:from-blue-700 hover:to-indigo-700 transition-all duration-200 font-medium flex items-center justify-center text-base sm:text-sm md:text-base">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
+                        <span class="hidden sm:inline">Terapkan Filter</span>
+                        <span class="sm:hidden">Filter</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Summary Cards -->
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6 mb-6 sm:mb-8">
+            <div class="bg-white rounded-xl shadow-lg p-4 sm:p-6">
+                <div class="flex items-center justify-between">
+                    <div class="min-w-0 flex-1">
+                        <p class="text-xs sm:text-sm font-medium text-gray-600 truncate">Total Siswa</p>
+                        <p class="text-lg sm:text-2xl font-bold text-gray-900" id="totalSiswa">0</p>
+                    </div>
+                    <div class="w-8 h-8 sm:w-12 sm:h-12 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0 ml-2">
+                        <i class="fa fa-user w-4 h-4" aria-hidden="true"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-lg p-4 sm:p-6">
+                <div class="flex items-center justify-between">
+                    <div class="min-w-0 flex-1">
+                        <p class="text-xs sm:text-sm font-medium text-gray-600 truncate">Pembayaran Lunas</p>
+                        <p class="text-lg sm:text-2xl font-bold text-green-600" id="pembayaranLunas">0</p>
+                    </div>
+                    <div class="w-8 h-8 sm:w-12 sm:h-12 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0 ml-2">
+                        <svg class="w-4 h-4 sm:w-6 sm:h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-lg p-4 sm:p-6">
+                <div class="flex items-center justify-between">
+                    <div class="min-w-0 flex-1">
+                        <p class="text-xs sm:text-sm font-medium text-gray-600 truncate">Belum Lunas</p>
+                        <p class="text-lg sm:text-2xl font-bold text-red-600" id="belumLunas">0</p>
+                    </div>
+                    <div class="w-8 h-8 sm:w-12 sm:h-12 bg-red-100 rounded-lg flex items-center justify-center flex-shrink-0 ml-2">
+                        <svg class="w-4 h-4 sm:w-6 sm:h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-lg p-4 sm:p-6 col-span-2 lg:col-span-1">
+                <div class="flex items-center justify-between">
+                    <div class="min-w-0 flex-1">
+                        <p class="text-xs sm:text-sm font-medium text-gray-600 truncate">Total Pendapatan</p>
+                        <p class="text-lg sm:text-2xl font-bold text-purple-600" id="totalPendapatan">Rp 0</p>
+                    </div>
+                    <div class="w-8 h-8 sm:w-12 sm:h-12 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0 ml-2">
+                        <svg class="w-4 h-4 sm:w-6 sm:h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Data Table -->
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+            <div class="px-4 py-4 sm:px-6 border-b border-gray-200">
+                <h3 class="text-lg font-semibold text-gray-900">Data Pembayaran Siswa</h3>
+            </div>
+            
+            <!-- Mobile and Desktop Table View -->
+            <div class="overflow-x-auto">
+                <table class="w-full min-w-[800px]">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">
+                                <input type="checkbox" id="selectAll" class="rounded border-gray-300 text-blue-600 focus:ring-blue-500" onchange="toggleSelectAll()">
+                            </th>
+                            <th class="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">NISN</th>
+                            <th class="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">Nama Siswa</th>
+                            <th class="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">Nama Sekolah</th>
+                            <th class="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">Sekolah</th>
+                            <th class="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">Biaya Pendaftaran</th>
+                            <th class="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">Status</th>
+                            <th class="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">Tanggal Bayar</th>
+                        </tr>
+                    </thead>
+                    <tbody id="dataTable" class="bg-white divide-y divide-gray-200">
+                        <!-- Data akan diisi oleh JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
         <script>
             // Sample data

@@ -31,78 +31,59 @@
             </button>
         </div>
         
-        <nav class="mt-8 px-4">
-            <div class="space-y-2">
-                <!-- Dashboard -->
-                <a href="dashboard.html" class="flex items-center px-4 py-3 text-gray-700 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors">
-                    <i class="fa fa-user w-5 h-5 mr-3" aria-hidden="true"></i>
-                    Dashboard
-                </a>
-                
-                <!-- Laporan Pembayaran - Active -->
-                <a href="Laporan_invoice.html" class="flex items-center px-4 py-3 text-blue-600  bg-blue-50 rounded-lg font-medium">
-                    <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                    </svg>
-                    Laporan Invoice
-                </a>    
-
-                <!-- Pembayaran -->
-                <a href="pembayaran.html" class="flex items-center px-4 py-3 text-gray-700 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors">
-                    <i class="fa fa-user w-5 h-5 mr-3" aria-hidden="true"></i>
-                    Pembayaran
-                </a>
-                
-                <!-- Manajemen Siswa -->
-                <a href="#" class="flex items-center px-4 py-3 text-gray-700 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors">
-                    <i class="fa fa-user w-5 h-5 mr-3" aria-hidden="true"></i>
-                    Manajemen Siswa
-                </a>
-                
-                <!-- Manajemen Kelas -->
-                <a href="#" class="flex items-center px-4 py-3 text-gray-700 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors">
-                    <i class="fa fa-user w-5 h-5 mr-3" aria-hidden="true"></i>
-                    Manajemen Kelas
-                </a>
-                
-                <!-- Keuangan -->
-                <a href="#" class="flex items-center px-4 py-3 text-gray-700 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors">
-                    <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
-                    </svg>
-                    Keuangan
-                </a>
-                
-                <!-- Pengaturan -->
-                <a href="#" class="flex items-center px-4 py-3 text-gray-700 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors">
-                    <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                    </svg>
-                    Pengaturan
-                </a>
-            </div>
-            
-            <!-- User Profile Section -->
-            <div class="mt-8 pt-8 border-t border-gray-200">
-                <div class="flex items-center px-4 py-3">
-                    <div class="w-10 h-10 bg-gradient-to-r from-green-400 to-blue-500 rounded-full flex items-center justify-center text-white font-medium">
-                        A
-                    </div>
-                    <div class="ml-3">
-                        <p class="text-sm font-medium text-gray-900">Admin</p>
-                        <p class="text-xs text-gray-500">admin@sekolah.com</p>
-                    </div>
+        <aside class="w-64 bg-white border-r h-screen overflow-y-auto">
+            <nav class="mt-8 px-4">
+                <div class="space-y-2">
+                    <!-- Dashboard -->
+                    <a href="dashboard.html" class="flex items-center px-4 py-3 text-gray-700 rounded-lg font-medium hover:bg-blue-50 hover:text-blue-600 transition-colors">
+                        <i class="fa-solid fa-house w-5 h-5 mr-3"></i>
+                        Dashboard
+                    </a>
+                    
+                    <!-- Laporan Invoice (Active) -->
+                    <a href="#" class="flex items-center px-4 py-3 text-blue-600 bg-blue-50 rounded-lg font-medium">
+                        <i class="fa-solid fa-file-invoice w-5 h-5 mr-3"></i>
+                        Laporan Invoice
+                    </a>
+                    
+                    <!-- Pembayaran -->
+                    <a href="pembayaran.html" class="flex items-center px-4 py-3 text-gray-700 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors">
+                        <i class="fa-solid fa-credit-card w-5 h-5 mr-3"></i>
+                        Pembayaran
+                    </a>
+                    
+                    <!-- Tambah Data -->
+                    <a href="tambah_data.html" class="flex items-center px-4 py-3 text-gray-700 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors">
+                        <i class="fa-solid fa-user-plus w-5 h-5 mr-3"></i>
+                        Tambah Data
+                    </a>
+                    
+                    <!-- Laporan -->
+                    <a href="laporan.html" class="flex items-center px-4 py-3 text-gray-700 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors">
+                        <i class="fa-solid fa-chart-bar w-5 h-5 mr-3"></i>
+                        Laporan
+                    </a>
                 </div>
                 
-                <a href="#" class="flex items-center px-4 py-3 mt-2 text-gray-700 rounded-lg hover:bg-red-50 hover:text-red-600 transition-colors">
-                    <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
-                    </svg>
-                    Logout
-                </a>
-            </div>
-        </nav>
+                <!-- User Profile Section -->
+                 <div class="mt-16 pt-8 border-t border-gray-200">
+                    <div class="flex items-center px-4 py-3">
+                        <div class="w-10 h-10 bg-gradient-to-r from-green-400 to-blue-500 rounded-full flex items-center justify-center text-white font-medium">
+                            A
+                        </div>
+                        <div class="ml-3">
+                            <p class="text-sm font-medium text-gray-900">Admin</p>
+                            <p class="text-xs text-gray-500">admin@sekolah.com</p>
+                        </div>
+                    </div>
+                    
+                    <a href="#" class="flex items-center px-4 py-3 mt-2 text-gray-700 rounded-lg hover:bg-red-50 hover:text-red-600 transition-colors">
+                        <i class="fa-solid fa-right-from-bracket w-5 h-5 mr-3"></i>
+                        Logout
+                    </a>
+                </div>
+            </nav>
+        </aside>
     </div>
 
     <!-- Sidebar Overlay for Mobile -->
@@ -121,8 +102,8 @@
                     </button>
                     
                     <div class="min-w-0 flex-1">
-                        <h1 class="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 truncate">Laporan Pembayaran</h1>
-                        <p class="text-xs sm:text-sm text-gray-600 hidden sm:block">Kelola dan pantau pembayaran siswa</p>
+                        <h1 class="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 truncate">Laporan Invoice</h1>
+                        <p class="text-xs sm:text-sm text-gray-600 hidden sm:block">Akses dan cetak laporan invoice</p>
                     </div>
                 </div>
                 <div class="flex items-center space-x-2 sm:space-x-4 flex-shrink-0">
@@ -275,7 +256,7 @@
         <!-- Data Table -->
         <div class="bg-white rounded-xl shadow-lg overflow-hidden">
             <div class="px-4 py-4 sm:px-6 border-b border-gray-200">
-                <h3 class="text-lg font-semibold text-gray-900">Data Pembayaran Siswa</h3>
+                <h3 class="text-lg font-semibold text-gray-900">Data Laporan Siswa</h3>
             </div>
             
             <!-- Mobile and Desktop Table View -->
@@ -292,7 +273,7 @@
                             <th class="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">Sekolah</th>
                             <th class="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">Biaya Pendaftaran</th>
                             <th class="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">Status</th>
-                            <th class="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">Tanggal Bayar</th>
+                            <th class="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">Tanggal Pelunasan</th>
                         </tr>
                     </thead>
                     <tbody id="dataTable" class="bg-white divide-y divide-gray-200">
@@ -300,13 +281,12 @@
                     </tbody>
                 </table>
             </div>
-
         </div>
 
         <!-- Action Buttons -->
         <div class="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-4 justify-between items-center">
             <!-- Invoice Button -->
-            <button onclick="createInvoice()" id="invoiceBtn" class="w-full sm:w-auto bg-gradient-to-r from-orange-600 to-red-600 text-white px-6 py-3 sm:px-8 rounded-lg hover:from-orange-700 hover:to-red-700 transition-all duration-200 font-medium flex items-center justify-center shadow-lg text-sm sm:text-base disabled:opacity-50 disabled:cursor-not-allowed">
+            <button onclick="createInvoice()" id="invoiceBtn" class="w-full sm:w-auto bg-gradient-to-r from-orange-600 to-red-600 text-white px-6 py-3 mb-20 sm:px-8 rounded-lg hover:from-orange-700 hover:to-red-700 transition-all duration-200 font-medium flex items-center justify-center shadow-lg text-sm sm:text-base disabled:opacity-50 disabled:cursor-not-allowed">
                 <svg class="w-4 h-4 sm:w-5 sm:h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                 </svg>
@@ -314,26 +294,22 @@
                 <span class="sm:hidden"><a href="buat_invoice.html">Buat Invoice</a> (<span id="selectedCountMobile">0</span>)</span>
             </button>
         </div>
+    </div>
+
+
     <script>
-        // Sample data
-        const sampleData = [
-            { nama: 'Ahmad Rizki', kelas: 'pemula', kategori: 'programming', sekolah: 'sma-negeri-1', biaya: 750000, status: 'lunas', tanggal: '2024-01-15' },
-            { nama: 'Siti Nurhaliza', kelas: 'menengah', kategori: 'design', sekolah: 'sma-negeri-2', biaya: 1200000, status: 'lunas', tanggal: '2024-01-14' },
-            { nama: 'Budi Santoso', kelas: 'lanjutan', kategori: 'marketing', sekolah: 'sma-swasta-1', biaya: 1800000, status: 'belum_lunas', tanggal: '-' },
-            { nama: 'Maya Sari', kelas: 'expert', kategori: 'business', sekolah: 'smk-negeri-1', biaya: 2500000, status: 'lunas', tanggal: '2024-01-13' },
-            { nama: 'Doni Pratama', kelas: 'pemula', kategori: 'programming', sekolah: 'smk-swasta-1', biaya: 750000, status: 'lunas', tanggal: '2024-01-12' },
-            { nama: 'Rina Wati', kelas: 'menengah', kategori: 'language', sekolah: 'sma-negeri-1', biaya: 1200000, status: 'belum_lunas', tanggal: '-' },
-            { nama: 'Eko Susilo', kelas: 'lanjutan', kategori: 'design', sekolah: 'sma-negeri-2', biaya: 1800000, status: 'lunas', tanggal: '2024-01-11' },
-            { nama: 'Fitri Handayani', kelas: '', kategori: 'kosong', sekolah: 'sma-swasta-1', biaya: 0, status: 'lunas', tanggal: '2024-01-10' },
-            { nama: 'Agus Setiawan', kelas: 'pemula', kategori: 'business', sekolah: 'smk-negeri-1', biaya: 750000, status: 'lunas', tanggal: '2024-01-09' },
-            { nama: 'Dewi Lestari', kelas: 'menengah', kategori: 'language', sekolah: 'smk-swasta-1', biaya: 1200000, status: 'lunas', tanggal: '2024-01-08' },
-        ];
+
+        let dataInvoice = [];
 
         //ambil data dari database
-        fetch('sss.json').then(response => response.json())
+        fetch("sss.json")
+        .then(response => response.json())
         .then(data =>{
-            dataInvoice = sampleDataInvoice;
+            dataInvoice = data.sampleDataInvoice;
+            renderTable(dataInvoice);
         }).catch(error => console.error('Data Gagal Dimuat',error));
+        
+        // Initialize
         
 
         function formatCurrency(amount) {
@@ -378,27 +354,16 @@
         }
 
         //rendertable agar setiap ada update data otomatis terupdate
-        function renderTable() {
+        function renderTable(data) {
             const tableBody = document.getElementById('dataTable');
             
             tableBody.innerHTML = '';
 
-            data.sampleDataInvoice.forEach(item => {
+            data.forEach(item => {
                 const statusClass = item.status === 'lunas' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800';
-                const statusText = item.status === 'lunas' ? 'Lunas' : 'Belum Lunas';
-
-                if (item.biaya === 0) {
-                    item.status = "lunas";
-                }
-
-                if (item.kategori === 'kosong' && '' && item.tanggal === '-' || '' && item.kelas === 'kosong' || '') {
-                    item.kategori = "kosong";
-                    item.tanggal = "-"
-                    item.tingkat = "kosong";
-                } else if (item.kategori === item.kategori && '' && item.tanggal === '-' || '' && item.kelas === 'kosong' || '') {
-                    item.kategori = innerHTML(kategori) ;
-
-                }
+                const statusText = item.status === '' ? 'Belum Terisi' : item.status && item.status === 'lunas' ? 'Lunas' : 'Belum Lunas';
+                const nullDataMateri = item.kategori === '' ? 'Kosong' : formatSekolah(item.kategori);
+                const nullDataKelas = item.kelas === '' ? 'Kosong' : formatKelas(item.kelas);
                 
 
                 // Table row
@@ -421,12 +386,12 @@
                     </td>
                     <td class="px-4 sm:px-6 py-4 whitespace-nowrap">
                         <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-blue-100 text-blue-800">
-                            ${formatKelas(item.kelas)}
+                            ${nullDataKelas}
                         </span>
                     </td>
                     <td class="px-4 sm:px-6 py-4 whitespace-nowrap">
                         <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-purple-100 text-purple-800">
-                            ${formatKategori(item.kategori)}
+                            ${nullDataMateri}
                         </span>
                     </td>
                     <td class="px-4 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-900">
@@ -447,6 +412,7 @@
                 
                 tableBody.appendChild(row);
             });
+                
         }
 
         //scrip filter data
@@ -456,7 +422,7 @@
             const sekolahFilter = document.getElementById('sekolahFilter').value;
             const searchTerm = document.getElementById('searchInput').value.toLowerCase();
 
-            filteredData = data.sampleDataInvoice.filter(item => {
+            filteredData = sampleDataInvoice.filter(item => {
                 let kelasMatch = !kelasFilter || item.kelas === kelasFilter;
                 let kategoriMatch = !kategoriFilter || item.kategori === kategoriFilter;
                 let sekolahMatch = !sekolahFilter || item.sekolah === sekolahFilter;
@@ -564,10 +530,7 @@
             
         }
 
-        // Initialize
-        renderTable();
-        updateSummary();
-        updateSelectedCount();
+        
 
         // Add search event listener
         document.getElementById('searchInput').addEventListener('input', handleSearch);

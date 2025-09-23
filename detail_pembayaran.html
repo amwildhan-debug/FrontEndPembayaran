@@ -1,106 +1,384 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
-    <title>Dashboard</title>
+    <title>Admin - Laporan Invoice</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"/>
     <style>
-    @keyframes fadeInOut {
-      0% { opacity: 0; }
-      10% { opacity: 1; }
-      90% { opacity: 1; }
-      100% { opacity: 0; }
-    }
-
-    .animate-fade {
-      animation: fadeInOut 2s ease-in-out forwards;
-    }
-  </style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+    </style>
 </head>
-
-<body class="flex">
-
-  <!-- Splash Screen -->
-  <div id="splash" class="fixed inset-0 flex flex-col justify-center items-center animate-fade z-50 bg-gradient-to-t from-indigo-600 to-indigo-800">
-    <img src="Logo.png" alt="Logo" class="w-25 h-20 mb-6" />
-    <h1 class="text-white text-2xl font-bold">SUKAROBOT ACADEMY</h1>
-    <div class="w-12 h-12 my-8 border-4 border-white border-t-transparent rounded-full animate-spin"></div>
-  </div>
-
-  <!-- Overlay (hp) -->
-  <div id="overlay" class="fixed inset-0 bg-tranparent bg-opacity-50 hidden lg:hidden"></div>
-
-  <!-- Sidebar -->
-  <div id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-gray-800 text-white transform -translate-x-full lg:translate-x-0 transition-transform duration-300 rounded-r-3xl">
-       <!--header Sidebar-->
-    <div class="p-4 text-xl font-bold border-b border-gray-700 mr-8">
-      Subot
-      <!-- Tombol Close (hp saja) -->
-      <button id="close-btn" class="md:hidden absolute top-4 right-4 text-gray-300 hover:text-white focus:outline-none">
-        ✕
-      </button>
+<body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen">
+    <!-- Sidebar -->
+    <div class="fixed inset-y-0 left-0 z-50 w-64 bg-white shadow-xl transform -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out" id="sidebar">
+        <div class="flex items-center justify-between h-16 px-4 bg-gradient-to-r from-blue-600 to-indigo-600">
+            <div class="flex items-center space-x-3">
+                <div class="w-8 h-8 bg-white rounded-lg flex items-center justify-center">
+                    <img src="Logo.png" alt="Logo">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                    </img>
+                </div>
+                <span class="text-white font-bold text-lg">Detail Pembayaran</span>
+            </div>
+            <!-- Close button for mobile -->
+            <button onclick="toggleSidebar()" class="lg:hidden p-2 text-white hover:bg-white hover:bg-opacity-20 rounded-lg transition-colors">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+        
+        <aside class="w-64 bg-white border-r h-screen overflow-y-auto">
+            <nav class="mt-8 px-4">
+                <div class="space-y-2">
+                    <!-- Dashboard -->
+                    <a href="dashboard.html" class="flex items-center px-4 py-3 text-gray-700 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors">
+                        <i class="fa-solid fa-house w-5 h-5 mr-3"></i>
+                        Dashboard
+                    </a>
+                    
+                    <!-- Laporan Invoice -->
+                    <a href="laporan_invoice.html" class="flex items-center px-4 py-3 text-gray-700 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors">
+                        <i class="fa-solid fa-file-invoice w-5 h-5 mr-3"></i>
+                        Laporan Invoice
+                    </a>
+                    
+                    <!-- Pembayaran -->
+                    <a href="pembayaran.html" class="flex items-center px-4 py-3 text-gray-700 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors">
+                        <i class="fa-solid fa-credit-card w-5 h-5 mr-3"></i>
+                        Pembayaran
+                    </a>
+                    
+                    <!-- Tambah Data -->
+                    <a href="tambah_data.html" class="flex items-center px-4 py-3 text-gray-700 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors">
+                        <i class="fa-solid fa-user-plus w-5 h-5 mr-3"></i>
+                        Tambah Data
+                    </a>
+                    
+                    <!-- Laporan -->
+                    <a href="laporan.html" class="flex items-center px-4 py-3 text-gray-700 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors">
+                        <i class="fa-solid fa-chart-bar w-5 h-5 mr-3"></i>
+                        Laporan
+                    </a>
+                    
+                    <!-- Detail Pembayaran (Active) -->
+                    <a href="#" class="flex items-center px-4 py-3 text-blue-600 bg-blue-50 rounded-lg font-medium">
+                        <i class="fa-solid fa-money-check-dollar w-5 h-5 mr-3"></i>
+                        Detail Pembayaran
+                    </a>
+                </div>
+                
+                <!-- User Profile Section -->
+                 <div class="mt-16 pt-8 border-t border-gray-200">
+                    <div class="flex items-center px-4 py-3">
+                        <div class="w-10 h-10 bg-gradient-to-r from-green-400 to-blue-500 rounded-full flex items-center justify-center text-white font-medium">
+                            A
+                        </div>
+                        <div class="ml-3">
+                            <p class="text-sm font-medium text-gray-900">Admin</p>
+                            <p class="text-xs text-gray-500">admin@sekolah.com</p>
+                        </div>
+                    </div>
+                    
+                    <a href="#" class="flex items-center px-4 py-3 mt-2 text-gray-700 rounded-lg hover:bg-red-50 hover:text-red-600 transition-colors">
+                        <i class="fa-solid fa-right-from-bracket w-5 h-5 mr-3"></i>
+                        Logout
+                    </a>
+                </div>
+            </nav>
+        </aside>
     </div>
-    
-    <nav class="p-6 space-y-4">
-      <a href="dashboard.html" class="block bg-blue-700 shadow-lg p-2 rounded hover:bg-blue-900 transition">Dashboard</a>
-    </nav>
-  </div>
 
-  <!-- Konten Utama -->
-  <div class="flex-1 ml-0 lg:ml-64">
-    <!-- Navbar (hp saja) -->
-    <header class="flex items-center bg-gray-100 p-4 shadow lg:hidden">
-      <button id="menu-btn" class="text-gray-800 focus:outline-none">
-        <!-- Icon Hamburger -->
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" 
-             viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
-                d="M4 6h16M4 12h16M4 18h16"/>
-        </svg>
-      </button>
-      <h1 class="ml-4 text-lg font-bold">Detail Pembayaran</h1>
+    <!-- Sidebar Overlay for Mobile -->
+    <div class="fixed inset-0 z-40 bg-black bg-opacity-50 lg:hidden hidden" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+
+    <!-- Header -->
+    <header class="bg-white shadow-lg border-b border-gray-200 lg:ml-64">
+        <div class="px-4 sm:px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-2 sm:space-x-4 flex-1 min-w-0">
+                    <!-- Mobile menu button -->
+                    <button onclick="toggleSidebar()" class="lg:hidden p-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100 transition-colors flex-shrink-0">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                    
+                    <div class="min-w-0 flex-1">
+                        <h1 class="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 truncate">Detail Pembayaran</h1>
+                        <p class="text-xs sm:text-sm text-gray-600 hidden sm:block">Melihat rincian pembayaran siswa</p>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-2 sm:space-x-4 flex-shrink-0">
+                    <!-- Notifications -->
+                    <button class="p-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors">
+                        <i class="fa fa-bell" aria-hidden="true"></i>
+                    </button>
+                    
+                    <div class="text-right hidden md:block">
+                        <p class="text-sm font-medium text-gray-900">Admin</p>
+                        <p class="text-xs text-gray-500">Online</p>
+                    </div>
+                    <div class="w-8 h-8 bg-gradient-to-r from-green-400 to-blue-500 rounded-full flex-shrink-0"></div>
+                </div>
+            </div>
+        </div>
     </header>
 
-    <!-- Isi Konten -->
-    <main class="p-6">
-      <h2 class="text-2xl font-bold mb-4">Detail Pembayaran</h2>
-    </main>
-  </div>
+    <div class="lg:ml-64 px-4 sm:px-6 py-6 sm:py-8">
+    </div>
+        <script>
+            // Sample data
+            const sampleData = [
+                { nama: 'Ahmad Rizki', kelas: 'pemula', kategori: 'programming', sekolah: 'sma-negeri-1', biaya: 750000, status: 'lunas', tanggal: '2024-01-15' },
+                { nama: 'Siti Nurhaliza', kelas: 'menengah', kategori: 'design', sekolah: 'sma-negeri-2', biaya: 1200000, status: 'lunas', tanggal: '2024-01-14' },
+                { nama: 'Budi Santoso', kelas: 'lanjutan', kategori: 'marketing', sekolah: 'sma-swasta-1', biaya: 1800000, status: 'belum_lunas', tanggal: '-' },
+                { nama: 'Maya Sari', kelas: 'expert', kategori: 'business', sekolah: 'smk-negeri-1', biaya: 2500000, status: 'lunas', tanggal: '2024-01-13' },
+                { nama: 'Doni Pratama', kelas: 'pemula', kategori: 'programming', sekolah: 'smk-swasta-1', biaya: 750000, status: 'lunas', tanggal: '2024-01-12' },
+                { nama: 'Rina Wati', kelas: 'menengah', kategori: 'language', sekolah: 'sma-negeri-1', biaya: 1200000, status: 'belum_lunas', tanggal: '-' },
+                { nama: 'Eko Susilo', kelas: 'lanjutan', kategori: 'design', sekolah: 'sma-negeri-2', biaya: 1800000, status: 'lunas', tanggal: '2024-01-11' },
+                { nama: 'Fitri Handayani', kelas: '', kategori: 'kosong', sekolah: 'sma-swasta-1', biaya: 0, status: 'lunas', tanggal: '2024-01-10' },
+                { nama: 'Agus Setiawan', kelas: 'pemula', kategori: 'business', sekolah: 'smk-negeri-1', biaya: 750000, status: 'lunas', tanggal: '2024-01-09' },
+                { nama: 'Dewi Lestari', kelas: 'menengah', kategori: 'language', sekolah: 'smk-swasta-1', biaya: 1200000, status: 'lunas', tanggal: '2024-01-08' },
+            ];
 
-  <!-- Script -->
-  <script>
+            let filteredData = [...sampleData];
 
-    // Splash delay
-    window.addEventListener('load', () => {
-      setTimeout(() => {
-        document.getElementById('splash').classList.add('hidden');
-        document.getElementById('authContainer').classList.remove('hidden');
-      }, 2000);
-    });
+            function formatCurrency(amount) {
+                return new Intl.NumberFormat('id-ID', {
+                    style: 'currency',
+                    currency: 'IDR',
+                    minimumFractionDigits: 0
+                }).format(amount);
+            }
 
-    const sidebar = document.getElementById("sidebar");
-    const overlay = document.getElementById("overlay");
-    const menuBtn = document.getElementById("menu-btn");
-    const closeBtn = document.getElementById("close-btn");
+            function formatKelas(kelas) {
+                const kelasMap = {
+                    'pemula': 'Pemula',
+                    'menengah': 'Menengah',
+                    'lanjutan': 'Lanjutan',
+                    'expert': 'Expert'
+                };
+                return kelasMap[kelas] || kelas;
+            }
 
-    // Fungsi buka sidebar
-    function openSidebar() {
-      sidebar.classList.remove("-translate-x-full");
-      overlay.classList.remove("hidden");
-    }
+            function formatKategori(kategori) {
+                const kategoriMap = {
+                    'programming': 'Programming',
+                    'design': 'Design',
+                    'marketing': 'Marketing',
+                    'business': 'Business',
+                    'language': 'Language'
+                };
+                return kategoriMap[kategori] || kategori;
+            }
 
-    // Fungsi tutup sidebar
-    function closeSidebar() {
-      sidebar.classList.add("-translate-x-full");
-      overlay.classList.add("hidden");
-    }
+            function formatSekolah(sekolah) {
+                const sekolahMap = {
+                    'sma-negeri-1': 'SMA Negeri 1 Jakarta',
+                    'sma-negeri-2': 'SMA Negeri 2 Jakarta',
+                    'sma-swasta-1': 'SMA Swasta Bina Bangsa',
+                    'smk-negeri-1': 'SMK Negeri 1 Jakarta',
+                    'smk-swasta-1': 'SMK Swasta Teknologi'
+                };
+                return sekolahMap[sekolah] || sekolah;
+            }
 
-    // Event tombol
-    menuBtn.addEventListener("click", openSidebar);
-    closeBtn.addEventListener("click", closeSidebar);
-    overlay.addEventListener("click", closeSidebar); // klik luar sidebar juga menutup
-  </script>
+            function renderTable() {
+                const tableBody = document.getElementById('dataTable');
+                
+                tableBody.innerHTML = '';
+
+                filteredData.forEach(item => {
+                    const statusClass = item.status === 'lunas' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800';
+                    const statusText = item.status === 'lunas' ? 'Lunas' : 'Belum Lunas';
+
+                    if (item.biaya === 0) {
+                        item.status = "lunas";
+                    }
+
+                    if (item.kategori === 'kosong' && '' && item.tanggal === '-' || '' && item.kelas === 'kosong' || '') {
+                        item.kategori = "kosong";
+                        item.tanggal = "-"
+                        item.tingkat = "kosong";
+                    } else if (item.kategori === item.kategori && '' && item.tanggal === '-' || '' && item.kelas === 'kosong' || '') {
+                        item.kategori = innerHTML(kategori) ;
+
+                    }
+                    
+
+                    // Table row
+                    const row = document.createElement('tr');
+                    row.className = 'hover:bg-gray-50 transition-colors';
+                    
+                    row.innerHTML = `
+                        <td class="px-4 sm:px-6 py-4 whitespace-nowrap">
+                            <input type="checkbox" class="row-checkbox rounded border-gray-300 text-blue-600 focus:ring-blue-500" data-nama="${item.nama}" data-biaya="${item.biaya}" onchange="updateSelectAll()">
+                        </td>
+                        <td class="px-4 sm:px-6 py-4 whitespace-nowrap">
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full flex items-center justify-center text-white text-sm font-medium">
+                                    ${item.nama.charAt(0)}
+                                </div>
+                                <div class="ml-3">
+                                    <div class="text-sm font-medium text-gray-900">${item.nama}</div>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="px-4 sm:px-6 py-4 whitespace-nowrap">
+                            <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-blue-100 text-blue-800">
+                                ${formatKelas(item.kelas)}
+                            </span>
+                        </td>
+                        <td class="px-4 sm:px-6 py-4 whitespace-nowrap">
+                            <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-purple-100 text-purple-800">
+                                ${formatKategori(item.kategori)}
+                            </span>
+                        </td>
+                        <td class="px-4 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                            ${formatSekolah(item.sekolah)}
+                        </td>
+                        <td class="px-4 sm:px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                            ${formatCurrency(item.biaya)}
+                        </td>
+                        <td class="px-4 sm:px-6 py-4 whitespace-nowrap">
+                            <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full ${statusClass}">
+                                ${statusText}
+                            </span>
+                        </td>
+                        <td class="px-4 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                            ${item.tanggal !== '-' ? new Date(item.tanggal).toLocaleDateString('id-ID') : '-'}
+                        </td>
+                    `;
+                    
+                    tableBody.appendChild(row);
+                });
+            }
+
+            function applyFilters() {
+                const kelasFilter = document.getElementById('kelasFilter').value;
+                const kategoriFilter = document.getElementById('kategoriFilter').value;
+                const sekolahFilter = document.getElementById('sekolahFilter').value;
+                const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+
+                filteredData = sampleData.filter(item => {
+                    let kelasMatch = !kelasFilter || item.kelas === kelasFilter;
+                    let kategoriMatch = !kategoriFilter || item.kategori === kategoriFilter;
+                    let sekolahMatch = !sekolahFilter || item.sekolah === sekolahFilter;
+                    let searchMatch = !searchTerm || 
+                        item.nama.toLowerCase().includes(searchTerm) ||
+                        formatSekolah(item.sekolah).toLowerCase().includes(searchTerm);
+
+                    return kelasMatch && kategoriMatch && sekolahMatch && searchMatch;
+                });
+
+                renderTable();
+                updateSummary();
+            }
+
+            function handleSearch() {
+                applyFilters();
+            }
+
+            function updateSummary() {
+                const totalSiswa = filteredData.length;
+                const lunas = filteredData.filter(item => item.status === 'lunas').length;
+                const belumLunas = totalSiswa - lunas;
+                const totalPendapatan = filteredData
+                    .filter(item => item.status === 'lunas')
+                    .reduce((sum, item) => sum + item.biaya, 0);
+
+                document.getElementById('totalSiswa').textContent = totalSiswa;
+                document.getElementById('pembayaranLunas').textContent = lunas;
+                document.getElementById('belumLunas').textContent = belumLunas;
+                document.getElementById('totalPendapatan').textContent = formatCurrency(totalPendapatan);
+                document.getElementById('totalData').textContent = totalSiswa;
+            }
+
+
+            function toggleSidebar() {
+                const sidebar = document.getElementById('sidebar');
+                const overlay = document.getElementById('sidebarOverlay');
+                
+                if (sidebar.classList.contains('-translate-x-full')) {
+                    sidebar.classList.remove('-translate-x-full');
+                    overlay.classList.remove('hidden');
+                } else {
+                    sidebar.classList.add('-translate-x-full');
+                    overlay.classList.add('hidden');
+                }
+            }
+
+            function toggleSelectAll() {
+                const selectAllCheckbox = document.getElementById('selectAll');
+                const rowCheckboxes = document.querySelectorAll('.row-checkbox');
+                
+                rowCheckboxes.forEach(checkbox => {
+                    checkbox.checked = selectAllCheckbox.checked;
+                });
+                
+                updateSelectedCount();
+            }
+
+            function updateSelectAll() {
+                const rowCheckboxes = document.querySelectorAll('.row-checkbox');
+                const checkedBoxes = document.querySelectorAll('.row-checkbox:checked');
+                const selectAllCheckbox = document.getElementById('selectAll');
+                
+                if (checkedBoxes.length === 0) {
+                    selectAllCheckbox.indeterminate = false;
+                    selectAllCheckbox.checked = false;
+                } else if (checkedBoxes.length === rowCheckboxes.length) {
+                    selectAllCheckbox.indeterminate = false;
+                    selectAllCheckbox.checked = true;
+                } else {
+                    selectAllCheckbox.indeterminate = true;
+                    selectAllCheckbox.checked = false;
+                }
+                
+                updateSelectedCount();
+            }
+
+            function updateSelectedCount() {
+                const checkedBoxes = document.querySelectorAll('.row-checkbox:checked');
+                const count = checkedBoxes.length;
+                
+                document.getElementById('selectedCount').textContent = count;
+                document.getElementById('selectedCountMobile').textContent = count;
+                
+                const invoiceBtn = document.getElementById('invoiceBtn');
+                invoiceBtn.disabled = count === 0;
+            }
+
+            function createInvoice() {
+                const checkedBoxes = document.querySelectorAll('.row-checkbox:checked');
+                
+                if (checkedBoxes.length === 0) {
+                    alert('Pilih minimal satu siswa untuk membuat invoice!');
+                    return;
+                }
+                
+                const selectedData = Array.from(checkedBoxes).map(checkbox => ({
+                    nama: checkbox.getAttribute('data-nama'),
+                    biaya: parseInt(checkbox.getAttribute('data-biaya'))
+                }));
+                
+                // Store selected data in localStorage for the invoice page
+                localStorage.setItem('invoiceData', JSON.stringify(selectedData));
+                
+                
+            }
+
+            // Initialize
+            renderTable();
+            updateSummary();
+            updateSelectedCount();
+
+            // Add search event listener
+            document.getElementById('searchInput').addEventListener('input', handleSearch);
+        </script>
 </body>
 </html>

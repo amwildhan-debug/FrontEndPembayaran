@@ -1,107 +1,483 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
-    <title>Tambah_Data</title>
+    <title>Admin - Laporan Invoice</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"/>
     <style>
-    @keyframes fadeInOut {
-      0% { opacity: 0; }
-      10% { opacity: 1; }
-      90% { opacity: 1; }
-      100% { opacity: 0; }
-    }
-
-    .animate-fade {
-      animation: fadeInOut 2s ease-in-out forwards;
-    }
-  </style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+    </style>
 </head>
-
-<body class="flex">
-
-    <!-- Splash Screen -->
-    <div id="splash" class="fixed inset-0 flex flex-col justify-center items-center animate-fade z-50 bg-gradient-to-t from-indigo-600 to-indigo-800">
-        <img src="Logo.png" alt="Logo" class="w-25 h-20 mb-6" />
-        <h1 class="text-white text-2xl font-bold">SUKAROBOT ACADEMY</h1>
-        <div class="w-12 h-12 my-8 border-4 border-white border-t-transparent rounded-full animate-spin"></div>
-    </div>
-
-    <!-- Overlay (hp) -->
-    <div id="overlay" class="fixed inset-0 bg-tranparent bg-opacity-50 hidden lg:hidden"></div>
-
+<body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen">
     <!-- Sidebar -->
-    <div id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-gray-800 text-white transform -translate-x-full lg:translate-x-0 transition-transform duration-300 rounded-r-3xl">
-        <!--header Sidebar-->
-        <div class="p-4 text-xl font-bold border-b border-gray-700">
-            Subot
-            <!-- Tombol Close (hp saja) -->
-            <button id="close-btn" class="lg:hidden absolute top-4 right-4 text-gray-300 hover:text-white focus:outline-none right-0">
-                ✕
+    <div class="fixed inset-y-0 left-0 z-50 w-64 bg-white shadow-xl transform -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out" id="sidebar">
+        <div class="flex items-center justify-between h-16 px-4 bg-gradient-to-r from-blue-600 to-indigo-600">
+            <div class="flex items-center space-x-3">
+                <div class="w-8 h-8 bg-white rounded-lg flex items-center justify-center">
+                    <img src="Logo.png" alt="Logo">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                    </img>
+                </div>
+                <span class="text-white font-bold text-lg">Tambah Data</span>
+            </div>
+            <!-- Close button for mobile -->
+            <button onclick="toggleSidebar()" class="lg:hidden p-2 text-white hover:bg-white hover:bg-opacity-20 rounded-lg transition-colors">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
             </button>
         </div>
-    
-        <nav class="p-6 space-y-4">
-            <a href="dashboard.html" class="block bg-blue-700 shadow-lg p-2 rounded hover:bg-blue-900 transition">Dashboard</a>
-            <a href="#" class="block bg-blue-900 shadow-lg p-2 rounded">Tambah Data</a>
-        </nav>
+        
+        <aside class="w-64 bg-white border-r h-screen overflow-y-auto">
+            <nav class="mt-8 px-4">
+                <div class="space-y-2">
+                    <!-- Dashboard -->
+                    <a href="dashboard.html" class="flex items-center px-4 py-3 text-gray-700 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors">
+                        <i class="fa-solid fa-house w-5 h-5 mr-3"></i>
+                        Dashboard
+                    </a>
+                    
+                    <!-- Laporan Invoice -->
+                    <a href="laporan_invoice.html" class="flex items-center px-4 py-3 text-gray-700 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors">
+                        <i class="fa-solid fa-file-invoice w-5 h-5 mr-3"></i>
+                        Laporan Invoice
+                    </a>
+                    
+                    <!-- Pembayaran -->
+                    <a href="pembayaran.html" class="flex items-center px-4 py-3 text-gray-700 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors">
+                        <i class="fa-solid fa-credit-card w-5 h-5 mr-3"></i>
+                        Pembayaran
+                    </a>
+                    
+                    <!-- Tambah Data (Active) -->
+                    <a href="#" class="flex items-center px-4 py-3 text-blue-600 bg-blue-50 rounded-lg font-medium">
+                        <i class="fa-solid fa-user-plus w-5 h-5 mr-3"></i>
+                        Tambah Data
+                    </a>
+                    
+                    <!-- Laporan -->
+                    <a href="laporan.html" class="flex items-center px-4 py-3 text-gray-700 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors">
+                        <i class="fa-solid fa-chart-bar w-5 h-5 mr-3"></i>
+                        Laporan
+                    </a>
+                </div>
+                
+                <!-- User Profile Section -->
+                 <div class="mt-16 pt-8 border-t border-gray-200">
+                    <div class="flex items-center px-4 py-3">
+                        <div class="w-10 h-10 bg-gradient-to-r from-green-400 to-blue-500 rounded-full flex items-center justify-center text-white font-medium">
+                            A
+                        </div>
+                        <div class="ml-3">
+                            <p class="text-sm font-medium text-gray-900">Admin</p>
+                            <p class="text-xs text-gray-500">admin@sekolah.com</p>
+                        </div>
+                    </div>
+                    
+                    <a href="#" class="flex items-center px-4 py-3 mt-2 text-gray-700 rounded-lg hover:bg-red-50 hover:text-red-600 transition-colors">
+                        <i class="fa-solid fa-right-from-bracket w-5 h-5 mr-3"></i>
+                        Logout
+                    </a>
+                </div>
+            </nav>
+        </aside>
     </div>
 
-    <!-- Konten Utama -->
-    <div class="flex-1 ml-0 lg:ml-64">
-        <!-- Navbar (hp saja) -->
-        <header class="flex items-center bg-gray-100 p-4 shadow lg:hidden">
-            <button id="menu-btn" class="text-gray-800 focus:outline-none">
-            <!-- Icon Hamburger -->
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" 
-                viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
-                d="M4 6h16M4 12h16M4 18h16"/>
-            </svg>
-            </button>
-            <h1 class="ml-4 text-lg font-bold">Tambah Data</h1>
-        </header>
+    <!-- Sidebar Overlay for Mobile -->
+    <div class="fixed inset-0 z-40 bg-black bg-opacity-50 lg:hidden hidden" id="sidebarOverlay" onclick="toggleSidebar()"></div>
 
-        <!-- Isi Konten -->
-        <main class="p-6">
-            <h2 class="text-2xl font-bold mb-4">Ini Adalah Halaman Tambah Data</h2>
-        </main>
+    <!-- Header -->
+    <header class="bg-white shadow-lg border-b border-gray-200 lg:ml-64">
+        <div class="px-4 sm:px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-2 sm:space-x-4 flex-1 min-w-0">
+                    <!-- Mobile menu button -->
+                    <button onclick="toggleSidebar()" class="lg:hidden p-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100 transition-colors flex-shrink-0">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                    
+                    <div class="min-w-0 flex-1">
+                        <h1 class="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 truncate">Tambah Data</h1>
+                        <p class="text-xs sm:text-sm text-gray-600 hidden sm:block">Tambahkan informasi data pendaftaran</p>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-2 sm:space-x-4 flex-shrink-0">
+                    <!-- Notifications -->
+                    <button class="p-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors">
+                        <i class="fa fa-bell" aria-hidden="true"></i>
+                    </button>
+                    
+                    <div class="text-right hidden md:block">
+                        <p class="text-sm font-medium text-gray-900">Admin</p>
+                        <p class="text-xs text-gray-500">Online</p>
+                    </div>
+                    <div class="w-8 h-8 bg-gradient-to-r from-green-400 to-blue-500 rounded-full flex-shrink-0"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="lg:ml-64 px-4 sm:px-6 py-6 sm:py-8">
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+
+            <!-- Form Content -->
+            <form id="learningForm" class="p-6 space-y-6">
+                <!-- Nama Pembelajaran -->
+                <div>
+                    <label for="learningName" class="block text-sm font-medium text-gray-700 mb-2">
+                        Nama Pembelajaran <span class="text-red-500">*</span>
+                    </label>
+                    <input 
+                        type="text" 
+                        id="learningName" 
+                        name="learningName"
+                        required
+                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
+                        placeholder="Contoh: Kursus Web Development"
+                    >
+                </div>
+
+                <!-- Deskripsi Pembelajaran -->
+                <div>
+                    <label for="description" class="block text-sm font-medium text-gray-700 mb-2">
+                        Deskripsi Pembelajaran
+                    </label>
+                    <textarea 
+                        id="description" 
+                        name="description"
+                        rows="4"
+                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors resize-none"
+                        placeholder="Jelaskan detail tentang pembelajaran ini..."
+                    ></textarea>
+                </div>
+
+                <!-- Biaya Pendaftaran -->
+                <div>
+                    <label for="registrationFee" class="block text-sm font-medium text-gray-700 mb-2">
+                        Biaya Pendaftaran <span class="text-red-500">*</span>
+                    </label>
+                    <div class="relative">
+                        <span class="absolute left-4 top-3 text-gray-500 font-medium">Rp</span>
+                        <input 
+                            type="number" 
+                            id="registrationFee" 
+                            name="registrationFee"
+                            required
+                            min="0"
+                            class="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
+                            placeholder="0"
+                        >
+                    </div>
+                </div>
+
+                <!-- Kategori -->
+                <div>
+                    <label for="category" class="block text-sm font-medium text-gray-700 mb-2">
+                        Kategori Pembelajaran <span class="text-red-500">*</span>
+                    </label>
+                    <select 
+                        id="category" 
+                        name="category"
+                        required
+                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors bg-white"
+                    >
+                        <option value="">Pilih Kategori</option>
+                        <option value="programming">Programming & Development</option>
+                        <option value="design">Design & Creative</option>
+                        <option value="business">Business & Marketing</option>
+                        <option value="language">Bahasa & Komunikasi</option>
+                        <option value="technology">Teknologi & IT</option>
+                        <option value="health">Kesehatan & Kebugaran</option>
+                        <option value="education">Pendidikan & Akademik</option>
+                        <option value="lifestyle">Lifestyle & Hobi</option>
+                    </select>
+                </div>
+
+                <!-- Durasi -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label for="duration" class="block text-sm font-medium text-gray-700 mb-2">
+                            Durasi (Menit)
+                        </label>
+                        <input 
+                            type="number" 
+                            id="duration" 
+                            name="duration"
+                            min="1"
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
+                            placeholder="Contoh: 40"
+                        >
+                    </div>
+                    <div>
+                        <label for="level" class="block text-sm font-medium text-gray-700 mb-2">
+                            Level Kesulitan
+                        </label>
+                        <select 
+                            id="level" 
+                            name="level"
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors bg-white"
+                        >
+                            <option value="">Pilih Level</option>
+                            <option value="beginner">Pemula</option>
+                            <option value="intermediate">Menengah</option>
+                            <option value="advanced">Lanjutan</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="flex flex-col sm:flex-row gap-3 pt-6 border-t border-gray-200">
+                    <button 
+                        type="submit"
+                        id="submitButton"
+                        disabled
+                        class="flex-1 bg-gray-400 text-white px-6 py-3 rounded-lg font-medium cursor-not-allowed transition-all duration-200 flex items-center justify-center"
+                    >
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                        </svg>
+                        Tambah Data Pembelajaran
+                    </button>
+                    <button 
+                        type="button"
+                        onclick="resetForm()"
+                        class="flex-1 sm:flex-none bg-gray-100 text-gray-700 px-6 py-3 rounded-lg font-medium hover:bg-gray-200 focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition-all duration-200 flex items-center justify-center"
+                    >
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+                        </svg>
+                        Reset Form
+                    </button>
+                </div>
+
+                <!-- Required Fields Note -->
+                <div class="px-6 py-4 bg-gray-50 border-t border-gray-200">
+                    <div class="flex items-center text-sm text-gray-600">
+                        <span class="text-red-500 mr-1">*</span>
+                        <span>Field yang bertanda bintang merah wajib diisi</span>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <!-- Success Message (Hidden by default) -->
+        <div id="successMessage" class="hidden mt-6 bg-green-50 border border-green-200 rounded-lg p-4">
+            <div class="flex items-center">
+                <svg class="w-5 h-5 text-green-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+                <span class="text-green-800 font-medium">Data pembelajaran berhasil ditambahkan!</span>
+            </div>
+        </div>
     </div>
+        <script>
+            // Get required fields and submit button
+        const requiredFields = ['learningName', 'registrationFee', 'category'];
+        const submitButton = document.getElementById('submitButton');
 
-    <!-- Script -->
-    <script>
+        // Function to check if all required fields are filled
+        function validateRequiredFields() {
+            const allFilled = requiredFields.every(fieldId => {
+                const field = document.getElementById(fieldId);
+                return field.value.trim() !== '';
+            });
 
-    // Splash delay
-    window.addEventListener('load', () => {
-      setTimeout(() => {
-        document.getElementById('splash').classList.add('hidden');
-        document.getElementById('authContainer').classList.remove('hidden');
-      }, 2000);
-    });
+            if (allFilled) {
+                submitButton.disabled = false;
+                submitButton.className = "flex-1 bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-6 py-3 rounded-lg font-medium hover:from-indigo-700 hover:to-purple-700 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition-all duration-200 flex items-center justify-center cursor-pointer";
+            } else {
+                submitButton.disabled = true;
+                submitButton.className = "flex-1 bg-gray-400 text-white px-6 py-3 rounded-lg font-medium cursor-not-allowed transition-all duration-200 flex items-center justify-center";
+            }
+        }
 
-    const sidebar = document.getElementById("sidebar");
-    const overlay = document.getElementById("overlay");
-    const menuBtn = document.getElementById("menu-btn");
-    const closeBtn = document.getElementById("close-btn");
+        // Add event listeners to required fields
+        requiredFields.forEach(fieldId => {
+            const field = document.getElementById(fieldId);
+            field.addEventListener('input', validateRequiredFields);
+            field.addEventListener('change', validateRequiredFields);
+        });
 
-    // buka sidebar
-    function openSidebar() {
-      sidebar.classList.remove("-translate-x-full");
-      overlay.classList.remove("hidden");
-    }
+        // Format currency input
+        document.getElementById('registrationFee').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            e.target.value = value;
+            validateRequiredFields(); // Check validation after formatting
+        });
 
-    // tutup sidebar
-    function closeSidebar() {
-      sidebar.classList.add("-translate-x-full");
-      overlay.classList.add("hidden");
-    }
+        // Form submission handler
+        document.getElementById('learningForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Validate required fields
+            if (!data.learningName || !data.registrationFee || !data.category) {
+                alert('Mohon lengkapi semua field yang wajib diisi!');
+                return;
+            }
+            
+            // Format currency for display
+            const formattedFee = new Intl.NumberFormat('id-ID').format(data.registrationFee);
+            
+            // Simulate successful submission
+            console.log('Data pembelajaran yang akan disimpan:', {
+                ...data,
+                registrationFee: `Rp ${formattedFee}`
+            });
+            
+            // Show success message
+            const successMessage = document.getElementById('successMessage');
+            successMessage.classList.remove('hidden');
+            
+            // Scroll to success message
+            successMessage.scrollIntoView({ behavior: 'smooth' });
+            
+            // Reset form after 2 seconds
+            setTimeout(() => {
+                resetForm();
+                successMessage.classList.add('hidden');
+            }, 3000);
+        });
 
-    // tombol
-    menuBtn.addEventListener("click", openSidebar);
-    closeBtn.addEventListener("click", closeSidebar);
-    overlay.addEventListener("click", closeSidebar); // klik luar sidebar juga menutup
-  </script>
-</body>
+        // Reset form function
+        function resetForm() {
+            document.getElementById('learningForm').reset();
+            document.getElementById('successMessage').classList.add('hidden');
+            validateRequiredFields(); // Re-validate after reset
+        }
+
+        // Auto-hide success message when user starts typing
+        document.getElementById('learningName').addEventListener('input', function() {
+            document.getElementById('successMessage').classList.add('hidden');
+        });
+
+            function applyFilters() {
+                const kelasFilter = document.getElementById('kelasFilter').value;
+                const kategoriFilter = document.getElementById('kategoriFilter').value;
+                const sekolahFilter = document.getElementById('sekolahFilter').value;
+                const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+
+                filteredData = sampleData.filter(item => {
+                    let kelasMatch = !kelasFilter || item.kelas === kelasFilter;
+                    let kategoriMatch = !kategoriFilter || item.kategori === kategoriFilter;
+                    let sekolahMatch = !sekolahFilter || item.sekolah === sekolahFilter;
+                    let searchMatch = !searchTerm || 
+                        item.nama.toLowerCase().includes(searchTerm) ||
+                        formatSekolah(item.sekolah).toLowerCase().includes(searchTerm);
+
+                    return kelasMatch && kategoriMatch && sekolahMatch && searchMatch;
+                });
+
+                renderTable();
+                updateSummary();
+            }
+
+            function handleSearch() {
+                applyFilters();
+            }
+
+            function updateSummary() {
+                const totalSiswa = filteredData.length;
+                const lunas = filteredData.filter(item => item.status === 'lunas').length;
+                const belumLunas = totalSiswa - lunas;
+                const totalPendapatan = filteredData
+                    .filter(item => item.status === 'lunas')
+                    .reduce((sum, item) => sum + item.biaya, 0);
+
+                document.getElementById('totalSiswa').textContent = totalSiswa;
+                document.getElementById('pembayaranLunas').textContent = lunas;
+                document.getElementById('belumLunas').textContent = belumLunas;
+                document.getElementById('totalPendapatan').textContent = formatCurrency(totalPendapatan);
+                document.getElementById('totalData').textContent = totalSiswa;
+            }
+
+
+            function toggleSidebar() {
+                const sidebar = document.getElementById('sidebar');
+                const overlay = document.getElementById('sidebarOverlay');
+                
+                if (sidebar.classList.contains('-translate-x-full')) {
+                    sidebar.classList.remove('-translate-x-full');
+                    overlay.classList.remove('hidden');
+                } else {
+                    sidebar.classList.add('-translate-x-full');
+                    overlay.classList.add('hidden');
+                }
+            }
+
+            function toggleSelectAll() {
+                const selectAllCheckbox = document.getElementById('selectAll');
+                const rowCheckboxes = document.querySelectorAll('.row-checkbox');
+                
+                rowCheckboxes.forEach(checkbox => {
+                    checkbox.checked = selectAllCheckbox.checked;
+                });
+                
+                updateSelectedCount();
+            }
+
+            function updateSelectAll() {
+                const rowCheckboxes = document.querySelectorAll('.row-checkbox');
+                const checkedBoxes = document.querySelectorAll('.row-checkbox:checked');
+                const selectAllCheckbox = document.getElementById('selectAll');
+                
+                if (checkedBoxes.length === 0) {
+                    selectAllCheckbox.indeterminate = false;
+                    selectAllCheckbox.checked = false;
+                } else if (checkedBoxes.length === rowCheckboxes.length) {
+                    selectAllCheckbox.indeterminate = false;
+                    selectAllCheckbox.checked = true;
+                } else {
+                    selectAllCheckbox.indeterminate = true;
+                    selectAllCheckbox.checked = false;
+                }
+                
+                updateSelectedCount();
+            }
+
+            function updateSelectedCount() {
+                const checkedBoxes = document.querySelectorAll('.row-checkbox:checked');
+                const count = checkedBoxes.length;
+                
+                document.getElementById('selectedCount').textContent = count;
+                document.getElementById('selectedCountMobile').textContent = count;
+                
+                const invoiceBtn = document.getElementById('invoiceBtn');
+                invoiceBtn.disabled = count === 0;
+            }
+
+            function createInvoice() {
+                const checkedBoxes = document.querySelectorAll('.row-checkbox:checked');
+                
+                if (checkedBoxes.length === 0) {
+                    alert('Pilih minimal satu siswa untuk membuat invoice!');
+                    return;
+                }
+                
+                const selectedData = Array.from(checkedBoxes).map(checkbox => ({
+                    nama: checkbox.getAttribute('data-nama'),
+                    biaya: parseInt(checkbox.getAttribute('data-biaya'))
+                }));
+                
+                // Store selected data in localStorage for the invoice page
+                localStorage.setItem('invoiceData', JSON.stringify(selectedData));
+            }
+
+            // Initialize
+            renderTable();
+            updateSummary();
+            updateSelectedCount();
+
+            // Add search event listener
+            document.getElementById('searchInput').addEventListener('input', handleSearch);
+        </script>
+        <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9836d6c7e6f13f31',t:'MTc1ODU5NjkyMS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
