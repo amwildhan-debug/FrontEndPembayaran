@@ -32,12 +32,12 @@
         </div>
         
         <aside class="w-64 bg-white border-r h-screen overflow-y-auto">
-            <nav class="mt-8 px-4">
+            <nav class="mt-10 px-4">
                 <div class="space-y-2">
                     <!-- Dashboard -->
-                    <a href="dashboard.html" class="flex items-center px-4 py-3 text-gray-700 rounded-lg font-medium hover:bg-blue-50 hover:text-blue-600 transition-colors">
+                    <a href="manajemen.html" class="flex items-center px-4 py-3 text-gray-700 rounded-lg font-medium hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium">
                         <i class="fa-solid fa-house w-5 h-5 mr-3"></i>
-                        Dashboard
+                        Manajemen
                     </a>
                     
                     <!-- Laporan Invoice (Active) -->
@@ -47,39 +47,29 @@
                     </a>
                     
                     <!-- Pembayaran -->
-                    <a href="pembayaran.html" class="flex items-center px-4 py-3 text-gray-700 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors">
+                    <a href="pembayaran.html" class="flex items-center px-4 py-3 text-gray-700 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium">
                         <i class="fa-solid fa-credit-card w-5 h-5 mr-3"></i>
                         Pembayaran
                     </a>
                     
                     <!-- Tambah Data -->
-                    <a href="tambah_data.html" class="flex items-center px-4 py-3 text-gray-700 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors">
+                    <a href="tambah_data.html" class="flex items-center px-4 py-3 text-gray-700 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium">
                         <i class="fa-solid fa-user-plus w-5 h-5 mr-3"></i>
                         Tambah Data
                     </a>
                     
                     <!-- Laporan -->
-                    <a href="laporan.html" class="flex items-center px-4 py-3 text-gray-700 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors">
+                    <a href="laporan.html" class="flex items-center px-4 py-3 text-gray-700 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium">
                         <i class="fa-solid fa-chart-bar w-5 h-5 mr-3"></i>
                         Laporan
                     </a>
                 </div>
                 
                 <!-- User Profile Section -->
-                 <div class="mt-16 pt-8 border-t border-gray-200">
-                    <div class="flex items-center px-4 py-3">
-                        <div class="w-10 h-10 bg-gradient-to-r from-green-400 to-blue-500 rounded-full flex items-center justify-center text-white font-medium">
-                            A
-                        </div>
-                        <div class="ml-3">
-                            <p class="text-sm font-medium text-gray-900">Admin</p>
-                            <p class="text-xs text-gray-500">admin@sekolah.com</p>
-                        </div>
-                    </div>
-                    
-                    <a href="#" class="flex items-center px-4 py-3 mt-2 text-gray-700 rounded-lg hover:bg-red-50 hover:text-red-600 transition-colors">
+                 <div class="mt-32 pt-8 border-t border-gray-200">
+                    <a href="#" class="flex items-center px-4 py-3 text-gray-700 rounded-lg hover:bg-red-50 hover:text-red-600 transition-colors font-medium">
                         <i class="fa-solid fa-right-from-bracket w-5 h-5 mr-3"></i>
-                        Logout
+                        Keluar
                     </a>
                 </div>
             </nav>
@@ -90,7 +80,7 @@
     <div class="fixed inset-0 z-40 bg-black bg-opacity-50 lg:hidden hidden" id="sidebarOverlay" onclick="toggleSidebar()"></div>
 
     <!-- Header -->
-    <header class="bg-white shadow-lg border-b border-gray-200 lg:ml-64">
+    <header class="bg-white shadow-lg border-b border-gray-200 lg:ml-64 fixed w-full z-50">
         <div class="px-4 sm:px-6 py-4">
             <div class="flex items-center justify-between">
                 <div class="flex items-center space-x-2 sm:space-x-4 flex-1 min-w-0">
@@ -111,12 +101,6 @@
                     <button class="p-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors">
                         <i class="fa fa-bell" aria-hidden="true"></i>
                     </button>
-                    
-                    <div class="text-right hidden md:block">
-                        <p class="text-sm font-medium text-gray-900">Admin</p>
-                        <p class="text-xs text-gray-500">Online</p>
-                    </div>
-                    <div class="w-8 h-8 bg-gradient-to-r from-green-400 to-blue-500 rounded-full flex-shrink-0"></div>
                 </div>
             </div>
         </div>
@@ -124,7 +108,7 @@
 
     <div class="lg:ml-64 px-4 sm:px-6 py-6 sm:py-8">
         <!-- Search Bar -->
-        <div class="bg-white rounded-xl shadow-lg p-4 sm:p-6 mb-4 sm:mb-6">
+        <div class="bg-white rounded-xl shadow-lg p-4 sm:p-6 mb-4 sm:mb-6 mt-20">
             <div class="relative">
                 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                     <svg class="h-4 w-4 sm:h-5 sm:w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -183,6 +167,15 @@
                     </select>
                 </div>
 
+                <div>
+                    <label class="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">Status Pembayaran</label>
+                    <select id="statusFilter" class="w-full px-3 py-2 sm:px-4 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors text-sm">
+                        <option value="">Semua</option>
+                        <option value="lunas">Lunas</option>
+                        <option value="belum_lunas">Belum Lunas</option>
+                    </select>
+                </div>
+
                 <!-- Tombol Filter -->
                 <div class="flex items-end sm:col-span-2 xl:col-span-1">
                     <button onclick="applyFilters()" class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-4 py-2 sm:px-6 sm:py-3 rounded-lg hover:from-blue-700 hover:to-indigo-700 transition-all duration-200 font-medium flex items-center justify-center text-sm">
@@ -213,8 +206,8 @@
             <div class="bg-white rounded-xl shadow-lg p-4 sm:p-6">
                 <div class="flex items-center justify-between">
                     <div class="min-w-0 flex-1">
-                        <p class="text-xs sm:text-sm font-medium text-gray-600 truncate">Pembayaran Lunas</p>
-                        <p class="text-lg sm:text-2xl font-bold text-green-600" id="pembayaranLunas">0</p>
+                        <p class="text-xs sm:text-sm font-medium text-gray-600">Pembayaran Lunas</p>
+                        <p class="text-lg sm:text-2xl font-bold text-green-600" id="siswaLunas">0</p>
                     </div>
                     <div class="w-8 h-8 sm:w-12 sm:h-12 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0 ml-2">
                         <svg class="w-4 h-4 sm:w-6 sm:h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -227,8 +220,8 @@
             <div class="bg-white rounded-xl shadow-lg p-4 sm:p-6">
                 <div class="flex items-center justify-between">
                     <div class="min-w-0 flex-1">
-                        <p class="text-xs sm:text-sm font-medium text-gray-600 truncate">Belum Lunas</p>
-                        <p class="text-lg sm:text-2xl font-bold text-red-600" id="belumLunas">0</p>
+                        <p class="text-xs sm:text-sm font-medium text-gray-600">Belum Lunas</p>
+                        <p class="text-lg sm:text-2xl font-bold text-red-600" id="siswaBelumLunas">0</p>
                     </div>
                     <div class="w-8 h-8 sm:w-12 sm:h-12 bg-red-100 rounded-lg flex items-center justify-center flex-shrink-0 ml-2">
                         <svg class="w-4 h-4 sm:w-6 sm:h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -241,13 +234,27 @@
             <div class="bg-white rounded-xl shadow-lg p-4 sm:p-6 col-span-2 lg:col-span-1">
                 <div class="flex items-center justify-between">
                     <div class="min-w-0 flex-1">
-                        <p class="text-xs sm:text-sm font-medium text-gray-600 truncate">Total Pendapatan</p>
-                        <p class="text-lg sm:text-2xl font-bold text-purple-600" id="totalPendapatan">Rp 0</p>
+                        <p class="text-xs sm:text-sm font-medium text-gray-600">Total Pendapatan</p>
+                        <p class="text-lg sm:text-sm font-bold text-purple-600" id="totalPendapatan">Rp 0</p>
                     </div>
-                    <div class="w-8 h-8 sm:w-12 sm:h-12 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0 ml-2">
-                        <svg class="w-4 h-4 sm:w-6 sm:h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
-                        </svg>
+                    <div class="w-8 h-8 sm:w-23 sm:h-12 bg-purple-100 rounded-lg flex items-center justify-center ml-2">
+                         <div>
+                            <select id="bulanFilter" class="w-full px-3 py-2 sm:px-4 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors text-sm">
+                                <option value="">Semua Bulan</option>
+                                <option value="januari"></option>
+                                <option value="februari"></option>
+                                <option value="maret"></option>
+                                <option value="april"></option>
+                                <option value="mei"></option>
+                                <option value="juni"></option>
+                                <option value="juli"></option>
+                                <option value="agustus"></option>
+                                <option value="september"></option>
+                                <option value="oktober"></option>
+                                <option value="november"></option>
+                                <option value="desember"></option>
+                            </select>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -265,7 +272,7 @@
                     <thead class="bg-gray-50">
                         <tr>
                             <th class="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">
-                                <input type="checkbox" id="selectAll" class="rounded border-gray-300 text-blue-600 focus:ring-blue-500" onchange="toggleSelectAll()">
+                            Pilih
                             </th>
                             <th class="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">Nama Siswa</th>
                             <th class="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">Kelas Level</th>
@@ -280,7 +287,36 @@
                         <!-- Data akan diisi oleh JavaScript -->
                     </tbody>
                 </table>
+
             </div>
+
+            <div class="px-4 py-4 sm:px-6 border-t border-gray-200 bg-gray-50 ">
+                <div class="flex flex-col sm:flex-row justify-between items-center space-y-3 sm:space-y-0">
+                    <!-- Info Text -->
+                    <div class="text-sm text-gray-700">
+                        Menampilkan <span id="startRecord" class="font-medium">0</span> sampai 
+                        <span id="endRecord" class="font-medium">10</span> dari 
+                        <span id="totalRecords" class="font-medium">0</span> data
+                    </div>
+                    <!-- Pagination Buttons -->
+                    <div class="flex items-center space-x-2">
+                        <button id="prevBtn" onclick="changePage(-1)" 
+                            class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-md hover:bg-gray-50 hover:text-gray-700 disabled:opacity-50 disabled:cursor-not-allowed">
+                            Sebelumnya
+                        </button>
+                    
+                        <div id="pageNumbers" class="flex space-x-1">
+                            <!-- Page numbers akan diisi oleh JavaScript -->
+                        </div>
+                    
+                        <button id="nextBtn" onclick="changePage(1)" 
+                            class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-md hover:bg-gray-50 hover:text-gray-700 disabled:opacity-50 disabled:cursor-not-allowed">
+                            Selanjutnya
+                        </button>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
         <!-- Action Buttons -->
@@ -300,6 +336,7 @@
     <script>
 
         let dataInvoice = [];
+        let filteredData = []; // simpan hasil filter
 
         //ambil data dari database
         fetch("sss.json")
@@ -307,10 +344,13 @@
         .then(data =>{
             dataInvoice = data.sampleDataInvoice;
             renderTable(dataInvoice);
+            updateSummary(dataInvoice);
         }).catch(error => console.error('Data Gagal Dimuat',error));
         
-        // Initialize
-        
+        // Pagination variabel
+        let currentPage = 1;
+        const recordsPerPage = 10;
+        let totalPages = Math.ceil(dataInvoice.length / recordsPerPage);
 
         function formatCurrency(amount) {
             return new Intl.NumberFormat('id-ID', {
@@ -353,23 +393,25 @@
             return sekolahMap[sekolah] || sekolah;
         }
 
-        //rendertable agar setiap ada update data otomatis terupdate
+    
+
+        // Fungsi render tabel
         function renderTable(data) {
-            const tableBody = document.getElementById('dataTable');
-            
+            const tableBody = document.getElementById("dataTable");
+            const startIndex = (currentPage - 1) * recordsPerPage;
+            const endIndex = startIndex + recordsPerPage;
+            const currentData = data.slice(startIndex, endIndex);
+        
             tableBody.innerHTML = '';
-
-            data.forEach(item => {
+        
+            currentData.forEach(item => {
                 const statusClass = item.status === 'lunas' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800';
-                const statusText = item.status === '' ? 'Belum Terisi' : item.status && item.status === 'lunas' ? 'Lunas' : 'Belum Lunas';
-                const nullDataMateri = item.kategori === '' ? 'Kosong' : formatSekolah(item.kategori);
+                const statusText = item.status === '' ? 'Belum Terisi' : item.status === 'lunas' ? 'Lunas' : 'Belum Lunas';
+                const nullDataMateri = item.kategori === '' ? 'Kosong' : formatKategori(item.kategori);
                 const nullDataKelas = item.kelas === '' ? 'Kosong' : formatKelas(item.kelas);
-                
-
-                // Table row
+            
                 const row = document.createElement('tr');
                 row.className = 'hover:bg-gray-50 transition-colors';
-                
                 row.innerHTML = `
                     <td class="px-4 sm:px-6 py-4 whitespace-nowrap">
                         <input type="checkbox" class="row-checkbox rounded border-gray-300 text-blue-600 focus:ring-blue-500" data-nama="${item.nama}" data-biaya="${item.biaya}" onchange="updateSelectAll()">
@@ -409,52 +451,119 @@
                         ${item.tanggal !== '-' ? new Date(item.tanggal).toLocaleDateString('id-ID') : '-'}
                     </td>
                 `;
-                
                 tableBody.appendChild(row);
             });
-                
+        
+            // Update pagination
+
+            totalPages = Math.ceil(data.length / recordsPerPage);
+            updatePaginationInfo(data);
+            updatePaginationButtons(data);
+
+            
         }
 
-        //scrip filter data
+        // Update info halaman
+        function updatePaginationInfo(data) {
+            const startRecord = (currentPage - 1) * recordsPerPage + 1;
+            const endRecord = Math.min(currentPage * recordsPerPage, data.length);
+        
+            document.getElementById('startRecord').textContent = data.length ? startRecord : 0;
+            document.getElementById('endRecord').textContent = data.length ? endRecord : 0;
+            document.getElementById('totalRecords').textContent = data.length;
+
+            pageNumbers.innerHTML = "";
+
+            let startPage = Math.max(1, currentPage - 2);
+            let endPage = Math.min(totalPages, startPage + 4);
+                
+            if (endPage - startPage < 4) {
+              startPage = Math.max(1, endPage - 4);
+            }
+        
+            for (let i = startPage; i <= endPage; i++) {
+              const pageBtn = document.createElement("button");
+              pageBtn.textContent = i;
+              pageBtn.onclick = () => goToPage(i);
+              pageBtn.className = `px-3 py-2 text-sm font-medium border rounded-md ${
+                i === currentPage
+                  ? "bg-blue-600 text-white border-blue-600"
+                  : "text-gray-500 bg-white border-gray-300 hover:bg-gray-50 hover:text-gray-700"
+              }`;
+              pageNumbers.appendChild(pageBtn);
+            }
+        }
+
+        // Tombol pagination
+        function updatePaginationButtons() {
+            document.getElementById('prevBtn').disabled = currentPage === 1;
+            document.getElementById('nextBtn').disabled = currentPage === totalPages;
+            document.getElementById('pageNumbers');
+        }
+
+        function changePage(direction) {
+            if (direction === -1 && currentPage > 1) {
+                currentPage--;
+            } else if (direction === 1 && currentPage < totalPages) {
+                currentPage++;
+            }
+            const data = filteredData.length ? filteredData : dataInvoice;
+            renderTable(data);
+        }
+
+        function goToPage(page) {
+            if (page >= 1 && page <= totalPages) {
+                currentPage = page;
+                const data = filteredData.length ? filteredData : dataInvoice;
+                renderTable(data);
+            }
+        }
+
+        // Filter data
         function applyFilters() {
+            const statusFilter = document.getElementById('statusFilter').value;
             const kelasFilter = document.getElementById('kelasFilter').value;
             const kategoriFilter = document.getElementById('kategoriFilter').value;
             const sekolahFilter = document.getElementById('sekolahFilter').value;
             const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-
-            filteredData = sampleDataInvoice.filter(item => {
+        
+            filteredData = dataInvoice.filter(item => {
+                let statusMatch = !statusFilter || item.status === statusFilter
                 let kelasMatch = !kelasFilter || item.kelas === kelasFilter;
                 let kategoriMatch = !kategoriFilter || item.kategori === kategoriFilter;
                 let sekolahMatch = !sekolahFilter || item.sekolah === sekolahFilter;
-                let searchMatch = !searchTerm || 
+                let searchMatch = !searchTerm ||
                     item.nama.toLowerCase().includes(searchTerm) ||
                     formatSekolah(item.sekolah).toLowerCase().includes(searchTerm);
-
-                return kelasMatch && kategoriMatch && sekolahMatch && searchMatch;
+            
+                return kelasMatch && kategoriMatch && sekolahMatch && searchMatch && statusMatch;
             });
-
-            renderTable();
-            updateSummary();
+        
+            currentPage = 1; // reset halaman
+            renderTable(filteredData);
+            updateSummary(filteredData);
         }
 
-        function handleSearch() {
-            applyFilters();
-        }
 
-        function updateSummary() {
-            const totalSiswa = filteredData.length;
-            const lunas = filteredData.filter(item => item.status === 'lunas').length;
+        // Inisialisasi saat halaman load
+        document.addEventListener("DOMContentLoaded", function () {
+            renderTable(filteredData);
+        });
+
+        // Update ringkasan data
+        function updateSummary(dataInvoice) {
+            const totalSiswa = dataInvoice.length;
+            const lunas = dataInvoice.filter(item => item.status === 'lunas').length;
             const belumLunas = totalSiswa - lunas;
-            const totalPendapatan = filteredData
+            const totalPendapatan = dataInvoice
                 .filter(item => item.status === 'lunas')
                 .reduce((sum, item) => sum + item.biaya, 0);
-
             document.getElementById('totalSiswa').textContent = totalSiswa;
-            document.getElementById('pembayaranLunas').textContent = lunas;
-            document.getElementById('belumLunas').textContent = belumLunas;
+            document.getElementById('siswaLunas').textContent = lunas;
+            document.getElementById('siswaBelumLunas').textContent = belumLunas;
             document.getElementById('totalPendapatan').textContent = formatCurrency(totalPendapatan);
-            document.getElementById('totalData').textContent = totalSiswa;
         }
+
 
 
         function toggleSidebar() {
@@ -530,10 +639,13 @@
             
         }
 
-        
+        updateSummary(filteredData);
+        updateSelectedCount();
 
         // Add search event listener
         document.getElementById('searchInput').addEventListener('input', handleSearch);
     </script>
+
+    
 </body>
 </html>

@@ -21,7 +21,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
                     </img>
                 </div>
-                <span class="text-white font-bold text-lg">Dashboard</span>
+                <span class="text-white font-bold text-lg">Manajemen</span>
             </div>
             <!-- Close button for mobile -->
             <button onclick="toggleSidebar()" class="lg:hidden p-2 text-white hover:bg-white hover:bg-opacity-20 rounded-lg transition-colors">
@@ -32,12 +32,12 @@
         </div>
         
         <aside class="w-64 bg-white border-r h-screen overflow-y-auto">
-            <nav class="mt-8 px-4">
+            <nav class="mt-10 px-4">
                 <div class="space-y-2">
                     <!-- Dashboard (Active) -->
                     <a href="#" class="flex items-center px-4 py-3 text-blue-600 bg-blue-50 rounded-lg font-medium">
                         <i class="fa-solid fa-house w-5 h-5 mr-3"></i>
-                        Dashboard
+                        Manajemen
                     </a>
                     
                     <!-- Laporan Invoice -->
@@ -66,20 +66,10 @@
                 </div>
                 
                 <!-- User Profile Section -->
-                 <div class="mt-16 pt-8 border-t border-gray-200">
-                    <div class="flex items-center px-4 py-3">
-                        <div class="w-10 h-10 bg-gradient-to-r from-green-400 to-blue-500 rounded-full flex items-center justify-center text-white font-medium">
-                            A
-                        </div>
-                        <div class="ml-3">
-                            <p class="text-sm font-medium text-gray-900">Admin</p>
-                            <p class="text-xs text-gray-500">admin@sekolah.com</p>
-                        </div>
-                    </div>
-                    
-                    <a href="#" class="flex items-center px-4 py-3 mt-2 text-gray-700 rounded-lg hover:bg-red-50 hover:text-red-600 transition-colors">
+                 <div class="mt-32 pt-8 border-t border-gray-200">
+                    <a href="#" class="flex items-center px-4 py-3 text-gray-700 rounded-lg hover:bg-red-50 hover:text-red-600 transition-colors">
                         <i class="fa-solid fa-right-from-bracket w-5 h-5 mr-3"></i>
-                        Logout
+                        Keluar
                     </a>
                 </div>
             </nav>
@@ -90,7 +80,7 @@
     <div class="fixed inset-0 z-40 bg-black bg-opacity-50 lg:hidden hidden" id="sidebarOverlay" onclick="toggleSidebar()"></div>
 
     <!-- Header -->
-    <header class="bg-white shadow-lg border-b border-gray-200 lg:ml-64">
+    <header class="bg-white shadow-lg border-b border-gray-200 lg:ml-64 fixed w-full z-50">
         <div class="px-4 sm:px-6 py-4">
             <div class="flex items-center justify-between">
                 <div class="flex items-center space-x-2 sm:space-x-4 flex-1 min-w-0">
@@ -102,7 +92,7 @@
                     </button>
                     
                     <div class="min-w-0 flex-1">
-                        <h1 class="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 truncate">Dashboard</h1>
+                        <h1 class="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 truncate">Manajemen</h1>
                         <p class="text-xs sm:text-sm text-gray-600 hidden sm:block">Selamat datang di website sukarobot</p>
                     </div>
                 </div>
@@ -111,20 +101,123 @@
                     <button class="p-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors">
                         <i class="fa fa-bell" aria-hidden="true"></i>
                     </button>
-                    
-                    <div class="text-right hidden md:block">
-                        <p class="text-sm font-medium text-gray-900">Admin</p>
-                        <p class="text-xs text-gray-500">Online</p>
-                    </div>
-                    <div class="w-8 h-8 bg-gradient-to-r from-green-400 to-blue-500 rounded-full flex-shrink-0"></div>
                 </div>
             </div>
         </div>
     </header>
 
     <div class="lg:ml-64 px-4 sm:px-6 py-6 sm:py-8">
-        <h2 class="text-xl font-semibold text-gray-800">Ini Halaman Dashboard</h2>
-        <p class="text-gray-600 mt-2">Selamat datang, silakan kelola dan pantau data Anda di sini.</p>
+        <!-- Filter Section -->
+        <div class="bg-white rounded-xl shadow-lg p-6 mb-8 mt-20">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                <div>
+                    <h2 class="text-lg font-semibold text-gray-900">Filter Laporan</h2>
+                    <p class="text-sm text-gray-600">Pilih periode untuk melihat data pendapatan</p>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-3">
+                    <select id="monthFilter" class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 bg-white">
+                        <option value="all">Semua Bulan</option>
+                        <option value="2024-01">Januari 2024</option>
+                        <option value="2024-02">Februari 2024</option>
+                        <option value="2024-03">Maret 2024</option>
+                        <option value="2024-04">April 2024</option>
+                        <option value="2024-05">Mei 2024</option>
+                        <option value="2024-06">Juni 2024</option>
+                        <option value="2024-07">Juli 2024</option>
+                        <option value="2024-08">Agustus 2024</option>
+                        <option value="2024-09">September 2024</option>
+                        <option value="2024-10">Oktober 2024</option>
+                        <option value="2024-11">November 2024</option>
+                        <option value="2024-12">Desember 2024</option>
+                    </select>
+                    <button onclick="refreshData()" class="px-4 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-lg hover:bg-indigo-700 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition-colors">
+                        <svg class="w-4 h-4 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+                        </svg>
+                        Refresh
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Statistics Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <!-- Total Pendapatan -->
+            <div class="bg-white rounded-xl shadow-lg p-6">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm font-medium text-gray-600">Total Pendapatan</p>
+                        <p id="totalRevenue" class="text-2xl font-bold text-green-600">Rp 0</p>
+                        <p id="revenueChange" class="text-sm text-gray-500 mt-1">+0% dari bulan lalu</p>
+                    </div>
+                    <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
+                        <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tunggakan -->
+            <div class="bg-white rounded-xl shadow-lg p-6">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm font-medium text-gray-600">Total Tunggakan</p>
+                        <p id="totalArrears" class="text-2xl font-bold text-red-600">Rp 0</p>
+                        <p id="arrearsCount" class="text-sm text-gray-500 mt-1">0 siswa menunggak</p>
+                    </div>
+                    <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center">
+                        <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lunas -->
+            <div class="bg-white rounded-xl shadow-lg p-6">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm font-medium text-gray-600">Pembayaran Lunas</p>
+                        <p id="totalPaid" class="text-2xl font-bold text-blue-600">Rp 0</p>
+                        <p id="paidCount" class="text-sm text-gray-500 mt-1">0 siswa lunas</p>
+                    </div>
+                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                        <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chart Section -->
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+            <div class="bg-gradient-to-r from-blue-600 to-indigo-600 px-6 py-4">
+                <h2 class="text-xl font-semibold text-white flex items-center">
+                    <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                    </svg>
+                    Grafik Pendapatan Bulanan
+                </h2>
+                <p class="text-indigo-100 mt-1">Visualisasi pendapatan per bulan tahun 2024</p>
+            </div>
+            <div class="p-6">
+                <canvas id="revenueChart" width="400" height="200"></canvas>
+            </div>
+        </div>
+
+        <!-- Recent Activities -->
+        <div class="bg-white rounded-xl shadow-lg mt-8">
+            <div class="px-6 py-4 border-b border-gray-200">
+                <h3 class="text-lg font-semibold text-gray-900">Aktivitas Terbaru</h3>
+            </div>
+            <div class="p-6">
+                <div id="recentActivities" class="space-y-4">
+                    <!-- Activities will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
     </div>
 
         <script>

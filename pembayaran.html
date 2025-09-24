@@ -32,12 +32,12 @@
         </div>
         
         <aside class="w-64 bg-white border-r h-screen overflow-y-auto">
-            <nav class="mt-8 px-4">
+            <nav class="mt-10 px-4">
                 <div class="space-y-2">
                     <!-- Dashboard -->
-                    <a href="dashboard.html" class="flex items-center px-4 py-3 text-gray-700 rounded-lg font-medium hover:bg-blue-50 hover:text-blue-600 transition-colors">
+                    <a href="manajemen.html" class="flex items-center px-4 py-3 text-gray-700 rounded-lg font-medium hover:bg-blue-50 hover:text-blue-600 transition-colors">
                         <i class="fa-solid fa-house w-5 h-5 mr-3"></i>
-                        Dashboard
+                        Manajemen
                     </a>
                     
                     <!-- Laporan Invoice -->
@@ -66,20 +66,10 @@
                 </div>
                 
                 <!-- User Profile Section -->
-                 <div class="mt-16 pt-8 border-t border-gray-200">
-                    <div class="flex items-center px-4 py-3">
-                        <div class="w-10 h-10 bg-gradient-to-r from-green-400 to-blue-500 rounded-full flex items-center justify-center text-white font-medium">
-                            A
-                        </div>
-                        <div class="ml-3">
-                            <p class="text-sm font-medium text-gray-900">Admin</p>
-                            <p class="text-xs text-gray-500">admin@sekolah.com</p>
-                        </div>
-                    </div>
-                    
-                    <a href="#" class="flex items-center px-4 py-3 mt-2 text-gray-700 rounded-lg hover:bg-red-50 hover:text-red-600 transition-colors">
+                 <div class="mt-32 pt-8 border-t border-gray-200">
+                    <a href="#" class="flex items-center px-4 py-3 text-gray-700 rounded-lg hover:bg-red-50 hover:text-red-600 transition-colors">
                         <i class="fa-solid fa-right-from-bracket w-5 h-5 mr-3"></i>
-                        Logout
+                        Keluar
                     </a>
                 </div>
             </nav>
@@ -90,7 +80,7 @@
     <div class="fixed inset-0 z-40 bg-black bg-opacity-50 lg:hidden hidden" id="sidebarOverlay" onclick="toggleSidebar()"></div>
 
     <!-- Header -->
-    <header class="bg-white shadow-lg border-b border-gray-200 lg:ml-64">
+    <header class="bg-white shadow-lg border-b border-gray-200 lg:ml-64 fixed w-full z-50">
         <div class="px-4 sm:px-6 py-4">
             <div class="flex items-center justify-between">
                 <div class="flex items-center space-x-2 sm:space-x-4 flex-1 min-w-0">
@@ -111,12 +101,6 @@
                     <button class="p-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors">
                         <i class="fa fa-bell" aria-hidden="true"></i>
                     </button>
-                    
-                    <div class="text-right hidden md:block">
-                        <p class="text-sm font-medium text-gray-900">Admin</p>
-                        <p class="text-xs text-gray-500">Online</p>
-                    </div>
-                    <div class="w-8 h-8 bg-gradient-to-r from-green-400 to-blue-500 rounded-full flex-shrink-0"></div>
                 </div>
             </div>
         </div>
@@ -124,7 +108,7 @@
 
     <div class="lg:ml-64 px-4 sm:px-6 py-6 sm:py-8">
         <!-- Search Bar -->
-        <div class="bg-white rounded-xl shadow-lg p-4 sm:p-6 mb-4 sm:mb-6">
+        <div class="bg-white rounded-xl shadow-lg p-4 sm:p-6 mb-4 sm:mb-6 mt-20">
             <div class="relative">
                 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                     <svg class="h-4 w-4 sm:h-5 sm:w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -148,7 +132,7 @@
                 <!-- Filter Sekolah -->
                 <div>
                     <label class="block text-sm md:text-base font-medium text-gray-700 mb-1 sm:mb-2">Sekolah</label>
-                    <select id="kelasFilter" 
+                    <select id="sekolahFilter" 
                         class="w-full px-3 py-3 sm:px-4 sm:py-2 md:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors text-base sm:text-sm md:text-base">
                         <option value="">Semua Sekolah</option>
                         <option value="smk-pasim">SMK Pasim</option>
@@ -161,11 +145,24 @@
                 <!-- Filter Status -->
                 <div>
                     <label class="block text-sm md:text-base font-medium text-gray-700 mb-1 sm:mb-2">Status</label>
-                    <select id="kategoriFilter" 
+                    <select id="statusFilter" 
                         class="w-full px-3 py-3 sm:px-4 sm:py-2 md:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors text-base sm:text-sm md:text-base">
                         <option value="">Semua Kategori</option>
                         <option value="lunas">Lunas</option>
                         <option value="mencicil">Mencicil</option>
+                    </select>
+                </div>
+
+                <!-- Filter Kelas -->
+                <div>
+                    <label class="block text-sm md:text-base font-medium text-gray-700 mb-1 sm:mb-2">Kelas</label>
+                    <select id="kelasFilter" 
+                        class="w-full px-3 py-3 sm:px-4 sm:py-2 md:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors text-base sm:text-sm md:text-base">
+                        <option value="">Semua Kelas</option>
+                        <option value="private">Private</option>
+                        <option value="semi-private">Semi Private</option>
+                        <option value="regular">Regular</option>
+                        <option value="ekstrakulikuler">Ekstrakulikuler</option>
                     </select>
                 </div>
 
@@ -250,275 +247,311 @@
             <div class="overflow-x-auto">
                 <table class="w-full min-w-[800px]">
                     <thead class="bg-gray-50">
-                        <tr>
-                            <th class="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">
-                                <input type="checkbox" id="selectAll" class="rounded border-gray-300 text-blue-600 focus:ring-blue-500" onchange="toggleSelectAll()">
-                            </th>
-                            <th class="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">NISN</th>
-                            <th class="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">Nama Siswa</th>
-                            <th class="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">Nama Sekolah</th>
-                            <th class="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">Sekolah</th>
-                            <th class="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">Biaya Pendaftaran</th>
-                            <th class="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">Status</th>
-                            <th class="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">Tanggal Bayar</th>
-                        </tr>
+                    <tr>
+                        <th class="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">
+                            Pilih
+                        </th>
+                        <th class="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">NIS</th>
+                        <th class="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">Nama Siswa</th>
+                        <th class="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">Nama Sekolah</th>
+                        <th class="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">Status</th>
+                        <th class="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">Biaya Pembelajaran</th>
+                        <th class="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">Keterangan</th>
+                        <th class="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">Aksi</th>
+                    </tr>
                     </thead>
-                    <tbody id="dataTable" class="bg-white divide-y divide-gray-200">
+                    <tbody id="paymentTableBody" class="bg-white divide-y divide-gray-200">
                         <!-- Data akan diisi oleh JavaScript -->
                     </tbody>
                 </table>
             </div>
+
+            <!-- Empty State -->
+            <div id="emptyState" class="hidden text-center py-12">
+                <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                </svg>
+                <h3 class="mt-2 text-sm font-medium text-gray-900">Tidak ada data</h3>
+                <p class="mt-1 text-sm text-gray-500">Data pembayaran tidak ditemukan</p>
+            </div>
         </div>
     </div>
+
+    <div id="deleteModal" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50">
+        <div class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
+            <div class="mt-3 text-center">
+                <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-red-100">
+                    <svg class="h-6 w-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"></path>
+                    </svg>
+                </div>
+                <h3 class="text-lg font-medium text-gray-900 mt-2">Konfirmasi Hapus</h3>
+                <div class="mt-2 px-7 py-3">
+                    <p class="text-sm text-gray-500">Apakah Anda yakin ingin menghapus data pembayaran ini? Tindakan ini tidak dapat dibatalkan.</p>
+                </div>
+                <div class="flex gap-3 mt-4">
+                    <button id="cancelDelete" class="flex-1 px-4 py-2 bg-gray-300 text-gray-800 text-base font-medium rounded-md hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-300">
+                        Batal
+                    </button>
+                    <button id="confirmDelete" class="flex-1 px-4 py-2 bg-red-600 text-white text-base font-medium rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-300">
+                        Hapus
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
         <script>
-            // Sample data
-            const sampleData = [
-                { nama: 'Ahmad Rizki', kelas: 'pemula', kategori: 'programming', sekolah: 'sma-negeri-1', biaya: 750000, status: 'lunas', tanggal: '2024-01-15' },
-                { nama: 'Siti Nurhaliza', kelas: 'menengah', kategori: 'design', sekolah: 'sma-negeri-2', biaya: 1200000, status: 'lunas', tanggal: '2024-01-14' },
-                { nama: 'Budi Santoso', kelas: 'lanjutan', kategori: 'marketing', sekolah: 'sma-swasta-1', biaya: 1800000, status: 'belum_lunas', tanggal: '-' },
-                { nama: 'Maya Sari', kelas: 'expert', kategori: 'business', sekolah: 'smk-negeri-1', biaya: 2500000, status: 'lunas', tanggal: '2024-01-13' },
-                { nama: 'Doni Pratama', kelas: 'pemula', kategori: 'programming', sekolah: 'smk-swasta-1', biaya: 750000, status: 'lunas', tanggal: '2024-01-12' },
-                { nama: 'Rina Wati', kelas: 'menengah', kategori: 'language', sekolah: 'sma-negeri-1', biaya: 1200000, status: 'belum_lunas', tanggal: '-' },
-                { nama: 'Eko Susilo', kelas: 'lanjutan', kategori: 'design', sekolah: 'sma-negeri-2', biaya: 1800000, status: 'lunas', tanggal: '2024-01-11' },
-                { nama: 'Fitri Handayani', kelas: '', kategori: 'kosong', sekolah: 'sma-swasta-1', biaya: 0, status: 'lunas', tanggal: '2024-01-10' },
-                { nama: 'Agus Setiawan', kelas: 'pemula', kategori: 'business', sekolah: 'smk-negeri-1', biaya: 750000, status: 'lunas', tanggal: '2024-01-09' },
-                { nama: 'Dewi Lestari', kelas: 'menengah', kategori: 'language', sekolah: 'smk-swasta-1', biaya: 1200000, status: 'lunas', tanggal: '2024-01-08' },
-            ];
-
-            let filteredData = [...sampleData];
-
-            function formatCurrency(amount) {
-                return new Intl.NumberFormat('id-ID', {
-                    style: 'currency',
-                    currency: 'IDR',
-                    minimumFractionDigits: 0
-                }).format(amount);
-            }
-
-            function formatKelas(kelas) {
-                const kelasMap = {
-                    'pemula': 'Pemula',
-                    'menengah': 'Menengah',
-                    'lanjutan': 'Lanjutan',
-                    'expert': 'Expert'
-                };
-                return kelasMap[kelas] || kelas;
-            }
-
-            function formatKategori(kategori) {
-                const kategoriMap = {
-                    'programming': 'Programming',
-                    'design': 'Design',
-                    'marketing': 'Marketing',
-                    'business': 'Business',
-                    'language': 'Language'
-                };
-                return kategoriMap[kategori] || kategori;
-            }
-
-            function formatSekolah(sekolah) {
-                const sekolahMap = {
-                    'sma-negeri-1': 'SMA Negeri 1 Jakarta',
-                    'sma-negeri-2': 'SMA Negeri 2 Jakarta',
-                    'sma-swasta-1': 'SMA Swasta Bina Bangsa',
-                    'smk-negeri-1': 'SMK Negeri 1 Jakarta',
-                    'smk-swasta-1': 'SMK Swasta Teknologi'
-                };
-                return sekolahMap[sekolah] || sekolah;
-            }
-
-            function renderTable() {
-                const tableBody = document.getElementById('dataTable');
-                
-                tableBody.innerHTML = '';
-
-                filteredData.forEach(item => {
-                    const statusClass = item.status === 'lunas' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800';
-                    const statusText = item.status === 'lunas' ? 'Lunas' : 'Belum Lunas';
-
-                    if (item.biaya === 0) {
-                        item.status = "lunas";
-                    }
-
-                    if (item.kategori === 'kosong' && '' && item.tanggal === '-' || '' && item.kelas === 'kosong' || '') {
-                        item.kategori = "kosong";
-                        item.tanggal = "-"
-                        item.tingkat = "kosong";
-                    } else if (item.kategori === item.kategori && '' && item.tanggal === '-' || '' && item.kelas === 'kosong' || '') {
-                        item.kategori = innerHTML(kategori) ;
-
-                    }
-                    
-
-                    // Table row
-                    const row = document.createElement('tr');
-                    row.className = 'hover:bg-gray-50 transition-colors';
-                    
-                    row.innerHTML = `
-                        <td class="px-4 sm:px-6 py-4 whitespace-nowrap">
-                            <input type="checkbox" class="row-checkbox rounded border-gray-300 text-blue-600 focus:ring-blue-500" data-nama="${item.nama}" data-biaya="${item.biaya}" onchange="updateSelectAll()">
-                        </td>
-                        <td class="px-4 sm:px-6 py-4 whitespace-nowrap">
-                            <div class="flex items-center">
-                                <div class="w-8 h-8 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full flex items-center justify-center text-white text-sm font-medium">
-                                    ${item.nama.charAt(0)}
-                                </div>
-                                <div class="ml-3">
-                                    <div class="text-sm font-medium text-gray-900">${item.nama}</div>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="px-4 sm:px-6 py-4 whitespace-nowrap">
-                            <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-blue-100 text-blue-800">
-                                ${formatKelas(item.kelas)}
-                            </span>
-                        </td>
-                        <td class="px-4 sm:px-6 py-4 whitespace-nowrap">
-                            <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-purple-100 text-purple-800">
-                                ${formatKategori(item.kategori)}
-                            </span>
-                        </td>
-                        <td class="px-4 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                            ${formatSekolah(item.sekolah)}
-                        </td>
-                        <td class="px-4 sm:px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                            ${formatCurrency(item.biaya)}
-                        </td>
-                        <td class="px-4 sm:px-6 py-4 whitespace-nowrap">
-                            <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full ${statusClass}">
-                                ${statusText}
-                            </span>
-                        </td>
-                        <td class="px-4 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                            ${item.tanggal !== '-' ? new Date(item.tanggal).toLocaleDateString('id-ID') : '-'}
-                        </td>
-                    `;
-                    
-                    tableBody.appendChild(row);
-                });
-            }
-
-            function applyFilters() {
-                const kelasFilter = document.getElementById('kelasFilter').value;
-                const kategoriFilter = document.getElementById('kategoriFilter').value;
-                const sekolahFilter = document.getElementById('sekolahFilter').value;
-                const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-
-                filteredData = sampleData.filter(item => {
-                    let kelasMatch = !kelasFilter || item.kelas === kelasFilter;
-                    let kategoriMatch = !kategoriFilter || item.kategori === kategoriFilter;
-                    let sekolahMatch = !sekolahFilter || item.sekolah === sekolahFilter;
-                    let searchMatch = !searchTerm || 
-                        item.nama.toLowerCase().includes(searchTerm) ||
-                        formatSekolah(item.sekolah).toLowerCase().includes(searchTerm);
-
-                    return kelasMatch && kategoriMatch && sekolahMatch && searchMatch;
-                });
-
-                renderTable();
-                updateSummary();
-            }
-
-            function handleSearch() {
-                applyFilters();
-            }
-
-            function updateSummary() {
-                const totalSiswa = filteredData.length;
-                const lunas = filteredData.filter(item => item.status === 'lunas').length;
-                const belumLunas = totalSiswa - lunas;
-                const totalPendapatan = filteredData
-                    .filter(item => item.status === 'lunas')
-                    .reduce((sum, item) => sum + item.biaya, 0);
-
-                document.getElementById('totalSiswa').textContent = totalSiswa;
-                document.getElementById('pembayaranLunas').textContent = lunas;
-                document.getElementById('belumLunas').textContent = belumLunas;
-                document.getElementById('totalPendapatan').textContent = formatCurrency(totalPendapatan);
-                document.getElementById('totalData').textContent = totalSiswa;
-            }
-
-
-            function toggleSidebar() {
-                const sidebar = document.getElementById('sidebar');
-                const overlay = document.getElementById('sidebarOverlay');
-                
-                if (sidebar.classList.contains('-translate-x-full')) {
-                    sidebar.classList.remove('-translate-x-full');
-                    overlay.classList.remove('hidden');
+        document.addEventListener("DOMContentLoaded", function () {
+            const kelasFilter = document.getElementById("kelasFilter");
+            const sekolahFilter = document.getElementById("sekolahFilter"); // kasih id biar gampang
+    
+            // fungsi untuk cek kondisi
+            function updateSekolahFilter() {
+                if (kelasFilter.value === "private") {
+                    sekolahFilter.disabled = true;
+                    sekolahFilter.classList.add("bg-gray-100", "cursor-not-allowed", "text-gray-500");
                 } else {
-                    sidebar.classList.add('-translate-x-full');
-                    overlay.classList.add('hidden');
+                    sekolahFilter.disabled = false;
+                    sekolahFilter.classList.remove("bg-gray-100", "cursor-not-allowed", "text-gray-500");
                 }
             }
+    
+            // jalankan saat pertama kali load
+            updateSekolahFilter();
+    
+            // jalankan setiap kali dropdown kelas berubah
+            kelasFilter.addEventListener("change", updateSekolahFilter);
+        });
 
-            function toggleSelectAll() {
-                const selectAllCheckbox = document.getElementById('selectAll');
-                const rowCheckboxes = document.querySelectorAll('.row-checkbox');
-                
-                rowCheckboxes.forEach(checkbox => {
-                    checkbox.checked = selectAllCheckbox.checked;
-                });
-                
-                updateSelectedCount();
+           // Sample data
+        const paymentData = [
+            {
+                id: 1,
+                nisn: '1234567890',
+                nama: 'Ahmad Rizki Pratama',
+                sekolah: 'SMA Negeri 1 Jakarta',
+                status: 'mencicil',
+                sisaCicilan: 2,
+                totalCicilan: 5
+            },
+            {
+                id: 2,
+                nisn: '1234567891',
+                nama: 'Siti Nurhaliza',
+                sekolah: 'SMA Negeri 2 Jakarta',
+                status: 'lunas',
+                sisaCicilan: 0,
+                totalCicilan: 3
+            },
+            {
+                id: 3,
+                nisn: '1234567892',
+                nama: 'Budi Santoso',
+                sekolah: 'SMA Swasta Harapan',
+                status: 'mencicil',
+                sisaCicilan: 1,
+                totalCicilan: 4
+            },
+            {
+                id: 4,
+                nisn: '1234567893',
+                nama: 'Maya Sari Dewi',
+                sekolah: 'SMA Negeri 3 Jakarta',
+                status: 'lunas',
+                sisaCicilan: 0,
+                totalCicilan: 2
+            },
+            {
+                id: 5,
+                nisn: '1234567894',
+                nama: 'Andi Wijaya',
+                sekolah: 'SMA Negeri 1 Bogor',
+                status: 'mencicil',
+                sisaCicilan: 3,
+                totalCicilan: 6
+            }
+        ];
+
+        let currentData = [...paymentData];
+        let deleteId = null;
+
+        // Render table
+        function renderTable(data) {
+            const tbody = document.getElementById('paymentTableBody');
+            const emptyState = document.getElementById('emptyState');
+
+            if (data.length === 0) {
+                tbody.innerHTML = '';
+                emptyState.classList.remove('hidden');
+                return;
             }
 
-            function updateSelectAll() {
-                const rowCheckboxes = document.querySelectorAll('.row-checkbox');
-                const checkedBoxes = document.querySelectorAll('.row-checkbox:checked');
-                const selectAllCheckbox = document.getElementById('selectAll');
+            emptyState.classList.add('hidden');
+            
+            tbody.innerHTML = data.map(item => `
+                <tr class="hover:bg-gray-50">
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <input type="checkbox" class="rowCheckbox rounded border-gray-300 text-blue-600 focus:ring-blue-500">
+                     </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${item.nisn}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${item.nama}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${item.sekolah}</td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
+                            item.status === 'lunas' 
+                                ? 'bg-green-100 text-green-800' 
+                                : 'bg-yellow-100 text-yellow-800'
+                        }">
+                            ${item.status === 'lunas' ? 'Lunas' : 'Mencicil'}
+                        </span>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                        ${item.status === 'mencicil' 
+                            ? `<span class="text-orange-600 font-medium">Tersisa ${item.sisaCicilan}x cicilan</span>` 
+                            : '<span class="text-green-600 font-medium">Pembayaran selesai</span>'
+                        }
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2">
+                        <button 
+                            onclick="handlePayment(${item.id})" 
+                            class="inline-flex items-center px-3 py-1 border border-transparent text-xs font-medium rounded-md ${
+                                item.status === 'mencicil' 
+                                    ? 'text-white bg-blue-600 hover:bg-blue-700 focus:ring-2 focus:ring-blue-500' 
+                                    : 'text-gray-400 bg-gray-200 cursor-not-allowed'
+                            }"
+                            ${item.status === 'lunas' ? 'disabled' : ''}
+                        >
+                            <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v2a2 2 0 002 2z"></path>
+                            </svg>
+                            Bayar
+                        </button>
+                        <button 
+                            onclick="handleEdit(${item.id})" 
+                            class="inline-flex items-center px-3 py-1 border border-transparent text-xs font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:ring-2 focus:ring-green-500"
+                        >
+                            <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+                            </svg>
+                            Edit
+                        </button>
+                        <button 
+                            onclick="handleDelete(${item.id})" 
+                            class="inline-flex items-center px-3 py-1 border border-transparent text-xs font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:ring-2 focus:ring-red-500"
+                        >
+                            <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                            </svg>
+                            Hapus
+                        </button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        // Search and filter functionality
+        function filterData() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const statusFilter = document.getElementById('statusFilter').value;
+
+            let filtered = paymentData.filter(item => {
+                const matchesSearch = item.nisn.toLowerCase().includes(searchTerm) ||
+                                    item.nama.toLowerCase().includes(searchTerm) ||
+                                    item.sekolah.toLowerCase().includes(searchTerm);
                 
-                if (checkedBoxes.length === 0) {
-                    selectAllCheckbox.indeterminate = false;
-                    selectAllCheckbox.checked = false;
-                } else if (checkedBoxes.length === rowCheckboxes.length) {
-                    selectAllCheckbox.indeterminate = false;
-                    selectAllCheckbox.checked = true;
-                } else {
-                    selectAllCheckbox.indeterminate = true;
-                    selectAllCheckbox.checked = false;
+                const matchesStatus = statusFilter === '' || item.status === statusFilter;
+
+                return matchesSearch && matchesStatus;
+            });
+
+            currentData = filtered;
+            renderTable(filtered);
+        }
+
+        // Event handlers
+        function handlePayment(id) {
+            const item = paymentData.find(p => p.id === id);
+            if (item && item.status === 'mencicil') {
+                showMessage(`Mengarahkan ke halaman pembayaran untuk ${item.nama}...`, 'info');
+                // Simulate redirect to payment page
+                setTimeout(() => {
+                    showMessage(`Halaman pembayaran untuk NISN ${item.nisn} akan dibuka`, 'success');
+                }, 1000);
+            }
+        }
+
+        function handleEdit(id) {
+            const item = paymentData.find(p => p.id === id);
+            showMessage(`Membuka form edit untuk ${item.nama}...`, 'info');
+            // Simulate edit functionality
+        }
+
+        function handleDelete(id) {
+            deleteId = id;
+            document.getElementById('deleteModal').classList.remove('hidden');
+        }
+
+        function confirmDelete() {
+            if (deleteId) {
+                const index = paymentData.findIndex(p => p.id === deleteId);
+                if (index > -1) {
+                    const deletedItem = paymentData[index];
+                    paymentData.splice(index, 1);
+                    filterData(); // Re-render table
+                    showMessage(`Data ${deletedItem.nama} berhasil dihapus`, 'success');
                 }
-                
-                updateSelectedCount();
             }
+            closeDeleteModal();
+        }
 
-            function updateSelectedCount() {
-                const checkedBoxes = document.querySelectorAll('.row-checkbox:checked');
-                const count = checkedBoxes.length;
-                
-                document.getElementById('selectedCount').textContent = count;
-                document.getElementById('selectedCountMobile').textContent = count;
-                
-                const invoiceBtn = document.getElementById('invoiceBtn');
-                invoiceBtn.disabled = count === 0;
+        function closeDeleteModal() {
+            document.getElementById('deleteModal').classList.add('hidden');
+            deleteId = null;
+        }
+
+        function showMessage(message, type) {
+            const container = document.getElementById('messageContainer');
+            const messageDiv = document.createElement('div');
+            
+            const bgColor = type === 'success' ? 'bg-green-500' : 
+                           type === 'error' ? 'bg-red-500' : 'bg-blue-500';
+            
+            messageDiv.className = `${bgColor} text-white px-6 py-3 rounded-lg shadow-lg mb-2 transform transition-all duration-300 translate-x-full`;
+            messageDiv.textContent = message;
+            
+            container.appendChild(messageDiv);
+            
+            // Animate in
+            setTimeout(() => {
+                messageDiv.classList.remove('translate-x-full');
+            }, 100);
+            
+            // Remove after 3 seconds
+            setTimeout(() => {
+                messageDiv.classList.add('translate-x-full');
+                setTimeout(() => {
+                    container.removeChild(messageDiv);
+                }, 300);
+            }, 3000);
+        }
+
+        // Event listeners
+        document.getElementById('searchInput').addEventListener('input', filterData);
+        document.getElementById('statusFilter').addEventListener('change', filterData);
+        document.getElementById('cancelDelete').addEventListener('click', closeDeleteModal);
+        document.getElementById('confirmDelete').addEventListener('click', confirmDelete);
+
+        // Close modal when clicking outside
+        document.getElementById('deleteModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeDeleteModal();
             }
+        });
 
-            function createInvoice() {
-                const checkedBoxes = document.querySelectorAll('.row-checkbox:checked');
-                
-                if (checkedBoxes.length === 0) {
-                    alert('Pilih minimal satu siswa untuk membuat invoice!');
-                    return;
-                }
-                
-                const selectedData = Array.from(checkedBoxes).map(checkbox => ({
-                    nama: checkbox.getAttribute('data-nama'),
-                    biaya: parseInt(checkbox.getAttribute('data-biaya'))
-                }));
-                
-                // Store selected data in localStorage for the invoice page
-                localStorage.setItem('invoiceData', JSON.stringify(selectedData));
-                
-                
-            }
-
-            // Initialize
-            renderTable();
-            updateSummary();
-            updateSelectedCount();
-
-            // Add search event listener
-            document.getElementById('searchInput').addEventListener('input', handleSearch);
+        // Initial render
+        renderTable(paymentData);
         </script>
+    <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98371f8ee01b40ea',t:'MTc1ODU5OTkwMi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </body>
 </html>
