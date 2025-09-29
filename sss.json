@@ -1,24 +1,355 @@
 {
-  "sampleDataInvoice": [
-    {"nama": "Ahmad Rizki","kelas": "pemula","kategori": "programming","sekolah": "sma-negeri-1","biaya": 750000,"status": "lunas","tanggal": "2024-01-15"},
-    {"nama": "Siti Nurhaliza","kelas": "menengah","kategori": "design","sekolah": "sma-negeri-2","biaya": 1200000,"status": "lunas","tanggal": "2024-01-14"},
-    {"nama": "Budi Santoso","kelas": "lanjutan","kategori": "marketing","sekolah": "sma-swasta-1","biaya": 1800000,"status": "mencicil","tanggal": "-"},
-    {"nama": "Maya Sari","kelas": "expert","kategori": "business","sekolah": "smk-negeri-1","biaya": 2500000,"status": "lunas","tanggal": "2024-01-13"},
-    {"nama": "Doni Pratama","kelas": "pemula","kategori": "programming","sekolah": "smk-swasta-1","biaya": 750000,"status": "lunas","tanggal": "2024-01-12"},
-    {"nama": "Rina Wati","kelas": "menengah","kategori": "language","sekolah": "sma-negeri-1","biaya": 1200000,"status": "mencicil","tanggal": "-"},
-    {"nama": "Eko Susilo","kelas": "lanjutan","kategori": "design","sekolah": "sma-negeri-2","biaya": 1800000,"status": "lunas","tanggal": "2024-01-11"},
-    {"nama": "Fitri Handayani","kelas": "","kategori": "","sekolah": "sma-swasta-1","biaya": 0,"status": "","tanggal": "2024-01-10"},
-    {"nama": "Agus Setiawan","kelas": "pemula","kategori": "business","sekolah": "smk-negeri-1","biaya": 750000,"status": "lunas","tanggal": "2024-01-09"},
-    {"nama": "Dewi Lestari","kelas": "menengah","kategori": "language","sekolah": "smk-swasta-1","biaya": 1200000,"status": "lunas","tanggal": "2024-01-08"},
-    {"nama": "Ahmad Rizki","kelas": "pemula","kategori": "programming","sekolah": "sma-negeri-1","biaya": 750000,"status": "lunas","tanggal": "2024-01-15"},
-    {"nama": "Siti Nurhaliza","kelas": "menengah","kategori": "design","sekolah": "sma-negeri-2","biaya": 1200000,"status": "lunas","tanggal": "2024-01-14"},
-    {"nama": "Budi Santoso","kelas": "lanjutan","kategori": "marketing","sekolah": "sma-swasta-1","biaya": 1800000,"status": "mencicil","tanggal": "-"},
-    {"nama": "Maya Sari","kelas": "expert","kategori": "business","sekolah": "smk-negeri-1","biaya": 2500000,"status": "lunas","tanggal": "2024-01-13"},
-    {"nama": "Doni Pratama","kelas": "pemula","kategori": "programming","sekolah": "smk-swasta-1","biaya": 750000,"status": "lunas","tanggal": "2024-01-12"}
+  "sampleDataSiswa": [
+    {
+      "nis": "2025001",
+      "nama": "Ahmad Rizki",
+      "sekolah": "SMA Negeri 1",
+      "biaya": "18000000",
+      "pembelajaran": "Beginner 1",
+      "kelas": "Private",
+      "tipe": "4 Bulan",
+      "status": "Lunas",
+      "tanggal": "2025-01-15",
+      "skema": 1
+    },
+    {
+      "nis": "2025002",
+      "nama": "Siti Nurhaliza",
+      "sekolah": "SMA Negeri 2",
+      "biaya": "14000000",
+      "pembelajaran": "Basic 1",
+      "kelas": "Semi Private",
+      "tipe": "4 Bulan",
+      "status": "Belum Lunas",
+      "tanggal": "",
+      "skema": 2
+    },
+    {
+      "nis": "2025003",
+      "nama": "Budi Santoso",
+      "sekolah": "SMA Swasta 1",
+      "biaya": "14000000",
+      "pembelajaran": "Intermediate (Sensor)",
+      "kelas": "Reguler",
+      "tipe": "4 Bulan",
+      "status": "Belum Lunas",
+      "tanggal": "",
+      "skema": 4
+    },
+    {
+      "nis": "2025004",
+      "nama": "Maya Sari",
+      "sekolah": "SMK Negeri 1",
+      "biaya": "26000000",
+      "pembelajaran": "Advance (IOT)",
+      "kelas": "Private",
+      "tipe": "6 Bulan",
+      "status": "Lunas",
+      "tanggal": "2025-01-20",
+      "skema": 1
+    },
+    {
+      "nis": "2025005",
+      "nama": "Doni Pratama",
+      "sekolah": "SMK Swasta 2",
+      "biaya": "10000000",
+      "pembelajaran": "Coding Jr",
+      "kelas": "Ekskul",
+      "tipe": "4 Bulan",
+      "status": "Belum Lunas",
+      "tanggal": "",
+      "skema": 3
+    },
+    {
+      "nis": "2025006",
+      "nama": "Rina Wati",
+      "sekolah": "SMA Negeri 3",
+      "biaya": "14000000",
+      "pembelajaran": "Coding for Kids",
+      "kelas": "Reguler",
+      "tipe": "6 Bulan",
+      "status": "Belum Lunas",
+      "tanggal": "",
+      "skema": 6
+    },
+    {
+      "nis": "2025007",
+      "nama": "Eko Susilo",
+      "sekolah": "SMA Negeri 2",
+      "biaya": "14000000",
+      "pembelajaran": "Web Programming (Basic)",
+      "kelas": "Semi Private",
+      "tipe": "4 Bulan",
+      "status": "Lunas",
+      "tanggal": "2025-02-02",
+      "skema": 1
+    },
+    {
+      "nis": "2025008",
+      "nama": "Fitri Handayani",
+      "sekolah": "SMA Swasta 3",
+      "biaya": "26000000",
+      "pembelajaran": "Basic 3",
+      "kelas": "Private",
+      "tipe": "6 Bulan",
+      "status": "Belum Lunas",
+      "tanggal": "",
+      "skema": 2
+    },
+    {
+      "nis": "2025009",
+      "nama": "Agus Setiawan",
+      "sekolah": "SMK Negeri 2",
+      "biaya": "14000000",
+      "pembelajaran": "MS Office",
+      "kelas": "Ekskul",
+      "tipe": "6 Bulan",
+      "status": "Belum Lunas",
+      "tanggal": "",
+      "skema": 5
+    },
+    {
+      "nis": "2025010",
+      "nama": "Dewi Lestari",
+      "sekolah": "SMK Swasta 1",
+      "biaya": "10000000",
+      "pembelajaran": "Basic 2",
+      "kelas": "Reguler",
+      "tipe": "4 Bulan",
+      "status": "Lunas",
+      "tanggal": "2025-01-28",
+      "skema": 1
+    },
+    {
+      "nis": "2025011",
+      "nama": "Hendra Gunawan",
+      "sekolah": "SMA Negeri 4",
+      "biaya": "14000000",
+      "pembelajaran": "Beginner 2",
+      "kelas": "Semi Private",
+      "tipe": "4 Bulan",
+      "status": "Belum Lunas",
+      "tanggal": "",
+      "skema": 3
+    },
+    {
+      "nis": "2025012",
+      "nama": "Lia Anggraini",
+      "sekolah": "SMK Negeri 3",
+      "biaya": "26000000",
+      "pembelajaran": "Desain Grafis (Basic)",
+      "kelas": "Private",
+      "tipe": "6 Bulan",
+      "status": "Lunas",
+      "tanggal": "2025-01-25",
+      "skema": 1
+    },
+    {
+      "nis": "2025013",
+      "nama": "Rizky Saputra",
+      "sekolah": "SMA Swasta 2",
+      "biaya": "14000000",
+      "pembelajaran": "Digital Marketing",
+      "kelas": "Reguler",
+      "tipe": "6 Bulan",
+      "status": "Belum Lunas",
+      "tanggal": "",
+      "skema": 6
+    },
+    {
+      "nis": "2025014",
+      "nama": "Nia Marlina",
+      "sekolah": "SMA Negeri 1",
+      "biaya": "14000000",
+      "pembelajaran": "Web Programming (Intermediate)",
+      "kelas": "Semi Private",
+      "tipe": "6 Bulan",
+      "status": "Belum Lunas",
+      "tanggal": "",
+      "skema": 4
+    },
+    {
+      "nis": "2025015",
+      "nama": "Fajar Nugraha",
+      "sekolah": "SMK Negeri 1",
+      "biaya": "18000000",
+      "pembelajaran": "Coding Jr",
+      "kelas": "Private",
+      "tipe": "4 Bulan",
+      "status": "Lunas",
+      "tanggal": "2025-02-05",
+      "skema": 1
+    },
+    {
+      "nis": "2025016",
+      "nama": "Intan Permata",
+      "sekolah": "SMA Negeri 5",
+      "biaya": "14000000",
+      "pembelajaran": "Advance (IOT)",
+      "kelas": "Ekskul",
+      "tipe": "6 Bulan",
+      "status": "Belum Lunas",
+      "tanggal": "",
+      "skema": 6
+    },
+    {
+      "nis": "2025017",
+      "nama": "Yudi Firmansyah",
+      "sekolah": "SMK Swasta 4",
+      "biaya": "14000000",
+      "pembelajaran": "Basic 3",
+      "kelas": "Reguler",
+      "tipe": "4 Bulan",
+      "status": "Belum Lunas",
+      "tanggal": "",
+      "skema": 2
+    },
+    {
+      "nis": "2025018",
+      "nama": "Salsa Amelia",
+      "sekolah": "SMA Negeri 6",
+      "biaya": "26000000",
+      "pembelajaran": "Desain Grafis (Advance)",
+      "kelas": "Semi Private",
+      "tipe": "6 Bulan",
+      "status": "Lunas",
+      "tanggal": "2025-01-30",
+      "skema": 1
+    },
+    {
+      "nis": "2025019",
+      "nama": "Bagus Kurniawan",
+      "sekolah": "SMK Negeri 4",
+      "biaya": "26000000",
+      "pembelajaran": "Web Programming (Advance)",
+      "kelas": "Private",
+      "tipe": "6 Bulan",
+      "status": "Belum Lunas",
+      "tanggal": "",
+      "skema": 3
+    },
+    {
+      "nis": "2025020",
+      "nama": "Putri Ayu",
+      "sekolah": "SMA Swasta 5",
+      "biaya": "10000000",
+      "pembelajaran": "Beginner 1",
+      "kelas": "Ekskul",
+      "tipe": "4 Bulan",
+      "status": "Belum Lunas",
+      "tanggal": "",
+      "skema": 4
+    },
+    {
+      "nis": "2076020",
+      "nama": "Ahmad Fauzan",
+      "sekolah": "SMA Swasta 6",
+      "biaya": "",
+      "pembelajaran": "Beginner 2",
+      "kelas": "Ekskul",
+      "tipe": "4 Bulan",
+      "status": "",
+      "tanggal": "",
+      "skema": 3
+    },
+    {
+      "nis": "2029420",
+      "nama": "Budi Santoso",
+      "sekolah": "SMA Swasta 6",
+      "biaya": "",
+      "pembelajaran": "Basic 1",
+      "kelas": "Ekskul",
+      "tipe": "4 Bulan",
+      "status": "",
+      "tanggal": "",
+      "skema": 3
+    }
+  ],
+  
+  "masterPembelajaran": [
+    "Beginner 1",
+    "Beginner 2",
+    "Basic 1",
+    "Basic 2",
+    "Basic 3",
+    "Intermediate (Sensor)",
+    "Advance (IOT)",
+    "Coding for Kids",
+    "Coding Jr",
+    "Desain Grafis (Basic)",
+    "Desain Grafis (Advance)",
+    "Web Programming (Basic)",
+    "Web Programming (Intermediate)",
+    "Web Programming (Advance)",
+    "MS Office",
+    "Digital Marketing"
   ],
 
-  "sampleDataKelas" : [
-    {"kelas1" : "privat" , "biayaKelas" : 12000},
-    {"kelas1" : "eskul", "biayaKelas" : 6000}
-  ]
+  "masterKelas": [
+    "Private",
+    "Semi Private",
+    "Reguler",
+    "Ekskul"
+  ],
+
+  "masterTipe": [
+    "4 Bulan",
+    "6 Bulan"
+  ],
+
+  "masterHarga": {
+    "4 Bulan": {
+      "Private": 1800000,
+      "Semi Private": 1400000,
+      "Reguler": 1000000,
+      "Ekskul": 1000000
+    },
+    "6 Bulan": {
+      "Private": 2600000,
+      "Semi Private": 2000000,
+      "Reguler": 1400000,
+      "Ekskul": 1400000
+    }
+  },
+
+  "masterSkemaCicilan": {
+    "4 Bulan": {
+      "1": "100%",
+      "2": "50%",
+      "3": "33.33%",
+      "4": "25%"
+    },
+    "6 Bulan": {
+      "1": "100%",
+      "2": "50%",
+      "3": "33.33%",
+      "4": "25%",
+      "5": "20%",
+      "6": "16.66%"
+    }
+  },
+
+  "pembelajaranTipe": {
+    "4 Bulan": [
+      "Beginner 1",
+      "Beginner 2",
+      "Basic 1",
+      "Basic 2",
+      "Coding Jr",
+      "Web Programming (Basic)",
+      "Web Programming (Intermediate)"
+    ],
+    "6 Bulan": [
+      "Advance (IOT)",
+      "Coding for Kids",
+      "Desain Grafis (Basic)",
+      "Basic 3",
+      "Desain Grafis (Advance)",
+      "Web Programming (Intermediate)",
+      "Web Programming (Advance)",
+      "MS Office",
+      "Digital Marketing"
+    ]
+  }
 }
+

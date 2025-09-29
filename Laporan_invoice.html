@@ -134,10 +134,6 @@
                     <label class="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">Kelas Level Pembelajaran</label>
                     <select id="kelasFilter" class="w-full px-3 py-2 sm:px-4 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors text-sm">
                         <option value="">Semua Level</option>
-                        <option value="pemula">Pemula</option>
-                        <option value="menengah">Menengah</option>
-                        <option value="lanjutan">Lanjutan</option>
-                        <option value="expert">Expert</option>
                     </select>
                 </div>
 
@@ -145,12 +141,7 @@
                 <div>
                     <label class="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">Kategori Kelas</label>
                     <select id="kategoriFilter" class="w-full px-3 py-2 sm:px-4 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors text-sm">
-                        <option value="">Semua Kategori</option>
-                        <option value="programming">Programming</option>
-                        <option value="design">Design</option>
-                        <option value="marketing">Marketing</option>
-                        <option value="business">Business</option>
-                        <option value="language">Language</option>
+                        <option value="">Semua Kelas</option>
                     </select>
                 </div>
 
@@ -159,25 +150,50 @@
                     <label class="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">Sekolah</label>
                     <select id="sekolahFilter" class="w-full px-3 py-2 sm:px-4 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors text-sm">
                         <option value="">Semua Sekolah</option>
-                        <option value="sma-negeri-1">SMA Negeri 1 Jakarta</option>
-                        <option value="sma-negeri-2">SMA Negeri 2 Jakarta</option>
-                        <option value="sma-swasta-1">SMA Swasta Bina Bangsa</option>
-                        <option value="smk-negeri-1">SMK Negeri 1 Jakarta</option>
-                        <option value="smk-swasta-1">SMK Swasta Teknologi</option>
                     </select>
                 </div>
 
+                <!-- filter pelunasan -->
                 <div>
                     <label class="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">Status Pembayaran</label>
                     <select id="statusFilter" class="w-full px-3 py-2 sm:px-4 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors text-sm">
                         <option value="">Semua</option>
-                        <option value="lunas">Lunas</option>
-                        <option value="belum_lunas">Belum Lunas</option>
+                        <option value="Lunas">Lunas</option>
+                        <option value="Belum Lunas">Belum Lunas</option>
+                        <option value='Kosong'>Belum Terisi</option>
+                    </select>
+                </div>
+
+                <!-- filter bulan -->
+                <div>
+                    <label class="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">Bulan (yang lunas saja)</label>
+                    <select id="bulanFilter" class="w-full px-3 py-2 sm:px-4 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors text-sm">
+                        <option value="">Semua Bulan</option>
+                        <option value="januari">Januari</option>
+                        <option value="februari">Februari</option>
+                        <option value="maret">Maret</option>
+                        <option value="april">April</option>
+                        <option value="mei">Mei</option>
+                        <option value="juni">Juni</option>
+                        <option value="juli">Juli</option>
+                        <option value="agustus">Agustus</option>
+                        <option value="september">September</option>
+                        <option value="oktober">Oktober</option>
+                        <option value="november">November</option>
+                        <option value="desember">Desember</option>
+                    </select>
+                </div>
+
+            <!-- filter tahun -->
+                <div>
+                    <label class="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">Tahun</label>
+                    <select id="tahunFilter" class="w-full px-3 py-2 sm:px-4 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors text-sm">
+                        <option value="">Semua Tahun</option>
                     </select>
                 </div>
 
                 <!-- Tombol Filter -->
-                <div class="flex items-end sm:col-span-2 xl:col-span-1">
+                <div class="flex items-end sm:col-span-2 xl:col-span-1 w-full">
                     <button onclick="applyFilters()" class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-4 py-2 sm:px-6 sm:py-3 rounded-lg hover:from-blue-700 hover:to-indigo-700 transition-all duration-200 font-medium flex items-center justify-center text-sm">
                         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
@@ -235,26 +251,7 @@
                 <div class="flex items-center justify-between">
                     <div class="min-w-0 flex-1">
                         <p class="text-xs sm:text-sm font-medium text-gray-600">Total Pendapatan</p>
-                        <p class="text-lg sm:text-sm font-bold text-purple-600" id="totalPendapatan">Rp 0</p>
-                    </div>
-                    <div class="w-8 h-8 sm:w-23 sm:h-12 bg-purple-100 rounded-lg flex items-center justify-center ml-2">
-                         <div>
-                            <select id="bulanFilter" class="w-full px-3 py-2 sm:px-4 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors text-sm">
-                                <option value="">Semua Bulan</option>
-                                <option value="januari"></option>
-                                <option value="februari"></option>
-                                <option value="maret"></option>
-                                <option value="april"></option>
-                                <option value="mei"></option>
-                                <option value="juni"></option>
-                                <option value="juli"></option>
-                                <option value="agustus"></option>
-                                <option value="september"></option>
-                                <option value="oktober"></option>
-                                <option value="november"></option>
-                                <option value="desember"></option>
-                            </select>
-                        </div>
+                        <p class="text-lg sm:text-2xl font-bold text-purple-600" id="totalPendapatan">Rp 0</p>
                     </div>
                 </div>
             </div>
@@ -272,7 +269,7 @@
                     <thead class="bg-gray-50">
                         <tr>
                             <th class="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">
-                            Pilih
+                                <input type="checkbox" id="selectAll" class="rounded border-gray-300 text-blue-600 focus:ring-blue-500" onchange="toggleSelectAll()">
                             </th>
                             <th class="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">Nama Siswa</th>
                             <th class="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">Kelas Level</th>
@@ -322,7 +319,7 @@
         <!-- Action Buttons -->
         <div class="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-4 justify-between items-center">
             <!-- Invoice Button -->
-            <button onclick="createInvoice()" id="invoiceBtn" class="w-full sm:w-auto bg-gradient-to-r from-orange-600 to-red-600 text-white px-6 py-3 mb-20 sm:px-8 rounded-lg hover:from-orange-700 hover:to-red-700 transition-all duration-200 font-medium flex items-center justify-center shadow-lg text-sm sm:text-base disabled:opacity-50 disabled:cursor-not-allowed">
+            <button onclick="createInvoice()" id="invoiceBtn" class="w-full sm:w-auto bg-gradient-to-r from-orange-600 to-red-600 text-white px-6 py-3 sm:px-8 rounded-lg hover:from-orange-700 hover:to-red-700 transition-all duration-200 font-medium flex items-center justify-center shadow-lg text-sm sm:text-base disabled:opacity-50 disabled:cursor-not-allowed">
                 <svg class="w-4 h-4 sm:w-5 sm:h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                 </svg>
@@ -331,8 +328,6 @@
             </button>
         </div>
     </div>
-
-
     <script>
 
         let dataInvoice = [];
@@ -342,15 +337,21 @@
         fetch("sss.json")
         .then(response => response.json())
         .then(data =>{
-            dataInvoice = data.sampleDataInvoice;
+            dataInvoice = data.sampleDataSiswa;
             renderTable(dataInvoice);
             updateSummary(dataInvoice);
+            populateFilters(dataInvoice);
         }).catch(error => console.error('Data Gagal Dimuat',error));
         
         // Pagination variabel
         let currentPage = 1;
         const recordsPerPage = 10;
         let totalPages = Math.ceil(dataInvoice.length / recordsPerPage);
+
+        function formatDateToMonthYear(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleDateString("id-ID", { month: "long", year: "numeric" });
+        }
 
         function formatCurrency(amount) {
             return new Intl.NumberFormat('id-ID', {
@@ -362,35 +363,31 @@
 
         //format untuk setiap kelas
         function formatKelas(kelas) {
-            const kelasMap = {
-                'pemula': 'Pemula',
-                'menengah': 'Menengah',
-                'lanjutan': 'Lanjutan',
-                'expert': 'Expert'
-            };
-            return kelasMap[kelas] || kelas;
+            return kelas
+            .split("_")               // pisah pakai underscore
+            .map(kata => kata.charAt(0).toUpperCase() + kata.slice(1)) // huruf depan besar
+            .join(" ");
         }
 
-        function formatKategori(kategori) {
-            const kategoriMap = {
-                'programming': 'Programming',
-                'design': 'Design',
-                'marketing': 'Marketing',
-                'business': 'Business',
-                'language': 'Language'
-            };
-            return kategoriMap[kategori] || kategori;
+        function formatNama(nama) {
+            return nama
+            .split("_")               // pisah pakai underscore
+            .map(kata => kata.charAt(0).toUpperCase() + kata.slice(1)) // huruf depan besar
+            .join(" ");               // gabung pakai spasi
+        }
+
+        function formatKategori(pembelajaran) {
+            return pembelajaran
+            .split("_")               // pisah pakai underscore
+            .map(kata => kata.charAt(0).toUpperCase() + kata.slice(1)) // huruf depan besar
+            .join(" ");               // gabung pakai spasi
         }
 
         function formatSekolah(sekolah) {
-            const sekolahMap = {
-                'sma-negeri-1': 'SMA Negeri 1 Jakarta',
-                'sma-negeri-2': 'SMA Negeri 2 Jakarta',
-                'sma-swasta-1': 'SMA Swasta Bina Bangsa',
-                'smk-negeri-1': 'SMK Negeri 1 Jakarta',
-                'smk-swasta-1': 'SMK Swasta Teknologi'
-            };
-            return sekolahMap[sekolah] || sekolah;
+            return sekolah
+            .split("_")               // pisah pakai underscore
+            .map(kata => kata.charAt(0).toUpperCase() + kata.slice(1)) // huruf depan besar
+            .join(" ");        
         }
 
     
@@ -405,9 +402,10 @@
             tableBody.innerHTML = '';
         
             currentData.forEach(item => {
-                const statusClass = item.status === 'lunas' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800';
-                const statusText = item.status === '' ? 'Belum Terisi' : item.status === 'lunas' ? 'Lunas' : 'Belum Lunas';
-                const nullDataMateri = item.kategori === '' ? 'Kosong' : formatKategori(item.kategori);
+                const statusHightlight = item.status === 'Lunas' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800';
+                const biaya = item.biaya === '' ? 'Belum Terisi' : formatCurrency(item.biaya);
+                const statusDate = item.tanggal === '' ? '-' : formatDateToMonthYear(item.tanggal);
+                const nullDataMateri = item.pembelajaran === '' ? 'Kosong' : formatKategori(item.pembelajaran);
                 const nullDataKelas = item.kelas === '' ? 'Kosong' : formatKelas(item.kelas);
             
                 const row = document.createElement('tr');
@@ -440,15 +438,17 @@
                         ${formatSekolah(item.sekolah)}
                     </td>
                     <td class="px-4 sm:px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                        ${formatCurrency(item.biaya)}
+                        ${biaya}
                     </td>
                     <td class="px-4 sm:px-6 py-4 whitespace-nowrap">
-                        <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full ${statusClass}">
-                            ${statusText}
+                        <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full ${statusHightlight}">
+                            ${item.status}
                         </span>
                     </td>
                     <td class="px-4 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                        ${item.tanggal !== '-' ? new Date(item.tanggal).toLocaleDateString('id-ID') : '-'}
+                        <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-purple-100  text-purple-800">
+                            ${statusDate}
+                        </span>
                     </td>
                 `;
                 tableBody.appendChild(row);
@@ -459,8 +459,6 @@
             totalPages = Math.ceil(data.length / recordsPerPage);
             updatePaginationInfo(data);
             updatePaginationButtons(data);
-
-            
         }
 
         // Update info halaman
@@ -521,29 +519,117 @@
 
         // Filter data
         function applyFilters() {
-            const statusFilter = document.getElementById('statusFilter').value;
-            const kelasFilter = document.getElementById('kelasFilter').value;
-            const kategoriFilter = document.getElementById('kategoriFilter').value;
-            const sekolahFilter = document.getElementById('sekolahFilter').value;
-            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-        
-            filteredData = dataInvoice.filter(item => {
-                let statusMatch = !statusFilter || item.status === statusFilter
-                let kelasMatch = !kelasFilter || item.kelas === kelasFilter;
-                let kategoriMatch = !kategoriFilter || item.kategori === kategoriFilter;
-                let sekolahMatch = !sekolahFilter || item.sekolah === sekolahFilter;
-                let searchMatch = !searchTerm ||
-                    item.nama.toLowerCase().includes(searchTerm) ||
-                    formatSekolah(item.sekolah).toLowerCase().includes(searchTerm);
+        const tahunFilter = document.getElementById('tahunFilter').value;
+        const bulanFilter = document.getElementById('bulanFilter').value;
+        const statusFilter = document.getElementById('statusFilter').value;
+        const kelasFilter = document.getElementById('kelasFilter').value;
+        const kategoriFilter = document.getElementById('kategoriFilter').value;
+        const sekolahFilter = document.getElementById('sekolahFilter').value;
             
-                return kelasMatch && kategoriMatch && sekolahMatch && searchMatch && statusMatch;
+        const searchTerm = document.getElementById('searchInput').value;
+
+        filteredData = dataInvoice.filter(item => {
+        // Filter Kelas / Kategori / Sekolah / Status
+        const kelasMatch = !kelasFilter || item.pembelajaran === kelasFilter;
+        const kategoriMatch = !kategoriFilter || item.kelas === kategoriFilter;
+        const sekolahMatch = !sekolahFilter || item.sekolah === sekolahFilter;
+        const statusMatch = !statusFilter || item.status === statusFilter;
+
+            // Filter Search
+            const searchMatch = !searchTerm || 
+                (item.nama && item.nama.includes(searchTerm)) ||
+                (item.sekolah && formatSekolah(item.sekolah).includes(searchTerm));
+
+            // Filter Pelunasan
+            let pelunasanMatch = true;
+            if (statusFilter) {
+                const status = item.status || ""; // jika kosong, dianggap belum lunas
+                if (statusFilter === "Lunas") {
+                    pelunasanMatch = status === "Lunas";
+                } else if (statusFilter === "Belum Lunas") {
+                    pelunasanMatch = status !== "Belum Lunas";
+                } else if (statusFilter = status === '' || status === null || status === undefined) {
+                    pelunasanMatch = status === '';
+                }
+            }
+
+            // Filter Tahun
+            let tahunMatch = true;
+            if (tahunFilter && item.tanggal) {
+                const tahun = new Date(item.tanggal).getFullYear().toString();
+                tahunMatch = tahun === tahunFilter;
+            }
+
+            // Filter Bulan
+            let bulanMatch = true;
+            if (bulanFilter) {
+                if (!item.tanggal) return false;
+                const bulan = new Date(item.tanggal).toLocaleString("id-ID", { month: "long" }).toLowerCase();
+                bulanMatch = bulan === bulanFilter.toLowerCase();
+            }
+
+            return kelasMatch && kategoriMatch && sekolahMatch && statusMatch && searchMatch && pelunasanMatch && tahunMatch && bulanMatch;
             });
-        
-            currentPage = 1; // reset halaman
-            renderTable(filteredData);
-            updateSummary(filteredData);
+
+        renderTable(filteredData);
+        updateSummary(filteredData);
+    }
+
+        //value dari dropdown akan bertambah sesuai data di database
+        function populateFilters(data) {
+            const kelasSelect = document.getElementById("kategoriFilter");
+            const pembelajaranSelect = document.getElementById("kelasFilter");
+            const sekolahSelect = document.getElementById("sekolahFilter");
+            const yearSelect = document.getElementById("tahunFilter");
+            const statusSelect = document.getElementById("statusFilter");
+
+            const kelasSet = new Set();
+            const pembelajaranSet = new Set();
+            const sekolahSet = new Set();
+            const years = new Set();
+            const stat = new Set();
+
+            data.forEach(item => {
+                sekolahSet.add(item.sekolah);
+                kelasSet.add(item.kelas);
+                pembelajaranSet.add(item.pembelajaran);
+
+
+                if (item.tanggal) {
+                    years.add(new Date(item.tanggal).getFullYear()); // ✅ tambahkan tahun
+                }
+            });
+
+
+            [...sekolahSet].sort().forEach(namaSekolah => {
+                const opt = document.createElement("option");
+                opt.value = namaSekolah;
+                opt.textContent = formatSekolah(namaSekolah);
+                sekolahSelect.appendChild(opt);
+            });
+            kelasSet.forEach(namaKelas => {
+                const opt = document.createElement("option");
+                opt.value = namaKelas;
+                opt.textContent = formatSekolah(namaKelas);
+                kelasSelect.appendChild(opt);
+            });
+            [...pembelajaranSet].sort().forEach(namaPembelajaran => {
+                const opt = document.createElement("option");
+                opt.value = namaPembelajaran;
+                opt.textContent = formatSekolah(namaPembelajaran);
+                pembelajaranSelect.appendChild(opt);
+            });
+            [...years].sort((a, b) => b - a).forEach(tahun => { // ✅ urut terbaru ke lama
+                const opt = document.createElement("option");
+                opt.value = tahun;
+                opt.textContent = tahun;
+                yearSelect.appendChild(opt);
+            });
         }
 
+        currentPage = 1; // reset halaman
+        renderTable(filteredData);
+        updateSummary(filteredData);
 
         // Inisialisasi saat halaman load
         document.addEventListener("DOMContentLoaded", function () {
@@ -551,20 +637,21 @@
         });
 
         // Update ringkasan data
-        function updateSummary(dataInvoice) {
-            const totalSiswa = dataInvoice.length;
-            const lunas = dataInvoice.filter(item => item.status === 'lunas').length;
+        function updateSummary(data) {
+            const totalSiswa = data.length;
+            const lunas = data.filter(item => item.status === 'Lunas').length;
             const belumLunas = totalSiswa - lunas;
-            const totalPendapatan = dataInvoice
-                .filter(item => item.status === 'lunas')
-                .reduce((sum, item) => sum + item.biaya, 0);
+            const totalPendapatan = data
+                .filter(item => item && item.status === 'Lunas')
+                .reduce((sum, item) => {
+                    const biaya = Number(item.biaya) || 0;
+                    return sum + biaya;
+                }, 0);
             document.getElementById('totalSiswa').textContent = totalSiswa;
             document.getElementById('siswaLunas').textContent = lunas;
             document.getElementById('siswaBelumLunas').textContent = belumLunas;
             document.getElementById('totalPendapatan').textContent = formatCurrency(totalPendapatan);
         }
-
-
 
         function toggleSidebar() {
             const sidebar = document.getElementById('sidebar');
@@ -639,11 +726,10 @@
             
         }
 
+        
         updateSummary(filteredData);
+        renderTable(dataInvoice);
         updateSelectedCount();
-
-        // Add search event listener
-        document.getElementById('searchInput').addEventListener('input', handleSearch);
     </script>
 
     
