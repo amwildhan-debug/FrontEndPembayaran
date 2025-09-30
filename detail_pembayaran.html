@@ -3,12 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin - Laporan Invoice</title>
+    <title>Admin - Detail Pembayaran</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
         body { font-family: 'Inter', sans-serif; }
+
+        header {
+            top: 0;
+            left: 0;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        
+        @media (min-width: 1024px) {
+            header {
+                width: calc(100% - 16rem);
+            }
+        }
     </style>
 </head>
 <body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen">
@@ -18,74 +31,43 @@
             <div class="flex items-center space-x-3">
                 <div class="w-8 h-8 bg-white rounded-lg flex items-center justify-center">
                     <img src="Logo.png" alt="Logo">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
-                    </img>
                 </div>
-                <span class="text-white font-bold text-lg">Detail Pembayaran</span>
+                <span class="text-white font-bold text-lg">Pembayaran</span>
             </div>
-            <!-- Close button for mobile -->
             <button onclick="toggleSidebar()" class="lg:hidden p-2 text-white hover:bg-white hover:bg-opacity-20 rounded-lg transition-colors">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                 </svg>
             </button>
         </div>
-        
         <aside class="w-64 bg-white border-r h-screen overflow-y-auto">
-            <nav class="mt-8 px-4">
+            <nav class="mt-10 px-4">
                 <div class="space-y-2">
-                    <!-- Dashboard -->
-                    <a href="dashboard.html" class="flex items-center px-4 py-3 text-gray-700 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors">
+                    <a class="flex items-center px-4 py-3 text-gray-400 rounded-lg font-medium pointer-events-none">
                         <i class="fa-solid fa-house w-5 h-5 mr-3"></i>
-                        Dashboard
+                        Manajemen
                     </a>
-                    
-                    <!-- Laporan Invoice -->
-                    <a href="laporan_invoice.html" class="flex items-center px-4 py-3 text-gray-700 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors">
+                    <a class="flex items-center px-4 py-3 text-gray-400 rounded-lg pointer-events-none font-medium">
                         <i class="fa-solid fa-file-invoice w-5 h-5 mr-3"></i>
                         Laporan Invoice
                     </a>
-                    
-                    <!-- Pembayaran -->
-                    <a href="pembayaran.html" class="flex items-center px-4 py-3 text-gray-700 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors">
+                    <a href="#" class="flex items-center px-4 py-3 text-blue-600 bg-blue-50 rounded-lg font-medium">
                         <i class="fa-solid fa-credit-card w-5 h-5 mr-3"></i>
                         Pembayaran
                     </a>
-                    
-                    <!-- Tambah Data -->
-                    <a href="tambah_data.html" class="flex items-center px-4 py-3 text-gray-700 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors">
+                    <a class="flex items-center px-4 py-3 text-gray-400 rounded-lg pointer-events-none font-medium">
                         <i class="fa-solid fa-user-plus w-5 h-5 mr-3"></i>
                         Tambah Data
                     </a>
-                    
-                    <!-- Laporan -->
-                    <a href="laporan.html" class="flex items-center px-4 py-3 text-gray-700 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors">
+                    <a class="flex items-center px-4 py-3 text-gray-400 rounded-lg pointer-events-none font-medium">
                         <i class="fa-solid fa-chart-bar w-5 h-5 mr-3"></i>
                         Laporan
                     </a>
-                    
-                    <!-- Detail Pembayaran (Active) -->
-                    <a href="#" class="flex items-center px-4 py-3 text-blue-600 bg-blue-50 rounded-lg font-medium">
-                        <i class="fa-solid fa-money-check-dollar w-5 h-5 mr-3"></i>
-                        Detail Pembayaran
-                    </a>
                 </div>
-                
-                <!-- User Profile Section -->
-                 <div class="mt-16 pt-8 border-t border-gray-200">
-                    <div class="flex items-center px-4 py-3">
-                        <div class="w-10 h-10 bg-gradient-to-r from-green-400 to-blue-500 rounded-full flex items-center justify-center text-white font-medium">
-                            A
-                        </div>
-                        <div class="ml-3">
-                            <p class="text-sm font-medium text-gray-900">Admin</p>
-                            <p class="text-xs text-gray-500">admin@sekolah.com</p>
-                        </div>
-                    </div>
-                    
-                    <a href="#" class="flex items-center px-4 py-3 mt-2 text-gray-700 rounded-lg hover:bg-red-50 hover:text-red-600 transition-colors">
+                <div class="mt-32 pt-8 border-t border-gray-200">
+                    <a class="flex items-center px-4 py-3 text-gray-400 rounded-lg pointer-events-none font-medium">
                         <i class="fa-solid fa-right-from-bracket w-5 h-5 mr-3"></i>
-                        Logout
+                        Keluar
                     </a>
                 </div>
             </nav>
@@ -96,248 +78,275 @@
     <div class="fixed inset-0 z-40 bg-black bg-opacity-50 lg:hidden hidden" id="sidebarOverlay" onclick="toggleSidebar()"></div>
 
     <!-- Header -->
-    <header class="bg-white shadow-lg border-b border-gray-200 lg:ml-64">
+    <header class="bg-white shadow-lg border-b border-gray-200 lg:ml-64 fixed w-full z-50">
         <div class="px-4 sm:px-6 py-4">
             <div class="flex items-center justify-between">
                 <div class="flex items-center space-x-2 sm:space-x-4 flex-1 min-w-0">
-                    <!-- Mobile menu button -->
                     <button onclick="toggleSidebar()" class="lg:hidden p-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100 transition-colors flex-shrink-0">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                         </svg>
                     </button>
-                    
                     <div class="min-w-0 flex-1">
                         <h1 class="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 truncate">Detail Pembayaran</h1>
-                        <p class="text-xs sm:text-sm text-gray-600 hidden sm:block">Melihat rincian pembayaran siswa</p>
+                        <p class="text-xs sm:text-sm text-gray-600 hidden sm:block">Detail informasi pembayaran siswa</p>
                     </div>
                 </div>
                 <div class="flex items-center space-x-2 sm:space-x-4 flex-shrink-0">
-                    <!-- Notifications -->
                     <button class="p-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors">
                         <i class="fa fa-bell" aria-hidden="true"></i>
                     </button>
-                    
-                    <div class="text-right hidden md:block">
-                        <p class="text-sm font-medium text-gray-900">Admin</p>
-                        <p class="text-xs text-gray-500">Online</p>
-                    </div>
-                    <div class="w-8 h-8 bg-gradient-to-r from-green-400 to-blue-500 rounded-full flex-shrink-0"></div>
                 </div>
             </div>
         </div>
     </header>
 
-    <div class="lg:ml-64 px-4 sm:px-6 py-6 sm:py-8">
+    <div class="lg:ml-64 px-4 sm:px-6 py-6 sm:py-8 pt-20">
+        <!-- Information Cards -->
+        <div id="infoCards" class="space-y-6 mb-8 mt-20"></div>
+
+        <!-- Cicilan Selection Card -->
+        <div class="bg-white rounded-xl shadow-lg p-6 mb-8">
+            <h2 class="text-xl font-semibold text-gray-900 mb-4">Pilihan Cicilan</h2>
+            <div id="cicilanSections" class="space-y-8"></div>
+        </div>
+
+        <!-- Manual Payment Form Card -->
+        <div class="bg-white rounded-xl shadow-lg p-6">
+            <h2 class="text-xl font-semibold text-gray-900 mb-4">Pembayaran Manual</h2>
+            <p class="text-sm text-gray-500 mb-4">Form wajib diisi</p>
+            <form id="manualPaymentForm">
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Nama Pengirim <span class="text-red-500">*</span></label>
+                        <input type="text" id="namaPengirim" placeholder="Contoh: Aji Ramdani" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500" required>
+                    </div>
+                    <div class="relative">
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Dikirim Via <span class="text-red-500">*</span></label>
+                        <input type="text" id="dikirimVia" placeholder="Contoh: BCA 08123456890 Aji Ramdani" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500" required>
+                        <img id="bankLogo" class="absolute right-3 top-9 h-6 w-6 hidden" src="" alt="Bank Logo">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Bukti Pembayaran <span class="text-red-500">*</span></label>
+                        <input type="file" id="buktiPembayaran" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500" required>
+                    </div>
+                </div>
+                <button id="bayarBtn" type="button" class="mt-6 w-full bg-gray-200 text-gray-400 px-6 py-3 rounded-lg cursor-not-allowed transition-all duration-200 font-medium" disabled>
+                    Bayar
+                </button>
+            </form>
+        </div>
     </div>
-        <script>
-            // Sample data
-            const sampleData = [
-                { nama: 'Ahmad Rizki', kelas: 'pemula', kategori: 'programming', sekolah: 'sma-negeri-1', biaya: 750000, status: 'lunas', tanggal: '2024-01-15' },
-                { nama: 'Siti Nurhaliza', kelas: 'menengah', kategori: 'design', sekolah: 'sma-negeri-2', biaya: 1200000, status: 'lunas', tanggal: '2024-01-14' },
-                { nama: 'Budi Santoso', kelas: 'lanjutan', kategori: 'marketing', sekolah: 'sma-swasta-1', biaya: 1800000, status: 'belum_lunas', tanggal: '-' },
-                { nama: 'Maya Sari', kelas: 'expert', kategori: 'business', sekolah: 'smk-negeri-1', biaya: 2500000, status: 'lunas', tanggal: '2024-01-13' },
-                { nama: 'Doni Pratama', kelas: 'pemula', kategori: 'programming', sekolah: 'smk-swasta-1', biaya: 750000, status: 'lunas', tanggal: '2024-01-12' },
-                { nama: 'Rina Wati', kelas: 'menengah', kategori: 'language', sekolah: 'sma-negeri-1', biaya: 1200000, status: 'belum_lunas', tanggal: '-' },
-                { nama: 'Eko Susilo', kelas: 'lanjutan', kategori: 'design', sekolah: 'sma-negeri-2', biaya: 1800000, status: 'lunas', tanggal: '2024-01-11' },
-                { nama: 'Fitri Handayani', kelas: '', kategori: 'kosong', sekolah: 'sma-swasta-1', biaya: 0, status: 'lunas', tanggal: '2024-01-10' },
-                { nama: 'Agus Setiawan', kelas: 'pemula', kategori: 'business', sekolah: 'smk-negeri-1', biaya: 750000, status: 'lunas', tanggal: '2024-01-09' },
-                { nama: 'Dewi Lestari', kelas: 'menengah', kategori: 'language', sekolah: 'smk-swasta-1', biaya: 1200000, status: 'lunas', tanggal: '2024-01-08' },
-            ];
 
-            let filteredData = [...sampleData];
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const urlParams = new URLSearchParams(window.location.search);
+        const nisList = urlParams.get('nis') ? urlParams.get('nis').split(',') : [];
 
-            function formatCurrency(amount) {
-                return new Intl.NumberFormat('id-ID', {
-                    style: 'currency',
-                    currency: 'IDR',
-                    minimumFractionDigits: 0
-                }).format(amount);
+        let paymentData = [];
+
+        function formatRupiah(amount) {
+            return 'Rp ' + parseInt(amount).toLocaleString('id-ID');
+        }
+
+        function roundUpToHundredThousand(amount) {
+            return Math.ceil(amount / 100000) * 100000;
+        }
+
+        function renderInfoCards(selectedStudents) {
+            const infoCards = document.getElementById('infoCards');
+            infoCards.innerHTML = '';
+            selectedStudents.forEach(student => {
+                let biayaPembelajaran = "-";
+                if (student.biaya && student.skema && student.skema > 0) {
+                    biayaPembelajaran = roundUpToHundredThousand(parseInt(student.biaya) / student.skema);
+                }
+                const card = document.createElement('div');
+                card.className = 'bg-white rounded-xl shadow-lg p-6 w-full';
+                card.innerHTML = `
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4">Informasi Pembayaran - ${student.nama}</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                        <div>
+                            <span class="text-sm font-medium text-gray-600">NIS</span>
+                            <p class="text-sm text-gray-900">${student.nis}</p>
+                        </div>
+                        <div>
+                            <span class="text-sm font-medium text-gray-600">Nama Siswa</span>
+                            <p class="text-sm text-gray-900">${student.nama}</p>
+                        </div>
+                        <div>
+                            <span class="text-sm font-medium text-gray-600">Nama Sekolah</span>
+                            <p class="text-sm text-gray-900">${student.sekolah || '-'}</p>
+                        </div>
+                        <div>
+                            <span class="text-sm font-medium text-gray-600">Kelas</span>
+                            <p class="text-sm text-gray-900">${student.kelas || '-'}</p>
+                        </div>
+                        <div>
+                            <span class="text-sm font-medium text-gray-600">Skema</span>
+                            <p class="text-sm text-gray-900">${student.skema ? student.skema + 'x cicilan' : '-'}</p>
+                        </div>
+                        <div>
+                            <span class="text-sm font-medium text-gray-600">Biaya Pembelajaran</span>
+                            <p class="text-sm font-bold text-purple-600">${biayaPembelajaran !== "-" ? formatRupiah(biayaPembelajaran) : '-'}</p>
+                        </div>
+                    </div>
+                `;
+                infoCards.appendChild(card);
+            });
+        }
+
+        function renderCicilanSections(selectedStudents) {
+            const cicilanSections = document.getElementById('cicilanSections');
+            cicilanSections.innerHTML = '';
+            selectedStudents.forEach(student => {
+                if (student.status && student.status.toLowerCase() === 'lunas' || !student.skema) {
+                    return; // Skip if already lunas or no skema
+                }
+                const section = document.createElement('div');
+                section.className = 'border-b pb-4 last:border-b-0';
+                section.innerHTML = `<h4 class="text-md font-medium text-gray-800 mb-4">${student.nama}</h4>`;
+                const cicilanGrid = document.createElement('div');
+                cicilanGrid.className = 'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4';
+                for (let i = 1; i <= Math.min(student.skema, 3); i++) { // Max 3 cicilan per row
+                    const isPaid = i === 1; // Dummy, assume first cicilan paid
+                    const cicilanAmount = roundUpToHundredThousand(parseInt(student.biaya) / student.skema);
+                    const cicilanItem = document.createElement('div');
+                    cicilanItem.className = 'flex items-center p-2 bg-gray-50 rounded-lg';
+                    cicilanItem.innerHTML = `
+                        <input type="checkbox" id="cicilan-${student.nis}-${i}" class="cicilanCheckbox mr-2 rounded border-gray-300 text-blue-600 focus:ring-blue-500" data-nis="${student.nis}" data-cicilan="${i}" ${isPaid ? 'disabled checked' : ''}>
+                        <label for="cicilan-${student.nis}-${i}" class="text-sm text-gray-900">Cicilan ke-${i} - ${formatRupiah(cicilanAmount)}</label>
+                    `;
+                    cicilanGrid.appendChild(cicilanItem);
+                }
+                section.appendChild(cicilanGrid);
+
+                // Add individual generate button per student
+                const generateBtn = document.createElement('button');
+                generateBtn.id = `generateLinkBtn-${student.nis}`;
+                generateBtn.className = 'mt-4 w-full bg-gray-200 text-gray-400 px-6 py-3 rounded-lg cursor-not-allowed transition-all duration-200 font-medium flex items-center justify-center';
+                generateBtn.disabled = true;
+                generateBtn.textContent = 'Hasilkan Tautan Pembayaran untuk ' + student.nama;
+                generateBtn.addEventListener('click', () => {
+                    alert('Tautan pembayaran dihasilkan untuk ' + student.nama);
+                    // Logic to generate link for this student
+                });
+                section.appendChild(generateBtn);
+
+                cicilanSections.appendChild(section);
+            });
+
+            document.querySelectorAll('.cicilanCheckbox').forEach(cb => {
+                cb.addEventListener('change', () => {
+                    selectedStudents.forEach(student => {
+                        updateGenerateButton(student.nis);
+                    });
+                });
+            });
+        }
+
+        function updateGenerateButton(nis) {
+            const generateBtn = document.getElementById(`generateLinkBtn-${nis}`);
+            const checkboxes = document.querySelectorAll(`.cicilanCheckbox[data-nis="${nis}"]:checked`);
+            const checked = checkboxes.length > 0;
+            if (checked) {
+                generateBtn.disabled = false;
+                generateBtn.classList.remove('bg-gray-200', 'text-gray-400', 'cursor-not-allowed');
+                generateBtn.classList.add('bg-gradient-to-r', 'from-blue-600', 'to-indigo-600', 'text-white', 'hover:from-blue-700', 'hover:to-indigo-700');
+            } else {
+                generateBtn.disabled = true;
+                generateBtn.classList.add('bg-gray-200', 'text-gray-400', 'cursor-not-allowed');
+                generateBtn.classList.remove('bg-gradient-to-r', 'from-blue-600', 'to-indigo-600', 'text-white', 'hover:from-blue-700', 'hover:to-indigo-700');
             }
+        }
 
-            function formatKelas(kelas) {
-                const kelasMap = {
-                    'pemula': 'Pemula',
-                    'menengah': 'Menengah',
-                    'lanjutan': 'Lanjutan',
-                    'expert': 'Expert'
-                };
-                return kelasMap[kelas] || kelas;
-            }
+        function setupManualForm() {
+            const form = document.getElementById('manualPaymentForm');
+            const bayarBtn = document.getElementById('bayarBtn');
+            const inputs = form.querySelectorAll('input');
+            const dikirimVia = document.getElementById('dikirimVia');
+            const bankLogo = document.getElementById('bankLogo');
 
-            function formatKategori(kategori) {
-                const kategoriMap = {
-                    'programming': 'Programming',
-                    'design': 'Design',
-                    'marketing': 'Marketing',
-                    'business': 'Business',
-                    'language': 'Language'
-                };
-                return kategoriMap[kategori] || kategori;
-            }
+            const bankLogos = {
+                bca: 'https://via.placeholder.com/24?text=BCA',
+                bri: 'https://via.placeholder.com/24?text=BRI',
+                mandiri: 'https://via.placeholder.com/24?text=Mandiri',
+                bni: 'https://via.placeholder.com/24?text=BNI'
+            };
 
-            function formatSekolah(sekolah) {
-                const sekolahMap = {
-                    'sma-negeri-1': 'SMA Negeri 1 Jakarta',
-                    'sma-negeri-2': 'SMA Negeri 2 Jakarta',
-                    'sma-swasta-1': 'SMA Swasta Bina Bangsa',
-                    'smk-negeri-1': 'SMK Negeri 1 Jakarta',
-                    'smk-swasta-1': 'SMK Swasta Teknologi'
-                };
-                return sekolahMap[sekolah] || sekolah;
-            }
-
-            function renderTable() {
-                const tableBody = document.getElementById('dataTable');
-                
-                tableBody.innerHTML = '';
-
-                filteredData.forEach(item => {
-                    const statusClass = item.status === 'lunas' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800';
-                    const statusText = item.status === 'lunas' ? 'Lunas' : 'Belum Lunas';
-
-                    if (item.biaya === 0) {
-                        item.status = "lunas";
+            function checkForm() {
+                let allFilled = true;
+                inputs.forEach(input => {
+                    if (input.type === 'file') {
+                        if (input.files.length === 0) allFilled = false;
+                    } else {
+                        if (!input.value.trim()) allFilled = false;
                     }
+                });
+                if (allFilled) {
+                    bayarBtn.disabled = false;
+                    bayarBtn.classList.remove('bg-gray-200', 'text-gray-400', 'cursor-not-allowed');
+                    bayarBtn.classList.add('bg-gradient-to-r', 'from-blue-600', 'to-indigo-600', 'text-white', 'hover:from-blue-700', 'hover:to-indigo-700');
+                } else {
+                    bayarBtn.disabled = true;
+                    bayarBtn.classList.add('bg-gray-200', 'text-gray-400', 'cursor-not-allowed');
+                    bayarBtn.classList.remove('bg-gradient-to-r', 'from-blue-600', 'to-indigo-600', 'text-white', 'hover:from-blue-700', 'hover:to-indigo-700');
+                }
+            }
 
-                    if (item.kategori === 'kosong' && '' && item.tanggal === '-' || '' && item.kelas === 'kosong' || '') {
-                        item.kategori = "kosong";
-                        item.tanggal = "-"
-                        item.tingkat = "kosong";
-                    } else if (item.kategori === item.kategori && '' && item.tanggal === '-' || '' && item.kelas === 'kosong' || '') {
-                        item.kategori = innerHTML(kategori) ;
-
+            function updateBankLogo() {
+                const value = dikirimVia.value.toLowerCase();
+                bankLogo.classList.add('hidden');
+                for (const [bank, logoUrl] of Object.entries(bankLogos)) {
+                    if (value.includes(bank)) {
+                        bankLogo.src = logoUrl;
+                        bankLogo.classList.remove('hidden');
+                        break;
                     }
-                    
-
-                    // Table row
-                    
-                    
-                    tableBody.appendChild(row);
-                });
-            }
-
-            function applyFilters() {
-                const kelasFilter = document.getElementById('kelasFilter').value;
-                const kategoriFilter = document.getElementById('kategoriFilter').value;
-                const sekolahFilter = document.getElementById('sekolahFilter').value;
-                const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-
-                filteredData = sampleData.filter(item => {
-                    let kelasMatch = !kelasFilter || item.kelas === kelasFilter;
-                    let kategoriMatch = !kategoriFilter || item.kategori === kategoriFilter;
-                    let sekolahMatch = !sekolahFilter || item.sekolah === sekolahFilter;
-                    let searchMatch = !searchTerm || 
-                        item.nama.toLowerCase().includes(searchTerm) ||
-                        formatSekolah(item.sekolah).toLowerCase().includes(searchTerm);
-
-                    return kelasMatch && kategoriMatch && sekolahMatch && searchMatch;
-                });
-
-                renderTable();
-                updateSummary();
-            }
-
-            function handleSearch() {
-                applyFilters();
-            }
-
-            function updateSummary() {
-                const totalSiswa = filteredData.length;
-                const lunas = filteredData.filter(item => item.status === 'lunas').length;
-                const belumLunas = totalSiswa - lunas;
-                const totalPendapatan = filteredData
-                    .filter(item => item.status === 'lunas')
-                    .reduce((sum, item) => sum + item.biaya, 0);
-
-                document.getElementById('totalSiswa').textContent = totalSiswa;
-                document.getElementById('pembayaranLunas').textContent = lunas;
-                document.getElementById('belumLunas').textContent = belumLunas;
-                document.getElementById('totalPendapatan').textContent = formatCurrency(totalPendapatan);
-                document.getElementById('totalData').textContent = totalSiswa;
-            }
-
-
-            function toggleSidebar() {
-                const sidebar = document.getElementById('sidebar');
-                const overlay = document.getElementById('sidebarOverlay');
-                
-                if (sidebar.classList.contains('-translate-x-full')) {
-                    sidebar.classList.remove('-translate-x-full');
-                    overlay.classList.remove('hidden');
-                } else {
-                    sidebar.classList.add('-translate-x-full');
-                    overlay.classList.add('hidden');
                 }
             }
 
-            function toggleSelectAll() {
-                const selectAllCheckbox = document.getElementById('selectAll');
-                const rowCheckboxes = document.querySelectorAll('.row-checkbox');
-                
-                rowCheckboxes.forEach(checkbox => {
-                    checkbox.checked = selectAllCheckbox.checked;
-                });
-                
-                updateSelectedCount();
-            }
+            inputs.forEach(input => {
+                input.addEventListener('input', checkForm);
+                input.addEventListener('change', checkForm);
+            });
 
-            function updateSelectAll() {
-                const rowCheckboxes = document.querySelectorAll('.row-checkbox');
-                const checkedBoxes = document.querySelectorAll('.row-checkbox:checked');
-                const selectAllCheckbox = document.getElementById('selectAll');
-                
-                if (checkedBoxes.length === 0) {
-                    selectAllCheckbox.indeterminate = false;
-                    selectAllCheckbox.checked = false;
-                } else if (checkedBoxes.length === rowCheckboxes.length) {
-                    selectAllCheckbox.indeterminate = false;
-                    selectAllCheckbox.checked = true;
-                } else {
-                    selectAllCheckbox.indeterminate = true;
-                    selectAllCheckbox.checked = false;
+            dikirimVia.addEventListener('input', updateBankLogo);
+
+            bayarBtn.addEventListener('click', () => {
+                if (!bayarBtn.disabled) {
+                    alert('Pembayaran manual diproses.');
+                    // Logic to submit form
                 }
-                
-                updateSelectedCount();
-            }
+            });
 
-            function updateSelectedCount() {
-                const checkedBoxes = document.querySelectorAll('.row-checkbox:checked');
-                const count = checkedBoxes.length;
-                
-                document.getElementById('selectedCount').textContent = count;
-                document.getElementById('selectedCountMobile').textContent = count;
-                
-                const invoiceBtn = document.getElementById('invoiceBtn');
-                invoiceBtn.disabled = count === 0;
-            }
+            // Initial check
+            checkForm();
+        }
 
-            function createInvoice() {
-                const checkedBoxes = document.querySelectorAll('.row-checkbox:checked');
-                
-                if (checkedBoxes.length === 0) {
-                    alert('Pilih minimal satu siswa untuk membuat invoice!');
-                    return;
-                }
-                
-                const selectedData = Array.from(checkedBoxes).map(checkbox => ({
-                    nama: checkbox.getAttribute('data-nama'),
-                    biaya: parseInt(checkbox.getAttribute('data-biaya'))
+        fetch('sss.json')
+            .then(response => response.json())
+            .then(data => {
+                paymentData = (data.sampleDataSiswa || []).map((item, idx) => ({
+                    ...item,
+                    id: idx + 1
                 }));
-                
-                // Store selected data in localStorage for the invoice page
-                localStorage.setItem('invoiceData', JSON.stringify(selectedData));
-                
-                
-            }
+                const selectedStudents = paymentData.filter(item => nisList.includes(item.nis));
+                renderInfoCards(selectedStudents);
+                renderCicilanSections(selectedStudents);
+                setupManualForm();
+            })
+            .catch(error => {
+                console.error('Error loading data:', error);
+            });
 
-            // Initialize
-            renderTable();
-            updateSummary();
-            updateSelectedCount();
-
-            // Add search event listener
-            document.getElementById('searchInput').addEventListener('input', handleSearch);
-        </script>
+        window.toggleSidebar = function() {
+            const sidebar = document.getElementById('sidebar');
+            const sidebarOverlay = document.getElementById('sidebarOverlay');
+            sidebar.classList.toggle('-translate-x-full');
+            sidebarOverlay.classList.toggle('hidden');
+        };
+    });
+    </script>
 </body>
 </html>

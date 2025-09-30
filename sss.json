@@ -3,7 +3,7 @@
     {
       "nis": "2025001",
       "nama": "Ahmad Rizki",
-      "sekolah": "SMA Negeri 1",
+      "sekolah": "-",
       "biaya": "1800000",
       "pembelajaran": "Beginner 1",
       "kelas": "Private",
@@ -49,7 +49,7 @@
     {
       "nis": "2025004",
       "nama": "Maya Sari",
-      "sekolah": "SMK Negeri 1",
+      "sekolah": "-",
       "biaya": "2600000",
       "pembelajaran": "Advance (IOT)",
       "kelas": "Private",
@@ -109,7 +109,7 @@
     {
       "nis": "2025008",
       "nama": "Fitri Handayani",
-      "sekolah": "SMA Swasta 3",
+      "sekolah": "-",
       "biaya": "2600000",
       "pembelajaran": "Basic 3",
       "kelas": "Private",
@@ -169,7 +169,7 @@
     {
       "nis": "2025012",
       "nama": "Lia Anggraini",
-      "sekolah": "SMK Negeri 3",
+      "sekolah": "-",
       "biaya": "2600000",
       "pembelajaran": "Desain Grafis (Basic)",
       "kelas": "Private",
@@ -214,7 +214,7 @@
     {
       "nis": "2025015",
       "nama": "Fajar Nugraha",
-      "sekolah": "SMK Negeri 1",
+      "sekolah": "-",
       "biaya": "1800000",
       "pembelajaran": "Coding Jr",
       "kelas": "Private",
@@ -274,7 +274,7 @@
     {
       "nis": "2025019",
       "nama": "Bagus Kurniawan",
-      "sekolah": "SMK Negeri 4",
+      "sekolah": "-",
       "biaya": "2600000",
       "pembelajaran": "Web Programming (Advance)",
       "kelas": "Private",
@@ -346,7 +346,7 @@
     {
       "nis": "2025022",
       "nama": "Siti Aminah",
-      "sekolah": "SMK Negeri 5",
+      "sekolah": "-",
       "biaya": "1800000",
       "pembelajaran": "Beginner 2",
       "kelas": "Private",
@@ -361,7 +361,7 @@
     {
       "nis": "2025023",
       "nama": "Dewi Anggraini",
-      "sekolah": "SMA Swasta 7",
+      "sekolah": "-",
       "biaya": "2600000",
       "pembelajaran": "Advance (IOT)",
       "kelas": "Private",
@@ -437,7 +437,7 @@
     {
       "nis": "2025028",
       "nama": "Putra Wijaya",
-      "sekolah": "SMK Negeri 7",
+      "sekolah": "-",
       "biaya": "2600000",
       "pembelajaran": "Desain Grafis (Advance)",
       "kelas": "Private",

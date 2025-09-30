@@ -130,26 +130,18 @@
             
             <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-3 sm:gap-4 xl:gap-6">
                 <!-- Filter Kelas -->
-                <div>
-                    <label class="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">Kelas</label>
+                <div>  
+                    <label class="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">Kelas Level Pembelajaran</label>
                     <select id="kelasFilter" class="w-full px-3 py-2 sm:px-4 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors text-sm">
-                        <option value="">Semua Kelas</option>
-                        <option value="private">Private</option>
-                        <option value="semi-private">Semi Private</option>
-                        <option value="regular">Regular</option>
-                        <option value="ekstrakulikuler">Ekstrakulikuler</option>
+                        <option value="">Semua Level</option>
                     </select>
                 </div>
 
                 <!-- Filter Pembelajaran -->
                 <div>
-                    <label class="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">Pembelajaran</label>
-                    <select id="pembelajaranFilter" class="w-full px-3 py-2 sm:px-4 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors text-sm">
-                        <option value="">Semua Pembelajaran</option>
-                        <option value="web-programming">Web Programmming</option>
-                        <option value="basic-1">Basic 1</option>
-                        <option value="basic-2">Basic 2</option>
-                        <option value="basic-3">Basic 3</option>
+                    <label class="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">Kategori Kelas</label>
+                    <select id="kategoriFilter" class="w-full px-3 py-2 sm:px-4 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors text-sm">
+                        <option value="">Semua Kelas</option>
                     </select>
                 </div>
 
@@ -158,12 +150,48 @@
                     <label class="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">Sekolah</label>
                     <select id="sekolahFilter" class="w-full px-3 py-2 sm:px-4 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors text-sm">
                         <option value="">Semua Sekolah</option>
-                        <option value="smk-pasim">SMK Pasim</option>
-                        <option value="smk-ibadurrahman">SMK Ibadurrahman</option>
-                        <option value="sman-1-sukabumi">SMAN 1 Sukabumi</option>
-                        <option value="sman-3-sukabumi">SMAN 3 Sukabumi</option>
                     </select>
                 </div>
+
+                <!-- filter pelunasan -->
+                <div>
+                    <label class="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">Status Pembayaran (tidak termasuk yang kosong)</label>
+                    <select id="statusFilter" class="w-full px-3 py-2 sm:px-4 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors text-sm">
+                        <option value="">Semua</option>
+                        <option value="Lunas">Lunas</option>
+                        <option value="Belum Lunas">Belum Lunas</option>
+                        <option value='Kosong'>Belum Terisi</option>
+                    </select>
+                </div>
+
+                <!-- filter bulan -->
+                <div>
+                    <label class="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">Bulan</label>
+                    <select id="bulanFilter" class="w-full px-3 py-2 sm:px-4 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors text-sm">
+                        <option value="">Semua Bulan</option>
+                        <option value="januari">Januari</option>
+                        <option value="februari">Februari</option>
+                        <option value="maret">Maret</option>
+                        <option value="april">April</option>
+                        <option value="mei">Mei</option>
+                        <option value="juni">Juni</option>
+                        <option value="juli">Juli</option>
+                        <option value="agustus">Agustus</option>
+                        <option value="september">September</option>
+                        <option value="oktober">Oktober</option>
+                        <option value="november">November</option>
+                        <option value="desember">Desember</option>
+                    </select>
+                </div>
+
+                <!-- filter tahun -->
+                <div>
+                    <label class="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">Tahun</label>
+                    <select id="tahunFilter" class="w-full px-3 py-2 sm:px-4 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors text-sm">
+                        <option value="">Semua Tahun</option>
+                    </select>
+                </div>
+
 
                 <!-- Tombol Filter -->
                 <div class="flex items-end sm:col-span-2 xl:col-span-1">
@@ -177,182 +205,426 @@
                 </div>
             </div>
         </div>
+
+        <!-- Summary Cards -->
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6 mb-6 sm:mb-8">
+            <div class="bg-white rounded-xl shadow-lg p-4 sm:p-6">
+                <div class="flex items-center justify-between">
+                    <div class="min-w-0 flex-1">
+                        <p class="text-xs sm:text-sm font-medium text-gray-600 truncate">Total Siswa</p>
+                        <p class="text-lg sm:text-2xl font-bold text-gray-900" id="totalSiswa">0</p>
+                    </div>
+                    <div class="w-8 h-8 sm:w-12 sm:h-12 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0 ml-2">
+                        <i class="fa fa-user w-4 h-4" aria-hidden="true"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-lg p-4 sm:p-6">
+                <div class="flex items-center justify-between">
+                    <div class="min-w-0 flex-1">
+                        <p class="text-xs sm:text-sm font-medium text-gray-600">Pembayaran Lunas</p>
+                        <p class="text-lg sm:text-2xl font-bold text-green-600" id="siswaLunas">0</p>
+                    </div>
+                    <div class="w-8 h-8 sm:w-12 sm:h-12 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0 ml-2">
+                        <svg class="w-4 h-4 sm:w-6 sm:h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-lg p-4 sm:p-6">
+                <div class="flex items-center justify-between">
+                    <div class="min-w-0 flex-1">
+                        <p class="text-xs sm:text-sm font-medium text-gray-600">Belum Lunas</p>
+                        <p class="text-lg sm:text-2xl font-bold text-red-600" id="siswaBelumLunas">0</p>
+                    </div>
+                    <div class="w-8 h-8 sm:w-12 sm:h-12 bg-red-100 rounded-lg flex items-center justify-center flex-shrink-0 ml-2">
+                        <svg class="w-4 h-4 sm:w-6 sm:h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-lg p-4 sm:p-6 col-span-2 lg:col-span-1">
+                <div class="flex items-center justify-between">
+                    <div class="min-w-0 flex-1">
+                        <p class="text-xs sm:text-sm font-medium text-gray-600">Total Pendapatan</p>
+                        <p class="text-lg sm:text-2xl font-bold text-purple-600" id="totalPendapatan">Rp 0</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Data Table -->
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+            <div class="px-4 py-4 sm:px-6 border-b border-gray-200">
+                <h3 class="text-lg font-semibold text-gray-900">Data Laporan Siswa</h3>
+            </div>
+            
+            <!-- Mobile and Desktop Table View -->
+            <div class="overflow-x-auto">
+                <table class="w-full min-w-[800px]">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">Nama Siswa</th>
+                            <th class="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">Kelas Level</th>
+                            <th class="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">Kategori</th>
+                            <th class="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">Sekolah</th>
+                            <th class="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">Biaya Pendaftaran</th>
+                            <th class="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">Status</th>
+                            <th class="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">Bulan pendaftaran</th>
+                        </tr>
+                    </thead>
+                    <tbody id="dataTable" class="bg-white divide-y divide-gray-200">
+                        <!-- Data akan diisi oleh JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="px-4 py-4 sm:px-6 border-t border-gray-200 bg-gray-50 ">
+                <div class="flex flex-col sm:flex-row justify-between items-center space-y-3 sm:space-y-0">
+                    <!-- Info Text -->
+                    <div class="text-sm text-gray-700">
+                        Menampilkan <span id="startRecord" class="font-medium">0</span> sampai 
+                        <span id="endRecord" class="font-medium">10</span> dari 
+                        <span id="totalRecords" class="font-medium">0</span> data
+                    </div>
+                    <!-- Pagination Buttons -->
+                    <div class="flex items-center space-x-2">
+                        <button id="prevBtn" onclick="changePage(-1)" 
+                            class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-md hover:bg-gray-50 hover:text-gray-700 disabled:opacity-50 disabled:cursor-not-allowed">
+                            Sebelumnya
+                        </button>
+                    
+                        <div id="pageNumbers" class="flex space-x-1">
+                            <!-- Page numbers akan diisi oleh JavaScript -->
+                        </div>
+                    
+                        <button id="nextBtn" onclick="changePage(1)" 
+                            class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-md hover:bg-gray-50 hover:text-gray-700 disabled:opacity-50 disabled:cursor-not-allowed">
+                            Selanjutnya
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const kelasFilter = document.getElementById("kelasFilter");
-        const sekolahFilter = document.getElementById("sekolahFilter"); // kasih id biar gampang
+        //buat array baru agar memudahkan pemanggilan data
+        let dataInvoice = [];
+        let filteredData = [];
+        let currentPage = 1;
+        const recordsPerPage = 10;
+        let totalPages = 1;
+      
+      //ambil data dari file sss.json / database
+      fetch("sss.json")
+        .then(response => response.json())
+        .then(data => {
+          dataInvoice = data.sampleDataSiswa;
+          renderTable(dataInvoice);
+          updateSummary(dataInvoice);
+          populateFilters(dataInvoice);
+        }).catch(error => console.error('Data Gagal Dimuat', error));
 
-        // fungsi untuk cek kondisi
-        function updateSekolahFilter() {
-            if (kelasFilter.value === "private") {
-                sekolahFilter.disabled = true;
-                sekolahFilter.classList.add("bg-gray-100", "cursor-not-allowed", "text-gray-500");
-            } else {
-                sekolahFilter.disabled = false;
-                sekolahFilter.classList.remove("bg-gray-100", "cursor-not-allowed", "text-gray-500");
-            }
-        }
+      //format data
+      function formatDateToMonthYear(dateString) {
+        if (!dateString) return '-';
+        const date = new Date(dateString);
+        if (isNaN(date.getTime())) return '-';
+        return date.toLocaleDateString("id-ID", { month: "long", year: "numeric" });
+      }
 
-        // jalankan saat pertama kali load
-        updateSekolahFilter();
-
-        // jalankan setiap kali dropdown kelas berubah
-        kelasFilter.addEventListener("change", updateSekolahFilter);
-    });
-    
-    // Sample data
-    const sampleData = [
-        { nama: 'Ahmad Rizki', kelas: 'pemula', kategori: 'programming', sekolah: 'sma-negeri-1', biaya: 750000, status: 'lunas', tanggal: '2024-01-15' },
-        { nama: 'Siti Nurhaliza', kelas: 'menengah', kategori: 'design', sekolah: 'sma-negeri-2', biaya: 1200000, status: 'lunas', tanggal: '2024-01-14' },
-        { nama: 'Budi Santoso', kelas: 'lanjutan', kategori: 'marketing', sekolah: 'sma-swasta-1', biaya: 1800000, status: 'belum_lunas', tanggal: '-' },
-        { nama: 'Maya Sari', kelas: 'expert', kategori: 'business', sekolah: 'smk-negeri-1', biaya: 2500000, status: 'lunas', tanggal: '2024-01-13' },
-        { nama: 'Doni Pratama', kelas: 'pemula', kategori: 'programming', sekolah: 'smk-swasta-1', biaya: 750000, status: 'lunas', tanggal: '2024-01-12' },
-        { nama: 'Rina Wati', kelas: 'menengah', kategori: 'language', sekolah: 'sma-negeri-1', biaya: 1200000, status: 'belum_lunas', tanggal: '-' },
-        { nama: 'Eko Susilo', kelas: 'lanjutan', kategori: 'design', sekolah: 'sma-negeri-2', biaya: 1800000, status: 'lunas', tanggal: '2024-01-11' },
-        { nama: 'Fitri Handayani', kelas: '', kategori: 'kosong', sekolah: 'sma-swasta-1', biaya: 0, status: 'lunas', tanggal: '2024-01-10' },
-        { nama: 'Agus Setiawan', kelas: 'pemula', kategori: 'business', sekolah: 'smk-negeri-1', biaya: 750000, status: 'lunas', tanggal: '2024-01-09' },
-        { nama: 'Dewi Lestari', kelas: 'menengah', kategori: 'language', sekolah: 'smk-swasta-1', biaya: 1200000, status: 'lunas', tanggal: '2024-01-08' },
-    ];
-
-    let filteredData = [...sampleData];
-
-    function formatCurrency(amount) {
+      function formatCurrency(amount) {
         return new Intl.NumberFormat('id-ID', {
-            style: 'currency',
-            currency: 'IDR',
-            minimumFractionDigits: 0
+          style: 'currency',
+          currency: 'IDR',
+          minimumFractionDigits: 0
         }).format(amount);
-    }
+      }
+      
+      function formatKelas(kelas) {
+        return kelas
+          .split("_")
+          .map(kata => kata.charAt(0).toUpperCase() + kata.slice(1))
+          .join(" ");
+      }
+      
+      function formatNama(nama) {
+        return nama
+          .split("_")
+          .map(kata => kata.charAt(0).toUpperCase() + kata.slice(1))
+          .join(" ");
+      }
+      
+      function formatKategori(pembelajaran) {
+        return pembelajaran
+          .split("_")
+          .map(kata => kata.charAt(0).toUpperCase() + kata.slice(1))
+          .join(" ");
+      }
+      
+      function formatSekolah(sekolah) {
+        return sekolah
+          .split("_")
+          .map(kata => kata.charAt(0).toUpperCase() + kata.slice(1))
+          .join(" ");
+      }
 
-    function formatKelas(kelas) {
-        const kelasMap = {
-            'pemula': 'Pemula',
-            'menengah': 'Menengah',
-            'lanjutan': 'Lanjutan',
-            'expert': 'Expert'
-        };
-        return kelasMap[kelas] || kelas;
-    }
-
-    function formatKategori(kategori) {
-        const kategoriMap = {
-            'programming': 'Programming',
-            'design': 'Design',
-            'marketing': 'Marketing',
-            'business': 'Business',
-            'language': 'Language'
-        };
-        return kategoriMap[kategori] || kategori;
-    }
-    function formatSekolah(sekolah) {
-        const sekolahMap = {
-            'sma-negeri-1': 'SMA Negeri 1 Jakarta',
-            'sma-negeri-2': 'SMA Negeri 2 Jakarta',
-            'sma-swasta-1': 'SMA Swasta Bina Bangsa',
-            'smk-negeri-1': 'SMK Negeri 1 Jakarta',
-            'smk-swasta-1': 'SMK Swasta Teknologi'
-        };
-        return sekolahMap[sekolah] || sekolah;
-    }
-    function renderTable() {
-        const tableBody = document.getElementById('dataTable');
-        
+    function renderTable(data) {
+        const tableBody = document.getElementById("dataTable");
+        const startIndex = (currentPage - 1) * recordsPerPage;
+        const endIndex = startIndex + recordsPerPage;
+        const currentData = data.slice(startIndex, endIndex);
+      
         tableBody.innerHTML = '';
-        filteredData.forEach(item => {
-            const statusClass = item.status === 'lunas' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800';
-            const statusText = item.status === 'lunas' ? 'Lunas' : 'Belum Lunas';
-            if (item.biaya === 0) {
-                item.status = "lunas";
-            }
-            if (item.kategori === 'kosong' && '' && item.tanggal === '-' || '' && item.kelas === 'kosong' || '') {
-                item.kategori = "kosong";
-                item.tanggal = "-"
-                item.tingkat = "kosong";
-            } else if (item.kategori === item.kategori && '' && item.tanggal === '-' || '' && item.kelas === 'kosong' || '') {
-                 item.kategori = innerHTML(kategori) ;
-             }
-             
-             // Table row
-             const row = document.createElement('tr');
-             row.className = 'hover:bg-gray-50 transition-colors';
-             
-             row.innerHTML = `
-                 <td class="px-4 sm:px-6 py-4 whitespace-nowrap">
-                     <input type="checkbox" class="row-checkbox rounded border-gray-300 text-blue-600 focus:ring-blue-500" data-nama="${item.nama}" data-biaya="${item.biaya}" onchange="updateSelectAll()">
-                 </td>
-                 <td class="px-4 sm:px-6 py-4 whitespace-nowrap">
-                     <div class="flex items-center">
-                         <div class="w-8 h-8 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full flex items-center justify-center text-white text-sm font-medium">
-                             ${item.nama.charAt(0)}
-                         </div>
-                         <div class="ml-3">
-                             <div class="text-sm font-medium text-gray-900">${item.nama}</div>
-                         </div>
-                    </div>
-                </td>
-                <td class="px-4 sm:px-6 py-4 whitespace-nowrap">
-                    <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-blue-100 text-blue-800">
-                        ${formatKelas(item.kelas)}
-                    </span>
-                </td>
-                <td class="px-4 sm:px-6 py-4 whitespace-nowrap">
-                    <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-purple-100 text-purple-800">
-                        ${formatKategori(item.kategori)}
-                    </span>
-                </td>
-                <td class="px-4 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                    ${formatSekolah(item.sekolah)}
-                </td>
-                <td class="px-4 sm:px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                    ${formatCurrency(item.biaya)}
-                </td>
-                <td class="px-4 sm:px-6 py-4 whitespace-nowrap">
-                    <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full ${statusClass}">
-                        ${statusText}
-                    </span>
-                </td>
-                <td class="px-4 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    ${item.tanggal !== '-' ? new Date(item.tanggal).toLocaleDateString('id-ID') : '-'}
-                </td>
-            `;
-            
-            tableBody.appendChild(row);
+      
+        currentData.forEach(item => {
+          const statusHightlight = item.status === 'Lunas' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800';
+          const biaya = item.biaya === '' ? 'Belum Terisi' : formatCurrency(item.biaya);
+          // GANTI item.tanggal -> item.tanggal_lunas
+          const statusDate = item.tanggal_lunas && item.tanggal_lunas !== '' ? formatDateToMonthYear(item.tanggal_lunas) : '-';
+          const nullDataMateri = item.pembelajaran === '' ? 'Kosong' : formatKategori(item.pembelajaran);
+          const nullDataKelas = item.kelas === '' ? 'Kosong' : formatKelas(item.kelas);
+      
+          const row = document.createElement('tr');
+          row.className = 'hover:bg-gray-50 transition-colors';
+          row.innerHTML = `
+            <td class="px-4 sm:px-6 py-4 whitespace-nowrap">
+              <div class="flex items-center">
+                <div class="w-8 h-8 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full flex items-center justify-center text-white text-sm font-medium">
+                  ${item.nama.charAt(0)}
+                </div>
+                <div class="ml-3">
+                  <div class="text-sm font-medium text-gray-900">${item.nama}</div>
+                </div>
+              </div>
+            </td>
+            <td class="px-4 sm:px-6 py-4 whitespace-nowrap">
+              <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-blue-100 text-blue-800">
+                ${nullDataKelas}
+              </span>
+            </td>
+            <td class="px-4 sm:px-6 py-4 whitespace-nowrap">
+              <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-purple-100 text-purple-800">
+                ${nullDataMateri}
+              </span>
+            </td>
+            <td class="px-4 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+              ${formatSekolah(item.sekolah)}
+            </td>
+            <td class="px-4 sm:px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+              ${biaya}
+            </td>
+            <td class="px-4 sm:px-6 py-4 whitespace-nowrap">
+              <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full ${statusHightlight}">
+                ${item.status}
+              </span>
+            </td>
+            <td class="px-4 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+              <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-purple-100  text-purple-800">
+                ${statusDate}
+              </span>
+            </td>
+          `;
+          tableBody.appendChild(row);
         });
+        totalPages = Math.ceil(data.length / recordsPerPage);
+        updatePaginationInfo(data);
+        updatePaginationButtons(data);
     }
-    function applyFilters() {
+
+    //fungsi pembagian data jadi hanya 10 data saja yang di display
+      function updatePaginationInfo(data) {
+        const startRecord = (currentPage - 1) * recordsPerPage + 1;
+        const endRecord = Math.min(currentPage * recordsPerPage, data.length);
+      
+        document.getElementById('startRecord').textContent = data.length ? startRecord : 0;
+        document.getElementById('endRecord').textContent = data.length ? endRecord : 0;
+        document.getElementById('totalRecords').textContent = data.length;
+      
+        pageNumbers.innerHTML = "";
+      
+        let startPage = Math.max(1, currentPage - 2);
+        let endPage = Math.min(totalPages, startPage + 4);
+      
+        if (endPage - startPage < 4) {
+          startPage = Math.max(1, endPage - 4);
+        }
+      
+        for (let i = startPage; i <= endPage; i++) {
+          const pageBtn = document.createElement("button");
+          pageBtn.textContent = i;
+          pageBtn.onclick = () => goToPage(i);
+          pageBtn.className = `px-3 py-2 text-sm font-medium border rounded-md ${
+            i === currentPage
+              ? "bg-blue-600 text-white border-blue-600"
+              : "text-gray-500 bg-white border-gray-300 hover:bg-gray-50 hover:text-gray-700"
+          }`;
+          pageNumbers.appendChild(pageBtn);
+        }
+      }
+      
+      function updatePaginationButtons() {
+        document.getElementById('prevBtn').disabled = currentPage === 1;
+        document.getElementById('nextBtn').disabled = currentPage === totalPages;
+      }
+      
+      function changePage(direction) {
+        if (direction === -1 && currentPage > 1) {
+          currentPage--;
+        } else if (direction === 1 && currentPage < totalPages) {
+          currentPage++;
+        }
+        const data = filteredData.length ? filteredData : dataInvoice;
+        renderTable(data);
+      }
+      
+      function goToPage(page) {
+        if (page >= 1 && page <= totalPages) {
+          currentPage = page;
+          const data = filteredData.length ? filteredData : dataInvoice;
+          renderTable(data);
+        }
+      }
+
+    //jika filter kategori privat maka filter sekolah tidak bisa berjalan
+      document.addEventListener("DOMContentLoaded", function () {
+        const kategoriFilter = document.getElementById("kategoriFilter");
+        const sekolahFilter = document.getElementById("sekolahFilter");
+        function updateSekolahFilter() {
+          if (kategoriFilter.value.toLowerCase() === "private") {
+            sekolahFilter.disabled = true;
+            sekolahFilter.classList.add("bg-gray-100", "cursor-not-allowed", "text-gray-500");
+          } else {
+            sekolahFilter.disabled = false;
+            sekolahFilter.classList.remove("bg-gray-100", "cursor-not-allowed", "text-gray-500");
+          }
+        }
+        updateSekolahFilter();
+        kategoriFilter.addEventListener("change", updateSekolahFilter);
+      });
+
+      //fungsi filter
+      function applyFilters() {
+        const tahunFilter = document.getElementById('tahunFilter').value;
+        const bulanFilter = document.getElementById('bulanFilter').value;
+        const statusFilter = document.getElementById('statusFilter').value;
         const kelasFilter = document.getElementById('kelasFilter').value;
         const kategoriFilter = document.getElementById('kategoriFilter').value;
         const sekolahFilter = document.getElementById('sekolahFilter').value;
-        const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-        filteredData = sampleData.filter(item => {
-            let kelasMatch = !kelasFilter || item.kelas === kelasFilter;
-            let kategoriMatch = !kategoriFilter || item.kategori === kategoriFilter;
-            let sekolahMatch = !sekolahFilter || item.sekolah === sekolahFilter;
-            let searchMatch = !searchTerm || 
-                item.nama.toLowerCase().includes(searchTerm) ||
-                formatSekolah(item.sekolah).toLowerCase().includes(searchTerm);
-            return kelasMatch && kategoriMatch && sekolahMatch && searchMatch;
+        const searchTerm = document.getElementById('searchInput').value;
+      
+        filteredData = dataInvoice.filter(item => {
+          const kelasMatch = !kelasFilter || item.pembelajaran === kelasFilter;
+          const kategoriMatch = !kategoriFilter || item.kelas === kategoriFilter;
+          const sekolahMatch = !sekolahFilter || item.sekolah === sekolahFilter;
+          const statusMatch = !statusFilter || item.status === statusFilter;
+        
+          const searchMatch = !searchTerm ||
+            (item.nama && item.nama.includes(searchTerm)) ||
+            (item.sekolah && formatSekolah(item.sekolah).includes(searchTerm));
+        
+          let pelunasanMatch = true;
+          if (statusFilter) {
+            const status = item.status || "";
+            if (statusFilter === "Lunas") {
+              pelunasanMatch = status === "Lunas";
+            } else if (statusFilter === "Belum Lunas") {
+              pelunasanMatch = status === "Belum Lunas";
+            } else if (statusFilter === "Kosong") {
+              pelunasanMatch = status === "Kosong";
+            }
+          }
+          // Filter Tahun
+          let tahunMatch = true;
+          if (tahunFilter && item.tanggal_lunas) {
+            const tahun = new Date(item.tanggal_lunas).getFullYear().toString();
+            tahunMatch = tahun === tahunFilter;
+          }
+        
+          // Filter Bulan
+          let bulanMatch = true;
+          if (bulanFilter) {
+            if (!item.tanggal_lunas) return false;
+            const bulan = new Date(item.tanggal_lunas).toLocaleString("id-ID", { month: "long" }).toLowerCase();
+            bulanMatch = bulan === bulanFilter.toLowerCase();
+          }
+        
+          return kelasMatch && kategoriMatch && sekolahMatch && statusMatch && searchMatch && pelunasanMatch && tahunMatch && bulanMatch;
         });
-        renderTable();
-        updateSummary();
-    }
-    function handleSearch() {
-        applyFilters();
-    }
-    function updateSummary() {
-        const totalSiswa = filteredData.length;
-        const lunas = filteredData.filter(item => item.status === 'lunas').length;
+      
+        renderTable(filteredData);
+        updateSummary(filteredData);
+      }
+
+      function populateFilters(data) {
+        const kelasSelect = document.getElementById("kategoriFilter");
+        const pembelajaranSelect = document.getElementById("kelasFilter");
+        const sekolahSelect = document.getElementById("sekolahFilter");
+        const yearSelect = document.getElementById("tahunFilter");
+      
+        const kelasSet = new Set();
+        const pembelajaranSet = new Set();
+        const sekolahSet = new Set();
+        const years = new Set();
+      
+        data.forEach(item => {
+          sekolahSet.add(item.sekolah);
+          kelasSet.add(item.kelas);
+          pembelajaranSet.add(item.pembelajaran);
+      
+          if (item.tanggal_lunas) {
+            years.add(new Date(item.tanggal_lunas).getFullYear());
+          }
+        });
+      
+        [...sekolahSet].sort().forEach(namaSekolah => {
+          const opt = document.createElement("option");
+          opt.value = namaSekolah;
+          opt.textContent = formatSekolah(namaSekolah);
+          sekolahSelect.appendChild(opt);
+        });
+        kelasSet.forEach(namaKelas => {
+          const opt = document.createElement("option");
+          opt.value = namaKelas;
+          opt.textContent = formatSekolah(namaKelas);
+          kelasSelect.appendChild(opt);
+        });
+        [...pembelajaranSet].sort().forEach(namaPembelajaran => {
+          const opt = document.createElement("option");
+          opt.value = namaPembelajaran;
+          opt.textContent = formatSekolah(namaPembelajaran);
+          pembelajaranSelect.appendChild(opt);
+        });
+        [...years].sort((a, b) => b - a).forEach(tahun => {
+          const opt = document.createElement("option");
+          opt.value = tahun;
+          opt.textContent = tahun;
+          yearSelect.appendChild(opt);
+        });
+      }
+
+    function updateSummary(data) {
+        const totalSiswa = data.length;
+        const lunas = data.filter(item => item.status === 'Lunas').length;
         const belumLunas = totalSiswa - lunas;
-        const totalPendapatan = filteredData
-            .filter(item => item.status === 'lunas')
-            .reduce((sum, item) => sum + item.biaya, 0);
+        const totalPendapatan = data
+          .filter(item => item && item.status === 'Lunas')
+          .reduce((sum, item) => {
+            const biaya = Number(item.biaya) || 0;
+            return sum + biaya;
+          }, 0);
         document.getElementById('totalSiswa').textContent = totalSiswa;
-        document.getElementById('pembayaranLunas').textContent = lunas;
-        document.getElementById('belumLunas').textContent = belumLunas;
+        document.getElementById('siswaLunas').textContent = lunas;
+        document.getElementById('siswaBelumLunas').textContent = belumLunas;
         document.getElementById('totalPendapatan').textContent = formatCurrency(totalPendapatan);
-        document.getElementById('totalData').textContent = totalSiswa;
     }
+
     function toggleSidebar() {
         const sidebar = document.getElementById('sidebar');
         const overlay = document.getElementById('sidebarOverlay');
@@ -420,14 +692,7 @@
         // Store selected data in localStorage for the invoice page
         localStorage.setItem('invoiceData', JSON.stringify(selectedData));
         
-        
     }
-    // Initialize
-    renderTable();
-    updateSummary();
-    updateSelectedCount();
-    // Add search event listener
-    document.getElementById('searchInput').addEventListener('input', handleSearch);
 </script>
 </body>
 </html>

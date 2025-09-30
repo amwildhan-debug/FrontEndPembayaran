@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -9,6 +10,19 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
         body { font-family: 'Inter', sans-serif; }
+
+        header {
+            top: 0;
+            left: 0;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        
+        @media (min-width: 1024px) {
+            header {
+                width: calc(100% - 16rem);
+            }
+        }
     </style>
 </head>
 <body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen">
@@ -18,56 +32,41 @@
             <div class="flex items-center space-x-3">
                 <div class="w-8 h-8 bg-white rounded-lg flex items-center justify-center">
                     <img src="Logo.png" alt="Logo">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
-                    </img>
                 </div>
                 <span class="text-white font-bold text-lg">Pembayaran</span>
             </div>
-            <!-- Close button for mobile -->
             <button onclick="toggleSidebar()" class="lg:hidden p-2 text-white hover:bg-white hover:bg-opacity-20 rounded-lg transition-colors">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                 </svg>
             </button>
         </div>
-        
         <aside class="w-64 bg-white border-r h-screen overflow-y-auto">
             <nav class="mt-10 px-4">
                 <div class="space-y-2">
-                    <!-- Dashboard -->
-                    <a href="manajemen.html" class="flex items-center px-4 py-3 text-gray-700 rounded-lg font-medium hover:bg-blue-50 hover:text-blue-600 transition-colors">
+                    <a href="manajemen.html" class="flex items-center px-4 py-3 text-gray-700 rounded-lg font-medium hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium">
                         <i class="fa-solid fa-house w-5 h-5 mr-3"></i>
                         Manajemen
                     </a>
-                    
-                    <!-- Laporan Invoice -->
-                    <a href="laporan_invoice.html" class="flex items-center px-4 py-3 text-gray-700 rounded-lg font-medium hover:bg-blue-50 hover:text-blue-600 transition-colors">
+                    <a href="laporan_invoice.html" class="flex items-center px-4 py-3 text-gray-700 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium">
                         <i class="fa-solid fa-file-invoice w-5 h-5 mr-3"></i>
                         Laporan Invoice
                     </a>
-                    
-                    <!-- Pembayaran (Active) -->
                     <a href="#" class="flex items-center px-4 py-3 text-blue-600 bg-blue-50 rounded-lg font-medium">
                         <i class="fa-solid fa-credit-card w-5 h-5 mr-3"></i>
                         Pembayaran
                     </a>
-                    
-                    <!-- Tambah Data -->
-                    <a href="tambah_data.html" class="flex items-center px-4 py-3 text-gray-700 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors">
+                    <a href="tambah_data.html" class="flex items-center px-4 py-3 text-gray-700 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium">
                         <i class="fa-solid fa-user-plus w-5 h-5 mr-3"></i>
                         Tambah Data
                     </a>
-                    
-                    <!-- Laporan -->
-                    <a href="laporan.html" class="flex items-center px-4 py-3 text-gray-700 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors">
+                    <a href="laporan.html" class="flex items-center px-4 py-3 text-gray-700 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium">
                         <i class="fa-solid fa-chart-bar w-5 h-5 mr-3"></i>
                         Laporan
                     </a>
                 </div>
-                
-                <!-- User Profile Section -->
-                 <div class="mt-32 pt-8 border-t border-gray-200">
-                    <a href="#" class="flex items-center px-4 py-3 text-gray-700 rounded-lg hover:bg-red-50 hover:text-red-600 transition-colors">
+                <div class="mt-32 pt-8 border-t border-gray-200">
+                    <a href="#" class="flex items-center px-4 py-3 text-gray-700 rounded-lg hover:bg-red-50 hover:text-red-600 transition-colors font-medium">
                         <i class="fa-solid fa-right-from-bracket w-5 h-5 mr-3"></i>
                         Keluar
                     </a>
@@ -84,20 +83,17 @@
         <div class="px-4 sm:px-6 py-4">
             <div class="flex items-center justify-between">
                 <div class="flex items-center space-x-2 sm:space-x-4 flex-1 min-w-0">
-                    <!-- Mobile menu button -->
                     <button onclick="toggleSidebar()" class="lg:hidden p-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100 transition-colors flex-shrink-0">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                         </svg>
                     </button>
-                    
                     <div class="min-w-0 flex-1">
                         <h1 class="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 truncate">Pembayaran</h1>
                         <p class="text-xs sm:text-sm text-gray-600 hidden sm:block">Kelola dan pantau pembayaran siswa</p>
                     </div>
                 </div>
                 <div class="flex items-center space-x-2 sm:space-x-4 flex-shrink-0">
-                    <!-- Notifications -->
                     <button class="p-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors">
                         <i class="fa fa-bell" aria-hidden="true"></i>
                     </button>
@@ -108,7 +104,7 @@
 
     <div class="lg:ml-64 px-4 sm:px-6 py-6 sm:py-8">
         <!-- Search Bar -->
-        <div class="bg-white rounded-xl shadow-lg p-4 sm:p-6 mb-4 sm:mb-6 mt-20">
+        <div class="bg-white rounded-xl shadow-lg p-4 sm:p-6 mb-4 sm:mb-6 mt-14">
             <div class="relative">
                 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                     <svg class="h-4 w-4 sm:h-5 sm:w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -127,17 +123,13 @@
                 </svg>
                 Filter Pembayaran
             </h2>
-            
             <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-3 sm:gap-4 xl:gap-6">
-                <!-- Filter Sekolah -->
                 <div>
                     <label class="block text-sm md:text-base font-medium text-gray-700 mb-1 sm:mb-2">Sekolah</label>
                     <select id="sekolahFilter" class="w-full px-3 py-3 sm:px-4 sm:py-2 md:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors text-base sm:text-sm md:text-base">
                         <option value="">Semua Sekolah</option>
                     </select>
                 </div>
-
-                <!-- Filter Status -->
                 <div>
                     <label class="block text-sm md:text-base font-medium text-gray-700 mb-1 sm:mb-2">Status</label>
                     <select id="statusFilter" class="w-full px-3 py-3 sm:px-4 sm:py-2 md:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors text-base sm:text-sm md:text-base">
@@ -146,16 +138,12 @@
                         <option value="mencicil">Belum Lunas</option>
                     </select>
                 </div>
-
-                <!-- Filter Kelas -->
                 <div>
                     <label class="block text-sm md:text-base font-medium text-gray-700 mb-1 sm:mb-2">Kelas</label>
                     <select id="kelasFilter" class="w-full px-3 py-3 sm:px-4 sm:py-2 md:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors text-base sm:text-sm md:text-base">
                         <option value="">Semua Kelas</option>
                     </select>
                 </div>
-
-                <!-- Tombol Filter -->
                 <div class="flex items-end sm:col-span-2 xl:col-span-1">
                     <button onclick="applyFilters()" class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-4 py-3 sm:px-6 sm:py-2 md:py-3 rounded-lg hover:from-blue-700 hover:to-indigo-700 transition-all duration-200 font-medium flex items-center justify-center text-base sm:text-sm md:text-base">
                         <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -167,13 +155,15 @@
                 </div>
             </div>
         </div>
-        
+
         <!-- Summary Cards -->
         <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6 mb-6 sm:mb-8">
             <div class="bg-white rounded-xl shadow-lg p-4 sm:p-6">
                 <div class="flex items-center justify-between">
                     <div class="min-w-0 flex-1">
-                        <p class="text-xs sm:text-sm font-medium text-gray-600 truncate">Total Siswa</p>
+                        <p class="text-xs
+
+ sm:text-sm font-medium text-gray-600 truncate">Total Siswa</p>
                         <p class="text-lg sm:text-2xl font-bold text-gray-900" id="totalSiswa">0</p>
                     </div>
                     <div class="w-8 h-8 sm:w-12 sm:h-12 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0 ml-2">
@@ -181,7 +171,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="bg-white rounded-xl shadow-lg p-4 sm:p-6">
                 <div class="flex items-center justify-between">
                     <div class="min-w-0 flex-1">
@@ -195,7 +184,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="bg-white rounded-xl shadow-lg p-4 sm:p-6">
                 <div class="flex items-center justify-between">
                     <div class="min-w-0 flex-1">
@@ -209,7 +197,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="bg-white rounded-xl shadow-lg p-4 sm:p-6 col-span-2 lg:col-span-1">
                 <div class="flex items-center justify-between">
                     <div class="min-w-0 flex-1">
@@ -225,381 +212,494 @@
             <div class="px-4 py-4 sm:px-6 border-b border-gray-200">
                 <h3 class="text-lg font-semibold text-gray-900">Data Pembayaran Siswa</h3>
             </div>
-            
-            <!-- Mobile and Desktop Table View -->
             <div class="overflow-x-auto">
                 <table class="w-full min-w-[800px]">
                     <thead class="bg-gray-50">
-                    <tr>
-                        <th class="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">
-                            Pilih
-                        </th>
-                        <th class="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">NIS</th>
-                        <th class="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">Nama Siswa</th>
-                        <th class="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">Nama Sekolah</th>
-                        <th class="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">Status</th>
-                        <th class="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">Biaya Pembelajaran</th>
-                        <th class="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">Keterangan</th>
-                        <th class="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">Aksi</th>
-                    </tr>
+                        <tr>
+                            <th class="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">
+                                Pilih
+                            </th>
+                            <th class="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">NIS</th>
+                            <th class="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">Nama Siswa</th>
+                            <th class="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">Nama Sekolah</th>
+                            <th class="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">Kelas</th>
+                            <th class="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">Status</th>
+                            <th class="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">Biaya Pembelajaran</th>
+                            <th class="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">Keterangan</th>
+                            <th class="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">Aksi</th>
+                        </tr>
                     </thead>
                     <tbody id="paymentTableBody" class="bg-white divide-y divide-gray-200">
                         <!-- Data akan diisi oleh JavaScript -->
                     </tbody>
                 </table>
-
-                <div class="px-4 py-4 sm:px-6 border-t border-gray-200 bg-gray-50 ">
-                <div class="flex flex-col sm:flex-row justify-between items-center space-y-3 sm:space-y-0">
-                  <div class="text-sm text-gray-700">
-                    Menampilkan <span id="startRecord">0</span> sampai <span id="endRecord">0</span> dari <span id="totalRecords">0</span> data
-                  </div>
-                  <div class="flex items-center space-x-2">
-                    <button id="prevBtn" onclick="changePage(-1)" class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-md hover:bg-gray-50 hover:text-gray-700 disabled:opacity-50 disabled:cursor-not-allowed">Sebelumnya</button>
-                    <div id="pageNumbers" class="flex space-x-1"></div>
-                    <button id="nextBtn" onclick="changePage(1)" class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-md hover:bg-gray-50 hover:text-gray-700 disabled:opacity-50 disabled:cursor-not-allowed">Selanjutnya</button>
-                  </div>
-                </div>
-            </div>
-
-            <!-- Empty State -->
-            <div id="emptyState" class="hidden text-center py-12">
-                <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                </svg>
-                <h3 class="mt-2 text-sm font-medium text-gray-900">Tidak ada data</h3>
-                <p class="mt-1 text-sm text-gray-500">Data pembayaran tidak ditemukan</p>
-            </div>
-        </div>
-    </div>
-
-    <div id="deleteModal" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50">
-        <div class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
-            <div class="mt-3 text-center">
-                <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-red-100">
-                    <svg class="h-6 w-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"></path>
+                
+                <div id="emptyState" class="hidden text-center py-12">
+                    <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                     </svg>
+                    <h3 class="mt-2 text-sm font-medium text-gray-900">Tidak ada data</h3>
+                    <p class="mt-1 text-sm text-gray-500">Data pembayaran tidak ditemukan</p>
                 </div>
-                <h3 class="text-lg font-medium text-gray-900 mt-2">Konfirmasi Hapus</h3>
-                <div class="mt-2 px-7 py-3">
-                    <p class="text-sm text-gray-500">Apakah Anda yakin ingin menghapus data pembayaran ini? Tindakan ini tidak dapat dibatalkan.</p>
-                </div>
-                <div class="flex gap-3 mt-4">
-                    <button id="cancelDelete" class="flex-1 px-4 py-2 bg-gray-300 text-gray-800 text-base font-medium rounded-md hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-300">
-                        Batal
-                    </button>
-                    <button id="confirmDelete" class="flex-1 px-4 py-2 bg-red-600 text-white text-base font-medium rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-300">
-                        Hapus
-                    </button>
+            </div>
+            <div class="px-4 py-4 sm:px-6 border-t border-gray-200 bg-gray-50 ">
+                <div class="flex flex-col sm:flex-row justify-between items-center space-y-3 sm:space-y-0">
+                    <div class="text-sm text-gray-700">
+                        Menampilkan <span id="startRecord">0</span> sampai <span id="endRecord">0</span> dari <span id="totalRecords">0</span> data
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <button id="prevBtn" onclick="changePage(-1)" class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-md hover:bg-gray-50 hover:text-gray-700 disabled:opacity-50 disabled:cursor-not-allowed">Sebelumnya</button>
+                        <div id="pageNumbers" class="flex space-x-1"></div>
+                        <button id="nextBtn" onclick="changePage(1)" class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-md hover:bg-gray-50 hover:text-gray-700 disabled:opacity-50 disabled:cursor-not-allowed">Selanjutnya</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const kelasFilter = document.getElementById("kelasFilter");
-        const sekolahFilter = document.getElementById("sekolahFilter");
-        function updateSekolahFilter() {
-            if (kelasFilter.value === "Private") {
-                sekolahFilter.disabled = true;
-                sekolahFilter.classList.add("bg-gray-100", "cursor-not-allowed", "text-gray-500");
-            } else {
-                sekolahFilter.disabled = false;
-                sekolahFilter.classList.remove("bg-gray-100", "cursor-not-allowed", "text-gray-500");
+        <!-- Bulk Pay Button -->
+        <div class="mt-6">
+           <button id="bulkPayBtn" class="w-full sm:w-auto bg-gray-200 text-gray-400 px-4 py-3 sm:px-6 sm:py-2 md:py-3 rounded-lg cursor-not-allowed transition-all duration-200 font-medium flex items-center justify-center text-base sm:text-sm md:text-base" disabled>
+               <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path>
+               </svg>
+               <span class="hidden sm:inline">Proses Pembayaran <span id="selectedCount"></span></span>
+               <span class="sm:hidden">Bayar <span id="selectedCount"></span></span>
+           </button>
+       </div>
+
+       <!-- Error Modal for Bulk Pay -->
+        <div id="errorModal" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50">
+            <div class="relative top-20 mx-auto p-6 border w-[32rem] shadow-lg rounded-md bg-white">
+                <div class="mt-3 text-center">
+                    <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-red-100">
+                        <svg class="h-6 w-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-medium text-gray-900 mt-2">Peringatan</h3>
+                    <div class="mt-2 px-7 py-3">
+                        <p id="errorMessage" class="text-base text-gray-500"></p>
+                    </div>
+                    <div class="mt-4">
+                        <button id="closeErrorModal" class="w-full px-4 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-base font-medium rounded-md hover:from-blue-700 hover:to-indigo-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            Tutup
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Delete Modal -->
+        <div id="deleteModal" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50">
+            <div class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
+                <div class="mt-3 text-center">
+                    <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-red-100">
+                        <svg class="h-6 w-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-medium text-gray-900 mt-2">Konfirmasi Hapus</h3>
+                    <div class="mt-2 px-7 py-3">
+                        <p class="text-sm text-gray-500">Apakah Anda yakin ingin menghapus data pembayaran ini? Tindakan ini tidak dapat dibatalkan.</p>
+                    </div>
+                    <div class="flex gap-3 mt-4">
+                        <button id="cancelDelete" class="flex-1 px-4 py-2 bg-gray-300 text-gray-800 text-base font-medium rounded-md hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-300">
+                            Batal
+                        </button>
+                        <button id="confirmDelete" class="flex-1 px-4 py-2 bg-red-600 text-white text-base font-medium rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-300">
+                            Hapus
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const kelasFilter = document.getElementById("kelasFilter");
+            const sekolahFilter = document.getElementById("sekolahFilter");
+            const statusFilter = document.getElementById("statusFilter");
+            const searchInput = document.getElementById("searchInput");
+            const bulkPayBtn = document.getElementById("bulkPayBtn");
+
+            if (!kelasFilter || !sekolahFilter || !statusFilter || !searchInput || !bulkPayBtn) {
+                console.error('Elemen filter atau tombol tidak ditemukan!');
+                return;
             }
-        }
-        updateSekolahFilter();
-        kelasFilter.addEventListener("change", updateSekolahFilter);
 
-        let paymentData = [];
-        let filteredData = [];
-        let currentPage = 1;
-        const recordsPerPage = 10;
-        let totalPages = 1;
-        let deleteId = null;
+            // Logika untuk menonaktifkan sekolahFilter jika kelasFilter adalah "Private"
+            function updateSekolahFilter() {
+                if (kelasFilter.value === "Private") {
+                    sekolahFilter.disabled = true;
+                    sekolahFilter.classList.add("bg-gray-100", "cursor-not-allowed", "text-gray-500");
+                } else {
+                    sekolahFilter.disabled = false;
+                    sekolahFilter.classList.remove("bg-gray-100", "cursor-not-allowed", "text-gray-500");
+                }
+            }
 
-        // Helper ambil unique value
-        function getUniqueValues(data, key) {
-            const set = new Set();
-            data.forEach(item => {
-                if (item[key]) set.add(item[key]);
-            });
-            return Array.from(set);
-        }
+            updateSekolahFilter();
+            kelasFilter.addEventListener("change", updateSekolahFilter);
 
-        // Ambil data dari sss.json
-        fetch('sss.json')
-            .then(response => response.json())
-            .then(data => {
-                paymentData = (data.sampleDataSiswa || []).map((item, idx) => {
-                    let biayaPembelajaran = "-";
-                    let keterangan = "-";
-                    if (item.biaya && item.skema && item.skema > 0) {
-                        biayaPembelajaran = roundUpToHundredThousand(parseInt(item.biaya) / item.skema);
-                    if (item.status && item.status.toLowerCase() === "lunas") {
-                            keterangan = "Lunas";
-                    } else if (item.status && item.status.toLowerCase() === "belum lunas") {
-                            keterangan = `${item.skema}x cicilan`;
-                    }
-                    }
-                    return {
-                        ...item,
-                        id: idx + 1,
-                        biayaPembelajaran,
-                        keterangan,
-                        nis: item.nis
-                    };
+            let paymentData = [];
+            let filteredData = [];
+            let currentPage = 1;
+            const recordsPerPage = 10;
+            let totalPages = 1;
+            let deleteId = null;
+            let currentFilters = {
+                status: '',
+                kelas: '',
+                sekolah: ''
+            };
+
+            function getUniqueValues(data, key) {
+                const set = new Set();
+                data.forEach(item => {
+                    if (item[key]) set.add(item[key]);
                 });
-                filteredData = [...paymentData];
-
-                // Populate sekolah dropdown
-                const sekolahList = getUniqueValues(paymentData, 'sekolah');
-                sekolahFilter.innerHTML = '<option value="">Semua Sekolah</option>';
-                sekolahList.forEach(skl => {
-                    const opt = document.createElement('option');
-                    opt.value = skl;
-                    opt.textContent = skl;
-                    sekolahFilter.appendChild(opt);
-                });
-
-                // Populate kelas dropdown
-                const kelasList = getUniqueValues(paymentData, 'kelas');
-                kelasFilter.innerHTML = '<option value="">Semua Kelas</option>';
-                kelasList.forEach(kls => {
-                    const opt = document.createElement('option');
-                    opt.value = kls;
-                    opt.textContent = kls;
-                    kelasFilter.appendChild(opt);
-                });
-
-                renderTable(filteredData);
-                updateSummary(filteredData);
-                updatePaginationInfo(filteredData);
-            })
-            .catch(error => {
-                console.error('Gagal memuat data pembayaran:', error);
-                renderTable([]);
-                updateSummary([]);
-                updatePaginationInfo([]);
-            });
+                return Array.from(set);
+            }
 
             function roundUpToHundredThousand(amount) {
                 return Math.ceil(amount / 100000) * 100000;
             }
 
-        // Render tabel dengan pagination
-        function renderTable(data) {
-            const tbody = document.getElementById('paymentTableBody');
-            const emptyState = document.getElementById('emptyState');
-            if (!tbody) return;
-            const startIndex = (currentPage - 1) * recordsPerPage;
-            const endIndex = startIndex + recordsPerPage;
-            const currentData = data.slice(startIndex, endIndex);
+            function applyFilters(searchTerm = searchInput.value.toLowerCase()) {
+                filteredData = paymentData.filter(item => {
+                    const matchesSearch = item.nama && item.nama.toLowerCase().includes(searchTerm);
+                    const matchesStatus = currentFilters.status ? 
+                        (currentFilters.status === 'lunas' ? item.status && item.status.toLowerCase() === 'lunas' : 
+                         currentFilters.status === 'mencicil' ? item.status && item.status.toLowerCase() === 'belum lunas' : true) : true;
+                    const matchesKelas = currentFilters.kelas ? (item.kelas && item.kelas === currentFilters.kelas) : true;
+                    const matchesSekolah = currentFilters.sekolah && !sekolahFilter.disabled ? 
+                        (item.sekolah && item.sekolah === currentFilters.sekolah) : true;
 
-            if (currentData.length === 0) {
-                tbody.innerHTML = '';
-                emptyState.classList.remove('hidden');
-                return;
-            }
-            emptyState.classList.add('hidden');
-            tbody.innerHTML = currentData.map(item => `
-                <tr class="hover:bg-gray-50">
-                    <td class="px-6 py-4 whitespace-nowrap">
-                        <input type="checkbox" class="rowCheckbox rounded border-gray-300 text-blue-600 focus:ring-blue-500">
-                    </td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${item.nis}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${item.nama}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${item.sekolah || '-'}</td>
-                    <td class="px-6 py-4 whitespace-nowrap">
-                        <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
-                            item.status && item.status.toLowerCase() === 'lunas' 
-                                ? 'bg-green-100 text-green-800' 
-                                : 'bg-yellow-100 text-yellow-800'
-                        }">
-                            ${item.status || '-'}
-                        </span>
-                    </td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                        ${item.biayaPembelajaran !== "-" 
-                            ? `<span class="font-medium">Rp ${item.biayaPembelajaran.toLocaleString('id-ID')}</span>` 
-                            : '<span class="text-gray-400">-</span>'
-                        }
-                    </td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                        ${item.keterangan !== "-" 
-                            ? `<span>${item.keterangan}</span>` 
-                            : '<span class="text-gray-400">-</span>'
-                        }
-                    </td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2">
-                        <button 
-                            onclick="handlePayment(${item.id})" 
-                            class="inline-flex items-center px-3 py-1 border border-transparent text-xs font-medium rounded-md ${
-                                item.status && item.status.toLowerCase() !== 'lunas' 
-                                    ? 'text-white bg-blue-600 hover:bg-blue-700 focus:ring-2 focus:ring-blue-500' 
-                                    : 'text-gray-400 bg-gray-200 cursor-not-allowed'
-                            }"
-                            ${item.status && item.status.toLowerCase() === 'lunas' ? 'disabled' : ''}
-                        >
-                            Bayar
-                        </button>
-                        <button 
-                            onclick="handleEdit(${item.id})" 
-                            class="inline-flex items-center px-3 py-1 border border-transparent text-xs font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:ring-2 focus:ring-green-500"
-                        >
-                            Edit
-                        </button>
-                        <button 
-                            onclick="handleDelete(${item.id})" 
-                            class="inline-flex items-center px-3 py-1 border border-transparent text-xs font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:ring-2 focus:ring-red-500"
-                        >
-                            Hapus
-                        </button>
-                    </td>
-                </tr>
-            `).join('');
-            updatePaginationInfo(data);
-        }
+                    return matchesSearch && matchesStatus && matchesKelas && matchesSekolah;
+                });
 
-        // Pagination info & tombol
-        function updatePaginationInfo(data) {
-            totalPages = Math.ceil(data.length / recordsPerPage);
-            const startRecord = (data.length === 0) ? 0 : (currentPage - 1) * recordsPerPage + 1;
-            const endRecord = Math.min(currentPage * recordsPerPage, data.length);
+                console.log('Data setelah filter:', filteredData);
 
-            document.getElementById('startRecord').textContent = startRecord;
-            document.getElementById('endRecord').textContent = endRecord;
-            document.getElementById('totalRecords').textContent = data.length;
-
-            // Update tombol pagination
-            const pageNumbers = document.getElementById('pageNumbers');
-            pageNumbers.innerHTML = "";
-            let startPage = Math.max(1, currentPage - 2);
-            let endPage = Math.min(totalPages, startPage + 4);
-            if (endPage - startPage < 4) startPage = Math.max(1, endPage - 4);
-            for (let i = startPage; i <= endPage; i++) {
-                const pageBtn = document.createElement("button");
-                pageBtn.textContent = i;
-                pageBtn.onclick = () => goToPage(i);
-                pageBtn.className = `px-3 py-2 text-sm font-medium border rounded-md ${
-                    i === currentPage
-                      ? "bg-blue-600 text-white border-blue-600"
-                      : "text-gray-500 bg-white border-gray-300 hover:bg-gray-50 hover:text-gray-700"
-                }`;
-                pageNumbers.appendChild(pageBtn);
-            }
-            document.getElementById('prevBtn').disabled = currentPage === 1;
-            document.getElementById('nextBtn').disabled = currentPage === totalPages;
-        }
-
-        // Tombol pagination
-        window.changePage = function(direction) {
-            if (direction === -1 && currentPage > 1) {
-                currentPage--;
-            } else if (direction === 1 && currentPage < totalPages) {
-                currentPage++;
-            }
-            renderTable(filteredData);
-        };
-        window.goToPage = function(page) {
-            if (page >= 1 && page <= totalPages) {
-                currentPage = page;
+                currentPage = 1;
                 renderTable(filteredData);
+                updateSummary(filteredData);
+                updateBulkPayButton();
             }
-        };
 
-        function applyFilters() {
-            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-            const statusFilter = document.getElementById('statusFilter').value;
-            const kelasFilterVal = document.getElementById('kelasFilter').value;
-            const sekolahFilterVal = document.getElementById('sekolahFilter').value;
+            window.applyFilters = function() {
+                currentFilters.status = statusFilter.value;
+                currentFilters.kelas = kelasFilter.value;
+                currentFilters.sekolah = sekolahFilter.value;
 
-            filteredData = paymentData.filter(item => {
-                // Search hanya nama siswa
-                const matchesSearch = item.nama && item.nama.toLowerCase().includes(searchTerm);
+                console.log('Filter dropdown diterapkan:', currentFilters);
 
-                // Status
-                let matchesStatus = true;
-                if (statusFilter) {
-                    if (statusFilter === 'lunas') {
-                        matchesStatus = item.status && item.status.toLowerCase() === 'lunas';
-                    } else if (statusFilter === 'mencicil') {
-                        matchesStatus = item.status && item.status.toLowerCase() === 'belum lunas';
+                applyFilters();
+            };
+
+            searchInput.addEventListener("input", () => {
+                applyFilters();
+            });
+
+            function updateBulkPayButton() {
+                const checkboxes = document.querySelectorAll('.rowCheckbox:checked');
+                const selectedCount = document.getElementById('selectedCount');
+                bulkPayBtn.disabled = checkboxes.length === 0;
+                if (bulkPayBtn.disabled) {
+                    bulkPayBtn.classList.remove('text-white', 'bg-gradient-to-r', 'from-blue-600', 'to-indigo-600', 'hover:from-blue-700', 'hover:to-indigo-700', 'focus:ring-2', 'focus:ring-blue-500');
+                    bulkPayBtn.classList.add('text-gray-400', 'bg-gray-200', 'cursor-not-allowed');
+                    selectedCount.textContent = '';
+                } else {
+                    bulkPayBtn.classList.remove('text-gray-400', 'bg-gray-200', 'cursor-not-allowed');
+                    bulkPayBtn.classList.add('text-white', 'bg-gradient-to-r', 'from-blue-600', 'to-indigo-600', 'hover:from-blue-700', 'hover:to-indigo-700', 'focus:ring-2', 'focus:ring-blue-500');
+                    selectedCount.textContent = `(${checkboxes.length})`;
+                }
+            }
+            
+            bulkPayBtn.addEventListener('click', () => {
+                const checkboxes = document.querySelectorAll('.rowCheckbox:checked');
+                const selectedNis = Array.from(checkboxes).map(checkbox => {
+                    const row = checkbox.closest('tr');
+                    return row.querySelector('td:nth-child(2)').textContent; // Kolom NIS
+                });
+                const hasLunas = selectedNis.some(nis => {
+                    const item = paymentData.find(p => p.nis === nis);
+                    return item && item.status && item.status.toLowerCase() === 'lunas';
+                });
+                const validNis = selectedNis.filter(nis => {
+                    const item = paymentData.find(p => p.nis === nis);
+                    return item && item.status && item.status.toLowerCase() !== 'lunas';
+                });
+                        
+                            if (hasLunas) {
+                    const errorMessage = document.getElementById('errorMessage');
+                    if (selectedNis.length === 1) {
+                        errorMessage.textContent = 'Data siswa telah lunas.';
+                    } else {
+                        errorMessage.textContent = 'Salah satu atau lebih data siswa telah lunas.';
+                    }
+                    document.getElementById('errorModal').classList.remove('hidden');
+                } else if (validNis.length > 0) {
+                    window.location.href = `detail_pembayaran.html?nis=${validNis.join(',')}`;
+                }
+            });
+            
+                        // Penanganan penutupan modal
+                        document.getElementById('closeErrorModal').addEventListener('click', () => {
+                document.getElementById('errorModal').classList.add('hidden');
+            });
+            
+            document.getElementById('errorModal').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    this.classList.add('hidden');
+                }
+            });
+
+            function renderTable(data) {
+                const tbody = document.getElementById('paymentTableBody');
+                const emptyState = document.getElementById('emptyState');
+                if (!tbody) return;
+                const startIndex = (currentPage - 1) * recordsPerPage;
+                const endIndex = startIndex + recordsPerPage;
+                const currentData = data.slice(startIndex, endIndex);
+
+                if (currentData.length === 0) {
+                    tbody.innerHTML = '';
+                    emptyState.classList.remove('hidden');
+                    return;
+                }
+                emptyState.classList.add('hidden');
+                tbody.innerHTML = currentData.map(item => `
+                    <tr class="hover:bg-gray-50">
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <input type="checkbox" class="rowCheckbox rounded border-gray-300 text-blue-600 focus:ring-blue-500" data-nis="${item.nis}">
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${item.nis}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${item.nama}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${item.sekolah || '-'}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${item.kelas || '-'}</td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
+                                item.status && item.status.toLowerCase() === 'lunas' 
+                                    ? 'bg-green-100 text-green-800' 
+                                    : 'bg-yellow-100 text-yellow-800'
+                            }">
+                                ${item.status || '-'}
+                            </span>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                            ${item.biayaPembelajaran !== "-" 
+                                ? `<span class="font-medium">Rp ${item.biayaPembelajaran.toLocaleString('id-ID')}</span>` 
+                                : '<span class="text-gray-400">-</span>'
+                            }
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                            ${item.keterangan !== "-" 
+                                ? `<span>${item.keterangan}</span>` 
+                                : '<span class="text-gray-400">-</span>'
+                            }
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2">
+                            <button 
+                                onclick="handlePayment(${item.id})" 
+                                class="inline-flex items-center px-3 py-1 border border-transparent text-xs font-medium rounded-md ${
+                                    item.status && item.status.toLowerCase() !== 'lunas' 
+                                        ? 'text-white bg-blue-600 hover:bg-blue-700 focus:ring-2 focus:ring-blue-500' 
+                                        : 'text-gray-400 bg-gray-200 cursor-not-allowed'
+                                }"
+                                ${item.status && item.status.toLowerCase() === 'lunas' ? 'disabled' : ''}
+                            >
+                                Bayar
+                            </button>
+                            <button 
+                                onclick="handleEdit(${item.id})" 
+                                class="inline-flex items-center px-3 py-1 border border-transparent text-xs font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:ring-2 focus:ring-green-500"
+                            >
+                                Edit
+                            </button>
+                            <button 
+                                onclick="handleDelete(${item.id})" 
+                                class="inline-flex items-center px-3 py-1 border border-transparent text-xs font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:ring-2 focus:ring-red-500"
+                            >
+                                Hapus
+                            </button>
+                        </td>
+                    </tr>
+                `).join('');
+
+                document.querySelectorAll('.rowCheckbox').forEach(checkbox => {
+                    checkbox.addEventListener('change', updateBulkPayButton);
+                });
+
+                updatePaginationInfo(data);
+            }
+
+            function updatePaginationInfo(data) {
+                totalPages = Math.ceil(data.length / recordsPerPage);
+                const startRecord = (data.length === 0) ? 0 : (currentPage - 1) * recordsPerPage + 1;
+                const endRecord = Math.min(currentPage * recordsPerPage, data.length);
+
+                document.getElementById('startRecord').textContent = startRecord;
+                document.getElementById('endRecord').textContent = endRecord;
+                document.getElementById('totalRecords').textContent = data.length;
+
+                const pageNumbers = document.getElementById('pageNumbers');
+                pageNumbers.innerHTML = "";
+                let startPage = Math.max(1, currentPage - 2);
+                let endPage = Math.min(totalPages, startPage + 4);
+                if (endPage - startPage < 4) startPage = Math.max(1, endPage - 4);
+                for (let i = startPage; i <= endPage; i++) {
+                    const pageBtn = document.createElement("button");
+                    pageBtn.textContent = i;
+                    pageBtn.onclick = () => goToPage(i);
+                    pageBtn.className = `px-3 py-2 text-sm font-medium border rounded-md ${
+                        i === currentPage
+                          ? "bg-blue-600 text-white border-blue-600"
+                          : "text-gray-500 bg-white border-gray-300 hover:bg-gray-50 hover:text-gray-700"
+                    }`;
+                    pageNumbers.appendChild(pageBtn);
+                }
+                document.getElementById('prevBtn').disabled = currentPage === 1;
+                document.getElementById('nextBtn').disabled = currentPage === totalPages;
+            }
+
+            window.changePage = function(direction) {
+                if (direction === -1 && currentPage > 1) {
+                    currentPage--;
+                } else if (direction === 1 && currentPage < totalPages) {
+                    currentPage++;
+                }
+                renderTable(filteredData);
+            };
+
+            window.goToPage = function(page) {
+                if (page >= 1 && page <= totalPages) {
+                    currentPage = page;
+                    renderTable(filteredData);
+                }
+            };
+
+            function updateSummary(data) {
+                document.getElementById('totalSiswa').textContent = data.length;
+                document.getElementById('pembayaranLunas').textContent = data.filter(d => d.status && d.status.toLowerCase() === 'lunas').length;
+                document.getElementById('belumLunas').textContent = data.filter(d => d.status && d.status.toLowerCase() === 'belum lunas').length;
+                let totalPendapatan = data.reduce((sum, d) => {
+                    if (d.status && d.status.toLowerCase() === 'lunas' && d.biaya) {
+                        return sum + parseInt(d.biaya);
+                    }
+                    return sum;
+                }, 0);
+                document.getElementById('totalPendapatan').textContent = "Rp " + totalPendapatan.toLocaleString('id-ID');
+            }
+
+            window.handlePayment = function(id) {
+                const item = paymentData.find(p => p.id === id);
+                if (item && item.status && item.status.toLowerCase() !== 'lunas') {
+                    window.location.href = `detail_pembayaran.html?nis=${item.nis}`;
+                }
+            };
+
+            window.handleEdit = function(id) {
+                const item = paymentData.find(p => p.id === id);
+                alert(`Edit data untuk ${item.nama}`);
+            };
+
+            window.handleDelete = function(id) {
+                deleteId = id;
+                document.getElementById('deleteModal').classList.remove('hidden');
+            };
+
+            function confirmDelete() {
+                if (deleteId) {
+                    const index = paymentData.findIndex(p => p.id === deleteId);
+                    if (index > -1) {
+                        paymentData.splice(index, 1);
+                        applyFilters();
                     }
                 }
-
-                // Kelas
-                let matchesKelas = true;
-                if (kelasFilterVal) {
-                    matchesKelas = item.kelas && item.kelas === kelasFilterVal;
-                }
-
-                // Sekolah
-                let matchesSekolah = true;
-                if (sekolahFilterVal && !sekolahFilter.disabled) {
-                    matchesSekolah = item.sekolah && item.sekolah === sekolahFilterVal;
-                }
-
-                return matchesSearch && matchesStatus && matchesKelas && matchesSekolah;
-            });
-            currentPage = 1;
-            renderTable(filteredData);
-            updateSummary(filteredData);
-        }
-
-        // Update summary cards
-        function updateSummary(data) {
-            document.getElementById('totalSiswa').textContent = data.length;
-            document.getElementById('pembayaranLunas').textContent = data.filter(d => d.status && d.status.toLowerCase() === 'lunas').length;
-            document.getElementById('belumLunas').textContent = data.filter(d => d.status && d.status.toLowerCase() === 'belum lunas').length;
-            let totalPendapatan = data.reduce((sum, d) => {
-                if (d.status && d.status.toLowerCase() === 'lunas' && d.biaya) {
-                    return sum + parseInt(d.biaya);
-                }
-                return sum;
-            }, 0);
-            document.getElementById('totalPendapatan').textContent = "Rp " + totalPendapatan.toLocaleString('id-ID');
-        }
-
-        // Event handlers
-        window.handlePayment = function(id) {
-            const item = paymentData.find(p => p.id === id);
-            if (item && item.status && item.status.toLowerCase() !== 'lunas') {
-                window.location.href = `detail_pembayaran.html?nis=${item.nis}`;
-            }
-        };
-        window.handleEdit = function(id) {
-            const item = paymentData.find(p => p.id === id);
-            alert(`Edit data untuk ${item.nama}`);
-        };
-        window.handleDelete = function(id) {
-            deleteId = id;
-            document.getElementById('deleteModal').classList.remove('hidden');
-        };
-        function confirmDelete() {
-            if (deleteId) {
-                const index = paymentData.findIndex(p => p.id === deleteId);
-                if (index > -1) {
-                    paymentData.splice(index, 1);
-                    applyFilters();
-                }
-            }
-            closeDeleteModal();
-        }
-        function closeDeleteModal() {
-            document.getElementById('deleteModal').classList.add('hidden');
-            deleteId = null;
-        }
-        document.getElementById('cancelDelete').addEventListener('click', closeDeleteModal);
-        document.getElementById('confirmDelete').addEventListener('click', confirmDelete);
-        document.getElementById('deleteModal').addEventListener('click', function(e) {
-            if (e.target === this) {
                 closeDeleteModal();
             }
+
+            function closeDeleteModal() {
+                document.getElementById('deleteModal').classList.add('hidden');
+                deleteId = null;
+            }
+
+            document.getElementById('cancelDelete').addEventListener('click', closeDeleteModal);
+            document.getElementById('confirmDelete').addEventListener('click', confirmDelete);
+            document.getElementById('deleteModal').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeDeleteModal();
+                }
+            });
+
+            fetch('sss.json')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`Gagal memuat sss.json: ${response.statusText}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log('Data dari sss.json:', data);
+                    paymentData = (data.sampleDataSiswa || []).map((item, idx) => {
+                        let biayaPembelajaran = "-";
+                        let keterangan = "-";
+                        if (item.biaya && item.skema && item.skema > 0) {
+                            biayaPembelajaran = roundUpToHundredThousand(parseInt(item.biaya) / item.skema);
+                            if (item.status && item.status.toLowerCase() === "lunas") {
+                                keterangan = "Lunas";
+                            } else if (item.status && item.status.toLowerCase() === "belum lunas") {
+                                keterangan = `${item.skema}x cicilan`;
+                            }
+                        }
+                        return {
+                            ...item,
+                            id: idx + 1,
+                            biayaPembelajaran,
+                            keterangan,
+                            nis: item.nis
+                        };
+                    });
+                    filteredData = [...paymentData];
+                    console.log('paymentData:', paymentData);
+                    console.log('filteredData:', filteredData);
+
+                    const sekolahList = getUniqueValues(paymentData, 'sekolah');
+                    sekolahFilter.innerHTML = '<option value="">Semua Sekolah</option>';
+                    sekolahList.forEach(skl => {
+                        const opt = document.createElement('option');
+                        opt.value = skl;
+                        opt.textContent = skl;
+                        sekolahFilter.appendChild(opt);
+                    });
+
+                    const kelasList = getUniqueValues(paymentData, 'kelas');
+                    kelasFilter.innerHTML = '<option value="">Semua Kelas</option>';
+                    kelasList.forEach(kls => {
+                        const opt = document.createElement('option');
+                        opt.value = kls;
+                        opt.textContent = kls;
+                        kelasFilter.appendChild(opt);
+                    });
+
+                    renderTable(filteredData);
+                    updateSummary(filteredData);
+                    updatePaginationInfo(filteredData);
+                })
+                .catch(error => {
+                    console.error('Gagal memuat data pembayaran:', error);
+                    renderTable([]);
+                    updateSummary([]);
+                    updatePaginationInfo([]);
+                });
+
+            window.toggleSidebar = function() {
+                const sidebar = document.getElementById('sidebar');
+                const sidebarOverlay = document.getElementById('sidebarOverlay');
+                sidebar.classList.toggle('-translate-x-full');
+                sidebarOverlay.classList.toggle('hidden');
+            };
         });
-    });
         </script>
-    <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98371f8ee01b40ea',t:'MTc1ODU5OTkwMi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </body>
 </html>
