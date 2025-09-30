@@ -1,14 +1,35 @@
+```html
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin - Laporan Invoice</title>
+    <title>Admin - Manajemen</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
         body { font-family: 'Inter', sans-serif; }
+        #revenueChart {
+            width: 100% !important;
+            min-width: 300px;
+            height: 300px !important;
+            display: block;
+        }
+
+        header {
+            top: 0;
+            left: 0;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        
+        @media (min-width: 1024px) {
+            header {
+                width: calc(100% - 16rem);
+            }
+        }
     </style>
 </head>
 <body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen">
@@ -23,50 +44,37 @@
                 </div>
                 <span class="text-white font-bold text-lg">Manajemen</span>
             </div>
-            <!-- Close button for mobile -->
             <button onclick="toggleSidebar()" class="lg:hidden p-2 text-white hover:bg-white hover:bg-opacity-20 rounded-lg transition-colors">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                 </svg>
             </button>
         </div>
-        
         <aside class="w-64 bg-white border-r h-screen overflow-y-auto">
             <nav class="mt-10 px-4">
                 <div class="space-y-2">
-                    <!-- Dashboard (Active) -->
                     <a href="#" class="flex items-center px-4 py-3 text-blue-600 bg-blue-50 rounded-lg font-medium">
                         <i class="fa-solid fa-house w-5 h-5 mr-3"></i>
                         Manajemen
                     </a>
-                    
-                    <!-- Laporan Invoice -->
                     <a href="laporan_invoice.html" class="flex items-center px-4 py-3 text-gray-700 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors">
                         <i class="fa-solid fa-file-invoice w-5 h-5 mr-3"></i>
                         Laporan Invoice
                     </a>
-                    
-                    <!-- Pembayaran -->
                     <a href="pembayaran.html" class="flex items-center px-4 py-3 text-gray-700 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors">
                         <i class="fa-solid fa-credit-card w-5 h-5 mr-3"></i>
                         Pembayaran
                     </a>
-                    
-                    <!-- Tambah Data -->
                     <a href="tambah_data.html" class="flex items-center px-4 py-3 text-gray-700 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors">
                         <i class="fa-solid fa-user-plus w-5 h-5 mr-3"></i>
                         Tambah Data
                     </a>
-                    
-                    <!-- Laporan -->
                     <a href="laporan.html" class="flex items-center px-4 py-3 text-gray-700 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors">
                         <i class="fa-solid fa-chart-bar w-5 h-5 mr-3"></i>
                         Laporan
                     </a>
                 </div>
-                
-                <!-- User Profile Section -->
-                 <div class="mt-32 pt-8 border-t border-gray-200">
+                <div class="mt-32 pt-8 border-t border-gray-200">
                     <a href="#" class="flex items-center px-4 py-3 text-gray-700 rounded-lg hover:bg-red-50 hover:text-red-600 transition-colors">
                         <i class="fa-solid fa-right-from-bracket w-5 h-5 mr-3"></i>
                         Keluar
@@ -84,20 +92,17 @@
         <div class="px-4 sm:px-6 py-4">
             <div class="flex items-center justify-between">
                 <div class="flex items-center space-x-2 sm:space-x-4 flex-1 min-w-0">
-                    <!-- Mobile menu button -->
                     <button onclick="toggleSidebar()" class="lg:hidden p-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100 transition-colors flex-shrink-0">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                         </svg>
                     </button>
-                    
                     <div class="min-w-0 flex-1">
                         <h1 class="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 truncate">Manajemen</h1>
                         <p class="text-xs sm:text-sm text-gray-600 hidden sm:block">Selamat datang di website sukarobot</p>
                     </div>
                 </div>
                 <div class="flex items-center space-x-2 sm:space-x-4 flex-shrink-0">
-                    <!-- Notifications -->
                     <button class="p-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors">
                         <i class="fa fa-bell" aria-hidden="true"></i>
                     </button>
@@ -112,23 +117,28 @@
             <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                 <div>
                     <h2 class="text-lg font-semibold text-gray-900">Filter Laporan</h2>
-                    <p class="text-sm text-gray-600">Pilih periode untuk melihat data pendapatan</p>
+                    <p class="text-sm text-gray-600">Pilih tahun dan periode untuk melihat data pendapatan</p>
                 </div>
                 <div class="flex flex-col sm:flex-row gap-3">
+                    <select id="yearFilter" class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 bg-white">
+                        <option value="2025">2025</option>
+                        <option value="2024">2024</option>
+                        <option value="2023">2023</option>
+                    </select>
                     <select id="monthFilter" class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 bg-white">
                         <option value="all">Semua Bulan</option>
-                        <option value="2024-01">Januari 2024</option>
-                        <option value="2024-02">Februari 2024</option>
-                        <option value="2024-03">Maret 2024</option>
-                        <option value="2024-04">April 2024</option>
-                        <option value="2024-05">Mei 2024</option>
-                        <option value="2024-06">Juni 2024</option>
-                        <option value="2024-07">Juli 2024</option>
-                        <option value="2024-08">Agustus 2024</option>
-                        <option value="2024-09">September 2024</option>
-                        <option value="2024-10">Oktober 2024</option>
-                        <option value="2024-11">November 2024</option>
-                        <option value="2024-12">Desember 2024</option>
+                        <option value="01">Januari</option>
+                        <option value="02">Februari</option>
+                        <option value="03">Maret</option>
+                        <option value="04">April</option>
+                        <option value="05">Mei</option>
+                        <option value="06">Juni</option>
+                        <option value="07">Juli</option>
+                        <option value="08">Agustus</option>
+                        <option value="09">September</option>
+                        <option value="10">Oktober</option>
+                        <option value="11">November</option>
+                        <option value="12">Desember</option>
                     </select>
                     <button onclick="refreshData()" class="px-4 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-lg hover:bg-indigo-700 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition-colors">
                         <svg class="w-4 h-4 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -142,13 +152,12 @@
 
         <!-- Statistics Cards -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-            <!-- Total Pendapatan -->
             <div class="bg-white rounded-xl shadow-lg p-6">
                 <div class="flex items-center justify-between">
                     <div>
                         <p class="text-sm font-medium text-gray-600">Total Pendapatan</p>
                         <p id="totalRevenue" class="text-2xl font-bold text-green-600">Rp 0</p>
-                        <p id="revenueChange" class="text-sm text-gray-500 mt-1">+0% dari bulan lalu</p>
+                        <p id="revenueChange" class="text-sm text-gray-500 mt-1">+0% dari tahun lalu</p>
                     </div>
                     <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
                         <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -157,8 +166,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Tunggakan -->
             <div class="bg-white rounded-xl shadow-lg p-6">
                 <div class="flex items-center justify-between">
                     <div>
@@ -173,8 +180,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Lunas -->
             <div class="bg-white rounded-xl shadow-lg p-6">
                 <div class="flex items-center justify-between">
                     <div>
@@ -200,7 +205,7 @@
                     </svg>
                     Grafik Pendapatan Bulanan
                 </h2>
-                <p class="text-indigo-100 mt-1">Visualisasi pendapatan per bulan tahun 2024</p>
+                <p class="text-indigo-100 mt-1">Visualisasi pendapatan per bulan</p>
             </div>
             <div class="p-6">
                 <canvas id="revenueChart" width="400" height="200"></canvas>
@@ -213,262 +218,279 @@
                 <h3 class="text-lg font-semibold text-gray-900">Aktivitas Terbaru</h3>
             </div>
             <div class="p-6">
-                <div id="recentActivities" class="space-y-4">
+                <ul id="recentActivities" class="space-y-4">
                     <!-- Activities will be populated by JavaScript -->
-                </div>
+                </ul>
             </div>
         </div>
     </div>
 
-        <script>
-            // Sample data
-            const sampleData = [
-                { nama: 'Ahmad Rizki', kelas: 'pemula', kategori: 'programming', sekolah: 'sma-negeri-1', biaya: 750000, status: 'lunas', tanggal: '2024-01-15' },
-                { nama: 'Siti Nurhaliza', kelas: 'menengah', kategori: 'design', sekolah: 'sma-negeri-2', biaya: 1200000, status: 'lunas', tanggal: '2024-01-14' },
-                { nama: 'Budi Santoso', kelas: 'lanjutan', kategori: 'marketing', sekolah: 'sma-swasta-1', biaya: 1800000, status: 'belum_lunas', tanggal: '-' },
-                { nama: 'Maya Sari', kelas: 'expert', kategori: 'business', sekolah: 'smk-negeri-1', biaya: 2500000, status: 'lunas', tanggal: '2024-01-13' },
-                { nama: 'Doni Pratama', kelas: 'pemula', kategori: 'programming', sekolah: 'smk-swasta-1', biaya: 750000, status: 'lunas', tanggal: '2024-01-12' },
-                { nama: 'Rina Wati', kelas: 'menengah', kategori: 'language', sekolah: 'sma-negeri-1', biaya: 1200000, status: 'belum_lunas', tanggal: '-' },
-                { nama: 'Eko Susilo', kelas: 'lanjutan', kategori: 'design', sekolah: 'sma-negeri-2', biaya: 1800000, status: 'lunas', tanggal: '2024-01-11' },
-                { nama: 'Fitri Handayani', kelas: '', kategori: 'kosong', sekolah: 'sma-swasta-1', biaya: 0, status: 'lunas', tanggal: '2024-01-10' },
-                { nama: 'Agus Setiawan', kelas: 'pemula', kategori: 'business', sekolah: 'smk-negeri-1', biaya: 750000, status: 'lunas', tanggal: '2024-01-09' },
-                { nama: 'Dewi Lestari', kelas: 'menengah', kategori: 'language', sekolah: 'smk-swasta-1', biaya: 1200000, status: 'lunas', tanggal: '2024-01-08' },
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let siswaData = [];
+        let allPayments = [];
+
+        fetch('sss.json')
+            .then(response => response.json())
+            .then(data => {
+                siswaData = data.sampleDataSiswa || [];
+                updateAll();
+            })
+            .catch(error => {
+                console.error('Gagal memuat data:', error);
+                updateAll();
+            });
+
+        function formatCurrency(amount) {
+            return "Rp " + parseInt(amount).toLocaleString('id-ID');
+        }
+
+        function roundUpToJuta(amount) {
+            return Math.ceil(amount / 1000000) * 1000000;
+        }
+
+        function updateAll() {
+            applyMonthFilter();
+            renderChart();
+            renderActivities();
+        }
+
+        function applyMonthFilter() {
+            const yearVal = document.getElementById('yearFilter').value;
+            const monthVal = document.getElementById('monthFilter').value;
+            let totalRevenue = 0;
+            let paidCount = 0;
+            let arrearsCount = 0;
+            let totalArrears = 0;
+            let totalPaidLunas = 0;
+            allPayments = [];
+
+            let prevYearVal = (parseInt(yearVal) - 1).toString();
+            let prevYearRevenue = 0;
+
+            if (monthVal === "all") {
+                siswaData.forEach(item => {
+                    if (item.pembayaran) {
+                        item.pembayaran.forEach(p => {
+                            if (p.tanggal.startsWith(yearVal)) {
+                                totalRevenue += roundUpToJuta(p.jumlah);
+                                allPayments.push({ ...p, nama: item.nama });
+                            }
+                        });
+                    }
+                    if (item.status && item.status.toLowerCase() === "lunas") {
+                        let hasPaymentInYear = item.pembayaran && item.pembayaran.some(p => p.tanggal.startsWith(yearVal));
+                        if (hasPaymentInYear) {
+                            paidCount++;
+                            totalPaidLunas += roundUpToJuta(item.pembayaran[item.pembayaran.length - 1].jumlah);
+                        }
+                    }
+                    if (item.status && item.status.toLowerCase() === "belum lunas") {
+                        let hasDueInYear = item.pembayaran && item.pembayaran.some(p => p.tanggal.startsWith(yearVal));
+                        if (hasDueInYear || !item.pembayaran) {
+                            arrearsCount++;
+                            let sudahBayar = item.pembayaran ? item.pembayaran.reduce((a, b) => a + (b.tanggal.startsWith(yearVal) ? b.jumlah : 0), 0) : 0;
+                            totalArrears += roundUpToJuta(parseInt(item.biaya) - sudahBayar);
+                        }
+                    }
+                });
+                siswaData.forEach(item => {
+                    if (item.pembayaran) {
+                        item.pembayaran.forEach(p => {
+                            if (p.tanggal.startsWith(prevYearVal)) {
+                                prevYearRevenue += roundUpToJuta(p.jumlah);
+                            }
+                        });
+                    }
+                });
+            } else {
+                const filterDate = `${yearVal}-${monthVal}`;
+                const prevMonthDate = getPrevMonth(yearVal, monthVal);
+                let prevMonthRevenue = 0;
+
+                siswaData.forEach(item => {
+                    let pembayaranBulanIni = item.pembayaran ? item.pembayaran.filter(p => p.tanggal.startsWith(filterDate)) : [];
+                    let pembayaranPrevBulan = item.pembayaran ? item.pembayaran.filter(p => p.tanggal.startsWith(prevMonthDate)) : [];
+
+                    pembayaranBulanIni.forEach(p => {
+                        totalRevenue += roundUpToJuta(p.jumlah);
+                        allPayments.push({ ...p, nama: item.nama });
+                    });
+
+                    pembayaranPrevBulan.forEach(p => {
+                        prevMonthRevenue += roundUpToJuta(p.jumlah);
+                    });
+
+                    if (
+                        item.status &&
+                        item.status.toLowerCase() === "lunas" &&
+                        pembayaranBulanIni.length > 0 &&
+                        item.pembayaran[item.pembayaran.length - 1].tanggal.startsWith(filterDate)
+                    ) {
+                        paidCount++;
+                        totalPaidLunas += roundUpToJuta(item.pembayaran[item.pembayaran.length - 1].jumlah);
+                    }
+
+                    if (item.status && item.status.toLowerCase() === "belum lunas") {
+                        let cicilanJatuhTempo = [];
+                        let skema = item.skema || 1;
+                        let biaya = parseInt(item.biaya) || 0;
+                        let startDate = item.pembayaran && item.pembayaran.length > 0 ? item.pembayaran[0].tanggal : null;
+                        if (startDate) {
+                            let start = new Date(startDate);
+                            for (let i = 1; i <= skema; i++) {
+                                let jatuhTempo = new Date(start);
+                                jatuhTempo.setMonth(jatuhTempo.getMonth() + (i - 1));
+                                let jatuhTempoStr = jatuhTempo.toISOString().slice(0, 7);
+                                if (jatuhTempoStr === filterDate) {
+                                    cicilanJatuhTempo.push(i);
+                                }
+                            }
+                        }
+                        if (cicilanJatuhTempo.length > 0 && pembayaranBulanIni.length === 0) {
+                            arrearsCount++;
+                            let tunggakanPerCicilan = roundUpToJuta(biaya / skema);
+                            let tunggakan = tunggakanPerCicilan * cicilanJatuhTempo.length;
+                            totalArrears += tunggakan;
+                        }
+                    }
+                });
+
+                prevYearRevenue = prevMonthRevenue; // Untuk perbandingan, gunakan pendapatan bulan sebelumnya
+            }
+
+            let percentChange = prevYearRevenue === 0 ? 0 : Math.round(((totalRevenue - prevYearRevenue) / prevYearRevenue) * 100);
+
+            document.getElementById('totalRevenue').textContent = formatCurrency(totalRevenue);
+            document.getElementById('totalArrears').textContent = formatCurrency(totalArrears);
+            document.getElementById('arrearsCount').textContent = `${arrearsCount} siswa menunggak`;
+            document.getElementById('totalPaid').textContent = formatCurrency(totalPaidLunas);
+            document.getElementById('paidCount').textContent = `${paidCount} siswa lunas`;
+            document.getElementById('revenueChange').textContent = `${percentChange >= 0 ? '+' : ''}${percentChange}% dari ${monthVal === "all" ? "tahun lalu" : "bulan lalu"}`;
+        }
+
+        function getPrevMonth(year, month) {
+            let yearNum = parseInt(year);
+            let monthNum = parseInt(month);
+            if (monthNum === 1) {
+                yearNum -= 1;
+                monthNum = 12;
+            } else {
+                monthNum -= 1;
+            }
+            return `${yearNum}-${monthNum.toString().padStart(2, '0')}`;
+        }
+
+        function renderChart() {
+            const yearVal = document.getElementById('yearFilter').value;
+            const ctx = document.getElementById('revenueChart').getContext('2d');
+            const months = [
+                `${yearVal}-01`, `${yearVal}-02`, `${yearVal}-03`, `${yearVal}-04`, 
+                `${yearVal}-05`, `${yearVal}-06`, `${yearVal}-07`, `${yearVal}-08`, 
+                `${yearVal}-09`, `${yearVal}-10`, `${yearVal}-11`, `${yearVal}-12`
             ];
-
-            let filteredData = [...sampleData];
-
-            function formatCurrency(amount) {
-                return new Intl.NumberFormat('id-ID', {
-                    style: 'currency',
-                    currency: 'IDR',
-                    minimumFractionDigits: 0
-                }).format(amount);
-            }
-
-            function formatKelas(kelas) {
-                const kelasMap = {
-                    'pemula': 'Pemula',
-                    'menengah': 'Menengah',
-                    'lanjutan': 'Lanjutan',
-                    'expert': 'Expert'
-                };
-                return kelasMap[kelas] || kelas;
-            }
-
-            function formatKategori(kategori) {
-                const kategoriMap = {
-                    'programming': 'Programming',
-                    'design': 'Design',
-                    'marketing': 'Marketing',
-                    'business': 'Business',
-                    'language': 'Language'
-                };
-                return kategoriMap[kategori] || kategori;
-            }
-
-            function formatSekolah(sekolah) {
-                const sekolahMap = {
-                    'sma-negeri-1': 'SMA Negeri 1 Jakarta',
-                    'sma-negeri-2': 'SMA Negeri 2 Jakarta',
-                    'sma-swasta-1': 'SMA Swasta Bina Bangsa',
-                    'smk-negeri-1': 'SMK Negeri 1 Jakarta',
-                    'smk-swasta-1': 'SMK Swasta Teknologi'
-                };
-                return sekolahMap[sekolah] || sekolah;
-            }
-
-            function renderTable() {
-                const tableBody = document.getElementById('dataTable');
-                
-                tableBody.innerHTML = '';
-
-                filteredData.forEach(item => {
-                    const statusClass = item.status === 'lunas' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800';
-                    const statusText = item.status === 'lunas' ? 'Lunas' : 'Belum Lunas';
-
-                    if (item.biaya === 0) {
-                        item.status = "lunas";
+            const monthLabels = [
+                "Jan", "Feb", "Mar", "Apr", "Mei", "Jun", 
+                "Jul", "Agu", "Sep", "Okt", "Nov", "Des"
+            ];
+            let pendapatanPerBulan = months.map(m => {
+                let total = 0;
+                siswaData.forEach(item => {
+                    if (item.pembayaran) {
+                        item.pembayaran.forEach(p => {
+                            if (p.tanggal.startsWith(m)) total += roundUpToJuta(p.jumlah);
+                        });
                     }
+                });
+                return total;
+            });
 
-                    if (item.kategori === 'kosong' && '' && item.tanggal === '-' || '' && item.kelas === 'kosong' || '') {
-                        item.kategori = "kosong";
-                        item.tanggal = "-"
-                        item.tingkat = "kosong";
-                    } else if (item.kategori === item.kategori && '' && item.tanggal === '-' || '' && item.kelas === 'kosong' || '') {
-                        item.kategori = innerHTML(kategori) ;
+            if (window.revenueChartInstance) window.revenueChartInstance.destroy();
 
+            window.revenueChartInstance = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: monthLabels,
+                    datasets: [{
+                        label: `Pendapatan ${yearVal}`,
+                        data: pendapatanPerBulan,
+                        borderColor: '#2563eb',
+                        backgroundColor: 'rgba(37,99,235,0.1)',
+                        fill: true,
+                        tension: 0.3
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { 
+                        legend: { display: false },
+                        title: {
+                            display: true,
+                            text: `Pendapatan Bulanan ${yearVal}`,
+                            font: { size: 16 }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                callback: function(value) {
+                                    return 'Rp ' + value.toLocaleString('id-ID');
+                                }
+                            }
+                        }
                     }
-                    
+                }
+            });
+        }
 
-                    // Table row
-                    const row = document.createElement('tr');
-                    row.className = 'hover:bg-gray-50 transition-colors';
-                    
-                    row.innerHTML = `
-                        <td class="px-4 sm:px-6 py-4 whitespace-nowrap">
-                            <input type="checkbox" class="row-checkbox rounded border-gray-300 text-blue-600 focus:ring-blue-500" data-nama="${item.nama}" data-biaya="${item.biaya}" onchange="updateSelectAll()">
-                        </td>
-                        <td class="px-4 sm:px-6 py-4 whitespace-nowrap">
-                            <div class="flex items-center">
-                                <div class="w-8 h-8 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full flex items-center justify-center text-white text-sm font-medium">
-                                    ${item.nama.charAt(0)}
-                                </div>
-                                <div class="ml-3">
-                                    <div class="text-sm font-medium text-gray-900">${item.nama}</div>
-                                </div>
+        function renderActivities() {
+            const yearVal = document.getElementById('yearFilter').value;
+            const monthVal = document.getElementById('monthFilter').value;
+            let filteredPayments = allPayments.filter(p => p.tanggal.startsWith(yearVal));
+            if (monthVal !== "all") {
+                filteredPayments = filteredPayments.filter(p => p.tanggal.startsWith(`${yearVal}-${monthVal}`));
+            }
+            filteredPayments.sort((a, b) => new Date(b.tanggal) - new Date(a.tanggal));
+            const container = document.getElementById('recentActivities');
+            if (filteredPayments.length === 0) {
+                container.innerHTML = '<p class="text-center text-gray-500">Tidak ada aktivitas terbaru</p>';
+                return;
+            }
+            container.innerHTML = filteredPayments.slice(0, 10).map(act => `
+                <li class="bg-white border border-gray-200 rounded-lg p-4 hover:bg-blue-50 transition-colors cursor-pointer shadow-sm">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-2">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
+                                <i class="fa-solid fa-receipt text-blue-600"></i>
                             </div>
-                        </td>
-                        <td class="px-4 sm:px-6 py-4 whitespace-nowrap">
-                            <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-blue-100 text-blue-800">
-                                ${formatKelas(item.kelas)}
-                            </span>
-                        </td>
-                        <td class="px-4 sm:px-6 py-4 whitespace-nowrap">
-                            <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-purple-100 text-purple-800">
-                                ${formatKategori(item.kategori)}
-                            </span>
-                        </td>
-                        <td class="px-4 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                            ${formatSekolah(item.sekolah)}
-                        </td>
-                        <td class="px-4 sm:px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                            ${formatCurrency(item.biaya)}
-                        </td>
-                        <td class="px-4 sm:px-6 py-4 whitespace-nowrap">
-                            <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full ${statusClass}">
-                                ${statusText}
-                            </span>
-                        </td>
-                        <td class="px-4 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                            ${item.tanggal !== '-' ? new Date(item.tanggal).toLocaleDateString('id-ID') : '-'}
-                        </td>
-                    `;
-                    
-                    tableBody.appendChild(row);
-                });
-            }
+                            <div>
+                                <span class="font-semibold text-gray-900">${act.nama}</span>
+                                <span class="text-gray-500 ml-2">Cicilan ke-${act.cicilan}</span>
+                            </div>
+                        </div>
+                        <div class="text-sm text-gray-700 flex flex-col items-end">
+                            <span class="text-gray-500">Tanggal: ${new Date(act.tanggal).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}</span>
+                            <span class="font-medium text-blue-600">Jumlah: ${formatCurrency(roundUpToJuta(act.jumlah))}</span>
+                        </div>
+                    </div>
+                </li>
+            `).join('');
+        }
 
-            function applyFilters() {
-                const kelasFilter = document.getElementById('kelasFilter').value;
-                const kategoriFilter = document.getElementById('kategoriFilter').value;
-                const sekolahFilter = document.getElementById('sekolahFilter').value;
-                const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+        document.getElementById('yearFilter').addEventListener('change', function() {
+            updateAll();
+        });
 
-                filteredData = sampleData.filter(item => {
-                    let kelasMatch = !kelasFilter || item.kelas === kelasFilter;
-                    let kategoriMatch = !kategoriFilter || item.kategori === kategoriFilter;
-                    let sekolahMatch = !sekolahFilter || item.sekolah === sekolahFilter;
-                    let searchMatch = !searchTerm || 
-                        item.nama.toLowerCase().includes(searchTerm) ||
-                        formatSekolah(item.sekolah).toLowerCase().includes(searchTerm);
+        document.getElementById('monthFilter').addEventListener('change', function() {
+            updateAll();
+        });
 
-                    return kelasMatch && kategoriMatch && sekolahMatch && searchMatch;
-                });
-
-                renderTable();
-                updateSummary();
-            }
-
-            function handleSearch() {
-                applyFilters();
-            }
-
-            function updateSummary() {
-                const totalSiswa = filteredData.length;
-                const lunas = filteredData.filter(item => item.status === 'lunas').length;
-                const belumLunas = totalSiswa - lunas;
-                const totalPendapatan = filteredData
-                    .filter(item => item.status === 'lunas')
-                    .reduce((sum, item) => sum + item.biaya, 0);
-
-                document.getElementById('totalSiswa').textContent = totalSiswa;
-                document.getElementById('pembayaranLunas').textContent = lunas;
-                document.getElementById('belumLunas').textContent = belumLunas;
-                document.getElementById('totalPendapatan').textContent = formatCurrency(totalPendapatan);
-                document.getElementById('totalData').textContent = totalSiswa;
-            }
-
-
-            function toggleSidebar() {
-                const sidebar = document.getElementById('sidebar');
-                const overlay = document.getElementById('sidebarOverlay');
-                
-                if (sidebar.classList.contains('-translate-x-full')) {
-                    sidebar.classList.remove('-translate-x-full');
-                    overlay.classList.remove('hidden');
-                } else {
-                    sidebar.classList.add('-translate-x-full');
-                    overlay.classList.add('hidden');
-                }
-            }
-
-            function toggleSelectAll() {
-                const selectAllCheckbox = document.getElementById('selectAll');
-                const rowCheckboxes = document.querySelectorAll('.row-checkbox');
-                
-                rowCheckboxes.forEach(checkbox => {
-                    checkbox.checked = selectAllCheckbox.checked;
-                });
-                
-                updateSelectedCount();
-            }
-
-            function updateSelectAll() {
-                const rowCheckboxes = document.querySelectorAll('.row-checkbox');
-                const checkedBoxes = document.querySelectorAll('.row-checkbox:checked');
-                const selectAllCheckbox = document.getElementById('selectAll');
-                
-                if (checkedBoxes.length === 0) {
-                    selectAllCheckbox.indeterminate = false;
-                    selectAllCheckbox.checked = false;
-                } else if (checkedBoxes.length === rowCheckboxes.length) {
-                    selectAllCheckbox.indeterminate = false;
-                    selectAllCheckbox.checked = true;
-                } else {
-                    selectAllCheckbox.indeterminate = true;
-                    selectAllCheckbox.checked = false;
-                }
-                
-                updateSelectedCount();
-            }
-
-            function updateSelectedCount() {
-                const checkedBoxes = document.querySelectorAll('.row-checkbox:checked');
-                const count = checkedBoxes.length;
-                
-                document.getElementById('selectedCount').textContent = count;
-                document.getElementById('selectedCountMobile').textContent = count;
-                
-                const invoiceBtn = document.getElementById('invoiceBtn');
-                invoiceBtn.disabled = count === 0;
-            }
-
-            function createInvoice() {
-                const checkedBoxes = document.querySelectorAll('.row-checkbox:checked');
-                
-                if (checkedBoxes.length === 0) {
-                    alert('Pilih minimal satu siswa untuk membuat invoice!');
-                    return;
-                }
-                
-                const selectedData = Array.from(checkedBoxes).map(checkbox => ({
-                    nama: checkbox.getAttribute('data-nama'),
-                    biaya: parseInt(checkbox.getAttribute('data-biaya'))
-                }));
-                
-                // Store selected data in localStorage for the invoice page
-                localStorage.setItem('invoiceData', JSON.stringify(selectedData));
-                
-                
-            }
-
-            // Initialize
-            renderTable();
-            updateSummary();
-            updateSelectedCount();
-
-            // Add search event listener
-            document.getElementById('searchInput').addEventListener('input', handleSearch);
-        </script>
+        window.refreshData = function() {
+            updateAll();
+        };
+    });
+    </script>
 </body>
 </html>

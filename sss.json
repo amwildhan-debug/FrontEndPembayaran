@@ -4,241 +4,302 @@
       "nis": "2025001",
       "nama": "Ahmad Rizki",
       "sekolah": "SMA Negeri 1",
-      "biaya": "18000000",
+      "biaya": "1800000",
       "pembelajaran": "Beginner 1",
       "kelas": "Private",
       "tipe": "4 Bulan",
       "status": "Lunas",
-      "tanggal": "2025-01-15",
-      "skema": 1
+      "tanggal_lunas": "2025-01-15",
+      "skema": 1,
+      "pembayaran": [
+        { "cicilan": 1, "tanggal": "2025-01-15", "jumlah": 1800000 }
+      ]
     },
     {
       "nis": "2025002",
       "nama": "Siti Nurhaliza",
       "sekolah": "SMA Negeri 2",
-      "biaya": "14000000",
+      "biaya": "1400000",
       "pembelajaran": "Basic 1",
       "kelas": "Semi Private",
       "tipe": "4 Bulan",
       "status": "Belum Lunas",
-      "tanggal": "",
-      "skema": 2
+      "tanggal_lunas": "2025-02-20",
+      "skema": 2,
+      "pembayaran": [
+        { "cicilan": 1, "tanggal": "2025-01-20", "jumlah": 700000 }
+      ]
     },
     {
       "nis": "2025003",
       "nama": "Budi Santoso",
       "sekolah": "SMA Swasta 1",
-      "biaya": "14000000",
+      "biaya": "1400000",
       "pembelajaran": "Intermediate (Sensor)",
       "kelas": "Reguler",
       "tipe": "4 Bulan",
       "status": "Belum Lunas",
-      "tanggal": "",
-      "skema": 4
+      "tanggal_lunas": "2025-09-01",
+      "skema": 4,
+      "pembayaran": [
+        { "cicilan": 1, "tanggal": "2025-01-25", "jumlah": 350000 },
+        { "cicilan": 2, "tanggal": "2025-02-25", "jumlah": 350000 }
+      ]
     },
     {
       "nis": "2025004",
       "nama": "Maya Sari",
       "sekolah": "SMK Negeri 1",
-      "biaya": "26000000",
+      "biaya": "2600000",
       "pembelajaran": "Advance (IOT)",
       "kelas": "Private",
       "tipe": "6 Bulan",
       "status": "Lunas",
-      "tanggal": "2025-01-20",
-      "skema": 1
+      "tanggal_lunas": "2025-03-10",
+      "skema": 1,
+      "pembayaran": [
+        { "cicilan": 1, "tanggal": "2025-03-10", "jumlah": 2600000 }
+      ]
     },
     {
       "nis": "2025005",
       "nama": "Doni Pratama",
       "sekolah": "SMK Swasta 2",
-      "biaya": "10000000",
+      "biaya": "1000000",
       "pembelajaran": "Coding Jr",
       "kelas": "Ekskul",
       "tipe": "4 Bulan",
       "status": "Belum Lunas",
-      "tanggal": "",
-      "skema": 3
+      "tanggal_lunas": "2025-01-15",
+      "skema": 3,
+      "pembayaran": [
+        { "cicilan": 1, "tanggal": "2025-01-30", "jumlah": 400000 }
+      ]
     },
     {
       "nis": "2025006",
       "nama": "Rina Wati",
       "sekolah": "SMA Negeri 3",
-      "biaya": "14000000",
+      "biaya": "1400000",
       "pembelajaran": "Coding for Kids",
       "kelas": "Reguler",
       "tipe": "6 Bulan",
       "status": "Belum Lunas",
-      "tanggal": "",
-      "skema": 6
+      "tanggal_lunas": "2025-01-11",
+      "skema": 6,
+      "pembayaran": [
+        { "cicilan": 1, "tanggal": "2025-02-05", "jumlah": 300000 }
+      ]
     },
     {
       "nis": "2025007",
       "nama": "Eko Susilo",
       "sekolah": "SMA Negeri 2",
-      "biaya": "14000000",
+      "biaya": "1400000",
       "pembelajaran": "Web Programming (Basic)",
       "kelas": "Semi Private",
       "tipe": "4 Bulan",
       "status": "Lunas",
-      "tanggal": "2025-02-02",
-      "skema": 1
+      "tanggal_lunas": "2025-02-02",
+      "skema": 1,
+      "pembayaran": [
+        { "cicilan": 1, "tanggal": "2025-02-02", "jumlah": 1400000 }
+      ]
     },
     {
       "nis": "2025008",
       "nama": "Fitri Handayani",
       "sekolah": "SMA Swasta 3",
-      "biaya": "26000000",
+      "biaya": "2600000",
       "pembelajaran": "Basic 3",
       "kelas": "Private",
       "tipe": "6 Bulan",
       "status": "Belum Lunas",
-      "tanggal": "",
-      "skema": 2
+      "tanggal_lunas": "2025-02-27",
+      "skema": 2,
+      "pembayaran": [
+        { "cicilan": 1, "tanggal": "2025-02-10", "jumlah": 1300000 }
+      ]
     },
     {
       "nis": "2025009",
       "nama": "Agus Setiawan",
       "sekolah": "SMK Negeri 2",
-      "biaya": "14000000",
+      "biaya": "1400000",
       "pembelajaran": "MS Office",
       "kelas": "Ekskul",
       "tipe": "6 Bulan",
       "status": "Belum Lunas",
-      "tanggal": "",
-      "skema": 5
+      "tanggal_lunas": "2025-05-06",
+      "skema": 5,
+      "pembayaran": [
+        { "cicilan": 1, "tanggal": "2025-02-15", "jumlah": 280000 }
+      ]
     },
     {
       "nis": "2025010",
       "nama": "Dewi Lestari",
       "sekolah": "SMK Swasta 1",
-      "biaya": "10000000",
+      "biaya": "1000000",
       "pembelajaran": "Basic 2",
       "kelas": "Reguler",
       "tipe": "4 Bulan",
       "status": "Lunas",
-      "tanggal": "2025-01-28",
-      "skema": 1
+      "tanggal_lunas": "2025-01-28",
+      "skema": 1,
+      "pembayaran": [
+        { "cicilan": 1, "tanggal": "2025-01-28", "jumlah": 1000000 }
+      ]
     },
     {
       "nis": "2025011",
       "nama": "Hendra Gunawan",
       "sekolah": "SMA Negeri 4",
-      "biaya": "14000000",
+      "biaya": "1400000",
       "pembelajaran": "Beginner 2",
       "kelas": "Semi Private",
       "tipe": "4 Bulan",
       "status": "Belum Lunas",
-      "tanggal": "",
-      "skema": 3
+      "tanggal_lunas": "2025-03-15",
+      "skema": 3,
+      "pembayaran": [
+        { "cicilan": 1, "tanggal": "2025-03-05", "jumlah": 500000 }
+      ]
     },
     {
       "nis": "2025012",
       "nama": "Lia Anggraini",
       "sekolah": "SMK Negeri 3",
-      "biaya": "26000000",
+      "biaya": "2600000",
       "pembelajaran": "Desain Grafis (Basic)",
       "kelas": "Private",
       "tipe": "6 Bulan",
       "status": "Lunas",
-      "tanggal": "2025-01-25",
-      "skema": 1
+      "tanggal_lunas": "2025-03-10",
+      "skema": 1,
+      "pembayaran": [
+        { "cicilan": 1, "tanggal": "2025-03-10", "jumlah": 2600000 }
+      ]
     },
     {
       "nis": "2025013",
       "nama": "Rizky Saputra",
       "sekolah": "SMA Swasta 2",
-      "biaya": "14000000",
+      "biaya": "1400000",
       "pembelajaran": "Digital Marketing",
       "kelas": "Reguler",
       "tipe": "6 Bulan",
       "status": "Belum Lunas",
-      "tanggal": "",
-      "skema": 6
+      "tanggal_lunas": "2025-01-16",
+      "skema": 6,
+      "pembayaran": [
+        { "cicilan": 1, "tanggal": "2025-03-15", "jumlah": 300000 }
+      ]
     },
     {
       "nis": "2025014",
       "nama": "Nia Marlina",
       "sekolah": "SMA Negeri 1",
-      "biaya": "14000000",
+      "biaya": "1400000",
       "pembelajaran": "Web Programming (Intermediate)",
       "kelas": "Semi Private",
       "tipe": "6 Bulan",
       "status": "Belum Lunas",
-      "tanggal": "",
-      "skema": 4
+      "tanggal_lunas": "2025-06-05",
+      "skema": 4,
+      "pembayaran": [
+        { "cicilan": 1, "tanggal": "2025-03-20", "jumlah": 350000 }
+      ]
     },
     {
       "nis": "2025015",
       "nama": "Fajar Nugraha",
       "sekolah": "SMK Negeri 1",
-      "biaya": "18000000",
+      "biaya": "1800000",
       "pembelajaran": "Coding Jr",
       "kelas": "Private",
       "tipe": "4 Bulan",
       "status": "Lunas",
-      "tanggal": "2025-02-05",
-      "skema": 1
+      "tanggal_lunas": "2025-04-01",
+      "skema": 1,
+      "pembayaran": [
+        { "cicilan": 1, "tanggal": "2025-04-01", "jumlah": 1800000 }
+      ]
     },
     {
       "nis": "2025016",
       "nama": "Intan Permata",
       "sekolah": "SMA Negeri 5",
-      "biaya": "14000000",
+      "biaya": "1400000",
       "pembelajaran": "Advance (IOT)",
       "kelas": "Ekskul",
       "tipe": "6 Bulan",
       "status": "Belum Lunas",
-      "tanggal": "",
-      "skema": 6
+      "tanggal_lunas": "2025-01-09",
+      "skema": 6,
+      "pembayaran": [
+        { "cicilan": 1, "tanggal": "2025-04-10", "jumlah": 300000}
+      ]
     },
     {
       "nis": "2025017",
       "nama": "Yudi Firmansyah",
       "sekolah": "SMK Swasta 4",
-      "biaya": "14000000",
+      "biaya": "1400000",
       "pembelajaran": "Basic 3",
       "kelas": "Reguler",
       "tipe": "4 Bulan",
       "status": "Belum Lunas",
-      "tanggal": "",
-      "skema": 2
+      "tanggal_lunas": "2025-01-30",
+      "skema": 2,
+      "pembayaran": [
+        { "cicilan": 1, "tanggal": "2025-04-15", "jumlah": 700000 }
+      ]
     },
     {
       "nis": "2025018",
       "nama": "Salsa Amelia",
       "sekolah": "SMA Negeri 6",
-      "biaya": "26000000",
+      "biaya": "2600000",
       "pembelajaran": "Desain Grafis (Advance)",
       "kelas": "Semi Private",
       "tipe": "6 Bulan",
       "status": "Lunas",
-      "tanggal": "2025-01-30",
-      "skema": 1
+      "tanggal_lunas": "2025-04-20",
+      "skema": 1,
+      "pembayaran": [
+        { "cicilan": 1, "tanggal": "2025-04-20", "jumlah": 2600000 }
+      ]
     },
     {
       "nis": "2025019",
       "nama": "Bagus Kurniawan",
       "sekolah": "SMK Negeri 4",
-      "biaya": "26000000",
+      "biaya": "2600000",
       "pembelajaran": "Web Programming (Advance)",
       "kelas": "Private",
       "tipe": "6 Bulan",
       "status": "Belum Lunas",
-      "tanggal": "",
-      "skema": 3
+      "tanggal_lunas": "2025-03-11",
+      "skema": 3,
+      "pembayaran": [
+        { "cicilan": 1, "tanggal": "2025-04-25", "jumlah": 900000 }
+      ]
     },
     {
       "nis": "2025020",
       "nama": "Putri Ayu",
       "sekolah": "SMA Swasta 5",
-      "biaya": "10000000",
+      "biaya": "1000000",
       "pembelajaran": "Beginner 1",
       "kelas": "Ekskul",
       "tipe": "4 Bulan",
       "status": "Belum Lunas",
-      "tanggal": "",
-      "skema": 4
+      "tanggal_lunas": "2025-07-27",
+      "skema": 4,
+      "pembayaran": [
+        { "cicilan": 1, "tanggal": "2025-05-01", "jumlah": 250000 }
+      ]
     },
     {
       "nis": "2076020",
@@ -248,9 +309,10 @@
       "pembelajaran": "Beginner 2",
       "kelas": "Ekskul",
       "tipe": "4 Bulan",
-      "status": "",
-      "tanggal": "",
-      "skema": 3
+      "status": "Kosong",
+      "tanggal_lunas": "",
+      "skema": 3,
+      "pembayaran": []
     },
     {
       "nis": "2029420",
@@ -260,9 +322,162 @@
       "pembelajaran": "Basic 1",
       "kelas": "Ekskul",
       "tipe": "4 Bulan",
-      "status": "",
-      "tanggal": "",
-      "skema": 3
+      "status": "Kosong",
+      "tanggal_lunas": "",
+      "skema": 3,
+      "pembayaran": []
+    },
+    {
+      "nis": "2025021",
+      "nama": "Rama Pratama",
+      "sekolah": "SMA Negeri 7",
+      "biaya": "1400000",
+      "pembelajaran": "Basic 2",
+      "kelas": "Reguler",
+      "tipe": "4 Bulan",
+      "status": "Belum Lunas",
+      "tanggal_lunas": "2025-04-01",
+      "skema": 4,
+      "pembayaran": [
+        { "cicilan": 1, "tanggal": "2025-05-10", "jumlah": 400000 },
+        { "cicilan": 2, "tanggal": "2025-06-10", "jumlah": 400000 }
+      ]
+    },
+    {
+      "nis": "2025022",
+      "nama": "Siti Aminah",
+      "sekolah": "SMK Negeri 5",
+      "biaya": "1800000",
+      "pembelajaran": "Beginner 2",
+      "kelas": "Private",
+      "tipe": "4 Bulan",
+      "status": "Lunas",
+      "tanggal_lunas": "2025-07-05",
+      "skema": 1,
+      "pembayaran": [
+        { "cicilan": 1, "tanggal": "2025-07-05", "jumlah": 1800000 }
+      ]
+    },
+    {
+      "nis": "2025023",
+      "nama": "Dewi Anggraini",
+      "sekolah": "SMA Swasta 7",
+      "biaya": "2600000",
+      "pembelajaran": "Advance (IOT)",
+      "kelas": "Private",
+      "tipe": "6 Bulan",
+      "status": "Belum Lunas",
+      "tanggal_lunas": "2025-01-01",
+      "skema": 3,
+      "pembayaran": [
+        { "cicilan": 1, "tanggal": "2025-06-12", "jumlah": 900000 }
+      ]
+    },
+    {
+      "nis": "2025024",
+      "nama": "Fajar Hidayat",
+      "sekolah": "SMK Negeri 6",
+      "biaya": "1400000",
+      "pembelajaran": "Web Programming (Intermediate)",
+      "kelas": "Semi Private",
+      "tipe": "6 Bulan",
+      "status": "Belum Lunas",
+      "tanggal_lunas": "2025-01-15",
+      "skema": 6,
+      "pembayaran": [
+        { "cicilan": 1, "tanggal": "2025-05-20", "jumlah": 300000 },
+        { "cicilan": 2, "tanggal": "2025-06-20", "jumlah": 300000 }
+      ]
+    },
+    {
+      "nis": "2025025",
+      "nama": "Rizal Maulana",
+      "sekolah": "SMA Negeri 8",
+      "biaya": "1000000",
+      "pembelajaran": "Coding Jr",
+      "kelas": "Ekskul",
+      "tipe": "4 Bulan",
+      "status": "Lunas",
+      "tanggal_lunas": "2025-09-01",
+      "skema": 1,
+      "pembayaran": [
+        { "cicilan": 1, "tanggal": "2025-09-01", "jumlah": 1000000 }
+      ]
+    },
+    {
+      "nis": "2025026",
+      "nama": "Indah Permata",
+      "sekolah": "SMK Swasta 5",
+      "biaya": "1400000",
+      "pembelajaran": "MS Office",
+      "kelas": "Reguler",
+      "tipe": "6 Bulan",
+      "status": "Belum Lunas",
+      "tanggal_lunas": "2025-01-20",
+      "skema": 6,
+      "pembayaran": [
+        { "cicilan": 1, "tanggal": "2025-07-15", "jumlah": 300000 }
+      ]
+    },
+    {
+      "nis": "2025027",
+      "nama": "Yoga Saputra",
+      "sekolah": "SMA Negeri 9",
+      "biaya": "1400000",
+      "pembelajaran": "Basic 3",
+      "kelas": "Semi Private",
+      "tipe": "4 Bulan",
+      "status": "Belum Lunas",
+      "tanggal_lunas": "2025-01-15",
+      "skema": 2,
+      "pembayaran": [
+        { "cicilan": 1, "tanggal": "2025-08-10", "jumlah": 700000 }
+      ]
+    },
+    {
+      "nis": "2025028",
+      "nama": "Putra Wijaya",
+      "sekolah": "SMK Negeri 7",
+      "biaya": "2600000",
+      "pembelajaran": "Desain Grafis (Advance)",
+      "kelas": "Private",
+      "tipe": "6 Bulan",
+      "status": "Lunas",
+      "tanggal_lunas": "2025-08-25",
+      "skema": 1,
+      "pembayaran": [
+        { "cicilan": 1, "tanggal": "2025-08-25", "jumlah": 2600000 }
+      ]
+    },
+    {
+      "nis": "2025029",
+      "nama": "Nina Kurnia",
+      "sekolah": "SMA Swasta 8",
+      "biaya": "1400000",
+      "pembelajaran": "Digital Marketing",
+      "kelas": "Reguler",
+      "tipe": "6 Bulan",
+      "status": "Belum Lunas",
+      "tanggal_lunas": "2025-02-10",
+      "skema": 4,
+      "pembayaran": [
+        { "cicilan": 1, "tanggal": "2025-09-05", "jumlah": 400000 }
+      ]
+    },
+    {
+      "nis": "2025030",
+      "nama": "Dian Sari",
+      "sekolah": "SMK Negeri 8",
+      "biaya": "1400000",
+      "pembelajaran": "Beginner 1",
+      "kelas": "Reguler",
+      "tipe": "4 Bulan",
+      "status": "Lunas",
+      "tanggal_lunas": "2025-09-15",
+      "skema": 1,
+      "pembayaran": [
+        { "cicilan": 1, "tanggal": "2025-09-15", "jumlah": 1400000 }
+      ]
     }
   ],
   
