@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Edit Data Siswa</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+
+        header {
+            top: 0;
+            left: 0;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        
+        @media (min-width: 1024px) {
+            header {
+                width: calc(100% - 16rem);
+            }
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen">
+    <!-- Sidebar -->
+    <div class="fixed inset-y-0 left-0 z-50 w-64 bg-white shadow-xl transform -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out" id="sidebar">
+        <div class="flex items-center justify-between h-16 px-4 bg-gradient-to-r from-blue-600 to-indigo-600">
+            <div class="flex items-center space-x-3">
+                <div class="w-8 h-8 bg-white rounded-lg flex items-center justify-center">
+                    <img src="Logo.png" alt="Logo">
+                </div>
+                <span class="text-white font-bold text-lg">Pembayaran</span>
+            </div>
+            <button onclick="toggleSidebar()" class="lg:hidden p-2 text-white hover:bg-white hover:bg-opacity-20 rounded-lg transition-colors">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+        <aside class="w-64 bg-white border-r h-screen overflow-y-auto">
+            <nav class="mt-10 px-4">
+                <div class="space-y-2">
+                    <a class="flex items-center px-4 py-3 text-gray-400 rounded-lg font-medium pointer-events-none">
+                        <i class="fa-solid fa-house w-5 h-5 mr-3"></i>
+                        Manajemen
+                    </a>
+                    <a class="flex items-center px-4 py-3 text-gray-400 rounded-lg pointer-events-none font-medium">
+                        <i class="fa-solid fa-file-invoice w-5 h-5 mr-3"></i>
+                        Laporan Invoice
+                    </a>
+                    <a href="#" class="flex items-center px-4 py-3 text-blue-600 bg-blue-50 rounded-lg font-medium">
+                        <i class="fa-solid fa-credit-card w-5 h-5 mr-3"></i>
+                        Pembayaran
+                    </a>
+                    <a class="flex items-center px-4 py-3 text-gray-400 rounded-lg pointer-events-none font-medium">
+                        <i class="fa-solid fa-user-plus w-5 h-5 mr-3"></i>
+                        Tambah Data
+                    </a>
+                    <a class="flex items-center px-4 py-3 text-gray-400 rounded-lg pointer-events-none font-medium">
+                        <i class="fa-solid fa-chart-bar w-5 h-5 mr-3"></i>
+                        Laporan
+                    </a>
+                </div>
+                <div class="mt-32 pt-8 border-t border-gray-200">
+                    <a class="flex items-center px-4 py-3 text-gray-400 rounded-lg pointer-events-none font-medium">
+                        <i class="fa-solid fa-right-from-bracket w-5 h-5 mr-3"></i>
+                        Keluar
+                    </a>
+                </div>
+            </nav>
+        </aside>
+    </div>
+
+    <!-- Sidebar Overlay for Mobile -->
+    <div class="fixed inset-0 z-40 bg-black bg-opacity-50 lg:hidden hidden" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+
+    <!-- Header -->
+    <header class="bg-white shadow-lg border-b border-gray-200 lg:ml-64 fixed w-full z-50">
+        <div class="px-4 sm:px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-2 sm:space-x-4 flex-1 min-w-0">
+                    <button onclick="toggleSidebar()" class="lg:hidden p-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100 transition-colors flex-shrink-0">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                    <div class="min-w-0 flex-1">
+                        <h1 class="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 truncate">Edit Data Siswa</h1>
+                        <p class="text-xs sm:text-sm text-gray-600 hidden sm:block">Ubah informasi data siswa</p>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-2 sm:space-x-4 flex-shrink-0">
+                    <button class="p-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors">
+                        <i class="fa fa-bell" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="lg:ml-64 px-4 sm:px-6 py-6 sm:py-8 pt-20">
+        <!-- Back Button -->
+        <div class="mb-6 mt-20">
+            <button onclick="window.location.href='pembayaran.html'" class="bg-gray-200 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-300 transition-all duration-200 font-medium flex items-center">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                </svg>
+                Kembali
+            </button>
+        </div>
+
+        <!-- Edit Form Card -->
+        <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col min-h-[400px]">
+            <h2 class="text-xl font-semibold text-gray-900 mb-4">Edit Data Siswa</h2>
+            <form id="editForm" class="flex flex-col flex-1">
+                <div class="space-y-4 flex-1">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">NIS <span class="text-red-500">*</span></label>
+                        <input type="text" id="nis" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500" readonly>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Nama Siswa <span class="text-red-500">*</span></label>
+                        <input type="text" id="nama" placeholder="Contoh: Aji Ramdani" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Nama Sekolah <span class="text-red-500">*</span></label>
+                        <input type="text" id="sekolah" placeholder="Contoh: SMA Negeri 1" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Kelas <span class="text-red-500">*</span></label>
+                        <input type="text" id="kelas" placeholder="Contoh: XII IPA 1" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Skema Pembayaran <span class="text-red-500">*</span></label>
+                        <select id="skema" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500" required>
+                            <option value="">Pilih Skema</option>
+                            <option value="1">1x Cicilan</option>
+                            <option value="2">2x Cicilan</option>
+                            <option value="3">3x Cicilan</option>
+                        </select>
+                    </div>
+                </div>
+                <button id="ubahBtn" type="button" class="mt-6 w-full bg-gray-200 text-gray-400 px-6 py-3 rounded-lg cursor-not-allowed transition-all duration-200 font-medium" disabled>
+                    Ubah
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const urlParams = new URLSearchParams(window.location.search);
+        const nis = urlParams.get('nis');
+        const editForm = document.getElementById('editForm');
+        const ubahBtn = document.getElementById('ubahBtn');
+        const inputs = editForm.querySelectorAll('input:not([readonly]), select');
+
+        function checkForm() {
+            let allFilled = true;
+            inputs.forEach(input => {
+                if (!input.value.trim()) allFilled = false;
+            });
+            if (allFilled) {
+                ubahBtn.disabled = false;
+                ubahBtn.classList.remove('bg-gray-200', 'text-gray-400', 'cursor-not-allowed');
+                ubahBtn.classList.add('bg-gradient-to-r', 'from-blue-600', 'to-indigo-600', 'text-white', 'hover:from-blue-700', 'hover:to-indigo-700');
+            } else {
+                ubahBtn.disabled = true;
+                ubahBtn.classList.add('bg-gray-200', 'text-gray-400', 'cursor-not-allowed');
+                ubahBtn.classList.remove('bg-gradient-to-r', 'from-blue-600', 'to-indigo-600', 'text-white', 'hover:from-blue-700', 'hover:to-indigo-700');
+            }
+        }
+
+        inputs.forEach(input => {
+            input.addEventListener('input', checkForm);
+            input.addEventListener('change', checkForm);
+        });
+
+        ubahBtn.addEventListener('click', () => {
+            if (!ubahBtn.disabled) {
+                window.location.href = 'pembayaran.html';
+            }
+        });
+
+        if (nis) {
+            fetch('sss.json')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Gagal memuat data siswa');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const student = (data.sampleDataSiswa || []).find(item => item.nis === nis);
+                    if (student) {
+                        document.getElementById('nis').value = student.nis || '';
+                        document.getElementById('nama').value = student.nama || '';
+                        document.getElementById('sekolah').value = student.sekolah || '';
+                        document.getElementById('kelas').value = student.kelas || '';
+                        document.getElementById('skema').value = student.skema || '';
+                        checkForm();
+                    } else {
+                        alert('Data siswa tidak ditemukan.');
+                        window.location.href = 'laporan_invoice.html';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error loading data:', error);
+                    alert('Gagal memuat data siswa.');
+                    window.location.href = 'laporan_invoice.html';
+                });
+        } else {
+            alert('NIS tidak ditemukan.');
+            window.location.href = 'laporan_invoice.html';
+        }
+
+        window.toggleSidebar = function() {
+            const sidebar = document.getElementById('sidebar');
+            const sidebarOverlay = document.getElementById('sidebarOverlay');
+            sidebar.classList.toggle('-translate-x-full');
+            sidebarOverlay.classList.toggle('hidden');
+        };
+    });
+    </script>
+</body>
+</html>
