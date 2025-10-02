@@ -500,17 +500,21 @@
     "Digital Marketing"
   ],
 
-  "masterKelas": [
-    "Private",
-    "Semi Private",
-    "Reguler",
-    "Ekskul"
-  ],
+  "masterKelas": {
+    "kelas 1" :"Private",
+    "kelas 2" :"Semi Private",
+    "kelas 3" :"Reguler",
+    "kelas 4" :"Ekskul"
+  },
 
-  "masterTipe": [
-    "4 Bulan",
-    "6 Bulan"
-  ],
+  "masterTipe": {
+    "skema 1" : {"cicilan": 1 , "Bulan" : "Skema 1"},
+    "skema 2" : {"cicilan": 2 , "Bulan" : "Skema 2"},
+    "skema 3" : {"cicilan": 3 , "Bulan" : "Skema 3"},
+    "skema 4" : {"cicilan": 4 , "Bulan" : "Skema 4"},
+    "skema 5" : {"cicilan": 4 , "Bulan" : "Skema 5"},
+    "skema 6" : {"cicilan": 5 , "Bulan" : "Skema 6"}
+  },
 
   "masterHarga": {
     "4 Bulan": {

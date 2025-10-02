@@ -315,31 +315,49 @@
             </div>
         </div>
 
-        <!-- popup keterangan pembayaran -->
-        <div id="paymentModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden flex items-center justify-center">
-            <div class="bg-white rounded-lg shadow-xl w-full max-w-md p-6">
-                <div class="flex justify-between items-center mb-4">
-                    <h5 class="text-xl font-bold text-gray-800">Detail Pembayaran</h5>
-                    <button id="closeModal" class="text-gray-600 hover:text-gray-800 text-2xl">&times;</button>
-                </div>
-                <div id="modalContent" class="text-gray-700"></div>
-                <div class="mt-6 flex justify-end">
-                    <button id="closeModalBtn" class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600">Tutup</button>
-                </div>
-            </div>
-        </div>
-
         <!-- Action Buttons -->
-        <div class="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-4 justify-between items-center">
+        <div class="mt-6 mb-6 sm:mt-8 flex flex-col sm:flex-row gap-4 justify-between items-center">
             <!-- Invoice Button -->
-            <button onclick="createInvoice()" id="invoiceBtn" class="w-full sm:w-auto bg-gradient-to-r from-orange-600 to-red-600 text-white px-6 py-3 sm:px-8 rounded-lg hover:from-orange-700 hover:to-red-700 transition-all duration-200 font-medium flex items-center justify-center shadow-lg text-sm sm:text-base disabled:opacity-50 disabled:cursor-not-allowed">
+            <button onclick="createInvoice()" id="invoiceBtn" class="w-full sm:w-auto bg-gradient-to-r from-orange-600 to-red-600 text-white px-6 py-3 sm:px-8 rounded-lg hover:from-orange-700 hover:to-red-700 transition-all duration-200 font-medium flex items-center justify-center shadow-lg text-sm sm:text-base disabled:opacity-50 disabled:cursor-not-allowed" disabled>
                 <svg class="w-4 h-4 sm:w-5 sm:h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                 </svg>
-                <span class="hidden sm:inline"><a href="buat_invoice.html">Buat Invoice</a> (<span id="selectedCount">0</span>)</span>
-                <span class="sm:hidden"><a href="buat_invoice.html">Buat Invoice</a> (<span id="selectedCountMobile">0</span>)</span>
+                <span class="hidden sm:inline">Buat Invoice</a> (<span id="selectedCount">0</span>)</span>
+                <span class="sm:hidden">Buat Invoice</a> (<span id="selectedCountMobile">0</span>)</span>
             </button>
         </div>
+
+        <!-- Modal Popup -->
+          <div id="myModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
+            <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
+                <div class="flex justify-between items-center mb-4">
+                  <h2 id="modalTitle" class="text-xl font-semibold"></h2>
+                  <span class="close text-gray-500 text-2xl cursor-pointer hover:text-gray-700">&times;</span>
+                </div>
+                
+                <div id="paymentSummary" class="mb-4">
+                  <p class="font-semibold"><span class="text-gray-600">Sudah Bayar:</span> <span id="paidCount"></span> kali</p>
+                  <p class="font-semibold"><span class="text-gray-600">Total Sudah Dibayar:</span> <span id="totalPaid"></span></p>
+                </div>
+                
+                <h3 class="text-lg font-semibold mb-2">Riwayat Pembayaran</h3>
+                <div class="overflow-x-auto">
+                  <table class="w-full border-collapse">
+                    <thead>
+                      <tr class="bg-gray-200">
+                        <th class="border border-gray-300 p-2 text-left">Tanggal</th>
+                        <th class="border border-gray-300 p-2 text-left">Jumlah Bayar</th>
+                        <th class="border border-gray-300 p-2 text-left">Keterangan</th>
+                      </tr>
+                    </thead>
+                    <tbody id="paymentHistory"></tbody>
+                  </table>
+                </div>
+            </div>
+          </div>
+        </div>
+
+        
     </div>
 
 
@@ -360,29 +378,6 @@
           updateSummary(dataInvoice);
           populateFilters(dataInvoice);
         }).catch(error => console.error('Data Gagal Dimuat', error));
-
-        // Fungsi untuk menghitung sisa tagihan
-        function calculateRemainingBill(dataInvoice) {
-            const harga = dataInvoice.pembayaran.reduce((sum, ) => sum + pembayaran.jumlah, 0);
-            return biaya - harga;
-        }      
-
-        // Fungsi untuk menampilkan detail pembayaran di modal
-        function showPaymentDetails() {
-                  const sisa = calculateRemainingBill(dataInvoice.biaya, dataInvoice.pembayaran);
-                  const modalContent = document.getElementById('modalContent');
-                  let paymentDetails = dataInvoice.pembayaran.length > 0 
-                      ? customer.pembayaran.map(p => `<p>Tanggal: ${p.tanggal_lunas}, Jumlah: ${formatCurrency(p.jumlah)}</p>`).join('')
-                      : '<p>Belum ada pembayaran.</p>';
-                  modalContent.innerHTML = `
-                      <p><strong>Nama:</strong> ${customer.name}</p>
-                      <p><strong>Total Tagihan:</strong> ${formatRupiah(customer.totalBill)}</p>
-                      <p><strong>Detail Pembayaran:</strong></p>
-                      ${paymentDetails}
-                      <p><strong>Sisa Tagihan:</strong> ${formatCurrency(sisa)}</p>
-                  `;
-                  document.getElementById('paymentModal').classList.remove('hidden');
-        }
 
       //format data
       function formatDateToMonthYear(dateString) {
@@ -487,16 +482,95 @@
               </span>
             </td>
             <td class="py-3">
-              <button onclick="showPaymentDetails(${item.nis})" class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600">Lihat Detail</button>
+              <button id="openModal" class="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600" data-client-id=${item.nis}>Lihat Detail</button>
             </td>
           `;
+          
           tableBody.appendChild(row);
+
+          // Tambahkan event listener untuk setiap tombol
+          document.querySelectorAll('button[data-client-id]').forEach(button => {
+            button.addEventListener('click', function() {
+              const clientId = this.getAttribute('data-client-id');
+              fetchPaymentData(clientId);
+              modal.classList.remove("hidden");
+            });
+          });
+          
         });
       
         totalPages = Math.ceil(data.length / recordsPerPage);
         updatePaginationInfo(data);
         updatePaginationButtons(data);
       }
+
+      // Ambil elemen
+        const modal = document.getElementById("myModal");
+        const btn = document.getElementById("openModal");
+        const span = document.getElementsByClassName("close")[0];
+
+      // Fungsi untuk menghitung sisa tagihan
+        function calculateRemainingBill(dataInvoice) {
+            const harga = dataInvoice.pembayaran.reduce((sum, ) => sum + pembayaran.jumlah, 0);
+            return biaya - harga;
+        }      
+
+        // Fungsi ambil data dari JSON
+        async function fetchPaymentData(siswaNis) {
+          try {
+            const response = await fetch('sss.json');
+            const data = await response.json();
+            
+            // Cari klien berdasarkan client_id
+            const client = data.sampleDataSiswa.find(n => n.nis == siswaNis);
+            
+            if (!client) {
+              alert('Klien tidak ditemukan');
+              return;
+            }
+            
+            // Hitung data pembayaran
+            const payments = client.pembayaran;
+            const totalPaid = payments.reduce((sum, p) => sum + p.jumlah, 0);
+            const paymentCount = payments.length;
+            
+            // Update modal title
+            document.getElementById("modalTitle").textContent = `Keterangan Pembayaran - Klien: ${client.nama}`;
+            
+            // Update summary
+            document.getElementById("paidCount").textContent = paymentCount;
+            document.getElementById("totalPaid").textContent = formatCurrency(totalPaid);
+            
+            // Update tabel riwayat
+            const tbody = document.getElementById("paymentHistory");
+            tbody.innerHTML = '';
+            payments.forEach(pembayaran => {
+              const row = `
+                <tr>
+                  <td class="border border-gray-300 p-2">${pembayaran.tanggal}</td>
+                  <td class="border border-gray-300 p-2">${formatCurrency(pembayaran.jumlah)}</td>
+                  <td class="border border-gray-300 p-2">Cicilan ke: ${pembayaran.cicilan}</td>
+                </tr>
+              `;
+              tbody.innerHTML += row;
+            });
+          } catch (error) {
+            console.error('Error fetching data:', error);
+            alert('Gagal mengambil data pembayaran. Pastikan file payments.json tersedia dan server CORS mendukung.');
+          }
+        }
+
+        // Tutup modal
+        span.onclick = function() {
+            modal.classList.add("hidden");
+        }
+
+        // Tutup jika klik di luar modal
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.classList.add("hidden");
+            }
+        }
       
       //fungsi pembagian data jadi hanya 10 data saja yang di display
       function updatePaginationInfo(data) {
@@ -570,14 +644,13 @@
       });
 
       //fungsi filter
-      function applyFilters() {
+      function applyFilters(searchTerm = searchInput.value.toLowerCase()) {
         const tahunFilter = document.getElementById('tahunFilter').value;
         const bulanFilter = document.getElementById('bulanFilter').value;
         const statusFilter = document.getElementById('statusFilter').value;
         const kelasFilter = document.getElementById('kelasFilter').value;
         const kategoriFilter = document.getElementById('kategoriFilter').value;
         const sekolahFilter = document.getElementById('sekolahFilter').value;
-        const searchTerm = document.getElementById('searchInput').value;
       
         filteredData = dataInvoice.filter(item => {
           const kelasMatch = !kelasFilter || item.pembelajaran === kelasFilter;
@@ -585,9 +658,7 @@
           const sekolahMatch = !sekolahFilter || item.sekolah === sekolahFilter;
           const statusMatch = !statusFilter || item.status === statusFilter;
         
-          const searchMatch = !searchTerm ||
-            (item.nama && item.nama.includes(searchTerm)) ||
-            (item.sekolah && formatSekolah(item.sekolah).includes(searchTerm));
+          const matchesSearch = item.nama && item.nama.toLowerCase().includes(searchTerm);
         
           let pelunasanMatch = true;
           if (statusFilter) {
@@ -615,7 +686,7 @@
             bulanMatch = bulan === bulanFilter.toLowerCase();
           }
         
-          return kelasMatch && kategoriMatch && sekolahMatch && statusMatch && searchMatch && pelunasanMatch && tahunMatch && bulanMatch;
+          return kelasMatch && kategoriMatch && sekolahMatch && statusMatch && matchesSearch && pelunasanMatch && tahunMatch && bulanMatch;
         });
       
         renderTable(filteredData);
@@ -740,6 +811,7 @@
         }
         const selectedData = Array.from(checkedBoxes).map(checkbox => {
           const nama = checkbox.getAttribute('data-nama');
+          const pembelajaran = checkbox.getAttribute('data-pembelajaran');
           const biaya = parseInt(checkbox.getAttribute('data-biaya'));
           const skemaSelect = document.querySelector(`.skema-select[data-nama="${nama}"]`);
           const skema = skemaSelect ? skemaSelect.value : "";
@@ -747,7 +819,7 @@
           if (skema && biaya) {
             hargaCicilan = Math.floor(biaya / parseInt(skema));
           }
-          return { nama, biaya, skema, hargaCicilan };
+          return { nama, biaya, skema, hargaCicilan, pembelajaran };
         });
         localStorage.setItem('invoiceData', JSON.stringify(selectedData));
         window.location.href = "buat_invoice.html";

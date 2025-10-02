@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin - Detail Pembayaran</title>
+    <title>Pembayaran Orang Tua</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
     <style>
@@ -16,96 +16,26 @@
             width: 100%;
             box-sizing: border-box;
         }
-        
-        @media (min-width: 1024px) {
-            header {
-                width: calc(100% - 16rem);
-            }
-        }
     </style>
 </head>
 <body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen">
-    <!-- Sidebar -->
-    <div class="fixed inset-y-0 left-0 z-50 w-64 bg-white shadow-xl transform -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out" id="sidebar">
-        <div class="flex items-center justify-between h-16 px-4 bg-gradient-to-r from-blue-600 to-indigo-600">
-            <div class="flex items-center space-x-3">
-                <div class="w-8 h-8 bg-white rounded-lg flex items-center justify-center">
-                    <img src="Logo.png" alt="Logo">
-                </div>
-                <span class="text-white font-bold text-lg">Pembayaran</span>
-            </div>
-            <button onclick="toggleSidebar()" class="lg:hidden p-2 text-white hover:bg-white hover:bg-opacity-20 rounded-lg transition-colors">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                </svg>
-            </button>
-        </div>
-        <aside class="w-64 bg-white border-r h-screen overflow-y-auto">
-            <nav class="mt-10 px-4">
-                <div class="space-y-2">
-                    <a class="flex items-center px-4 py-3 text-gray-400 rounded-lg font-medium pointer-events-none">
-                        <i class="fa-solid fa-house w-5 h-5 mr-3"></i>
-                        Manajemen
-                    </a>
-                    <a class="flex items-center px-4 py-3 text-gray-400 rounded-lg pointer-events-none font-medium">
-                        <i class="fa-solid fa-file-invoice w-5 h-5 mr-3"></i>
-                        Laporan Invoice
-                    </a>
-                    <a href="#" class="flex items-center px-4 py-3 text-blue-600 bg-blue-50 rounded-lg font-medium">
-                        <i class="fa-solid fa-credit-card w-5 h-5 mr-3"></i>
-                        Pembayaran
-                    </a>
-                    <a class="flex items-center px-4 py-3 text-gray-400 rounded-lg pointer-events-none font-medium">
-                        <i class="fa-solid fa-user-plus w-5 h-5 mr-3"></i>
-                        Tambah Data
-                    </a>
-                    <a class="flex items-center px-4 py-3 text-gray-400 rounded-lg pointer-events-none font-medium">
-                        <i class="fa-solid fa-chart-bar w-5 h-5 mr-3"></i>
-                        Laporan
-                    </a>
-                </div>
-                <div class="mt-32 pt-8 border-t border-gray-200">
-                    <a class="flex items-center px-4 py-3 text-gray-400 rounded-lg pointer-events-none font-medium">
-                        <i class="fa-solid fa-right-from-bracket w-5 h-5 mr-3"></i>
-                        Keluar
-                    </a>
-                </div>
-            </nav>
-        </aside>
-    </div>
-
-    <!-- Sidebar Overlay for Mobile -->
-    <div class="fixed inset-0 z-40 bg-black bg-opacity-50 lg:hidden hidden" id="sidebarOverlay" onclick="toggleSidebar()"></div>
-
     <!-- Header -->
-    <header class="bg-white shadow-lg border-b border-gray-200 lg:ml-64 fixed w-full z-50">
+    <header class="bg-white shadow-lg border-b border-gray-200 fixed w-full z-50">
         <div class="px-4 sm:px-6 py-4">
             <div class="flex items-center justify-between">
-                <div class="flex items-center space-x-2 sm:space-x-4 flex-1 min-w-0">
-                    <button onclick="toggleSidebar()" class="lg:hidden p-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100 transition-colors flex-shrink-0">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                        </svg>
-                    </button>
-                    <div class="min-w-0 flex-1">
-                        <h1 class="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 truncate">Detail Pembayaran</h1>
-                        <p class="text-xs sm:text-sm text-gray-600 hidden sm:block">Detail informasi pembayaran siswa</p>
-                    </div>
-                </div>
-                <div class="flex items-center space-x-2 sm:space-x-4 flex-shrink-0">
-                    <button class="p-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors">
-                        <i class="fa fa-bell" aria-hidden="true"></i>
-                    </button>
+                <div class="flex-1 min-w-0">
+                    <h1 class="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 truncate">Pembayaran Sekolah</h1>
+                    <p class="text-xs sm:text-sm text-gray-600 hidden sm:block">Lakukan pembayaran cicilan sekolah</p>
                 </div>
             </div>
         </div>
     </header>
 
-    <div class="lg:ml-64 px-4 sm:px-6 py-6 sm:py-8 pt-20 mt-20">
+    <div class="px-4 sm:px-6 py-6 sm:py-8 pt-20 mt-20">
         <!-- Information Cards -->
         <div id="infoCards" class="space-y-6 mb-8"></div>
 
-        <!-- Cicilan Selection Cards -->
+        <!-- Selected Cicilan Display -->
         <div id="cicilanSections" class="space-y-6 mb-8"></div>
 
         <!-- Manual Payment Form Card -->
@@ -141,7 +71,8 @@
     <script>
     document.addEventListener("DOMContentLoaded", function () {
         const urlParams = new URLSearchParams(window.location.search);
-        const nisList = urlParams.get('nis') ? urlParams.get('nis').split(',') : [];
+        const nis = urlParams.get('nis');
+        const cicilan = urlParams.get('cicilan') ? urlParams.get('cicilan').split(',').map(Number) : [];
 
         let paymentData = [];
 
@@ -200,71 +131,25 @@
             const cicilanSections = document.getElementById('cicilanSections');
             cicilanSections.innerHTML = '';
             selectedStudents.forEach(student => {
-                if (student.status && student.status.toLowerCase() === 'lunas' || !student.skema) {
-                    return; // Skip if already lunas or no skema
-                }
                 const card = document.createElement('div');
                 card.className = 'bg-white rounded-xl shadow-lg p-6';
                 card.innerHTML = `
-                    <h2 class="text-xl font-semibold text-gray-900 mb-4">Pilihan Cicilan - ${student.nama}</h2>
+                    <h2 class="text-xl font-semibold text-gray-900 mb-4">Cicilan yang Dipilih - ${student.nama}</h2>
                 `;
                 const cicilanGrid = document.createElement('div');
                 cicilanGrid.className = 'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4';
-                for (let i = 1; i <= student.skema; i++) {
-                    const isPaid = i === 1; // Dummy, assume first cicilan paid
+                cicilan.forEach(cicilanNum => {
                     const cicilanAmount = roundUpToHundredThousand(parseInt(student.biaya) / student.skema);
                     const cicilanItem = document.createElement('div');
-                    cicilanItem.className = 'flex items-center p-2 bg-gray-50 rounded-lg';
+                    cicilanItem.className = 'p-2 bg-gray-50 rounded-lg';
                     cicilanItem.innerHTML = `
-                        <input type="checkbox" id="cicilan-${student.nis}-${i}" class="cicilanCheckbox mr-2 rounded border-gray-300 text-blue-600 focus:ring-blue-500" data-nis="${student.nis}" data-cicilan="${i}" ${isPaid ? 'disabled checked' : ''}>
-                        <label for="cicilan-${student.nis}-${i}" class="text-sm text-gray-900">Cicilan ke-${i} - ${formatRupiah(cicilanAmount)}</label>
+                        <span class="text-sm text-gray-900">Cicilan ke-${cicilanNum} - ${formatRupiah(cicilanAmount)}</span>
                     `;
                     cicilanGrid.appendChild(cicilanItem);
-                }
-                card.appendChild(cicilanGrid);
-
-                const generateBtn = document.createElement('button');
-                generateBtn.id = `generateLinkBtn-${student.nis}`;
-                generateBtn.className = 'mt-4 w-full bg-gray-200 text-gray-400 px-6 py-3 rounded-lg cursor-not-allowed transition-all duration-200 font-medium flex items-center justify-center';
-                generateBtn.disabled = true;
-                generateBtn.textContent = 'Hasilkan Tautan Pembayaran untuk ' + student.nama;
-                generateBtn.addEventListener('click', () => {
-                    if (!generateBtn.disabled) {
-                        const checkboxes = document.querySelectorAll(`.cicilanCheckbox[data-nis="${student.nis}"]:checked:not(:disabled)`);
-                        const selectedCicilan = Array.from(checkboxes).map(cb => cb.getAttribute('data-cicilan')).join(',');
-                        if (selectedCicilan) {
-                            const link = `orang_tua.html?nis=${student.nis}&cicilan=${selectedCicilan}`;
-                            window.location.href = link; // Redirect to the generated link
-                        }
-                    }
                 });
-                card.appendChild(generateBtn);
-
+                card.appendChild(cicilanGrid);
                 cicilanSections.appendChild(card);
             });
-
-            document.querySelectorAll('.cicilanCheckbox').forEach(cb => {
-                cb.addEventListener('change', () => {
-                    selectedStudents.forEach(student => {
-                        updateGenerateButton(student.nis);
-                    });
-                });
-            });
-        }
-
-        function updateGenerateButton(nis) {
-            const generateBtn = document.getElementById(`generateLinkBtn-${nis}`);
-            const checkboxes = document.querySelectorAll(`.cicilanCheckbox[data-nis="${nis}"]:checked:not(:disabled)`);
-            const checked = checkboxes.length > 0;
-            if (checked) {
-                generateBtn.disabled = false;
-                generateBtn.classList.remove('bg-gray-200', 'text-gray-400', 'cursor-not-allowed');
-                generateBtn.classList.add('bg-gradient-to-r', 'from-blue-600', 'to-indigo-600', 'text-white', 'hover:from-blue-700', 'hover:to-indigo-700');
-            } else {
-                generateBtn.disabled = true;
-                generateBtn.classList.add('bg-gray-200', 'text-gray-400', 'cursor-not-allowed');
-                generateBtn.classList.remove('bg-gradient-to-r', 'from-blue-600', 'to-indigo-600', 'text-white', 'hover:from-blue-700', 'hover:to-indigo-700');
-            }
         }
 
         function setupManualForm() {
@@ -345,7 +230,7 @@
 
             bayarBtn.addEventListener('click', () => {
                 if (!bayarBtn.disabled) {
-                    window.location.href = `sudah_membayar.html?nis=${nisList.join(',')}`;
+                    window.location.href = `sudah_membayar.html?nis=${nis}`;
                 }
             });
 
@@ -362,7 +247,7 @@
                     ...item,
                     id: idx + 1
                 }));
-                const selectedStudents = paymentData.filter(item => nisList.includes(item.nis));
+                const selectedStudents = paymentData.filter(item => item.nis === nis);
                 renderInfoCards(selectedStudents);
                 renderCicilanSections(selectedStudents);
                 setupManualForm();
@@ -370,13 +255,6 @@
             .catch(error => {
                 console.error('Error loading data:', error);
             });
-
-        window.toggleSidebar = function() {
-            const sidebar = document.getElementById('sidebar');
-            const sidebarOverlay = document.getElementById('sidebarOverlay');
-            sidebar.classList.toggle('-translate-x-full');
-            sidebarOverlay.classList.toggle('hidden');
-        };
     });
     </script>
 </body>
