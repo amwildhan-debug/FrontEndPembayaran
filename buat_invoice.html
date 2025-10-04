@@ -13,6 +13,10 @@
             .no-print { display: none !important; }
             body { background: white !important; }
             .print-shadow { box-shadow: none !important; }
+            select { display: none !important; }
+            td.bulan-cell::after { content: attr(data-value); }
+            td.kelas-cell::after { content: attr(data-value); }
+            td.cicilan-cell::after { content: attr(data-value); }
         }
     </style>
 </head>
@@ -21,20 +25,20 @@
         <!-- Header Actions -->
         <div class="flex flex-col sm:flex-row justify-between items-center mb-6 no-print">
             <h1 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-4 sm:mb-0">Invoice Pembayaran</h1>
-            <div class="flex space-x-3">
-                <button onclick="window.print()" class="bg-blue-600 text-white px-4 py-2 sm:px-6 sm:py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium flex items-center">
-                    <svg class="w-4 h-4 sm:w-5 sm:h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path>
-                    </svg>
-                    <span class="hidden sm:inline">Cetak Invoice</span>
-                    <span class="sm:hidden">Cetak</span>
-                </button>
-                <button onclick="downloadPDF()" class="bg-green-600 text-white px-4 py-2 sm:px-6 sm:py-3 rounded-lg hover:bg-green-700 transition-colors font-medium flex items-center">
+            <div class="flex flex-wrap space-x-3">
+                <button onclick="downloadPDF()" class="bg-green-600 text-white px-4 py-2 sm:px-6 sm:py-3 rounded-lg hover:bg-green-700 transition-colors font-medium flex items-center mb-2 sm:mb-0">
                     <svg class="w-4 h-4 sm:w-5 sm:h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                     </svg>
                     <span class="hidden sm:inline">Download PDF</span>
                     <span class="sm:hidden">PDF</span>
+                </button>
+                <button onclick="completeInvoice()" class="bg-indigo-600 text-white px-4 py-2 sm:px-6 sm:py-3 rounded-lg hover:bg-indigo-700 transition-colors font-medium flex items-center mb-2 sm:mb-0 complete-btn">
+                    <svg class="w-4 h-4 sm:w-5 sm:h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    <span class="hidden sm:inline">Selesai</span>
+                    <span class="sm:hidden">✓</span>
                 </button>
                 <a href="Laporan_invoice.html" class="bg-gray-600 text-white px-4 py-2 sm:px-6 sm:py-3 rounded-lg hover:bg-gray-700 transition-colors font-medium flex items-center">
                     <svg class="w-4 h-4 sm:w-5 sm:h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -84,12 +88,13 @@
                 <div class="mb-8">
                     <h3 class="text-lg font-semibold text-gray-900 mb-4">Detail Pembayaran:</h3>
                     <div class="overflow-x-auto">
-                        <table class="w-full border border-gray-200 rounded-lg min-w-[800px]">
+                        <table class="w-full border border-gray-200 rounded-lg min-w-[900px]">
                             <thead class="bg-gray-50">
                                 <tr>
                                     <th class="px-4 py-3 text-left text-sm font-medium text-gray-700 border-b">No</th>
                                     <th class="px-4 py-3 text-left text-sm font-medium text-gray-700 border-b">Nama Siswa</th>
                                     <th class="px-4 py-3 text-left text-sm font-medium text-gray-700 border-b">Pembelajaran</th>
+                                    <th class="px-4 py-3 text-left text-sm font-medium text-gray-700 border-b">Bulan</th>
                                     <th class="px-4 py-3 text-left text-sm font-medium text-gray-700 border-b">Kelas</th>
                                     <th class="px-4 py-3 text-left text-sm font-medium text-gray-700 border-b">Cicilan</th>
                                     <th class="px-4 py-3 text-right text-sm font-medium text-gray-700 border-b">Biaya per Cicilan</th>
@@ -105,15 +110,9 @@
                     <div class="w-full sm:w-80">
                         <div class="bg-gray-50 rounded-lg p-6">
                             <div class="space-y-3">
-                                <div class="flex justify-between text-sm">
-                                    <span class="text-gray-600">Subtotal:</span>
-                                    <span class="font-medium" id="subtotal">Rp 0</span>
-                                </div>
-                                <div class="border-t border-gray-300 pt-3">
-                                    <div class="flex justify-between text-lg font-bold">
-                                        <span class="text-gray-900">Total:</span>
-                                        <span class="text-blue-600" id="total">Rp 0</span>
-                                    </div>
+                                <div class="flex justify-between text-base">
+                                    <span class="text-gray-700">Total:</span>
+                                    <span class="text-blue-600 font-medium" id="total">Rp 0</span>
                                 </div>
                             </div>
                         </div>
@@ -155,12 +154,16 @@
     </div>
 
     <script>
+        let jsonData = null;
+        let students = [];
+
         // Format currency
         function formatCurrency(amount) {
             return new Intl.NumberFormat('id-ID', {
                 style: 'currency',
                 currency: 'IDR',
-                minimumFractionDigits: 0
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
             }).format(amount);
         }
 
@@ -174,123 +177,208 @@
             return `INV-${year}${month}${day}-${random}`;
         }
 
-        // Populate dropdowns from JSON data
-        function populateFilters(jsonData, selectElementId, dataKey, selectedValue) {
-            const select = document.getElementById(selectElementId);
-            if (!select) return;
+        // Normalize kelas name
+        function normalizeKelas(kelas) {
+            if (!kelas) return 'Reguler';
+            const kelasMap = {
+                'private': 'Private',
+                'Private': 'Private',
+                'semi private': 'Semi Private',
+                'Semi Private': 'Semi Private',
+                'reguler': 'Reguler',
+                'Reguler': 'Reguler',
+                'ekskul': 'Ekskul',
+                'Ekskul': 'Ekskul'
+            };
+            return kelasMap[kelas.toLowerCase()] || 'Reguler';
+        }
 
-            // Clear existing options
-            select.innerHTML = '';
+        // Get biaya from masterHarga
+        function getBiaya(tipe, kelas) {
+            if (!jsonData || !jsonData.masterHarga || !tipe || !kelas) return 1000000; // Default biaya
+            const normalizedKelas = normalizeKelas(kelas);
+            return jsonData.masterHarga[tipe]?.[normalizedKelas] || 1000000;
+        }
 
-            // Add default option
-            const defaultOption = document.createElement('option');
-            defaultOption.value = '';
-            defaultOption.textContent = 'Pilih ' + (dataKey === 'masterKelas' ? 'Kategori Kelas' : 'Cicilan');
-            select.appendChild(defaultOption);
+        // Get jumlah cicilan from masterSkemaCicilan
+        function getJumlahCicilan(tipe, skema) {
+            if (!jsonData || !jsonData.masterSkemaCicilan || !tipe || !skema) return 1;
+            return parseInt(skema) || 1;
+        }
 
-            // Add options from JSON data
-            Object.entries(jsonData[dataKey]).forEach(([key, value]) => {
-                const opt = document.createElement('option');
-                opt.value = key;
-                opt.textContent = dataKey === 'masterKelas' ? value : value.Bulan;
-                select.appendChild(opt);
-            });
-
-            // Set selected value
-            if (selectedValue) {
-                select.value = selectedValue;
+        // Populate dropdowns
+        function populateDropdown(select, dataKey, selectedValue, tipe) {
+            select.innerHTML = `<option value="">Pilih ${dataKey === 'pembelajaranTipe' ? 'Bulan' : dataKey === 'masterHarga' ? 'Kelas' : 'Cicilan'}</option>`;
+            if (dataKey === 'pembelajaranTipe') {
+                Object.keys(jsonData[dataKey]).forEach(tipe => {
+                    const opt = document.createElement('option');
+                    opt.value = tipe;
+                    opt.textContent = tipe;
+                    select.appendChild(opt);
+                });
+            } else if (dataKey === 'masterHarga') {
+                if (!jsonData[dataKey][tipe]) return;
+                Object.keys(jsonData[dataKey][tipe]).forEach(kelas => {
+                    const opt = document.createElement('option');
+                    opt.value = kelas;
+                    opt.textContent = kelas;
+                    select.appendChild(opt);
+                });
+            } else if (dataKey === 'masterSkemaCicilan') {
+                if (!jsonData[dataKey][tipe]) return;
+                Object.entries(jsonData[dataKey][tipe]).forEach(([cicilan, persentase]) => {
+                    const opt = document.createElement('option');
+                    opt.value = cicilan;
+                    opt.textContent = `Skema ${cicilan} (${persentase})`;
+                    select.appendChild(opt);
+                });
+            }
+            if (selectedValue && selectedValue !== 'null' && selectedValue !== '') {
+                select.value = dataKey === 'masterSkemaCicilan' ? selectedValue : normalizeKelas(selectedValue);
             }
         }
 
-        
+        // Update biaya per cicilan
+        function updateBiayaCicilan(rowIndex) {
+            const biaya = parseInt(students[rowIndex].biaya) || 0;
+            const skema = students[rowIndex].skema;
+            const tipe = students[rowIndex].tipe || '4 Bulan';
+            const biayaCell = document.getElementById(`biayaCicilan-${rowIndex}`);
+            const cicilanCell = document.getElementById(`cicilanFilter-${rowIndex}`);
+
+            if (!biaya || !skema) {
+                biayaCell.textContent = 'Belum Terisi';
+                cicilanCell.parentElement.setAttribute('data-value', 'Pilih Cicilan');
+                updateTotal();
+                return;
+            }
+
+            const jumlahCicilan = getJumlahCicilan(tipe, skema);
+            const biayaPerCicilan = biaya / jumlahCicilan;
+            biayaCell.textContent = formatCurrency(biayaPerCicilan);
+            cicilanCell.parentElement.setAttribute('data-value', `Skema ${skema} (${jsonData.masterSkemaCicilan[tipe][skema]})`);
+            updateTotal();
+        }
+
+        // Update total
+        function updateTotal() {
+            const total = students.reduce((sum, item) => {
+                const biaya = parseInt(item.biaya) || 0;
+                const skema = item.skema;
+                if (!biaya || !skema) return sum;
+                return sum + biaya;
+            }, 0);
+            document.getElementById('total').textContent = formatCurrency(total);
+        }
+
+        // Update biaya based on tipe and kelas
+        function updateBiaya(rowIndex, tipe, kelas) {
+            const validTipe = jsonData.pembelajaranTipe[tipe] ? tipe : '4 Bulan';
+            const validKelas = normalizeKelas(kelas);
+            const biaya = getBiaya(validTipe, validKelas);
+
+            students[rowIndex].tipe = validTipe;
+            students[rowIndex].kelas = validKelas;
+            students[rowIndex].biaya = biaya;
+            localStorage.setItem('invoiceData', JSON.stringify(students));
+
+            const kelasSelect = document.getElementById(`kategoriFilter-${rowIndex}`);
+            const cicilanSelect = document.getElementById(`cicilanFilter-${rowIndex}`);
+            populateDropdown(kelasSelect, 'masterHarga', validKelas, validTipe);
+            populateDropdown(cicilanSelect, 'masterSkemaCicilan', students[rowIndex].skema || '', validTipe);
+            updateBiayaCicilan(rowIndex);
+        }
+
+        // Complete invoice
+        function completeInvoice() {
+            localStorage.setItem('invoiceData', JSON.stringify(students));
+            alert('Invoice telah disimpan');
+            window.location.href = 'Laporan_invoice.html';
+        }
+
+        // Download PDF
+        function downloadPDF() {
+            alert('Fitur download PDF akan segera tersedia! Gunakan fitur "Cetak" dan pilih "Save as PDF" di browser.');
+        }
 
         // Load invoice data
         async function loadInvoiceData() {
             try {
-                // Fetch dropdown options and school info from data.json
                 const response = await fetch('sss.json');
-                const jsonData = await response.json();
-
-                // Get student data from localStorage
+                jsonData = await response.json();
                 const invoiceData = localStorage.getItem('invoiceData');
                 if (!invoiceData) {
                     alert('Tidak ada data invoice yang ditemukan!');
                     window.location.href = 'Laporan_invoice.html';
                     return;
                 }
-                const students = JSON.parse(invoiceData);
+
+                students = JSON.parse(invoiceData).map(item => ({
+                    ...item,
+                    tipe: jsonData.pembelajaranTipe[item.tipe] ? item.tipe : '4 Bulan',
+                    kelas: normalizeKelas(item.kelas),
+                    biaya: getBiaya(jsonData.pembelajaranTipe[item.tipe] ? item.tipe : '4 Bulan', item.kelas),
+                    skema: item.skema ? parseInt(item.skema) : null
+                }));
 
                 const invoiceItems = document.getElementById('invoiceItems');
-                let subtotal = 0;
-
-                // Clear existing items
                 invoiceItems.innerHTML = '';
 
-                // Populate table with student data
                 students.forEach((item, index) => {
-                    const kategoriSelectId = `kategoriFilter-${index}`;
-                    const cicilanSelectId = `cicilanFilter-${index}`;
                     const row = document.createElement('tr');
                     row.className = 'hover:bg-gray-50';
                     row.innerHTML = `
                         <td class="px-4 py-3 text-sm text-gray-900">${index + 1}</td>
-                        <td class="px-4 py-3 text-sm font-medium text-gray-900">${item.nama}</td>
-                        <td class="px-4 py-3 text-sm text-gray-600">${item.pembelajaran}</td>
-                        <td class="px-4 py-3 text-sm text-gray-600">
-                            <div>
-                                <select id="${kategoriSelectId}" class="w-full px-3 py-2 sm:px-4 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors text-sm">
-                                </select>
-                            </div>
+                        <td class="px-4 py-3 text-sm font-medium text-gray-900">${item.nama || '-'}</td>
+                        <td class="px-4 py-3 text-sm text-gray-600">${item.pembelajaran || '-'}</td>
+                        <td class="px-4 py-3 text-sm text-gray-600 bulan-cell" data-value="${item.tipe || 'Pilih Bulan'}">
+                            <select id="bulanFilter-${index}" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors text-sm"></select>
                         </td>
-                        <td class="px-4 py-3 text-sm text-gray-600">
-                            <div>
-                                <select id="${cicilanSelectId}" class="w-full px-3 py-2 sm:px-4 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors text-sm">
-                                </select>
-                            </div>
+                        <td class="px-4 py-3 text-sm text-gray-600 kelas-cell" data-value="${item.kelas || 'Pilih Kelas'}">
+                            <select id="kategoriFilter-${index}" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors text-sm"></select>
                         </td>
-                        <td class="px-4 py-3 text-sm text-right font-medium text-gray-900">${formatCurrency(item.biaya)}</td>
+                        <td class="px-4 py-3 text-sm text-gray-600 cicilan-cell" data-value="${item.skema ? `Skema ${item.skema} (${jsonData.masterSkemaCicilan[item.tipe]?.[item.skema] || '100%'})` : 'Pilih Cicilan'}">
+                            <select id="cicilanFilter-${index}" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors text-sm"></select>
+                        </td>
+                        <td id="biayaCicilan-${index}" class="px-4 py-3 text-sm text-right font-medium text-gray-900">${item.biaya && item.skema ? formatCurrency(item.biaya / getJumlahCicilan(item.tipe, item.skema)) : 'Belum Terisi'}</td>
                     `;
                     invoiceItems.appendChild(row);
-                    subtotal += item.biaya;
 
-                    // Populate dropdowns for this row
-                    populateFilters(jsonData, kategoriSelectId, 'masterKelas', item.pembelajaran);
-                    populateFilters(jsonData, cicilanSelectId, 'masterTipe', item.cicilan);
+                    const bulanSelect = document.getElementById(`bulanFilter-${index}`);
+                    const kelasSelect = document.getElementById(`kategoriFilter-${index}`);
+                    const cicilanSelect = document.getElementById(`cicilanFilter-${index}`);
+
+                    populateDropdown(bulanSelect, 'pembelajaranTipe', item.tipe);
+                    populateDropdown(kelasSelect, 'masterHarga', item.kelas, item.tipe);
+                    populateDropdown(cicilanSelect, 'masterSkemaCicilan', item.skema, item.tipe);
+
+                    bulanSelect.addEventListener('change', () => updateBiaya(index, bulanSelect.value, students[index].kelas));
+                    kelasSelect.addEventListener('change', () => updateBiaya(index, students[index].tipe, kelasSelect.value));
+                    cicilanSelect.addEventListener('change', () => {
+                        students[index].skema = cicilanSelect.value ? parseInt(cicilanSelect.value) : null;
+                        localStorage.setItem('invoiceData', JSON.stringify(students));
+                        updateBiayaCicilan(index);
+                    });
                 });
 
-                // Update summary
-                document.getElementById('subtotal').textContent = formatCurrency(subtotal);
-                document.getElementById('total').textContent = formatCurrency(subtotal); // Assuming no PPN for simplicity
+                updateTotal();
                 document.getElementById('invoiceNumber').textContent = generateInvoiceNumber();
-                document.getElementById('invoiceDate').textContent = `Tanggal: ${new Date().toLocaleDateString('id-ID', { 
-                    year: 'numeric', 
-                    month: 'long', 
-                    day: 'numeric' 
-                })}`;
-                document.getElementById('generatedDate').textContent = new Date().toLocaleString('id-ID', {
-                    year: 'numeric', 
-                    month: 'long', 
-                    day: 'numeric',
-                    hour: '2-digit',
-                    minute: '2-digit'
-                });
+                document.getElementById('invoiceDate').textContent = `Tanggal: ${new Date().toLocaleDateString('id-ID', { year: 'numeric', month: 'long', day: 'numeric' })}`;
+                document.getElementById('generatedDate').textContent = new Date().toLocaleString('id-ID', { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' });
             } catch (error) {
-                console.error("Error fetching JSON data Atau mengambil Data invoice:", error);
+                console.error('Error loading invoice data:', error);
                 alert('Gagal memuat data invoice!');
             }
-        }
-
-        // Download PDF
-        function downloadPDF() {
-            alert('Fitur download PDF akan segera tersedia!\n\nUntuk saat ini, Anda dapat menggunakan fitur "Cetak" dan memilih "Save as PDF" di browser.');
         }
 
         // Load data on page load
         document.addEventListener('DOMContentLoaded', loadInvoiceData);
 
-        // Clear localStorage on page unload
-        window.addEventListener('beforeunload', function() {
-            localStorage.removeItem('invoiceData');
+        // Clear localStorage on page unload unless completing
+        window.addEventListener('beforeunload', (event) => {
+            if (!event.target.activeElement?.classList.contains('complete-btn')) {
+                localStorage.removeItem('invoiceData');
+            }
         });
     </script>
 </body>

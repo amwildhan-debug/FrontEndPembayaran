@@ -436,7 +436,7 @@
           const biaya = item.biaya === '' ? 'Belum Terisi' : formatCurrency(item.biaya);
           // GANTI item.tanggal -> item.tanggal_lunas
           const statusDate = item.tanggal_lunas && item.tanggal_lunas !== '' ? formatDateToMonthYear(item.tanggal_lunas) : '-';
-          const nullDataMateri = item.pembelajaran === '' ? 'Kosong' : formatKategori(item.pembelajaran);
+          const nullDataMateri = item.pembelajaran === '' ? 'Kosong' : item.pembelajaran;
           const nullDataKelas = item.kelas === '' ? 'Kosong' : formatKelas(item.kelas);
       
           const row = document.createElement('tr');
@@ -466,7 +466,7 @@
               </span>
             </td>
             <td class="px-4 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-              ${formatSekolah(item.sekolah)}
+              ${item.sekolah}
             </td>
             <td class="px-4 sm:px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
               ${biaya}
@@ -804,25 +804,24 @@
       }
       
       function createInvoice() {
-        const checkedBoxes = document.querySelectorAll('.row-checkbox:checked');
-        if (checkedBoxes.length === 0) {
-          alert('Pilih minimal satu siswa untuk membuat invoice!');
-          return;
-        }
-        const selectedData = Array.from(checkedBoxes).map(checkbox => {
-          const nama = checkbox.getAttribute('data-nama');
-          const pembelajaran = checkbox.getAttribute('data-pembelajaran');
-          const biaya = parseInt(checkbox.getAttribute('data-biaya'));
-          const skemaSelect = document.querySelector(`.skema-select[data-nama="${nama}"]`);
-          const skema = skemaSelect ? skemaSelect.value : "";
-          let hargaCicilan = "-";
-          if (skema && biaya) {
-            hargaCicilan = Math.floor(biaya / parseInt(skema));
+          const checkedBoxes = document.querySelectorAll('.row-checkbox:checked');
+          if (!checkedBoxes.length) {
+              alert('Pilih minimal satu siswa untuk membuat invoice!');
+              return;
           }
-          return { nama, biaya, skema, hargaCicilan, pembelajaran };
-        });
-        localStorage.setItem('invoiceData', JSON.stringify(selectedData));
-        window.location.href = "buat_invoice.html";
+          const selectedData = Array.from(checkedBoxes).map(checkbox => {
+              const nama = checkbox.getAttribute('data-nama');
+              const student = dataInvoice.find(item => item.nama === nama) || {};
+              return {
+                  nama: student.nama || '-',
+                  pembelajaran: student.pembelajaran || '-',
+                  status: student.status || '-',
+                  biaya: parseInt(checkbox.getAttribute('data-biaya')) || 0,
+                  skema: student.skema || ''
+              };
+          });
+          localStorage.setItem('invoiceData', JSON.stringify(selectedData));
+          window.location.href = "buat_invoice.html";
       }
       
     </script>

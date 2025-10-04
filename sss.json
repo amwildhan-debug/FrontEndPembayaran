@@ -500,20 +500,28 @@
     "Digital Marketing"
   ],
 
-  "masterKelas": {
-    "kelas 1" :"Private",
-    "kelas 2" :"Semi Private",
-    "kelas 3" :"Reguler",
-    "kelas 4" :"Ekskul"
-  },
+  "masterKelas": [
+      {
+      "kelas 1" : {"Private" : "Private", "Biaya" : 1800000},
+      "kelas 2" : {"semiPrivate" : "semi Private", "Biaya" : 1400000},
+      "kelas 3" : {"Reguler" : "Reguler", "Biaya" : 1000000},
+      "kelas 4" : {"Ekskul" : "Ekskul", "Biaya" : 1000000}
+      },
+      {
+      "kelas 1" : {"Private" : "Private", "Biaya" : 2600000},
+      "kelas 2" : {"semiPrivate" : "semi Private", "Biaya" : 2000000},
+      "kelas 3" : {"Reguler" : "Reguler", "Biaya" : 1400000},
+      "kelas 4" : {"Ekskul" : "Ekskul", "Biaya" : 1400000}
+      }
+    ],
 
   "masterTipe": {
-    "skema 1" : {"cicilan": 1 , "Bulan" : "Skema 1"},
-    "skema 2" : {"cicilan": 2 , "Bulan" : "Skema 2"},
-    "skema 3" : {"cicilan": 3 , "Bulan" : "Skema 3"},
-    "skema 4" : {"cicilan": 4 , "Bulan" : "Skema 4"},
-    "skema 5" : {"cicilan": 4 , "Bulan" : "Skema 5"},
-    "skema 6" : {"cicilan": 5 , "Bulan" : "Skema 6"}
+    "skema 1" : {"cicilan": 1 , "Bulan" : "Skema 1", "cicil1" : "100%"},
+    "skema 2" : {"cicilan": 2 , "Bulan" : "Skema 2", "cicil2" : "50%"},
+    "skema 3" : {"cicilan": 3 , "Bulan" : "Skema 3", "cicil3" : "33.33%"},
+    "skema 4" : {"cicilan": 4 , "Bulan" : "Skema 4", "cicil4" : "25%"},
+    "skema 5" : {"cicilan": 4 , "Bulan" : "Skema 5", "cicil5" : "20%"},
+    "skema 6" : {"cicilan": 5 , "Bulan" : "Skema 6", "cicil6" : "16.66%"}
   },
 
   "masterHarga": {
