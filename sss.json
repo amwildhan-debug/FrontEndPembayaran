@@ -18,7 +18,7 @@
     {
       "nis": "2025002",
       "nama": "Siti Nurhaliza",
-      "sekolah": "SMA Negeri 2",
+      "sekolah": "",
       "biaya": "1400000",
       "pembelajaran": "Basic 1",
       "kelas": "Semi Private",
@@ -33,7 +33,7 @@
     {
       "nis": "2025003",
       "nama": "Budi Santoso",
-      "sekolah": "SMA Swasta 1",
+      "sekolah": "",
       "biaya": "1400000",
       "pembelajaran": "Intermediate (Sensor)",
       "kelas": "Reguler",
@@ -79,7 +79,7 @@
     {
       "nis": "2025006",
       "nama": "Rina Wati",
-      "sekolah": "SMA Negeri 3",
+      "sekolah": "",
       "biaya": "1400000",
       "pembelajaran": "Coding for Kids",
       "kelas": "Reguler",
@@ -94,7 +94,7 @@
     {
       "nis": "2025007",
       "nama": "Eko Susilo",
-      "sekolah": "SMA Negeri 2",
+      "sekolah": "",
       "biaya": "1400000",
       "pembelajaran": "Web Programming (Basic)",
       "kelas": "Semi Private",
@@ -139,7 +139,7 @@
     {
       "nis": "2025010",
       "nama": "Dewi Lestari",
-      "sekolah": "SMK Swasta 1",
+      "sekolah": "",
       "biaya": "1000000",
       "pembelajaran": "Basic 2",
       "kelas": "Reguler",
@@ -154,7 +154,7 @@
     {
       "nis": "2025011",
       "nama": "Hendra Gunawan",
-      "sekolah": "SMA Negeri 4",
+      "sekolah": "",
       "biaya": "1400000",
       "pembelajaran": "Beginner 2",
       "kelas": "Semi Private",
@@ -184,7 +184,7 @@
     {
       "nis": "2025013",
       "nama": "Rizky Saputra",
-      "sekolah": "SMA Swasta 2",
+      "sekolah": "",
       "biaya": "1400000",
       "pembelajaran": "Digital Marketing",
       "kelas": "Reguler",
@@ -199,7 +199,7 @@
     {
       "nis": "2025014",
       "nama": "Nia Marlina",
-      "sekolah": "SMA Negeri 1",
+      "sekolah": "",
       "biaya": "1400000",
       "pembelajaran": "Web Programming (Intermediate)",
       "kelas": "Semi Private",
@@ -244,7 +244,7 @@
     {
       "nis": "2025017",
       "nama": "Yudi Firmansyah",
-      "sekolah": "SMK Swasta 4",
+      "sekolah": "",
       "biaya": "1400000",
       "pembelajaran": "Basic 3",
       "kelas": "Reguler",
@@ -259,7 +259,7 @@
     {
       "nis": "2025018",
       "nama": "Salsa Amelia",
-      "sekolah": "SMA Negeri 6",
+      "sekolah": "",
       "biaya": "2600000",
       "pembelajaran": "Desain Grafis (Advance)",
       "kelas": "Semi Private",
@@ -330,7 +330,7 @@
     {
       "nis": "2025021",
       "nama": "Rama Pratama",
-      "sekolah": "SMA Negeri 7",
+      "sekolah": "",
       "biaya": "1400000",
       "pembelajaran": "Basic 2",
       "kelas": "Reguler",
@@ -376,7 +376,7 @@
     {
       "nis": "2025024",
       "nama": "Fajar Hidayat",
-      "sekolah": "SMK Negeri 6",
+      "sekolah": "",
       "biaya": "1400000",
       "pembelajaran": "Web Programming (Intermediate)",
       "kelas": "Semi Private",
@@ -407,7 +407,7 @@
     {
       "nis": "2025026",
       "nama": "Indah Permata",
-      "sekolah": "SMK Swasta 5",
+      "sekolah": "",
       "biaya": "1400000",
       "pembelajaran": "MS Office",
       "kelas": "Reguler",
@@ -422,7 +422,7 @@
     {
       "nis": "2025027",
       "nama": "Yoga Saputra",
-      "sekolah": "SMA Negeri 9",
+      "sekolah": "",
       "biaya": "1400000",
       "pembelajaran": "Basic 3",
       "kelas": "Semi Private",
@@ -452,7 +452,7 @@
     {
       "nis": "2025029",
       "nama": "Nina Kurnia",
-      "sekolah": "SMA Swasta 8",
+      "sekolah": "",
       "biaya": "1400000",
       "pembelajaran": "Digital Marketing",
       "kelas": "Reguler",
@@ -467,7 +467,7 @@
     {
       "nis": "2025030",
       "nama": "Dian Sari",
-      "sekolah": "SMK Negeri 8",
+      "sekolah": "",
       "biaya": "1400000",
       "pembelajaran": "Beginner 1",
       "kelas": "Reguler",
